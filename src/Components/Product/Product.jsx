@@ -1,16 +1,17 @@
 import { useProductsAction } from "../Provider/ProductsProvider";
 import { BiHeartCircle } from "react-icons/bi";
 import styles from "./Products.module.scss";
-import { useRef, useState } from "react";
+import { useState } from "react";
 
 const Product = ({ inf }) => {
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState(inf.like);
   const dispatch = useProductsAction();
   const clickHandler = () => {
     dispatch({ type: "toShow", product: inf });
   };
   const likeHandler = () => {
     setLike((prevLike) => !prevLike);
+    dispatch({type: 'like', product: inf})
   };
 
   return (
