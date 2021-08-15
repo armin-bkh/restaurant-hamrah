@@ -18,9 +18,9 @@ const Product = ({ inf }) => {
     <figure className={`flex-grow-0 flex-shrink-0 ${styles.productContainer}`}>
       <img loading="lazy" onClick={clickHandler} className={`${styles.productImage}`} src={inf.img} alt={inf.title} />
       <figcaption className={styles.productCaption}>
-        <h1 className={`mb-3 ${styles.productTitle}`}>{inf.title}</h1>
+        <h1 className={`text-md md:text-lg lg:text-xl mb-3 ${styles.productTitle}`}>{inf.title}</h1>
         <div className="flex justify-between items-center">
-          <span className={styles.productPriceBadge}>{inf.price} تومان</span>
+          <span className={`text-sm md:text-md lg:text-lg ${styles.productPriceBadge}`}>{inf.price} تومان</span>
           <span>
             <BiHeartCircle
             className="cursor-pointer text-xl transition-colors"

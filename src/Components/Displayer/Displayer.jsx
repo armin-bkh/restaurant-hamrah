@@ -26,27 +26,27 @@ const Displayer = () => {
             alt={product.title}
           />
           <article className={` ${styles.displyerInformation}`}>
-            <h1 className={`text-5xl text-center ${styles.displayerTitle}`}>{product.title}</h1>
-            <h3 className={`text-lg mt-4 text-yellow-400 text-center ${styles.displayerPrice}`}>{product.price} تومان</h3>
-            <h3 className={`mt-10 mb-2 text-yellow-400`}>توضیحات:</h3>
-            <p className={`mb-10 text-base text-justify ${styles.displayerDetail}`}>{product.detail}</p>
+            <h1 className={`text-3xl lg:text-5xl xl:text-4xl text-center ${styles.displayerTitle}`}>{product.title}</h1>
+            <h3 className={`text-md lg:text-lg xl:text-2xl mt-4 text-yellow-400 text-center ${styles.displayerPrice}`}>{product.price} تومان</h3>
+            <h3 className={`text-md lg:text-lg xl:text-2xl mt-10 mb-2 text-yellow-400 ${styles.displayerTitle}`}>توضیحات:</h3>
+            <p className={`mb-10 text-sm md:text-md lg:text-base text-justify ${styles.displayerDetail}`}>{product.detail}</p>
             <div className={`flex justify-center items-center`}>
             <button
-              className={`p-1 mx-5 rounded-full bg-gradient-to-b from-gray-700 to-gray-900 ${styles.displayerControler}`}
+              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
               onClick={incrementHandler}
             >
               <BiPlus />
             </button>
-            <span className={`text-lg ${styles.displayerPrice}`}>{count}</span>
+            <span className={`text-sm md:text-md lg:text-lg xl:text-xl ${styles.displayerPrice}`}>{count}</span>
             <button
-              className={`p-1 mx-5 rounded-full bg-gradient-to-b from-gray-700 to-gray-900 ${styles.displayerControler}`}
+              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
               onClick={decrementHandler}
             >
               <BiMinus />
             </button>
             </div>
 
-            <button className={`py-2 mt-12 rounded-sm bg-gradient-to-r from-yellow-400 to-red-700 ${styles.displayerCartBtn}`}>
+            <button className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm bg-gradient-to-r from-yellow-400 to-red-700 ${styles.displayerCartBtn}`}>
               افزودن به سبد خرید
             </button>
           </article>
