@@ -5,6 +5,7 @@ import { ProductsContext, ProductsDispatcherContext } from "../Context/ProductsC
 import { DispalyerContext } from '../Context/DispalyerContext';
 
 const ProductsProvider = ({ children }) => {
+    const [toShow, setToShow] = useState({});
     let initialState = productsData;
     const reducer = (state, action) =>{
         switch(action.type){
@@ -35,7 +36,6 @@ const ProductsProvider = ({ children }) => {
         }
     }
     const [ products, dispatch ] = useReducer(reducer, initialState);
-    const [toShow, setToShow] = useState({});
 
     useEffect(()=>{
         dispatch({type: 'getProducts'})
@@ -46,7 +46,7 @@ const ProductsProvider = ({ children }) => {
             <DispalyerContext.Provider value={toShow}>
                 {children}
                 </DispalyerContext.Provider>
-            </DispalyerContext.Provider>
+            </ProductsDispatcherContext.Provider>
         </ProductsContext.Provider>
     )
 }

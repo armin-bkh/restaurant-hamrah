@@ -15,8 +15,8 @@ const Product = ({ inf }) => {
   };
 
   return (
-    <figure className={`flex-grow-0 flex-shrink-0 ${styles.productContainer}`} onClick={clickHandler}>
-      <img className={`${styles.productImage}`} src={inf.img} alt={inf.title} />
+    <figure className={`flex-grow-0 flex-shrink-0 ${styles.productContainer}`}>
+      <img loading="lazy" onClick={clickHandler} className={`${styles.productImage}`} src={inf.img} alt={inf.title} />
       <figcaption className={styles.productCaption}>
         <h1 className={`mb-3 ${styles.productTitle}`}>{inf.title}</h1>
         <div className="flex justify-between items-center">
