@@ -1,0 +1,41 @@
+$A-Noor: 'A-Noor';
+$FP_Arsoo: 'FP_Arsoo';
+
+@font-face {
+    font-family: "A-Noor";
+    src: url('./../../fonts/A-Noor.ttf');
+}
+
+@font-face {
+    font-family: "FP_Arsoo";
+    src: url('./../../fonts/FP_Arsoo.ttf');
+}
+
+.productContainer {
+    width: 11rem;
+    padding: 1rem;
+    color: #fff;
+    background: #363636;
+    box-shadow: 0 5px 10px #020202;
+    border-radius: 20px;
+    
+    &:not(:last-child){
+        margin-left: 3rem;
+    }
+
+    .productImage {
+        margin-top: -3rem;
+        width: 100%;
+        height: 8rem;
+        filter: drop-shadow(0 5px 10px #020202);
+    }
+
+    .productTitle {
+        letter-spacing: 2px;
+    }
+
+    .productTitle,
+    .productPriceBadge {
+        font-family: $FP_Arsoo;
+    }
+}

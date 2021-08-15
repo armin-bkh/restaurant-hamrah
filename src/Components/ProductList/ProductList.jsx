@@ -1,10 +1,11 @@
 import Product from "../Product/Product";
 import { useProducts } from "../Provider/ProductsProvider";
+import styles from './ProductList.module.scss';
 
 const ProductList = () => {
     const products = useProducts();
     return ( 
-        <section>
+        <section className={`mt-10 mx-6 overflow-x-scroll flex flex-nowrap py-12 ${styles.productListContainer}`}>
                 {
                     products.length ? 
                     products.map(

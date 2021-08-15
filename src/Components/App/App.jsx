@@ -1,9 +1,12 @@
+import ProductList from '../ProductList/ProductList';
+import ProductsProvider from '../Provider/ProductsProvider';
 import './App.scss';
 
 const App = () => {
   return (
-    <main className="flex flex-col">
-    </main>
+    <ProductsProvider>
+      <ProductList />
+    </ProductsProvider>
   );
 }
 
