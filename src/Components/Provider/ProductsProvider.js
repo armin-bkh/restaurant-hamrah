@@ -6,6 +6,7 @@ import { DispalyerContext } from '../Context/DispalyerContext';
 
 const ProductsProvider = ({ children }) => {
     const [toShow, setToShow] = useState({});
+    const [cart, setCart] = useState([]);
     let initialState = productsData;
     const reducer = (state, action) =>{
         switch(action.type){
@@ -22,6 +23,13 @@ const ProductsProvider = ({ children }) => {
                 const product = action.product;
                 setToShow(product);
                 return state;
+            }
+            case 'addToCart': {
+                const cartItem = action.cart;
+                setCart([
+                    ...cart,
+                    cartItem
+                ]);
             }
             case 'like': {
                 const selectedProduct = state.findIndex(el => el.id === action.product.id);
