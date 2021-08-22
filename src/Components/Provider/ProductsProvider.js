@@ -6,11 +6,16 @@ import {
   ProductsDispatcherContext,
 } from "../Context/ProductsContext";
 import { DispalyerContext } from "../Context/DispalyerContext";
-import { CartContext, CartDispatcherContext } from "../Context/CartContext";
+import { CartContext } from "../Context/CartContext";
+import { AlertContext } from "../Context/AlertContext";
+import { CountContext } from "../Context/CountContext";
 
 const ProductsProvider = ({ children }) => {
   const [toShow, setToShow] = useState({});
   const [cart, setCart] = useState([]);
+  const [message, setMessage] = useState("");
+  const [visible, setVisible] = useState(false);
+  const [count, setCount] = useState(1);
   let initialState = productsData;
   const reducer = (state, action) => {
     switch (action.type) {
@@ -26,48 +31,79 @@ const ProductsProvider = ({ children }) => {
       case "toShow": {
         const product = action.product;
         setToShow(product);
+        setCount(1);
         return state;
       }
       case "addToCart": {
-        const el = action.item;
-        const index = cart.findIndex(it => it.id === el.id)
-        if(index === -1){
-        setCart([...cart, {
-          id: el.id,
-          title: el.title,
-          quantity: action.quantity,
-          basePrice: el.price,
-          fullPrice: el.price * action.quantity,
-        }]);
-      }
+        const newItem = action.item;
+        const index = cart.findIndex((it) => it.id === action.item.id);
+        if (index === -1) {
+          setCart([...cart, newItem]);
+          setCount(1);
+          setMessage("success");
+          setVisible(true);
+          setTimeout(() => {
+            setVisible(false);
+          }, 10000);
+        } else {
+          setMessage("error");
+          setVisible(true);
+          setTimeout(() => {
+            setVisible(false);
+          }, 10000);
+        }
         return state;
       }
       case "incrementItemCart": {
-        const index = cart.findIndex(item => item.id === action.id);
+        const index = cart.findIndex((item) => item.id === action.id);
         const cartClone = [...cart];
-        const selectedItem = {...cart[index]};
-        if(selectedItem.quantity < 10){
-        selectedItem.quantity++;
-        selectedItem.fullPrice = selectedItem.basePrice * selectedItem.quantity;
+        const selectedItem = { ...cart[index] };
+        if (selectedItem.quantity < 10) {
+          selectedItem.quantity++;
+          selectedItem.fullPrice =
+            selectedItem.basePrice * selectedItem.quantity;
+        } else {
+          setMessage("warning");
+          setVisible(true);
+          setTimeout(() => {
+            setVisible(false);
+          }, 10000);
         }
-        else alert("ظرفیت پر شده است")
         cartClone[index] = selectedItem;
         setCart(cartClone);
         return state;
       }
       case "decrementItemCart": {
-        const index = cart.findIndex(item => item.id === action.id);
+        const index = cart.findIndex((item) => item.id === action.id);
         const cartClone = [...cart];
-        const selectedItem = {...cart[index]};
-        if(selectedItem.quantity === 1){
-          const filteredCart = cartClone.filter(item => item.id !== action.id); 
+        const selectedItem = { ...cart[index] };
+        if (selectedItem.quantity === 1) {
+          const filteredCart = cartClone.filter(
+            (item) => item.id !== action.id
+          );
           setCart(filteredCart);
+          setMessage("delete");
+          setVisible(true);
+          setTimeout(() => {
+            setVisible(false);
+          }, 10000);
         } else {
           selectedItem.quantity--;
-          selectedItem.fullPrice = selectedItem.basePrice * selectedItem.quantity;
+          selectedItem.fullPrice =
+            selectedItem.basePrice * selectedItem.quantity;
           cartClone[index] = selectedItem;
-          setCart(cartClone)
-        };
+          setCart(cartClone);
+        }
+        return state;
+      }
+      case "deleteItemCart": {
+        const filteredCart = cart.filter((item) => item.id !== action.id);
+        setCart(filteredCart);
+        setMessage("delete");
+        setVisible(true);
+        setTimeout(() => {
+          setVisible(false);
+        }, 10000);
         return state;
       }
       case "like": {
@@ -86,6 +122,21 @@ const ProductsProvider = ({ children }) => {
         setCart([]);
         return state;
       }
+      case "incrementCount": {
+        if (count < 10) setCount((prevCount) => prevCount + 1);
+        else {
+          setMessage("warning");
+          setVisible(true);
+          setTimeout(() => {
+            setVisible(false);
+          }, 10000);
+        }
+        return state;
+      }
+      case "decrementCount": {
+        setCount((prevCount) => prevCount - 1);
+        return state;
+      }
       default:
         return state;
     }
@@ -100,9 +151,13 @@ const ProductsProvider = ({ children }) => {
       <ProductsDispatcherContext.Provider value={dispatch}>
         <DispalyerContext.Provider value={toShow}>
           <CartContext.Provider value={cart}>
-            <CartDispatcherContext.Provider value={setCart}>
-              {children}
-            </CartDispatcherContext.Provider>
+            <AlertContext.Provider
+              value={{ message: message, visible: visible }}
+            >
+              <CountContext.Provider value={count}>
+                {children}
+              </CountContext.Provider>
+            </AlertContext.Provider>
           </CartContext.Provider>
         </DispalyerContext.Provider>
       </ProductsDispatcherContext.Provider>
@@ -114,6 +169,7 @@ export default ProductsProvider;
 
 export const useProducts = () => useContext(ProductsContext);
 export const useCart = () => useContext(CartContext);
-export const useCartAction = () => useContext(CartDispatcherContext);
 export const useProductsAction = () => useContext(ProductsDispatcherContext);
 export const useDispaly = () => useContext(DispalyerContext);
+export const useAlert = () => useContext(AlertContext);
+export const useCount = () => useContext(CountContext);

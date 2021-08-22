@@ -1,25 +1,22 @@
-import { useProductsAction, useDispaly } from "../Provider/ProductsProvider";
+import { useProductsAction, useDispaly, useCount } from "../Provider/ProductsProvider";
 import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
-import { useState } from "react";
 import styles from "./Displayer.module.scss";
 
 const Displayer = () => {
-  const [count, setCount] = useState(1);
+  const count = useCount();
   const product = useDispaly();
   const dispatch = useProductsAction();
   
   const incrementHandler = () => {
-    setCount((prevCount) => prevCount + 1);
+    dispatch({type: "incrementCount"})
   };
   const decrementHandler = () => {
     count > 1
-      ? setCount((prevCount) => prevCount - 1)
+      ? dispatch({type: "decrementCount"})
       : console.log("کمتر از این مقدار امکان پذیر نیست");
   };
-  const clickHandler = () =>{
-    const qty = count;
-    dispatch({type: "addToCart", item: product, quantity: qty})
-    setCount(1);
+  const clickHandler = () => {
+    dispatch({type: "addToCart", item: {id: product.id, title: product.title, quantity: count, basePrice: product.price, fullPrice: product.price * count}})
   }
   return (
       

@@ -1,4 +1,4 @@
-import { BiPlus, BiMinus } from "react-icons/bi";
+import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
 import { useProductsAction } from "../../Provider/ProductsProvider";
 import styles from "./CartItem.module.scss";
 
@@ -11,6 +11,10 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
   }
   const incrementItemCartHandler = () => {
     dispatch({ type: "incrementItemCart", id: itemID })
+  }
+
+  const deleteItemCartHandler = () =>{
+    dispatch({ type: "deleteItemCart", id: itemID })
   }
 
   return (
@@ -40,12 +44,13 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
           className={`text-sm md:text-md lg:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
           onClick={decrementItemCartHandler}
         >
-          <BiMinus />
+          {foodQ > 1 ? <BiMinus /> : <BiTrash />}
         </button>
       </div>
       <span className={`text-sm md:text-md lg:text-lg ${styles.white}`}>
         قیمت: {foodFP}
       </span>
+      <button className={`text-sm md:text-md lg:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`} type="button" onClick={deleteItemCartHandler}><BiTrash /></button>
     </li>
   );
 };

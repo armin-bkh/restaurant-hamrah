@@ -1,12 +1,14 @@
 import React from "react";
-import { useCart, useProductsAction } from "../../Provider/ProductsProvider";
+import { useAlert, useCart, useProductsAction } from "../../Provider/ProductsProvider";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
+import Alert from "../../Alert/Alert";
 
 const CartList = () => {
   const cart = useCart();
   const dispatch = useProductsAction();
+  const { visible } = useAlert();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -14,6 +16,8 @@ const CartList = () => {
   };
 
   return (
+    <>
+    {visible && <Alert />}
     <section className={`mx-6 mt-5 p-6 ${styles.cartContainer}`}>
       {!cart.length ? (
         <header className={`flex items-center justify-center bg-clip-text bg-gradient-to-r text-transparent from-yellow-400 to-red-700 ${styles.title}`}>
@@ -47,6 +51,7 @@ const CartList = () => {
         </form>
       )}
     </section>
+    </>
   );
 };
 
