@@ -7,7 +7,7 @@ const Product = ({ inf }) => {
   const [like, setLike] = useState(inf.like);
   const dispatch = useProductsAction();
   const clickHandler = () => {
-    dispatch({ type: "toShow", product: inf });
+    dispatch({ type: "toShow", product: inf});
   };
   const likeHandler = () => {
     setLike((prevLike) => !prevLike);

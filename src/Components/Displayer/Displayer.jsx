@@ -1,11 +1,13 @@
-import { useDispaly } from "../Provider/ProductsProvider";
+import { useProductsAction, useDispaly } from "../Provider/ProductsProvider";
 import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import { useState } from "react";
 import styles from "./Displayer.module.scss";
+
 const Displayer = () => {
-  const product = useDispaly();
-  console.log(product);
   const [count, setCount] = useState(1);
+  const product = useDispaly();
+  const dispatch = useProductsAction();
+  
   const incrementHandler = () => {
     setCount((prevCount) => prevCount + 1);
   };
@@ -14,6 +16,11 @@ const Displayer = () => {
       ? setCount((prevCount) => prevCount - 1)
       : console.log("کمتر از این مقدار امکان پذیر نیست");
   };
+  const clickHandler = () =>{
+    const qty = count;
+    dispatch({type: "addToCart", item: product, quantity: qty})
+    setCount(1);
+  }
   return (
       
         <section className={`p-6 ${styles.displayerContainer}`}>
@@ -46,14 +53,14 @@ const Displayer = () => {
             </button>
             </div>
 
-            <button className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm bg-gradient-to-r from-yellow-400 to-red-700 ${styles.displayerCartBtn}`}>
+            <button onClick={clickHandler} className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm bg-gradient-to-r from-yellow-400 to-red-700 ${styles.displayerCartBtn}`}>
               افزودن به سبد خرید
             </button>
           </article>
           </>
       ) : (
-        <header className={`text-center text-4xl md:text-5xl flex justify-center items-center ${styles.dispalyerWelcome}`}>
-          <h1 className={`bg-clip-text bg-gradient-to-r text-transparent from-yellow-400 to-red-700 `}>خوش آمدید لطفا انتخاب کنید</h1> <BiRestaurant className={`text-yellow-400 inline-block rounded-full mr-2`}/> 
+        <header className={`text-center text-xl sm:text-3xl md:text-5xl flex justify-center items-center ${styles.dispalyerWelcome}`}>
+        <BiRestaurant className={`text-red-700 inline-block rounded-full ml-2`}/> <h1 className={`bg-clip-text bg-gradient-to-r text-transparent from-yellow-400 to-red-700 `}>خوش آمدید لطفا انتخاب کنید</h1>  
         </header>
       )
     }
