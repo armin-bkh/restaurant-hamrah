@@ -23,10 +23,11 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
       <span className={`text-sm md:text-md lg:text-lg ${styles.white}`}>
         قیمت واحد: {foodBP}
       </span>
-      <div className={`flex w-40 justify-between items-center ${styles.white}`}>
+      <div className={`flex justify-between items-center ${styles.white}`}>
         تعداد:
         <button
-          className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
+        type="button"
+          className={`text-sm md:text-md lg:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
           onClick={incrementItemCartHandler}
         >
           <BiPlus />
@@ -35,7 +36,8 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
           {foodQ}
         </span>
         <button
-          className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
+        type="button"
+          className={`text-sm md:text-md lg:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
           onClick={decrementItemCartHandler}
         >
           <BiMinus />

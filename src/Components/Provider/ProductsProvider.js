@@ -31,7 +31,6 @@ const ProductsProvider = ({ children }) => {
       case "addToCart": {
         const el = action.item;
         const index = cart.findIndex(it => it.id === el.id)
-        console.log(index);
         if(index === -1){
         setCart([...cart, {
           id: el.id,
@@ -47,8 +46,11 @@ const ProductsProvider = ({ children }) => {
         const index = cart.findIndex(item => item.id === action.id);
         const cartClone = [...cart];
         const selectedItem = {...cart[index]};
+        if(selectedItem.quantity < 10){
         selectedItem.quantity++;
         selectedItem.fullPrice = selectedItem.basePrice * selectedItem.quantity;
+        }
+        else alert("ظرفیت پر شده است")
         cartClone[index] = selectedItem;
         setCart(cartClone);
         return state;
@@ -57,10 +59,15 @@ const ProductsProvider = ({ children }) => {
         const index = cart.findIndex(item => item.id === action.id);
         const cartClone = [...cart];
         const selectedItem = {...cart[index]};
-        selectedItem.quantity--;
-        selectedItem.fullPrice = selectedItem.basePrice * selectedItem.quantity;
-        cartClone[index] = selectedItem;
-        setCart(cartClone);
+        if(selectedItem.quantity === 1){
+          const filteredCart = cartClone.filter(item => item.id !== action.id); 
+          setCart(filteredCart);
+        } else {
+          selectedItem.quantity--;
+          selectedItem.fullPrice = selectedItem.basePrice * selectedItem.quantity;
+          cartClone[index] = selectedItem;
+          setCart(cartClone)
+        };
         return state;
       }
       case "like": {
@@ -72,6 +79,12 @@ const ProductsProvider = ({ children }) => {
         selectedItem.like = !selectedItem.like;
         cloneProducts[selectedProduct] = selectedItem;
         return cloneProducts;
+      }
+      case "submitCart": {
+        // axios.post().then().catch();
+        alert("سفارش شما ثبت شد");
+        setCart([]);
+        return state;
       }
       default:
         return state;

@@ -23,7 +23,7 @@ const Displayer = () => {
   }
   return (
       
-        <section className={`p-6 ${styles.displayerContainer}`}>
+        <section className={`mx-6 p-6 ${styles.displayerContainer}`}>
     {
       product.title ? (
           <>
@@ -39,6 +39,7 @@ const Displayer = () => {
             <p className={`mb-10 text-sm md:text-md lg:text-base text-justify ${styles.displayerDetail}`}>{product.detail}</p>
             <div className={`flex justify-center items-center`}>
             <button
+              type="button"
               className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
               onClick={incrementHandler}
             >
@@ -46,6 +47,7 @@ const Displayer = () => {
             </button>
             <span className={`text-sm md:text-md lg:text-lg xl:text-xl ${styles.displayerPrice}`}>{count}</span>
             <button
+            type="button"
               className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
               onClick={decrementHandler}
             >
@@ -53,7 +55,7 @@ const Displayer = () => {
             </button>
             </div>
 
-            <button onClick={clickHandler} className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm bg-gradient-to-r from-yellow-400 to-red-700 ${styles.displayerCartBtn}`}>
+            <button type="submit" onClick={clickHandler} className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm bg-gradient-to-r from-yellow-400 to-red-700 ${styles.displayerCartBtn}`}>
               افزودن به سبد خرید
             </button>
           </article>
