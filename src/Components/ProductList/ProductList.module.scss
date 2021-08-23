@@ -22,6 +22,9 @@ $FP_Arsoo: 'FP_Arsoo';
 
     .productList {
 
+        scrollbar-color: #363636 transparent;
+        scrollbar-width: thin;
+
         /* width */
         &::-webkit-scrollbar {
             cursor: pointer;
@@ -37,11 +40,6 @@ $FP_Arsoo: 'FP_Arsoo';
         &::-webkit-scrollbar-thumb {
             background: #363636;
             border-radius: 2rem;
-        }
-
-        /* Handle on hover */
-        &::-webkit-scrollbar-thumb:hover {
-            background: #363636;
         }
     }
 }

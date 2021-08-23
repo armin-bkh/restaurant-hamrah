@@ -1,5 +1,5 @@
 import React from "react";
-import { useAlert, useCart, useProductsAction } from "../../Provider/ProductsProvider";
+import { useAlert, useCart, useCartActions } from "../../Provider/ProductsProvider";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
@@ -7,12 +7,12 @@ import Alert from "../../Alert/Alert";
 
 const CartList = () => {
   const cart = useCart();
-  const dispatch = useProductsAction();
+  const {submitCartHandler} = useCartActions();
   const { visible } = useAlert();
 
   const submitHandler = (e) => {
     e.preventDefault();
-    dispatch({type: "submitCart"})
+    submitCartHandler();
   };
 
   return (

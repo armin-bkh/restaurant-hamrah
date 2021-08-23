@@ -1,13 +1,14 @@
-import { useProductsAction } from "../Provider/ProductsProvider";
+import { useDisplayAction, useProductsAction } from "../Provider/ProductsProvider";
 import { BiHeartCircle } from "react-icons/bi";
 import styles from "./Products.module.scss";
 import { useState } from "react";
 
 const Product = ({ inf }) => {
   const [like, setLike] = useState(inf.like);
+  const {toShowHandler} = useDisplayAction();
   const dispatch = useProductsAction();
   const clickHandler = () => {
-    dispatch({ type: "toShow", product: inf});
+    toShowHandler(inf);
   };
   const likeHandler = () => {
     setLike((prevLike) => !prevLike);

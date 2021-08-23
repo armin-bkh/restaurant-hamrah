@@ -1,20 +1,20 @@
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
-import { useProductsAction } from "../../Provider/ProductsProvider";
+import { useCartActions } from "../../Provider/ProductsProvider";
 import styles from "./CartItem.module.scss";
 
 const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
-  const dispatch = useProductsAction();
+  const { deleteItemCartHandler, decrementItemCartHandler, incrementItemCartHandler } = useCartActions();
 
 
-  const decrementItemCartHandler = () =>{
-    dispatch({ type: "decrementItemCart", id: itemID })
+  const decrementItemHandler = () =>{
+    decrementItemCartHandler(itemID)
   }
-  const incrementItemCartHandler = () => {
-    dispatch({ type: "incrementItemCart", id: itemID })
+  const incrementItemHandler = () => {
+    incrementItemCartHandler(itemID)
   }
 
-  const deleteItemCartHandler = () =>{
-    dispatch({ type: "deleteItemCart", id: itemID })
+  const deleteItemHandler = () =>{
+    deleteItemCartHandler(itemID)
   }
 
   return (
@@ -24,15 +24,15 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
       <span className={`text-sm md:text-md lg:text-lg ${styles.white}`}>
         {foodN}
       </span>
-      <span className={`text-sm md:text-md lg:text-lg ${styles.white}`}>
+      <span className={`hidden md:block text-sm md:text-md lg:text-lg ${styles.white}`}>
         قیمت واحد: {foodBP}
       </span>
       <div className={`flex justify-between items-center ${styles.white}`}>
-        تعداد:
+        <span className={`hidden md:block text-sm md:text-md lg:text-lg`} >تعداد:</span>
         <button
         type="button"
           className={`text-sm md:text-md lg:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
-          onClick={incrementItemCartHandler}
+          onClick={incrementItemHandler}
         >
           <BiPlus />
         </button>
@@ -42,7 +42,7 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
         <button
         type="button"
           className={`text-sm md:text-md lg:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
-          onClick={decrementItemCartHandler}
+          onClick={decrementItemHandler}
         >
           {foodQ > 1 ? <BiMinus /> : <BiTrash />}
         </button>
@@ -50,7 +50,7 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
       <span className={`text-sm md:text-md lg:text-lg ${styles.white}`}>
         قیمت: {foodFP}
       </span>
-      <button className={`text-sm md:text-md lg:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`} type="button" onClick={deleteItemCartHandler}><BiTrash /></button>
+      <button className={`text-sm md:text-md lg:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`} type="button" onClick={deleteItemHandler}><BiTrash /></button>
     </li>
   );
 };

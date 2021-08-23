@@ -1,23 +1,19 @@
-import { useProductsAction, useDispaly, useCount } from "../Provider/ProductsProvider";
+import { useDispaly, useCount, useCountActions, useCartActions } from "../Provider/ProductsProvider";
 import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import styles from "./Displayer.module.scss";
 
 const Displayer = () => {
   const count = useCount();
   const product = useDispaly();
-  const dispatch = useProductsAction();
-  
-  const incrementHandler = () => {
-    dispatch({type: "incrementCount"})
-  };
-  const decrementHandler = () => {
-    count > 1
-      ? dispatch({type: "decrementCount"})
-      : console.log("کمتر از این مقدار امکان پذیر نیست");
-  };
+  const { addToCartHandler } = useCartActions();
+  const {decrementCountHandler, incrementCountHandler} = useCountActions();
+
+
   const clickHandler = () => {
-    dispatch({type: "addToCart", item: {id: product.id, title: product.title, quantity: count, basePrice: product.price, fullPrice: product.price * count}})
+    const item = {id: product.id, title: product.title, quantity: count, basePrice: product.price, fullPrice: product.price * count};
+    addToCartHandler(item);
   }
+
   return (
       
         <section className={`mx-6 p-6 ${styles.displayerContainer}`}>
@@ -38,7 +34,7 @@ const Displayer = () => {
             <button
               type="button"
               className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
-              onClick={incrementHandler}
+              onClick={incrementCountHandler}
             >
               <BiPlus />
             </button>
@@ -46,7 +42,7 @@ const Displayer = () => {
             <button
             type="button"
               className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
-              onClick={decrementHandler}
+              onClick={decrementCountHandler}
             >
               <BiMinus />
             </button>
