@@ -10,7 +10,7 @@ const Product = ({ inf }) => {
   
   const clickHandler = () => {
     toShowHandler({...inf, quantity: count});
-    setCount(1);
+    setCount(1)
   };
 
   const likeHandler = () => {
@@ -21,9 +21,9 @@ const Product = ({ inf }) => {
     <figure className={`flex-grow-0 flex-shrink-0 ${styles.productContainer}`}>
       <img loading="lazy" onClick={clickHandler} className={`${styles.productImage}`} src={inf.img} alt={inf.title} />
       <figcaption className={styles.productCaption}>
-        <h1 className={`text-md md:text-lg lg:text-xl mb-3 ${styles.productTitle}`}>{inf.title}</h1>
+        <h1 className={`text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl mb-3 ${styles.productTitle}`}>{inf.title}</h1>
         <div className="flex justify-between items-center">
-          <span className={`text-sm md:text-md lg:text-lg ${styles.productPriceBadge}`}>{inf.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} تومان</span>
+          <span className={`text-xs md:text-sm lg:text-md xl:text-lg 2xl:text-xl ${styles.productPriceBadge}`}>{inf.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} تومان</span>
           <span>
             <BiPin
             className="cursor-pointer text-xl transition-colors"

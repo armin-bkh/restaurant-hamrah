@@ -20,7 +20,7 @@ const Alert = () => {
     if(message === "success") bg = {backgroundColor: '#00701c'};
 
   return (
-    <article style={bg}  className={`flex justify-between items-center text-sm lg:text-lg ${styles.alert}`}>
+    <article style={bg}  className={`flex justify-between items-center text-xs md:text-sm lg:text-base ${styles.alert}`}>
         {(message === "error") ? <p>این غذا قبلا اضافه شده است</p> : null}
         {(message === "warning") ? <p>بیش از این امکان پذیر نیست</p> : null}
         {(message === "success") ? <p>به سبد سفارشات اضافه شد</p> : null}
