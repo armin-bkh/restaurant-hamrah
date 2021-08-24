@@ -1,10 +1,13 @@
 import { useDispaly, useProductsAction } from "../Provider/ProductsProvider";
 import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import styles from "./Displayer.module.scss";
+import { numberWithCommas } from "../utils/CommaNumber";
 
 const Displayer = () => {
   const product = useDispaly();
   const {addToCartHandler, decrementCountHandler, incrementCountHandler} = useProductsAction();
+
+  const productPrice = numberWithCommas(product.price);
 
   const clickHandler = () => {
     const item = {id: product.id, title: product.title, quantity: product.quantity, basePrice: product.price, finalPrice: product.price * product.quantity};
@@ -23,7 +26,7 @@ const Displayer = () => {
           />
           <article className={` ${styles.displyerInformation}`}>
             <h1 className={`text-3xl lg:text-5xl xl:text-4xl text-center ${styles.displayerTitle}`}>{product.title}</h1>
-            <h3 className={`text-md lg:text-lg xl:text-2xl mt-4 text-yellow-400 text-center ${styles.displayerPrice}`}>{product.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} تومان</h3>
+            <h3 className={`text-md lg:text-lg xl:text-2xl mt-4 text-yellow-400 text-center ${styles.displayerPrice}`}>{productPrice()} تومان</h3>
             <h3 className={`text-md lg:text-lg xl:text-2xl mt-10 mb-2 text-yellow-400 ${styles.displayerTitle}`}>توضیحات:</h3>
             <p className={`mb-10 text-sm md:text-md lg:text-base text-justify ${styles.displayerDetail}`}>{product.information}</p>
             <div className={`flex justify-center items-center`}>

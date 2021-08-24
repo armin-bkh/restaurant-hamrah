@@ -1,13 +1,13 @@
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
 import { useProductsAction } from "../../Provider/ProductsProvider";
-// import { numberWithCommas } from "../../utils/CommaNumber";
+import { numberWithCommas } from "../../utils/CommaNumber";
 import styles from "./CartItem.module.scss";
 
 const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
   const { deleteItemCartHandler, decrementItemCartHandler, incrementItemCartHandler } = useProductsAction();
 
-  // const foodFPrice = numberWithCommas(foodFP);
-  // const foodBPrice = numberWithCommas(foodBP);
+  const foodFPrice = numberWithCommas(foodFP);
+  const foodBPrice = numberWithCommas(foodBP);
 
   const decrementItemHandler = () =>{
     decrementItemCartHandler(itemID)
@@ -27,7 +27,7 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
         {foodN}
       </span>
       <span className={`hidden md:block text-sm md:text-md lg:text-lg ${styles.white}`}>
-        قیمت واحد: {foodBP.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        قیمت واحد: {foodBPrice()}
       </span>
       <div className={`flex justify-between items-center ${styles.white}`}>
         <span className={`hidden md:block text-sm md:text-md lg:text-lg`} >تعداد:</span>
@@ -50,7 +50,7 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
         </button>
       </div>
       <span className={`text-sm md:text-md lg:text-lg ${styles.white}`}>
-        قیمت: {foodFP.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        قیمت: {foodFPrice()}
       </span>
       <button className={`text-sm md:text-md lg:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`} type="button" onClick={deleteItemHandler}><BiTrash /></button>
     </li>
