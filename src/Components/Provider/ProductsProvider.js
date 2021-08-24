@@ -97,12 +97,10 @@ const reducer = (state, action) => {
         return { ...state, message: "error", visible: true };
       }
     }
-
     case "deleteItemCart": {
       const filteredCart = state.cart.filter((item) => item.id !== action.id);
       return { ...state, cart: filteredCart, message: "delete", visible: true };
     }
-
     case "submitCart": {
       Swal.fire({
         title: "ثبت گردید",
@@ -114,6 +112,11 @@ const reducer = (state, action) => {
         backdrop: true,
       });
       return { ...state, cart: [] };
+    }
+    case "filterProducts": {
+      if(action.value === 'all') return { ...state, products: productsData };
+      const filterdProducts = productsData.filter(pr => pr.filter === action.value);
+      return {...state, products: filterdProducts};
     }
     default:
       return state;
@@ -192,6 +195,10 @@ export const useProductsAction = () => {
     dispatch({ type: "decrementCount" });
   };
 
+  const filterProductsHandler = (value) => {
+    dispatch({type: "filterProducts", value: value});
+  }
+
   return {
     addToCartHandler,
     deleteItemCartHandler,
@@ -201,5 +208,6 @@ export const useProductsAction = () => {
     toShowHandler,
     incrementCountHandler,
     decrementCountHandler,
+    filterProductsHandler
   };
 };
