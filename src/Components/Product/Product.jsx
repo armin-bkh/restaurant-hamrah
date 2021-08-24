@@ -4,11 +4,15 @@ import styles from "./Products.module.scss";
 import { useState } from "react";
 
 const Product = ({ inf }) => {
-  const [pin, setPin] = useState(false);
+  const [count, setCount] = useState(1)
+    const [pin, setPin] = useState(false);
   const { toShowHandler } = useProductsAction();
+  
   const clickHandler = () => {
-    toShowHandler(inf);
+    toShowHandler({...inf, quantity: count});
+    setCount(1);
   };
+
   const likeHandler = () => {
     setPin((prevpin) => !prevpin);
   };
@@ -19,7 +23,7 @@ const Product = ({ inf }) => {
       <figcaption className={styles.productCaption}>
         <h1 className={`text-md md:text-lg lg:text-xl mb-3 ${styles.productTitle}`}>{inf.title}</h1>
         <div className="flex justify-between items-center">
-          <span className={`text-sm md:text-md lg:text-lg ${styles.productPriceBadge}`}>{inf.price} تومان</span>
+          <span className={`text-sm md:text-md lg:text-lg ${styles.productPriceBadge}`}>{inf.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} تومان</span>
           <span>
             <BiPin
             className="cursor-pointer text-xl transition-colors"

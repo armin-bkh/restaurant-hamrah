@@ -6,21 +6,12 @@ import {
   ProductsContext,
   ProductsDispatcherContext,
 } from "../Context/ProductsContext";
-// import {
-//   DispalyerContext,
-//   DispalyerDispathcerContext,
-// } from "../Context/DispalyerContext";
-// import { CartContext, CartDispatcherContext } from "../Context/CartContext";
-// import { AlertContext, AlertDispatcherContext } from "../Context/AlertContext";
-// import { CountContext, CountDispatcherContext } from "../Context/CountContext";
-// import { queryByDisplayValue } from "@testing-library/react";
 
 let initialState = {
   products: productsData,
   toShow: {},
   message: "",
   visible: "",
-  count: 1,
   cart: [],
 };
 
@@ -33,8 +24,7 @@ const reducer = (state, action) => {
     case "toShow": {
       return {
         ...state,
-        toShow: action.item,
-        count: 1,
+        toShow: action.item
       };
     }
     case "invisible": {
@@ -46,12 +36,15 @@ const reducer = (state, action) => {
     case "incrementCount": {
       return {
         ...state,
-        count: state.count + 1,
+        toShow: {...state.toShow, quantity: state.toShow.quantity + 1},
       };
     }
     case "decrementCount": {
-      if (state.count > 1) {
-        return { ...state, count: state.count - 1 };
+      if (state.toShow.quantity > 1) {
+        return {
+          ...state,
+          toShow: {...state.toShow, quantity: state.toShow.quantity - 1},
+        };
       }
       return state;
     }
@@ -69,7 +62,6 @@ const reducer = (state, action) => {
       cartClone[index] = selectedItem;
       return { ...state, cart: cartClone };
     }
-
     case "decrementCountItemCart": {
       const index = state.cart.findIndex((item) => item.id === action.id);
       const cartClone = [...state.cart];
@@ -90,7 +82,6 @@ const reducer = (state, action) => {
         return { ...state, cart: cartClone };
       }
     }
-
     case "addToCart": {
       const newItem = action.item;
       const index = state.cart.findIndex((it) => it.id === newItem.id);
@@ -100,10 +91,10 @@ const reducer = (state, action) => {
           cart: [...state.cart, newItem],
           message: "success",
           visible: true,
-          count: 1,
+          toShow: {...state.toShow, quantity: 1}
         };
       } else {
-        return { ...state, message: "error", visible: true, count: 1 };
+        return { ...state, message: "error", visible: true };
       }
     }
 
@@ -165,10 +156,6 @@ export const useDispaly = () => {
 export const useAlert = () => {
   const { message, visible } = useContext(ProductsContext);
   return { message, visible };
-};
-export const useCount = () => {
-  const { count } = useContext(ProductsContext);
-  return count;
 };
 export const useProductsAction = () => {
   const dispatch = useContext(ProductsDispatcherContext);
