@@ -1,7 +1,7 @@
 // import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
 import { productsData } from "../../db/products";
-import Swal from "sweetalert2"; 
+import Swal from "sweetalert2";
 import {
   ProductsContext,
   ProductsDispatcherContext,
@@ -113,7 +113,15 @@ const reducer = (state, action) => {
     }
 
     case "submitCart": {
-      alert("سفارش شما ثبت شد");
+      Swal.fire({
+        title: "ثبت گردید",
+        text: "سفارش شما با موفقیت ثبت گردید",
+        icon: "success",
+        confirmButtonText: "تایید",
+        showCloseButton: true,
+        timer: 10000,
+        backdrop: true,
+      });
       return { ...state, cart: [] };
     }
     default:
