@@ -1,5 +1,5 @@
 import { useDispaly, useProductsAction } from "../Provider/ProductsProvider";
-import { BiPlus, BiMinus } from "react-icons/bi";
+import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import styles from "./Displayer.module.scss";
 import { numberWithCommas } from "../utils/CommaNumber";
 
@@ -15,8 +15,10 @@ const Displayer = () => {
   }
 
   return (
+    <section className={`mx-6 p-6 ${styles.displayerContainer}`}>
+    {
       product.title ? (
-        <section className={`mx-6 p-6 ${styles.displayerContainer}`}>
+        <>
           <img
             className={` ${styles.displayerImg}`}
             src={product.img}
@@ -48,10 +50,14 @@ const Displayer = () => {
               افزودن به سبد خرید
             </button>
           </article>
-    </section>
+          </>
       ) : (
-        null
+        <article className={`text-center text-xl sm:text-3xl md:text-5xl flex justify-center items-center ${styles.dispalyerWelcome}`}>
+        <BiRestaurant className={`text-red-700 inline-block rounded-full ml-2`}/> <h1 className={`bg-clip-text bg-gradient-to-r text-transparent from-yellow-400 to-red-700 `}>خوش آمدید لطفا انتخاب کنید</h1>  
+        </article>
       )
+    }
+    </section>
   );
 };
 export default Displayer;

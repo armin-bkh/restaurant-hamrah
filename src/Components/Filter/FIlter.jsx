@@ -1,7 +1,6 @@
 import { useState } from "react";
 import RadioIComponent from "../Common/RadioIComponent/RadioIComponent";
 import { useProductsAction } from "../Provider/ProductsProvider";
-import styles from "./Filter.module.scss";
 
 const Filter = () => {
   const [filter, setFilter] = useState("");
