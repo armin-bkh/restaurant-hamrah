@@ -1,9 +1,9 @@
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
-import { useCartActions } from "../../Provider/ProductsProvider";
+import { useProductsAction } from "../../Provider/ProductsProvider";
 import styles from "./CartItem.module.scss";
 
 const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
-  const { deleteItemCartHandler, decrementItemCartHandler, incrementItemCartHandler } = useCartActions();
+  const { deleteItemCartHandler, decrementItemCartHandler, incrementItemCartHandler } = useProductsAction();
 
 
   const decrementItemHandler = () =>{

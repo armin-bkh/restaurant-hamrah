@@ -21,8 +21,8 @@ const Alert = () => {
 
   return (
     <article style={bg}  className={`flex justify-between items-center text-sm lg:text-lg ${styles.alert}`}>
-        {(message === "error") ? <p>این غذا قبلا به سبد اضافه شده است</p> : null}
-        {(message === "warning") ? <p>افزایش تعداد بیش از این امکان پذیر نیست</p> : null}
+        {(message === "error") ? <p>این غذا قبلا اضافه شده است</p> : null}
+        {(message === "warning") ? <p>بیش از این امکان پذیر نیست</p> : null}
         {(message === "success") ? <p>به سبد سفارشات اضافه شد</p> : null}
         {(message === "delete") ? <p>از سبد سفارشات حذف شد</p> : null}
 

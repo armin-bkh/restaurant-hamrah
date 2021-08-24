@@ -1,18 +1,16 @@
-import { useDisplayAction, useProductsAction } from "../Provider/ProductsProvider";
-import { BiHeartCircle } from "react-icons/bi";
+import { useProductsAction } from "../Provider/ProductsProvider";
+import { BiPin } from "react-icons/bi";
 import styles from "./Products.module.scss";
 import { useState } from "react";
 
 const Product = ({ inf }) => {
-  const [like, setLike] = useState(inf.like);
-  const {toShowHandler} = useDisplayAction();
-  const dispatch = useProductsAction();
+  const [pin, setPin] = useState(false);
+  const { toShowHandler } = useProductsAction();
   const clickHandler = () => {
     toShowHandler(inf);
   };
   const likeHandler = () => {
-    setLike((prevLike) => !prevLike);
-    dispatch({type: 'like', product: inf})
+    setPin((prevpin) => !prevpin);
   };
 
   return (
@@ -23,10 +21,10 @@ const Product = ({ inf }) => {
         <div className="flex justify-between items-center">
           <span className={`text-sm md:text-md lg:text-lg ${styles.productPriceBadge}`}>{inf.price} تومان</span>
           <span>
-            <BiHeartCircle
+            <BiPin
             className="cursor-pointer text-xl transition-colors"
               onClick={likeHandler}
-              style={like ? { color: "#f7362f" } : { color: "#fff" }}
+              style={pin ? { color: "#f7362f" } : { color: "#fff" }}
             />
           </span>
         </div>

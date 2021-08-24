@@ -1,21 +1,19 @@
-import { useDispaly, useCount, useCountActions, useCartActions } from "../Provider/ProductsProvider";
+import { useDispaly, useCount, useProductsAction } from "../Provider/ProductsProvider";
 import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import styles from "./Displayer.module.scss";
 
 const Displayer = () => {
   const count = useCount();
   const product = useDispaly();
-  const { addToCartHandler } = useCartActions();
-  const {decrementCountHandler, incrementCountHandler} = useCountActions();
+  const {addToCartHandler, decrementCountHandler, incrementCountHandler} = useProductsAction();
 
 
   const clickHandler = () => {
-    const item = {id: product.id, title: product.title, quantity: count, basePrice: product.price, fullPrice: product.price * count};
+    const item = {id: product.id, title: product.title, quantity: count, basePrice: product.price, finalPrice: product.price * count};
     addToCartHandler(item);
   }
 
   return (
-      
         <section className={`mx-6 p-6 ${styles.displayerContainer}`}>
     {
       product.title ? (
@@ -29,7 +27,7 @@ const Displayer = () => {
             <h1 className={`text-3xl lg:text-5xl xl:text-4xl text-center ${styles.displayerTitle}`}>{product.title}</h1>
             <h3 className={`text-md lg:text-lg xl:text-2xl mt-4 text-yellow-400 text-center ${styles.displayerPrice}`}>{product.price} تومان</h3>
             <h3 className={`text-md lg:text-lg xl:text-2xl mt-10 mb-2 text-yellow-400 ${styles.displayerTitle}`}>توضیحات:</h3>
-            <p className={`mb-10 text-sm md:text-md lg:text-base text-justify ${styles.displayerDetail}`}>{product.detail}</p>
+            <p className={`mb-10 text-sm md:text-md lg:text-base text-justify ${styles.displayerDetail}`}>{product.information}</p>
             <div className={`flex justify-center items-center`}>
             <button
               type="button"

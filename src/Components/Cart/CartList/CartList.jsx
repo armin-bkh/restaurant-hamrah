@@ -1,5 +1,5 @@
 import React from "react";
-import { useAlert, useCart, useCartActions } from "../../Provider/ProductsProvider";
+import { useAlert, useCart, useProductsAction } from "../../Provider/ProductsProvider";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
@@ -7,7 +7,7 @@ import Alert from "../../Alert/Alert";
 
 const CartList = () => {
   const cart = useCart();
-  const {submitCartHandler} = useCartActions();
+  const {submitCartHandler} = useProductsAction();
   const { visible } = useAlert();
 
   const submitHandler = (e) => {
@@ -36,7 +36,7 @@ const CartList = () => {
                 itemID={item.id}
                 key={item.id}
                 foodN={item.title}
-                foodFP={item.fullPrice}
+                foodFP={item.finalPrice}
                 foodBP={item.basePrice}
                 foodQ={item.quantity}
               />
