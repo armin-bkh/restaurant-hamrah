@@ -1,4 +1,4 @@
-import { useProductsAction } from "../Provider/ProductsProvider";
+import { useProductsAction } from "../../Container/ProductsProvider";
 import { BiPin } from "react-icons/bi";
 import styles from "./Products.module.scss";
 import { useState } from "react";

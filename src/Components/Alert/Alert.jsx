@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useAlert } from "../Provider/ProductsProvider";
+import { useAlert } from "../../Container/ProductsProvider";
 import styles from './Alert.module.scss';
 
 const Alert = () => {

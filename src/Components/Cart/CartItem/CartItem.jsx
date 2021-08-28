@@ -1,5 +1,5 @@
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
-import { useProductsAction } from "../../Provider/ProductsProvider";
+import { useProductsAction } from "../../../Container/ProductsProvider";
 import { numberWithCommas } from "../../utils/CommaNumber";
 import styles from "./CartItem.module.scss";
 

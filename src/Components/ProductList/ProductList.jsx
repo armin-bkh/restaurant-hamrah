@@ -1,5 +1,5 @@
 import Product from "../Product/Product";
-import { useProducts } from "../Provider/ProductsProvider";
+import { useProducts } from "../../Container/ProductsProvider";
 import styles from './ProductList.module.scss';
 import { BiFoodMenu } from 'react-icons/bi';
 import Filter from "../Filter/FIlter";

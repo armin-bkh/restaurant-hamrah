@@ -1,6 +1,6 @@
 // import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
-import { productsData } from "../../db/products";
+import { productsData } from "../db/products";
 import Swal from "sweetalert2";
 import {
   ProductsContext,

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import RadioIComponent from "../Common/RadioIComponent/RadioIComponent";
-import { useProductsAction } from "../Provider/ProductsProvider";
+import { useProductsAction } from "../../Container/ProductsProvider";
 
 const Filter = () => {
   const [filter, setFilter] = useState("");

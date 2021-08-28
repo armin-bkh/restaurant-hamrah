@@ -1,4 +1,4 @@
-import { useDispaly, useProductsAction } from "../Provider/ProductsProvider";
+import { useDispaly, useProductsAction } from "../../Container/ProductsProvider";
 import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import styles from "./Displayer.module.scss";
 import { numberWithCommas } from "../utils/CommaNumber";

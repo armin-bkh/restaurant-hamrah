@@ -1,5 +1,5 @@
 import React from "react";
-import { useAlert, useCart, useProductsAction } from "../../Provider/ProductsProvider";
+import { useAlert, useCart, useProductsAction } from "../../../Container/ProductsProvider";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
