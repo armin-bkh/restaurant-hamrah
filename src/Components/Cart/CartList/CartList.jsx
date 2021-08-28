@@ -36,8 +36,7 @@ const CartList = () => {
                 itemID={item.id}
                 key={item.id}
                 foodN={item.title}
-                foodFP={item.finalPrice}
-                foodBP={item.basePrice}
+                foodBP={item.price}
                 foodQ={item.quantity}
               />
             ))}

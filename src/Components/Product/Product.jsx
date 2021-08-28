@@ -5,12 +5,12 @@ import { useState } from "react";
 
 const Product = ({ inf }) => {
   const [count, setCount] = useState(1)
-    const [pin, setPin] = useState(false);
+  const [pin, setPin] = useState(false);
   const { toShowHandler } = useProductsAction();
   
   const clickHandler = () => {
-    toShowHandler({...inf, quantity: count});
-    setCount(1)
+    toShowHandler(inf.id);
+    setCount(1);
   };
 
   const likeHandler = () => {

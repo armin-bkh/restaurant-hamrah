@@ -1,18 +1,32 @@
-import { useDispaly, useProductsAction } from "../../Container/ProductsProvider";
+import { useProductId, useProductsAction } from "../../Container/ProductsProvider";
 import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import styles from "./Displayer.module.scss";
 import { numberWithCommas } from "../utils/CommaNumber";
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const Displayer = () => {
-  const product = useDispaly();
-  const {addToCartHandler, decrementCountHandler, incrementCountHandler} = useProductsAction();
+const Displayer = ({ productId }) => {
+  const {addToCartHandler} = useProductsAction();
+  const [product, setProduct] = useState('');
+  const [count, setCount] = useState(1);
 
   const productPrice = numberWithCommas(product.price);
 
   const clickHandler = () => {
-    const item = {id: product.id, title: product.title, quantity: product.quantity, basePrice: product.price, finalPrice: product.price * product.quantity};
-    addToCartHandler(item);
+    addToCartHandler({id: product.id, quantity: count});
+    setCount(1);
   }
+
+  useEffect(()=>{
+    if(productId){
+      const getProduct = async () => {
+        const { data } = await axios.get(`http://localhost:3001/products/${productId}`);
+        setProduct(data);
+        setCount(1)
+      }
+      getProduct();
+    }
+  }, [productId])
 
   return (
     <section className={`mx-6 p-6 ${styles.displayerContainer}`}>
@@ -33,15 +47,15 @@ const Displayer = () => {
             <button
               type="button"
               className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
-              onClick={incrementCountHandler}
+              onClick={()=> setCount(prevCount => prevCount + 1)}
             >
               <BiPlus />
             </button>
-            <span className={`text-sm md:text-md lg:text-lg xl:text-xl ${styles.displayerPrice}`}>{product.quantity}</span>
+            <span className={`text-sm md:text-md lg:text-lg xl:text-xl ${styles.displayerPrice}`}>{count}</span>
             <button
             type="button"
               className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
-              onClick={decrementCountHandler}
+              onClick={() => setCount(prevCount => prevCount - 1)}
             >
               <BiMinus />
             </button>

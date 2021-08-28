@@ -3,22 +3,13 @@ import { useProductsAction } from "../../../Container/ProductsProvider";
 import { numberWithCommas } from "../../utils/CommaNumber";
 import styles from "./CartItem.module.scss";
 
-const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
+const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
   const { deleteItemCartHandler, decrementItemCartHandler, incrementItemCartHandler } = useProductsAction();
 
-  const foodFPrice = numberWithCommas(foodFP);
   const foodBPrice = numberWithCommas(foodBP);
 
-  const decrementItemHandler = () =>{
-    decrementItemCartHandler(itemID)
-  }
-  const incrementItemHandler = () => {
-    incrementItemCartHandler(itemID)
-  }
-  const deleteItemHandler = () =>{
-    deleteItemCartHandler(itemID)
-  }
-
+  const foodFPrice = numberWithCommas(foodBP * foodQ);
+    
   return (
     <li
       className={`flex justify-between items-center text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl mb-5 ${styles.cartItem}`}
@@ -34,7 +25,7 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
         <button
         type="button"
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
-          onClick={incrementItemHandler}
+          onClick={()=> incrementItemCartHandler(itemID)}
         >
           <BiPlus />
         </button>
@@ -44,7 +35,7 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
         <button
         type="button"
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
-          onClick={decrementItemHandler}
+          onClick={()=> decrementItemCartHandler(itemID)}
         >
           {foodQ > 1 ? <BiMinus /> : <BiTrash />}
         </button>
@@ -52,7 +43,7 @@ const CartItem = ({ itemID, foodN, foodFP, foodBP, foodQ }) => {
       <span className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl ${styles.white}`}>
         قیمت: {foodFPrice()}
       </span>
-      <button className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`} type="button" onClick={deleteItemHandler}><BiTrash /></button>
+      <button className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`} type="button" onClick={()=> deleteItemCartHandler(itemID)}><BiTrash /></button>
     </li>
   );
 };

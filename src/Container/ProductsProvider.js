@@ -1,4 +1,4 @@
-// import axios from "axios";
+import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
 import { productsData } from "../db/products";
 import Swal from "sweetalert2";
@@ -8,23 +8,24 @@ import {
 } from "../Context/ProductsContext";
 
 let initialState = {
-  products: productsData,
+  products: "",
   toShow: {},
   message: "",
   visible: "",
   cart: [],
+  productId: '',
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "getProducts": {
-      const updatedProducts = productsData;
-      return updatedProducts;
+    case "getProductsFromDB": {
+      return {...state, products: action.data}
     }
     case "toShow": {
       return {
         ...state,
-        toShow: action.item
+        // toShow: action.item,
+        productId: action.id,
       };
     }
     case "invisible": {
@@ -83,19 +84,7 @@ const reducer = (state, action) => {
       }
     }
     case "addToCart": {
-      const newItem = action.item;
-      const index = state.cart.findIndex((it) => it.id === newItem.id);
-      if (index === -1) {
-        return {
-          ...state,
-          cart: [...state.cart, newItem],
-          message: "success",
-          visible: true,
-          toShow: {...state.toShow, quantity: 1}
-        };
-      } else {
-        return { ...state, message: "error", visible: true };
-      }
+      return {...state, cart: [...state.cart, action.data]}
     }
     case "deleteItemCart": {
       const filteredCart = state.cart.filter((item) => item.id !== action.id);
@@ -127,6 +116,11 @@ const ProductsProvider = ({ children }) => {
   const [products, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
+      const getProducts = async () =>{
+        const  { data } = await axios.get("http://localhost:3001/products");
+        dispatch({type: "getProductsFromDB", data: data})
+      }
+      getProducts()
     if (products.visible) {
       setTimeout(() => {
         dispatch({ type: "invisible" });
@@ -160,15 +154,23 @@ export const useAlert = () => {
   const { message, visible } = useContext(ProductsContext);
   return { message, visible };
 };
+export const useProductId = () =>{
+  const { productId } = useContext(ProductsContext);
+  return { productId };
+}
 export const useProductsAction = () => {
   const dispatch = useContext(ProductsDispatcherContext);
 
   const addToCartHandler = (item) => {
-    dispatch({ type: "addToCart", item: item });
+    const setCart = async () =>{
+      const { data } = await axios.get(`http://localhost:3001/products/${item.id}`)
+      dispatch({ type: "addToCart", data: {...data, quantity: item.quantity}});
+    }
+    setCart();
   };
 
   const deleteItemCartHandler = (id) => {
-    dispatch({ type: "deleteItemCart", id: id });
+      dispatch({ type: "deleteItemCart", id: id });
   };
 
   const incrementItemCartHandler = (id) => {
@@ -183,8 +185,8 @@ export const useProductsAction = () => {
     dispatch({ type: "submitCart" });
   };
 
-  const toShowHandler = (item) => {
-    dispatch({ type: "toShow", item: item });
+  const toShowHandler = (id) => {
+    dispatch({ type: "toShow", id: id });
   };
 
   const incrementCountHandler = () => {
