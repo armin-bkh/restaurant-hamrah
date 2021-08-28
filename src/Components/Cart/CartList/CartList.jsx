@@ -1,23 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useAlert, useCart, useProductsAction } from "../../../Container/ProductsProvider";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
 import Alert from "../../Alert/Alert";
+import { useToasts } from "react-toast-notifications";
 
-const CartList = () => {
+const CartList = ({ alert }) => {
   const cart = useCart();
   const {submitCartHandler} = useProductsAction();
-  const { visible } = useAlert();
+  const { addToast } = useToasts();
 
+  useEffect(()=>{
+    if(alert) addToast("دوباره تلاش کنید", {appearance: 'error', autoDismiss: true})
+  }, [alert])
   const submitHandler = (e) => {
     e.preventDefault();
-    submitCartHandler();
+    submitCartHandler(cart);
   };
 
   return (
-    <>
-    {visible && <Alert />}
     <section className={`mx-6 mt-5 p-6 ${styles.cartContainer}`}>
       {!cart.length ? (
         <header className={`flex items-center justify-center bg-clip-text bg-gradient-to-r text-transparent from-yellow-400 to-red-700 ${styles.title}`}>
@@ -50,7 +52,6 @@ const CartList = () => {
         </form>
       )}
     </section>
-    </>
   );
 };
 

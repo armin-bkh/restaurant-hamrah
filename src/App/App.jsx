@@ -1,17 +1,20 @@
-import CartList from '../Components/Cart/CartList/CartList';
-import DisplayerContainer from '../Components/DisplayerContainer/DisplayerContainer';
-import ProductList from '../Components/ProductList/ProductList';
-import ProductsProvider from '../Container/ProductsProvider';
-import './App.scss';
+import { ToastProvider } from "react-toast-notifications";
+import Cart from "../Components/Cart/Cart";
+import DisplayerContainer from "../Components/DisplayerContainer/DisplayerContainer";
+import ProductList from "../Components/ProductList/ProductList";
+import ProductsProvider from "../Container/ProductsProvider";
+import "./App.scss";
 
 const App = () => {
   return (
-    <ProductsProvider>
-      <CartList />
-      <DisplayerContainer />
-      <ProductList />
-    </ProductsProvider>
+    <ToastProvider>
+      <ProductsProvider>
+        <Cart />
+        <DisplayerContainer />
+        <ProductList />
+      </ProductsProvider>
+    </ToastProvider>
   );
-}
+};
 
 export default App;

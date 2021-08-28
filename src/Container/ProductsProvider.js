@@ -6,12 +6,11 @@ import {
   ProductsContext,
   ProductsDispatcherContext,
 } from "../Context/ProductsContext";
+import { useToasts } from "react-toast-notifications";
 
 let initialState = {
   products: "",
-  toShow: {},
-  message: "",
-  visible: "",
+  alert: "",
   cart: [],
   productId: '',
 };
@@ -24,30 +23,8 @@ const reducer = (state, action) => {
     case "toShow": {
       return {
         ...state,
-        // toShow: action.item,
         productId: action.id,
       };
-    }
-    case "invisible": {
-      return {
-        ...state,
-        visible: false,
-      };
-    }
-    case "incrementCount": {
-      return {
-        ...state,
-        toShow: {...state.toShow, quantity: state.toShow.quantity + 1},
-      };
-    }
-    case "decrementCount": {
-      if (state.toShow.quantity > 1) {
-        return {
-          ...state,
-          toShow: {...state.toShow, quantity: state.toShow.quantity - 1},
-        };
-      }
-      return state;
     }
     case "incrementCountItemCart": {
       const index = state.cart.findIndex((item) => item.id === action.id);
@@ -55,10 +32,8 @@ const reducer = (state, action) => {
       const selectedItem = { ...state.cart[index] };
       if (selectedItem.quantity < 10) {
         selectedItem.quantity++;
-        selectedItem.finalPrice =
-          selectedItem.basePrice * selectedItem.quantity;
       } else {
-        return { ...state, message: "warning", visible: true };
+        return state;
       }
       cartClone[index] = selectedItem;
       return { ...state, cart: cartClone };
@@ -72,13 +47,9 @@ const reducer = (state, action) => {
         return {
           ...state,
           cart: filteredCart,
-          message: "delete",
-          visible: true,
         };
       } else {
         selectedItem.quantity--;
-        selectedItem.finalPrice =
-          selectedItem.basePrice * selectedItem.quantity;
         cartClone[index] = selectedItem;
         return { ...state, cart: cartClone };
       }
@@ -88,7 +59,10 @@ const reducer = (state, action) => {
     }
     case "deleteItemCart": {
       const filteredCart = state.cart.filter((item) => item.id !== action.id);
-      return { ...state, cart: filteredCart, message: "delete", visible: true };
+      return { ...state, cart: filteredCart};
+    }
+    case "setAlert":{
+      return {...state, alert: action.message}
     }
     case "submitCart": {
       Swal.fire({
@@ -100,6 +74,7 @@ const reducer = (state, action) => {
         timer: 10000,
         backdrop: true,
       });
+      console.log("submited")
       return { ...state, cart: [] };
     }
     case "filterProducts": {
@@ -151,8 +126,8 @@ export const useDispaly = () => {
   return toShow;
 };
 export const useAlert = () => {
-  const { message, visible } = useContext(ProductsContext);
-  return { message, visible };
+  const { alert } = useContext(ProductsContext);
+  return { alert };
 };
 export const useProductId = () =>{
   const { productId } = useContext(ProductsContext);
@@ -181,8 +156,17 @@ export const useProductsAction = () => {
     dispatch({ type: "decrementCountItemCart", id: id });
   };
 
-  const submitCartHandler = () => {
-    dispatch({ type: "submitCart" });
+  const submitCartHandler = (cart) => {
+    const submitCart = async () =>{
+      try{
+      await axios.post("http://localhost:3001/caasrt", cart);
+      await dispatch({type: "submitCart"})
+      }
+      catch(err){
+        dispatch({type: "setAlert", message: err});
+      }
+    }
+    submitCart();
   };
 
   const toShowHandler = (id) => {
