@@ -1,10 +1,11 @@
 import Displayer from '../Displayer/Displayer';
-import { useProductId } from '../../Container/ProductsProvider';
+import { useAlert, useProductId } from '../../Container/ProductsProvider';
 
 const DisplyerContainer = () =>{
     const { productId } = useProductId();
+    const { alert } = useAlert();
     return (
-        <Displayer productId={productId} />
+        <Displayer alert={alert} productId={productId} />
     )
 }
 

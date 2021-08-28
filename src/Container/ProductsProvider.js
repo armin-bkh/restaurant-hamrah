@@ -62,7 +62,7 @@ const reducer = (state, action) => {
       return { ...state, cart: filteredCart};
     }
     case "setAlert":{
-      return {...state, alert: action.message}
+      return {...state, alert: {type: action.style, message: action.message}}
     }
     case "submitCart": {
       Swal.fire({
@@ -96,12 +96,8 @@ const ProductsProvider = ({ children }) => {
         dispatch({type: "getProductsFromDB", data: data})
       }
       getProducts()
-    if (products.visible) {
-      setTimeout(() => {
-        dispatch({ type: "invisible" });
-      }, 4800);
-    }
-  }, [products.visible]);
+    }, []);
+
   return (
     <ProductsContext.Provider value={products}>
       <ProductsDispatcherContext.Provider value={dispatch}>
@@ -138,8 +134,14 @@ export const useProductsAction = () => {
 
   const addToCartHandler = (item) => {
     const setCart = async () =>{
-      const { data } = await axios.get(`http://localhost:3001/products/${item.id}`)
-      dispatch({ type: "addToCart", data: {...data, quantity: item.quantity}});
+      try{
+        const { data } = await axios.get(`http://localhost:3001/products/${item.id}`)
+        dispatch({ type: "addToCart", data: {...data, quantity: item.quantity}});
+        dispatch({type: "setAlert", message: "به سبد خرید اضافه شد", style: 'success'});
+      }
+      catch(err){
+        dispatch({type: "setAlert", message: err, style: 'error'});
+      }
     }
     setCart();
   };
@@ -159,11 +161,11 @@ export const useProductsAction = () => {
   const submitCartHandler = (cart) => {
     const submitCart = async () =>{
       try{
-      await axios.post("http://localhost:3001/caasrt", cart);
+      await axios.post("http://localhost:3001/cart", cart);
       await dispatch({type: "submitCart"})
       }
       catch(err){
-        dispatch({type: "setAlert", message: err});
+        dispatch({type: "setAlert", message: err, style: 'error'});
       }
     }
     submitCart();

@@ -4,13 +4,19 @@ import styles from "./Displayer.module.scss";
 import { numberWithCommas } from "../utils/CommaNumber";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useToasts } from "react-toast-notifications";
 
-const Displayer = ({ productId }) => {
+const Displayer = ({ productId, alert }) => {
   const {addToCartHandler} = useProductsAction();
   const [product, setProduct] = useState('');
   const [count, setCount] = useState(1);
+  const { addToast } = useToasts();
 
   const productPrice = numberWithCommas(product.price);
+
+  useEffect(()=>{
+    if(alert.type === 'success') addToast(alert.message , {appearance: alert.type, autoDismiss: true}) 
+  }, [alert])
 
   const clickHandler = () => {
     addToCartHandler({id: product.id, quantity: count});

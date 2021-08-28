@@ -210,24 +210,6 @@
     }
   ],
   "cart": [
-    [
-      {
-        "id": 3,
-        "title": "قرمه سبزی",
-        "price": "35000",
-        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-        "materials": [
-          "مرغ",
-          "گوجه",
-          "کاهو",
-          "روغن زیتون",
-          "لیمو",
-          "پیاز"
-        ],
-        "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-        "filter": "khoresht",
-        "quantity": 2
-      }
-    ]
+    
   ]
 }

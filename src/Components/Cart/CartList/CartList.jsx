@@ -3,7 +3,6 @@ import { useAlert, useCart, useProductsAction } from "../../../Container/Product
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
-import Alert from "../../Alert/Alert";
 import { useToasts } from "react-toast-notifications";
 
 const CartList = ({ alert }) => {
@@ -12,8 +11,9 @@ const CartList = ({ alert }) => {
   const { addToast } = useToasts();
 
   useEffect(()=>{
-    if(alert) addToast("دوباره تلاش کنید", {appearance: 'error', autoDismiss: true})
+    if(alert.type === 'error') addToast(alert.message, {appearance: alert.type, autoDismiss: true})
   }, [alert])
+
   const submitHandler = (e) => {
     e.preventDefault();
     submitCartHandler(cart);
