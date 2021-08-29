@@ -4,13 +4,11 @@ import styles from "./Products.module.scss";
 import { useState } from "react";
 
 const Product = ({ inf }) => {
-  const [count, setCount] = useState(1)
   const [pin, setPin] = useState(false);
   const { toShowHandler } = useProductsAction();
   
   const clickHandler = () => {
     toShowHandler(inf.id);
-    setCount(1);
   };
 
   const likeHandler = () => {

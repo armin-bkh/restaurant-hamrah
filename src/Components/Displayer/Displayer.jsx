@@ -1,22 +1,16 @@
-import { useProductId, useProductsAction } from "../../Container/ProductsProvider";
+import { useProductsAction } from "../../Container/ProductsProvider";
 import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import styles from "./Displayer.module.scss";
 import { numberWithCommas } from "../utils/CommaNumber";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useToasts } from "react-toast-notifications";
 
-const Displayer = ({ productId, alert }) => {
+const Displayer = ({ productId }) => {
   const {addToCartHandler} = useProductsAction();
   const [product, setProduct] = useState('');
   const [count, setCount] = useState(1);
-  const { addToast } = useToasts();
 
   const productPrice = numberWithCommas(product.price);
-
-  useEffect(()=>{
-    if(alert.type === 'success') addToast(alert.message , {appearance: alert.type, autoDismiss: true}) 
-  }, [alert])
 
   const clickHandler = () => {
     addToCartHandler({id: product.id, quantity: count});
@@ -61,7 +55,7 @@ const Displayer = ({ productId, alert }) => {
             <button
             type="button"
               className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
-              onClick={() => setCount(prevCount => prevCount - 1)}
+              onClick={() => count > 1 && setCount(prevCount => prevCount - 1)}
             >
               <BiMinus />
             </button>

@@ -1,18 +1,12 @@
-import React, { useEffect } from "react";
-import { useAlert, useCart, useProductsAction } from "../../../Container/ProductsProvider";
+import React from "react";
+import { useCart, useProductsAction } from "../../../Container/ProductsProvider";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
-import { useToasts } from "react-toast-notifications";
 
-const CartList = ({ alert }) => {
+const CartList = () => {
   const cart = useCart();
   const {submitCartHandler} = useProductsAction();
-  const { addToast } = useToasts();
-
-  useEffect(()=>{
-    if(alert.type === 'error') addToast(alert.message, {appearance: alert.type, autoDismiss: true})
-  }, [alert])
 
   const submitHandler = (e) => {
     e.preventDefault();

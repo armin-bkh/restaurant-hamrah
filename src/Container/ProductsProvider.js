@@ -6,19 +6,20 @@ import {
   ProductsContext,
   ProductsDispatcherContext,
 } from "../Context/ProductsContext";
-import { useToasts } from "react-toast-notifications";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 let initialState = {
   products: "",
   alert: "",
   cart: [],
-  productId: '',
+  productId: "",
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "getProductsFromDB": {
-      return {...state, products: action.data}
+      return { ...state, products: action.data };
     }
     case "toShow": {
       return {
@@ -30,11 +31,7 @@ const reducer = (state, action) => {
       const index = state.cart.findIndex((item) => item.id === action.id);
       const cartClone = [...state.cart];
       const selectedItem = { ...state.cart[index] };
-      if (selectedItem.quantity < 10) {
-        selectedItem.quantity++;
-      } else {
-        return state;
-      }
+      selectedItem.quantity++;
       cartClone[index] = selectedItem;
       return { ...state, cart: cartClone };
     }
@@ -47,6 +44,10 @@ const reducer = (state, action) => {
         return {
           ...state,
           cart: filteredCart,
+          alert: {
+            type: "error",
+            message: "از سبد خرید شما حذف شد",
+          },
         };
       } else {
         selectedItem.quantity--;
@@ -55,14 +56,34 @@ const reducer = (state, action) => {
       }
     }
     case "addToCart": {
-      return {...state, cart: [...state.cart, action.data]}
+      if (state.cart.some((item) => item.id === action.data.id)) {
+        return {
+          ...state,
+          alert: {
+            type: "error",
+            message: "این غذا در سبد خرید شما وجود دارد",
+          },
+        };
+      }
+      return {
+        ...state,
+        cart: [...state.cart, action.data],
+        alert: { type: "success", message: "به سبد خرید شما افزوده شد" },
+      };
     }
     case "deleteItemCart": {
       const filteredCart = state.cart.filter((item) => item.id !== action.id);
-      return { ...state, cart: filteredCart};
+      return {
+        ...state,
+        cart: filteredCart,
+        alert: { type: "error", message: "از سبد خرید شما حذف شد" },
+      };
     }
-    case "setAlert":{
-      return {...state, alert: {type: action.style, message: action.message}}
+    case "setAlert": {
+      return {
+        ...state,
+        alert: { type: action.style, message: action.message },
+      };
     }
     case "submitCart": {
       Swal.fire({
@@ -74,13 +95,14 @@ const reducer = (state, action) => {
         timer: 10000,
         backdrop: true,
       });
-      console.log("submited")
-      return { ...state, cart: [] };
+      return state;
     }
     case "filterProducts": {
-      if(action.value === 'all') return { ...state, products: productsData };
-      const filterdProducts = productsData.filter(pr => pr.filter === action.value);
-      return {...state, products: filterdProducts};
+      if (action.value === "all") return { ...state, products: productsData };
+      const filterdProducts = productsData.filter(
+        (pr) => pr.filter === action.value
+      );
+      return { ...state, products: filterdProducts };
     }
     default:
       return state;
@@ -91,17 +113,42 @@ const ProductsProvider = ({ children }) => {
   const [products, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-      const getProducts = async () =>{
-        const  { data } = await axios.get("http://localhost:3001/products");
-        dispatch({type: "getProductsFromDB", data: data})
-      }
-      getProducts()
-    }, []);
+    if (products.alert) {
+      const type = products.alert.type;
+      if (type === "success")
+        toast.success(products.alert.message);
+      if (type === "error")
+        toast.error(products.alert.message);
+      if (type === "info")
+        toast.info(products.alert.message);
+      if (type === "warning")
+        toast.warn(products.alert.message);
+    }
+  }, [products.alert]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      const { data } = await axios.get("http://localhost:3001/products");
+      dispatch({ type: "getProductsFromDB", data: data });
+    };
+    getProducts();
+  }, []);
 
   return (
     <ProductsContext.Provider value={products}>
       <ProductsDispatcherContext.Provider value={dispatch}>
         {children}
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={true}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </ProductsDispatcherContext.Provider>
     </ProductsContext.Provider>
   );
@@ -117,37 +164,32 @@ export const useCart = () => {
   const { cart } = useContext(ProductsContext);
   return cart;
 };
-export const useDispaly = () => {
-  const { toShow } = useContext(ProductsContext);
-  return toShow;
-};
-export const useAlert = () => {
-  const { alert } = useContext(ProductsContext);
-  return { alert };
-};
-export const useProductId = () =>{
+export const useProductId = () => {
   const { productId } = useContext(ProductsContext);
   return { productId };
-}
+};
 export const useProductsAction = () => {
   const dispatch = useContext(ProductsDispatcherContext);
 
   const addToCartHandler = (item) => {
-    const setCart = async () =>{
-      try{
-        const { data } = await axios.get(`http://localhost:3001/products/${item.id}`)
-        dispatch({ type: "addToCart", data: {...data, quantity: item.quantity}});
-        dispatch({type: "setAlert", message: "به سبد خرید اضافه شد", style: 'success'});
+    const setCart = async () => {
+      try {
+        const { data } = await axios.get(
+          `http://localhost:3001/products/${item.id}`
+        );
+        dispatch({
+          type: "addToCart",
+          data: { ...data, quantity: item.quantity },
+        });
+      } catch (err) {
+        dispatch({ type: "setAlert", message: err, style: "error" });
       }
-      catch(err){
-        dispatch({type: "setAlert", message: err, style: 'error'});
-      }
-    }
+    };
     setCart();
   };
 
   const deleteItemCartHandler = (id) => {
-      dispatch({ type: "deleteItemCart", id: id });
+    dispatch({ type: "deleteItemCart", id: id });
   };
 
   const incrementItemCartHandler = (id) => {
@@ -158,17 +200,9 @@ export const useProductsAction = () => {
     dispatch({ type: "decrementCountItemCart", id: id });
   };
 
-  const submitCartHandler = (cart) => {
-    const submitCart = async () =>{
-      try{
-      await axios.post("http://localhost:3001/cart", cart);
-      await dispatch({type: "submitCart"})
-      }
-      catch(err){
-        dispatch({type: "setAlert", message: err, style: 'error'});
-      }
-    }
-    submitCart();
+  const submitCartHandler = async (cart) => {
+        await axios.post("http://localhost:3001/cart", cart);
+        dispatch({ type: "submitCart" });
   };
 
   const toShowHandler = (id) => {
@@ -184,8 +218,8 @@ export const useProductsAction = () => {
   };
 
   const filterProductsHandler = (value) => {
-    dispatch({type: "filterProducts", value: value});
-  }
+    dispatch({ type: "filterProducts", value: value });
+  };
 
   return {
     addToCartHandler,
@@ -196,6 +230,6 @@ export const useProductsAction = () => {
     toShowHandler,
     incrementCountHandler,
     decrementCountHandler,
-    filterProductsHandler
+    filterProductsHandler,
   };
 };
