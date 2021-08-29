@@ -212,9 +212,9 @@
   "cart": [
     [
       {
-        "id": 4,
-        "title": "زرشک پلو",
-        "price": "44000",
+        "id": 1,
+        "title": "سالاد مرغ",
+        "price": "32000",
         "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
         "materials": [
           "مرغ",
@@ -224,9 +224,9 @@
           "لیمو",
           "پیاز"
         ],
-        "img": "https://www.pngfind.com/pngs/m/166-1666928_free-png-sandwich-png-image-with-transparent-background.png",
-        "filter": "polo",
-        "quantity": 2
+        "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
+        "filter": "salad",
+        "quantity": 1
       }
     ]
   ]

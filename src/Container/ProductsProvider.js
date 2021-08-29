@@ -128,7 +128,7 @@ const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const { data } = await axios.get("http://localhost:3001/productsa");
+      const { data } = await axios.get("http://localhost:3001/products");
       dispatch({ type: "getProductsFromDB", data: data });
     };
     getProducts();
@@ -171,8 +171,7 @@ export const useProductId = () => {
 export const useProductsAction = () => {
   const dispatch = useContext(ProductsDispatcherContext);
 
-  const addToCartHandler = (item) => {
-    const setCart = async () => {
+  const addToCartHandler = async (item) => {
       try {
         const { data } = await axios.get(
           `http://localhost:3001/products/${item.id}`
@@ -184,8 +183,6 @@ export const useProductsAction = () => {
       } catch (err) {
         dispatch({ type: "setAlert", message: err, style: "error" });
       }
-    };
-    setCart();
   };
 
   const deleteItemCartHandler = (id) => {
@@ -201,20 +198,12 @@ export const useProductsAction = () => {
   };
 
   const submitCartHandler = async (cart) => {
-        await axios.post("http://localhost:3001/cart", cart);
-        dispatch({ type: "submitCart" });
+      await axios.post("http://localhost:3001/cart", cart);
+      dispatch({ type: "submitCart" });
   };
 
   const toShowHandler = (id) => {
     dispatch({ type: "toShow", id: id });
-  };
-
-  const incrementCountHandler = () => {
-    dispatch({ type: "incrementCount" });
-  };
-
-  const decrementCountHandler = () => {
-    dispatch({ type: "decrementCount" });
   };
 
   const filterProductsHandler = (value) => {
@@ -228,8 +217,6 @@ export const useProductsAction = () => {
     decrementItemCartHandler,
     submitCartHandler,
     toShowHandler,
-    incrementCountHandler,
-    decrementCountHandler,
     filterProductsHandler,
   };
 };

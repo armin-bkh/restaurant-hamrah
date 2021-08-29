@@ -7,8 +7,9 @@ import Skeleton, { SkeletonTheme  } from "react-loading-skeleton";
 
 const ProductList = () => {
     const products = useProducts();
-    return ( 
-        <section className={`mt-10 mx-6 flex flex-col px-2 py-6 ${styles.productListContainer}`}>
+    
+    return (
+        <section className={`mt-10 mx-6 flex flex-col px-2 py-6 overflow-x-hidden ${styles.productListContainer}`}>
             <header className={`mb-3 px-2`}>
                 <h1 className={`mb-3 flex justify-start items-center text-base md:text-lg lg:text-xl text-yellow-400 ${styles.productListTitle}`}><BiFoodMenu className={`ml-2 text-yellow-400`} />منوی رستوران</h1>
                 <Filter />
