@@ -6,7 +6,7 @@ import {
   ProductsContext,
   ProductsDispatcherContext,
 } from "../Context/ProductsContext";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 
 let initialState = {
@@ -138,17 +138,6 @@ const ProductsProvider = ({ children }) => {
     <ProductsContext.Provider value={products}>
       <ProductsDispatcherContext.Provider value={dispatch}>
         {children}
-        <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={true}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-        />
       </ProductsDispatcherContext.Provider>
     </ProductsContext.Provider>
   );
@@ -178,7 +167,7 @@ export const useProductsAction = () => {
         );
         dispatch({
           type: "addToCart",
-          data: { ...data, quantity: item.quantity },
+          data: { ...data, quantity: item.quantity, finalPrice: data.price * item.quantity },
         });
       } catch (err) {
         dispatch({ type: "setAlert", message: err, style: "error" });
