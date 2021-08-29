@@ -128,7 +128,7 @@ const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const { data } = await axios.get("http://localhost:3001/products");
+      const { data } = await axios.get("http://localhost:3001/productsa");
       dispatch({ type: "getProductsFromDB", data: data });
     };
     getProducts();

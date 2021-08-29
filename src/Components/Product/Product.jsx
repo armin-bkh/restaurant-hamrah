@@ -2,6 +2,7 @@ import { useProductsAction } from "../../Container/ProductsProvider";
 import { BiPin } from "react-icons/bi";
 import styles from "./Products.module.scss";
 import { useState } from "react";
+import Skeleton from 'react-loading-skeleton';
 
 const Product = ({ inf }) => {
   const [pin, setPin] = useState(false);
@@ -15,7 +16,7 @@ const Product = ({ inf }) => {
     setPin((prevpin) => !prevpin);
   };
 
-  return (
+  return ( 
     <figure className={`flex-grow-0 flex-shrink-0 ${styles.productContainer}`}>
       <img loading="lazy" onClick={clickHandler} className={`${styles.productImage}`} src={inf.img} alt={inf.title} />
       <figcaption className={styles.productCaption}>
