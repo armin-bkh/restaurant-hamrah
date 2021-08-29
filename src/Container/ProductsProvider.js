@@ -95,7 +95,7 @@ const reducer = (state, action) => {
         timer: 10000,
         backdrop: true,
       });
-      return state;
+      return {...state, cart: ''};
     }
     case "filterProducts": {
       if (action.value === "all") return { ...state, products: productsData };
