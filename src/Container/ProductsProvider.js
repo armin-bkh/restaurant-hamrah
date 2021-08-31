@@ -124,8 +124,8 @@ const ProductsProvider = ({ children }) => {
 
   useEffect(() => {
     const getProducts = async () => {
-      const { data } = await axios.get("http://localhost:3001/products");
-      dispatch({ type: "getProductsFromDB", data: data });
+        const { data } = await axios.get("http://localhost:3001/products");
+        dispatch({ type: "getProductsFromDB", data: data });
     };
     getProducts();
   }, []);
