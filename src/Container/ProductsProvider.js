@@ -98,11 +98,7 @@ const reducer = (state, action) => {
       return {...state, cart: ''};
     }
     case "filterProducts": {
-      if (action.value === "all") return { ...state, products: productsData };
-      const filterdProducts = productsData.filter(
-        (pr) => pr.filter === action.value
-      );
-      return { ...state, products: filterdProducts };
+      return { ...state, products: action.data };
     }
     default:
       return state;
@@ -195,8 +191,19 @@ export const useProductsAction = () => {
     dispatch({ type: "toShow", id: id });
   };
 
-  const filterProductsHandler = (value) => {
-    dispatch({ type: "filterProducts", value: value });
+  const filterProductsHandler = async (value) => {
+    try{
+      const { data } = await axios.get("http://localhost:3001/products");
+      if ( value === 'all' ) {
+        dispatch({ type: "filterProducts", data: data });
+      } else {
+        const filterdproducts = data.filter(pr => pr.filter === value);
+        dispatch({ type: "filterProducts", data: filterdproducts });
+      }
+    }
+    catch(err){
+      dispatch({ type: "setAlert", style: 'error', message: "این گروه بندی وجود ندارد" });
+    }
   };
 
   return {

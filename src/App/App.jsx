@@ -18,9 +18,7 @@ const App = () => {
           newestOnTop={false}
           closeOnClick
           rtl={true}
-          pauseOnFocusLoss
           draggable
-          pauseOnHover
         />
     </ProductsProvider>
   );
