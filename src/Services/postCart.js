@@ -1,5 +1,10 @@
 import http from "./httpServices";
 
-export function postrCart(data){
-    return http.post("/cart", data)
+export function postCart(data, token){
+    const header = {
+        headers: {
+            Authorization: `bearer ${token}`
+        }
+    }
+    return http.post("/cart", data, header)
 }

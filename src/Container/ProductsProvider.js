@@ -1,6 +1,4 @@
-import axios from "axios";
 import { useContext, useEffect, useReducer } from "react";
-import { productsData } from "../db/products";
 import Swal from "sweetalert2";
 import {
   ProductsContext,
@@ -8,9 +6,10 @@ import {
 } from "../Context/ProductsContext";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { postCart } from '../Services/postCart';
+import { getOneProduct } from '../Services/getOneProduct';
 
 let initialState = {
-  products: "",
   alert: "",
   cart: [],
   productId: "",
@@ -97,9 +96,6 @@ const reducer = (state, action) => {
       });
       return {...state, cart: ''};
     }
-    case "filterProducts": {
-      return { ...state, products: action.data };
-    }
     default:
       return state;
   }
@@ -122,14 +118,6 @@ const ProductsProvider = ({ children }) => {
     }
   }, [products.alert]);
 
-  useEffect(() => {
-    const getProducts = async () => {
-        const { data } = await axios.get("http://localhost:3001/products");
-        dispatch({ type: "getProductsFromDB", data: data });
-    };
-    getProducts();
-  }, []);
-
   return (
     <ProductsContext.Provider value={products}>
       <ProductsDispatcherContext.Provider value={dispatch}>
@@ -141,10 +129,6 @@ const ProductsProvider = ({ children }) => {
 
 export default ProductsProvider;
 
-export const useProducts = () => {
-  const { products } = useContext(ProductsContext);
-  return products;
-};
 export const useCart = () => {
   const { cart } = useContext(ProductsContext);
   return cart;
@@ -158,9 +142,7 @@ export const useProductsAction = () => {
 
   const addToCartHandler = async (item) => {
       try {
-        const { data } = await axios.get(
-          `http://localhost:3001/products/${item.id}`
-        );
+        const { data } = await getOneProduct(item.id)
         dispatch({
           type: "addToCart",
           data: { ...data, quantity: item.quantity, finalPrice: data.price * item.quantity },
@@ -183,28 +165,20 @@ export const useProductsAction = () => {
   };
 
   const submitCartHandler = async (cart) => {
-      await axios.post("http://localhost:3001/cart", cart);
+    try{
+      const token = "SECURE POST";
+      await postCart(cart, token);
       dispatch({ type: "submitCart" });
+    }
+    catch(err){
+      console.log(err);
+    }
   };
 
   const toShowHandler = (id) => {
     dispatch({ type: "toShow", id: id });
   };
 
-  const filterProductsHandler = async (value) => {
-    try{
-      const { data } = await axios.get("http://localhost:3001/products");
-      if ( value === 'all' ) {
-        dispatch({ type: "filterProducts", data: data });
-      } else {
-        const filterdproducts = data.filter(pr => pr.filter === value);
-        dispatch({ type: "filterProducts", data: filterdproducts });
-      }
-    }
-    catch(err){
-      dispatch({ type: "setAlert", style: 'error', message: "این گروه بندی وجود ندارد" });
-    }
-  };
 
   return {
     addToCartHandler,
@@ -213,6 +187,5 @@ export const useProductsAction = () => {
     decrementItemCartHandler,
     submitCartHandler,
     toShowHandler,
-    filterProductsHandler,
   };
 };

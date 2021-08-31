@@ -1,5 +1,4 @@
 import Product from "../Product/Product";
-import { useProducts } from "../../Container/ProductsProvider";
 import styles from "./ProductList.module.scss";
 import { BiFoodMenu } from "react-icons/bi";
 import Filter from "../Filter/FIlter";
@@ -22,6 +21,21 @@ const ProductList = () => {
     };
     getProducts();
   }, []);
+
+  const filterHandler = async (value) =>{
+    try{
+      const { data } = await getAllProducts();
+      if( value === 'all'){
+        setProducts(data);
+        return;
+      }
+      const filteredProducts = data.filter(pr => pr.filter === value);
+      setProducts(filteredProducts);
+    }
+    catch(err){
+      setError(true);
+    }
+  }
 
   let returnValue = (
     <SkeletonTheme color="#272727" highlightColor="#444">
@@ -52,7 +66,7 @@ const ProductList = () => {
           <BiFoodMenu className={`ml-2 text-yellow-400`} />
           منوی رستوران
         </h1>
-        <Filter />
+        <Filter onFilter={filterHandler} />
       </header>
       <article
         className={`flex flex-nowrap pt-11 pb-4 px-2 ${

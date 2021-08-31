@@ -1,14 +1,12 @@
 import { useState } from "react";
-import RadioIComponent from "../Common/RadioIComponent/RadioIComponent";
-import { useProductsAction } from "../../Container/ProductsProvider";
+import RadioIComponent from "../Common/RadioIComponent/RadioIComponent"
 
-const Filter = () => {
+const Filter = ({ onFilter }) => {
   const [filter, setFilter] = useState("");
-  const { filterProductsHandler } = useProductsAction();
 
   const changeHandler = (e) => {
     setFilter(e.target.value);
-    filterProductsHandler(e.target.value);
+    onFilter(e.target.value);
   };
 
   return (
