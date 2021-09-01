@@ -1,5 +1,5 @@
 import React from "react";
-import { useCart, useProductsAction } from "../../../Container/ProductsProvider";
+import { useCart, useProductsAction, useTotalPrice } from "../../../Container/ProductsProvider";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
@@ -7,6 +7,7 @@ import { BiCartAlt } from "react-icons/bi";
 const CartList = () => {
   const cart = useCart();
   const {submitCartHandler} = useProductsAction();
+  const totalPrice = useTotalPrice();
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -37,6 +38,7 @@ const CartList = () => {
               />
             ))}
           </ul>
+          <h1 className={`text-white`}>قابل پرداخت: {totalPrice}</h1>
           <button
           type="submit"
             className={`text-sm w-full md:text-md lg:text-lg xl:text-xl py-2 mt-10 rounded-sm bg-gradient-to-r from-yellow-400 to-red-700 ${styles.submitCart}`}

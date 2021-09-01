@@ -10,8 +10,9 @@ import { postCart } from '../Services/postCart';
 import { getOneProduct } from '../Services/getOneProduct';
 
 let initialState = {
-  alert: "",
   cart: [],
+  totalPrice: 0,
+  alert: "",
   productId: "",
 };
 
@@ -51,7 +52,7 @@ const reducer = (state, action) => {
       } else {
         selectedItem.quantity--;
         cartClone[index] = selectedItem;
-        return { ...state, cart: cartClone };
+        return { ...state, cart: cartClone};
       }
     }
     case "addToCart": {
@@ -66,6 +67,7 @@ const reducer = (state, action) => {
       }
       return {
         ...state,
+        totalPrice: action.totalPrice + state.totalPrice,
         cart: [...state.cart, action.data],
         alert: { type: "success", message: "به سبد خرید شما افزوده شد" },
       };
@@ -89,6 +91,12 @@ const reducer = (state, action) => {
         backdrop: true,
       });
       return {...state, cart: ''};
+    }
+    case "errorGetOneProduct": {
+      return {
+        ...state, 
+        alert: {type: action.status, message: action.message}
+      }
     }
     default:
       return state;
@@ -137,12 +145,14 @@ export const useProductsAction = () => {
   const addToCartHandler = async (item) => {
       try {
         const { data } = await getOneProduct(item.id)
+        const totalPrice = data.price * item.quantity;
         dispatch({
           type: "addToCart",
           data: { ...data, quantity: item.quantity, finalPrice: data.price * item.quantity },
+          totalPrice: totalPrice,
         });
       } catch (err) {
-        dispatch({ type: "setAlert", message: err, style: "error" });
+        dispatch({ type: "errorGetOneProduct", message: err, status: "error" });
       }
   };
 
@@ -183,3 +193,8 @@ export const useProductsAction = () => {
     toShowHandler,
   };
 };
+
+export const useTotalPrice = () =>{
+  const { totalPrice } = useContext(ProductsContext);
+  return totalPrice
+}
