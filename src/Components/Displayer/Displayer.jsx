@@ -4,6 +4,7 @@ import styles from "./Displayer.module.scss";
 import { numberWithCommas } from "../utils/CommaNumber";
 import { useEffect, useState } from "react";
 import { getOneProduct } from "../../Services/getOneProduct";
+import DisplayerLoadingSkeleton from "../LoadingSkeleton/DisplayerLoadingSkeleton/DisplayerLoadingSkeleton";
 
 const Displayer = ({ productId }) => {
   const { addToCartHandler } = useProductsAction();
@@ -48,15 +49,7 @@ const Displayer = ({ productId }) => {
 
   if (productId)
     returnValue = (
-      <article
-        className={`text-center text-xl sm:text-3xl md:text-5xl flex justify-center items-center ${styles.dispalyerWelcome}`}
-      >
-        <h1
-          className={`bg-clip-text bg-gradient-to-r text-transparent from-yellow-400 to-red-700 `}
-        >
-          در حال پردازش ...
-        </h1>
-      </article>
+        <DisplayerLoadingSkeleton />
     );
 
   if (product) {

@@ -1,12 +1,12 @@
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import styles from "./LoadingSkeleton.module.scss";
+import styles from "./ProductsLoadingSkeleton.module.scss";
 
-const LoadingSkeleton = () => {
+const ProductsLoadingSkeleton = () => {
   return (
     <article
       className={`flex-shrink-0 flex-grow-0 ${styles.skeletonContainer}`}
     >
-      <SkeletonTheme color={"#212121"} highlightColor={"#363636"}>
+    <SkeletonTheme color={"#212121"} highlightColor={"#363636"}> 
         <div className={`${styles.skeletonImage}`}>
           <Skeleton
             style={{ borderRadius: "50%" }}
@@ -14,13 +14,9 @@ const LoadingSkeleton = () => {
             height={"100%"}
           />
         </div>
-      </SkeletonTheme>
       <h2>
-        <SkeletonTheme color={"#212121"} highlightColor={"#363636"}>
           <Skeleton width={`100%`} height={25} />
-        </SkeletonTheme>
       </h2>
-      <SkeletonTheme color={"#212121"} highlightColor={"#363636"}>
         <div className={`flex justify-between`}>
           <h4 className={`flex-grow ml-2`}>
             <Skeleton width={`100%`} height={20} />
@@ -29,9 +25,9 @@ const LoadingSkeleton = () => {
             <Skeleton width={`100%`} height={20} />
           </span>
         </div>
-      </SkeletonTheme>
+        </SkeletonTheme>
     </article>
   );
 };
 
-export default LoadingSkeleton;
+export default ProductsLoadingSkeleton;
