@@ -36,21 +36,20 @@ const Displayer = ({ productId }) => {
 
   let returnValue = (
     <article
-      className={`text-center text-xl sm:text-3xl md:text-5xl flex justify-center items-center ${styles.dispalyerWelcome}`}
+      className={`text-center text-xl sm:text-3xl md:text-5xl
+       flex justify-center items-center ${styles.dispalyerWelcome}`}
     >
       <BiRestaurant className={`text-red-700 inline-block rounded-full ml-2`} />{" "}
       <h1
-        className={`bg-clip-text bg-gradient-to-r text-transparent from-yellow-400 to-red-700 `}
+        className={`bg-clip-text bg-gradient-to-r text-transparent
+         from-yellow-400 to-red-700 `}
       >
         خوش آمدید لطفا انتخاب کنید
       </h1>
     </article>
   );
 
-  if (productId)
-    returnValue = (
-        <DisplayerLoadingSkeleton />
-    );
+  if (productId) returnValue = <DisplayerLoadingSkeleton />;
 
   if (product) {
     returnValue = (
@@ -84,7 +83,8 @@ const Displayer = ({ productId }) => {
           <div className={`flex justify-center items-center`}>
             <button
               type="button"
-              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
+              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b
+               from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
               onClick={() => setCount((prevCount) => prevCount + 1)}
             >
               <BiPlus />
@@ -96,7 +96,8 @@ const Displayer = ({ productId }) => {
             </span>
             <button
               type="button"
-              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
+              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b
+               from-gray-800 cursor-pointer to-gray-900 ${styles.displayerControler}`}
               onClick={() =>
                 count > 1 && setCount((prevCount) => prevCount - 1)
               }
@@ -107,7 +108,8 @@ const Displayer = ({ productId }) => {
           <button
             type="submit"
             onClick={clickHandler}
-            className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm bg-gradient-to-r from-yellow-400 to-red-700 ${styles.displayerCartBtn}`}
+            className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm bg-gradient-to-r
+             from-yellow-400 to-red-700 ${styles.displayerCartBtn}`}
           >
             افزودن به سبد خرید
           </button>

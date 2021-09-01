@@ -61,7 +61,8 @@ const ProductList = () => {
     >
       <header className={`mb-3 px-2`}>
         <h1
-          className={`mb-3 flex justify-start items-center text-base md:text-lg lg:text-xl text-yellow-400 ${styles.productListTitle}`}
+          className={`mb-3 flex justify-start items-center text-base md:text-lg
+           lg:text-xl text-yellow-400 ${styles.productListTitle}`}
         >
           <BiFoodMenu className={`ml-2 text-yellow-400`} />
           منوی رستوران
