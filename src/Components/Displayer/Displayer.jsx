@@ -3,7 +3,6 @@ import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import styles from "./Displayer.module.scss";
 import { numberWithCommas } from "../utils/CommaNumber";
 import { useEffect, useState } from "react";
-import axios from "axios";
 import { getOneProduct } from "../../Services/getOneProduct";
 
 const Displayer = ({ productId }) => {

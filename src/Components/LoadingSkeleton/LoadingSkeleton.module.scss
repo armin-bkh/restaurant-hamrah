@@ -1,0 +1,31 @@
+.skeletonContainer{
+    width: 11rem;
+    padding: 1rem;
+    background: #363636;
+    box-shadow: 0 5px 10px #020202;
+    border-radius: 20px;
+
+
+    @media screen and (max-width: 767px) {
+        width: 8rem;
+        padding: 1rem;
+    }
+
+    &:not(:last-child){
+        margin-left: 3rem;
+    }
+
+    .skeletonImage{
+        width: 7rem;
+        height: 7rem;
+        filter: drop-shadow(0 5px 10px #020202);
+        cursor: pointer;
+        margin: -3rem auto .5rem;
+        display: block;
+
+        @media screen and (max-width: 767px) {
+            width: 6rem;
+            height: 5rem;
+        }
+    }
+}

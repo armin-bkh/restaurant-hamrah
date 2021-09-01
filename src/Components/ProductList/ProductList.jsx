@@ -5,6 +5,7 @@ import Filter from "../Filter/FIlter";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../../Services/getAllProducts";
+import LoadingSkeleton from "../LoadingSkeleton/LoadingSkeleton";
 
 const ProductList = () => {
   const [products, setProducts] = useState(null);
@@ -38,19 +39,19 @@ const ProductList = () => {
   }
 
   let returnValue = (
-    <SkeletonTheme color="#272727" highlightColor="#444">
-      <Skeleton width={document.documentElement.clientWidth} height={150} />
-    </SkeletonTheme>
+    Array(8).fill().map((item, index)=> {
+      return <LoadingSkeleton key={index} />
+    })
   );
 
-  if (error)
-    returnValue = (
-      <h1
-        className={`text-base md:text-lg lg:text-xl text-yellow-400 ${styles.productListTitle}`}
-      >
-        منوی رستوران خالی است
-      </h1>
-    );
+  // if (error)
+  //   returnValue = (
+  //     <h1
+  //       className={`text-base md:text-lg lg:text-xl text-yellow-400 ${styles.productListTitle}`}
+  //     >
+  //       منوی رستوران خالی است
+  //     </h1>
+  //   );
 
   if (products && !error)
     returnValue = products.map((Pr) => <Product key={Pr.id} inf={Pr} />);
