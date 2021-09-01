@@ -78,12 +78,6 @@ const reducer = (state, action) => {
         alert: { type: "error", message: "از سبد خرید شما حذف شد" },
       };
     }
-    case "setAlert": {
-      return {
-        ...state,
-        alert: { type: action.style, message: action.message },
-      };
-    }
     case "submitCart": {
       Swal.fire({
         title: "ثبت گردید",
