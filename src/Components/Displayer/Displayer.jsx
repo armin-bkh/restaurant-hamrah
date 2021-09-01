@@ -1,13 +1,13 @@
-import { useProductsAction } from "../../Container/ProductsProvider";
 import { BiPlus, BiMinus, BiRestaurant } from "react-icons/bi";
 import styles from "./Displayer.module.scss";
 import { numberWithCommas } from "../utils/CommaNumber";
 import { useEffect, useState } from "react";
 import { getOneProduct } from "../../Services/getOneProduct";
 import DisplayerLoadingSkeleton from "../LoadingSkeleton/DisplayerLoadingSkeleton/DisplayerLoadingSkeleton";
+import { useReservatioActions } from "../../Container/ReservationProvider";
 
 const Displayer = ({ productId }) => {
-  const { addToCartHandler } = useProductsAction();
+  const { addToCartHandler } = useReservatioActions();
   const [product, setProduct] = useState("");
   const [count, setCount] = useState(1);
   const [error, setError] = useState(false);

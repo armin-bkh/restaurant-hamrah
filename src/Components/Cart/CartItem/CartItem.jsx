@@ -1,5 +1,5 @@
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
-import { useProductsAction } from "../../../Container/ProductsProvider";
+import { useReservatioActions } from "../../../Container/ReservationProvider";
 import { numberWithCommas } from "../../utils/CommaNumber";
 import styles from "./CartItem.module.scss";
 
@@ -8,7 +8,7 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
     deleteItemCartHandler,
     decrementItemCartHandler,
     incrementItemCartHandler,
-  } = useProductsAction();
+  } = useReservatioActions();
 
   const foodBPrice = numberWithCommas(foodBP);
 

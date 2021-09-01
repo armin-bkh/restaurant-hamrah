@@ -1,12 +1,12 @@
 import React from "react";
-import { useCart, useProductsAction, useTotalPrice } from "../../../Container/ProductsProvider";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
+import { useCart, useReservatioActions, useTotalPrice } from "../../../Container/ReservationProvider";
 
 const CartList = () => {
   const cart = useCart();
-  const {submitCartHandler} = useProductsAction();
+  const {submitCartHandler} = useReservatioActions();
   const totalPrice = useTotalPrice();
 
   const submitHandler = (e) => {

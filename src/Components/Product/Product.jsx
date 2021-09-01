@@ -1,11 +1,11 @@
-import { useProductsAction } from "../../Container/ProductsProvider";
+import { useReservatioActions } from "../../Container/ReservationProvider";
 import { BiPin } from "react-icons/bi";
 import styles from "./Products.module.scss";
 import { useState } from "react";
 
 const Product = ({ inf }) => {
   const [pin, setPin] = useState(false);
-  const { toShowHandler } = useProductsAction();
+  const { toShowHandler } = useReservatioActions();
 
   const clickHandler = () => {
     toShowHandler(inf.id);

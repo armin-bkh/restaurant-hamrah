@@ -1,5 +1,5 @@
+import { useProductId } from '../../Container/ReservationProvider';
 import Displayer from '../Displayer/Displayer';
-import { useProductId } from '../../Container/ProductsProvider';
 
 const DisplyerContainer = () =>{
     const { productId } = useProductId();

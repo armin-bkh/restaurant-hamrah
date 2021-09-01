@@ -1,13 +1,13 @@
 import CartList from "../Components/Cart/CartList/CartList";
 import DisplayerContainer from "../Components/DisplayerContainer/DisplayerContainer";
 import ProductList from "../Components/ProductList/ProductList";
-import ProductsProvider from "../Container/ProductsProvider";
 import { ToastContainer } from "react-toastify";
 import "./App.scss";
+import ReservationProvider from "../Container/ReservationProvider";
 
 const App = () => {
   return (
-    <ProductsProvider>
+    <ReservationProvider>
       <CartList />
       <DisplayerContainer />
       <ProductList />
@@ -20,7 +20,7 @@ const App = () => {
           rtl={true}
           draggable
         />
-    </ProductsProvider>
+    </ReservationProvider>
   );
 };
 

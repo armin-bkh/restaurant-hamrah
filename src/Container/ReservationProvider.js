@@ -1,9 +1,9 @@
 import { useContext, useEffect, useReducer } from "react";
 import Swal from "sweetalert2";
 import {
-  ProductsContext,
-  ProductsDispatcherContext,
-} from "../Context/ProductsContext";
+  ReservationContext,
+  ReservationDispatcherContext,
+} from "../Context/ReservationContext";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import { postCart } from '../Services/postCart';
@@ -12,7 +12,7 @@ import { getOneProduct } from '../Services/getOneProduct';
 let initialState = {
   cart: [],
   totalPrice: 0,
-  alert: "",
+  notification: "",
   productId: "",
 };
 
@@ -44,7 +44,7 @@ const reducer = (state, action) => {
         return {
           ...state,
           cart: filteredCart,
-          alert: {
+          notification: {
             type: "error",
             message: "از سبد خرید شما حذف شد",
           },
@@ -59,7 +59,7 @@ const reducer = (state, action) => {
       if (state.cart.some((item) => item.id === action.data.id)) {
         return {
           ...state,
-          alert: {
+          notification: {
             type: "error",
             message: "این غذا در سبد خرید شما وجود دارد",
           },
@@ -69,7 +69,7 @@ const reducer = (state, action) => {
         ...state,
         totalPrice: action.totalPrice + state.totalPrice,
         cart: [...state.cart, action.data],
-        alert: { type: "success", message: "به سبد خرید شما افزوده شد" },
+        notification: { type: "success", message: "به سبد خرید شما افزوده شد" },
       };
     }
     case "deleteItemCart": {
@@ -77,7 +77,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: filteredCart,
-        alert: { type: "error", message: "از سبد خرید شما حذف شد" },
+        notification: { type: "error", message: "از سبد خرید شما حذف شد" },
       };
     }
     case "submitCart": {
@@ -95,7 +95,7 @@ const reducer = (state, action) => {
     case "errorGetOneProduct": {
       return {
         ...state, 
-        alert: {type: action.status, message: action.message}
+        notification: {type: action.status, message: action.message}
       }
     }
     default:
@@ -103,44 +103,44 @@ const reducer = (state, action) => {
   }
 };
 
-const ProductsProvider = ({ children }) => {
-  const [products, dispatch] = useReducer(reducer, initialState);
+const ReservationProvider = ({ children }) => {
+  const [reservationData, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    if (products.alert) {
-      const type = products.alert.type;
+    if (reservationData.notification) {
+      const type = reservationData.notification.type;
       if (type === "success")
-        toast.success(products.alert.message);
+        toast.success(reservationData.notification.message);
       if (type === "error")
-        toast.error(products.alert.message);
+        toast.error(reservationData.notification.message);
       if (type === "info")
-        toast.info(products.alert.message);
+        toast.info(reservationData.notification.message);
       if (type === "warning")
-        toast.warn(products.alert.message);
+        toast.warn(reservationData.notification.message);
     }
-  }, [products.alert]);
+  }, [reservationData.notification]);
 
   return (
-    <ProductsContext.Provider value={products}>
-      <ProductsDispatcherContext.Provider value={dispatch}>
+    <ReservationContext.Provider value={reservationData}>
+      <ReservationDispatcherContext.Provider value={dispatch}>
         {children}
-      </ProductsDispatcherContext.Provider>
-    </ProductsContext.Provider>
+      </ReservationDispatcherContext.Provider>
+    </ReservationContext.Provider>
   );
 };
 
-export default ProductsProvider;
+export default ReservationProvider;
 
 export const useCart = () => {
-  const { cart } = useContext(ProductsContext);
+  const { cart } = useContext(ReservationContext);
   return cart;
 };
 export const useProductId = () => {
-  const { productId } = useContext(ProductsContext);
+  const { productId } = useContext(ReservationContext);
   return { productId };
 };
-export const useProductsAction = () => {
-  const dispatch = useContext(ProductsDispatcherContext);
+export const useReservatioActions = () => {
+  const dispatch = useContext(ReservationDispatcherContext);
 
   const addToCartHandler = async (item) => {
       try {
@@ -193,8 +193,7 @@ export const useProductsAction = () => {
     toShowHandler,
   };
 };
-
 export const useTotalPrice = () =>{
-  const { totalPrice } = useContext(ProductsContext);
+  const { totalPrice } = useContext(ReservationContext);
   return totalPrice
 }
