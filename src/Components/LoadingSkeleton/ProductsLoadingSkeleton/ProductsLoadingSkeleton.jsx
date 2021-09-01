@@ -6,7 +6,7 @@ const ProductsLoadingSkeleton = () => {
     <article
       className={`flex-shrink-0 flex-grow-0 ${styles.skeletonContainer}`}
     >
-    <SkeletonTheme color={"#212121"} highlightColor={"#363636"}> 
+    <SkeletonTheme color={"#232323"} highlightColor={"#363636"}> 
         <div className={`${styles.skeletonImage}`}>
           <Skeleton
             style={{ borderRadius: "50%" }}

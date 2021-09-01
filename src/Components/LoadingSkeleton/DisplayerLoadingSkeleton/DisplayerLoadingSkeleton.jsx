@@ -3,7 +3,7 @@ import styles from "./DisplayerLoadingSkeleton.module.scss";
 
 const DisplayerLoadingSkeleton = () => {
   return (
-    <SkeletonTheme color={"#212121"} highlightColor={"#363636"}>
+    <SkeletonTheme color={"#232323"} highlightColor={"#363636"}>
       <div className={` ${styles.skeletonDisplayerImg}`}>
         <Skeleton width={`100%`} height={`100%`} style={{borderRadius: '50%'}} />
       </div>
