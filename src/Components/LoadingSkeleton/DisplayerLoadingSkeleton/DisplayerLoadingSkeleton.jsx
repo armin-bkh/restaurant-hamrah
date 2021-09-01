@@ -11,7 +11,7 @@ const DisplayerLoadingSkeleton = () => {
         <h1 className={`text-center`}>
           <Skeleton width={`40%`} height={35} />
         </h1>
-        <h3 className={`text-center mb-8`}>
+        <h3 className={`text-center mb-10`}>
           <Skeleton width={`30%`} height={30} />
         </h3>
         <h3>

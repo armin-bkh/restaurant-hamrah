@@ -212,6 +212,24 @@
   "cart": [
     [
       {
+        "id": 3,
+        "title": "قرمه سبزی",
+        "price": "35000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
+        "materials": [
+          "مرغ",
+          "گوجه",
+          "کاهو",
+          "روغن زیتون",
+          "لیمو",
+          "پیاز"
+        ],
+        "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
+        "filter": "khoresht",
+        "quantity": 2,
+        "finalPrice": 70000
+      },
+      {
         "id": 5,
         "title": "کباب برگ",
         "price": "32000",
@@ -226,46 +244,8 @@
         ],
         "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
         "filter": "kebab",
-        "quantity": 4,
-        "finalPrice": 128000
-      },
-      {
-        "id": 1,
-        "title": "سالاد مرغ",
-        "price": "32000",
-        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-        "materials": [
-          "مرغ",
-          "گوجه",
-          "کاهو",
-          "روغن زیتون",
-          "لیمو",
-          "پیاز"
-        ],
-        "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-        "filter": "salad",
         "quantity": 2,
-        "finalPrice": 96000
-      }
-    ],
-    [
-      {
-        "id": 2,
-        "title": "قیمه بادمجان",
-        "price": "25000",
-        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-        "materials": [
-          "مرغ",
-          "گوجه",
-          "کاهو",
-          "روغن زیتون",
-          "لیمو",
-          "پیاز"
-        ],
-        "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-        "filter": "khoresht",
-        "quantity": 3,
-        "finalPrice": 75000
+        "finalPrice": 64000
       }
     ]
   ]

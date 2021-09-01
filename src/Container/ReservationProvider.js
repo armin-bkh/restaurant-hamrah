@@ -32,6 +32,7 @@ const reducer = (state, action) => {
       const cartClone = [...state.cart];
       const selectedItem = { ...state.cart[index] };
       selectedItem.quantity++;
+      selectedItem.finalPrice = selectedItem.price * selectedItem.quantity;
       cartClone[index] = selectedItem;
       return { ...state, cart: cartClone };
     }
@@ -51,6 +52,7 @@ const reducer = (state, action) => {
         };
       } else {
         selectedItem.quantity--;
+        selectedItem.finalPrice = selectedItem.price * selectedItem.quantity;
         cartClone[index] = selectedItem;
         return { ...state, cart: cartClone};
       }
@@ -90,7 +92,15 @@ const reducer = (state, action) => {
         timer: 10000,
         backdrop: true,
       });
-      return {...state, cart: ''};
+      return {...state, cart: '', totalPrice: 0};
+    }
+    case "calcTotalPrice": {
+      const cartItemsPrice = state.cart.map(item => item.finalPrice);
+      if(!cartItemsPrice.length){
+        return {...state, totalPrice: 0}
+      }
+      const totalPrice = cartItemsPrice.reduce((total, num) => total + num);
+      return {...state, totalPrice: totalPrice}
     }
     case "errorGetOneProduct": {
       return {
@@ -145,27 +155,29 @@ export const useReservatioActions = () => {
   const addToCartHandler = async (item) => {
       try {
         const { data } = await getOneProduct(item.id)
-        const totalPrice = data.price * item.quantity;
-        dispatch({
+        await dispatch({
           type: "addToCart",
           data: { ...data, quantity: item.quantity, finalPrice: data.price * item.quantity },
-          totalPrice: totalPrice,
         });
+        dispatch({type: "calcTotalPrice"})
       } catch (err) {
         dispatch({ type: "errorGetOneProduct", message: err, status: "error" });
       }
   };
 
-  const deleteItemCartHandler = (id) => {
-    dispatch({ type: "deleteItemCart", id: id });
+  const deleteItemCartHandler = async (id) => {
+    await dispatch({ type: "deleteItemCart", id: id });
+    dispatch({type: "calcTotalPrice"})
   };
 
-  const incrementItemCartHandler = (id) => {
-    dispatch({ type: "incrementCountItemCart", id: id });
+  const incrementItemCartHandler = async (id) => {
+   await  dispatch({ type: "incrementCountItemCart", id: id });
+    dispatch({type: "calcTotalPrice"})
   };
 
-  const decrementItemCartHandler = (id) => {
-    dispatch({ type: "decrementCountItemCart", id: id });
+  const decrementItemCartHandler = async (id) => {
+    await dispatch({ type: "decrementCountItemCart", id: id });
+    dispatch({type: "calcTotalPrice"})
   };
 
   const submitCartHandler = async (cart) => {

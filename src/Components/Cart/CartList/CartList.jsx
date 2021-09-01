@@ -2,12 +2,15 @@ import React from "react";
 import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
+import { numberWithCommas } from "../../utils/CommaNumber"
 import { useCart, useReservatioActions, useTotalPrice } from "../../../Container/ReservationProvider";
 
 const CartList = () => {
   const cart = useCart();
   const {submitCartHandler} = useReservatioActions();
   const totalPrice = useTotalPrice();
+
+  const totalPricewithComma = numberWithCommas(totalPrice);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -29,7 +32,7 @@ const CartList = () => {
         </header>
       ) : (
         <form onSubmit={submitHandler}>
-          <ul>
+          <ul className={`mb-11`}>
             {cart.map((item) => (
               <CartItem
                 itemID={item.id}
@@ -40,11 +43,12 @@ const CartList = () => {
               />
             ))}
           </ul>
-          <h1 className={`text-white`}>قابل پرداخت: {totalPrice}</h1>
+          <h1 className={`text-sm w-full md:text-md lg:text-lg xl:text-xl 
+          ${styles.totalPrice}`}>مبلغ قابل پرداخت: {totalPricewithComma()} تومان</h1>
           <button
           type="submit"
             className={`text-sm w-full md:text-md lg:text-lg xl:text-xl
-             py-2 mt-10 rounded-sm bg-gradient-to-r from-yellow-400
+             py-2 mt-3 rounded-sm bg-gradient-to-r from-yellow-400
               to-red-700 ${styles.submitCart}`}
           >
             ثبت سفارش
