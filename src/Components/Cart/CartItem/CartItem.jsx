@@ -1,7 +1,6 @@
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
 import { useReservatioActions } from "../../../Container/ReservationProvider";
 import { numberWithCommas } from "../../utils/CommaNumber";
-import styles from "./CartItem.module.scss";
 
 const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
   const {
@@ -18,21 +17,21 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
     <li
       className={`flex justify-between items-center
        text-xs sm:text-sm md:text-md lg:text-lg
-      xl:text-xl mb-5 ${styles.cartItem}`}
+      xl:text-xl mb-5 FPArsoo`}
     >
       <span
         className={`text-xs sm:text-sm md:text-md lg:text-lg
-       xl:text-xl ${styles.white}`}
+       xl:text-xl text-white`}
       >
         {foodN}
       </span>
       <span
         className={`hidden sm:block text-xs sm:text-sm md:text-md
-       lg:text-lg xl:text-xl ${styles.white}`}
+       lg:text-lg xl:text-xl text-white`}
       >
         قیمت واحد: {foodBPrice()}
       </span>
-      <div className={`flex justify-between items-center ${styles.white}`}>
+      <div className={`flex justify-between items-center text-white`}>
         <span
           className={`hidden sm:block text-xs sm:text-sm
          md:text-md lg:text-lg xl:text-xl`}
@@ -42,34 +41,34 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
         <button
           type="button"
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
-           bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
+           bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 text-white`}
           onClick={() => incrementItemCartHandler(itemID)}
         >
           <BiPlus />
         </button>
         <span
-          className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl ${styles.white}`}
+          className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl text-white`}
         >
           {foodQ}
         </span>
         <button
           type="button"
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
-           bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 ${styles.btn}`}
+           bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 text-white`}
           onClick={() => decrementItemCartHandler(itemID)}
         >
           {foodQ > 1 ? <BiMinus /> : <BiTrash />}
         </button>
       </div>
       <span
-        className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl ${styles.white}`}
+        className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl text-white`}
       >
         قیمت: {foodFPrice()}
       </span>
       <button
         className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
        bg-gradient-to-b from-gray-800 cursor-pointer
-        to-gray-900 ${styles.btn}`}
+        to-gray-900 text-white`}
         type="button"
         onClick={() => deleteItemCartHandler(itemID)}
       >

@@ -1,30 +1,4 @@
-$A-Noor: 'A-Noor';
-$FP_Arsoo: 'FP_Arsoo';
-
-@font-face {
-    font-family: "A-Noor";
-    src: url('./../../../fonts/A-Noor.ttf');
-}
-
-@font-face {
-    font-family: "FP_Arsoo";
-    src: url('./../../../fonts/FP_Arsoo.ttf');
-}
 .cartContainer{
     border-radius: 20px;
     background: linear-gradient(to bottom, rgba(#2e2e2e, 1), rgba(#363636, 1) 20%, transparent);
-}
-.submitCart{
-    font-family: $FP_Arsoo;
-    color: #fff;
-    letter-spacing: 1px;
-}
-
-.title{
-    font-family: $FP_Arsoo;
-}
-
-.totalPrice{
-    font-family: $FP_Arsoo;
-    color: #fff;
 }

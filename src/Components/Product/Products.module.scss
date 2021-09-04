@@ -1,16 +1,3 @@
-$A-Noor: 'A-Noor';
-$FP_Arsoo: 'FP_Arsoo';
-
-@font-face {
-    font-family: "A-Noor";
-    src: url('./../../fonts/A-Noor.ttf');
-}
-
-@font-face {
-    font-family: "FP_Arsoo";
-    src: url('./../../fonts/FP_Arsoo.ttf');
-}
-
 .productContainer {
     width: 11rem;
     padding: 1rem;
@@ -47,10 +34,5 @@ $FP_Arsoo: 'FP_Arsoo';
 
     .productTitle {
         letter-spacing: 2px;
-    }
-
-    .productTitle,
-    .productPriceBadge {
-        font-family: $FP_Arsoo;
     }
 }

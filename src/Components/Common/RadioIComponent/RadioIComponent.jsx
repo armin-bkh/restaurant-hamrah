@@ -1,4 +1,5 @@
 import styles from './RadioIComponent.module.scss';
+import '../../../scss/main.scss';
 
 const RadioIComponent = ({ onChange, filterState, filtervalue, lbl }) => {
     return ( 
@@ -13,7 +14,7 @@ const RadioIComponent = ({ onChange, filterState, filtervalue, lbl }) => {
           value={filtervalue}
           onChange={onChange}
         />
-        <label className={`flex justify-center items-center`} htmlFor={filtervalue}>{lbl}</label>
+        <label className={`flex justify-center items-center w-full ANoor h-full`} htmlFor={filtervalue}>{lbl}</label>
       </div>
      );
 }

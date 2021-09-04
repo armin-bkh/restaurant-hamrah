@@ -1,47 +1,19 @@
-$A-Noor: 'A-Noor';
-$FP_Arsoo: 'FP_Arsoo';
-
-@font-face {
-    font-family: "A-Noor";
-    src: url('./../../fonts/A-Noor.ttf');
-}
-
-@font-face {
-    font-family: "FP_Arsoo";
-    src: url('./../../fonts/FP_Arsoo.ttf');
-}
-
-.displayerContainer{
+.displayerContainer {
     color: #fff;
-.displayerImg{
-    width: 15rem;
-    height: 15rem;
-    margin: auto;
-    display: block;
 
-    @media screen and (max-width: 767px) {
-        height: 10rem;
+    .displayerImg {
+        width: 15rem;
+        height: 15rem;
+        margin: auto;
+        display: block;
+
+        @media screen and (max-width: 767px) {
+            height: 10rem;
+        }
     }
-}
-.displyerInformation{
-    display: flex;
-    flex-flow: wrap column;
-}
-.displayerTitle{
-    font-family: $A-Noor;
-    letter-spacing: 3px;
-}
-.displayerPrice{
-    font-family: $FP_Arsoo;
-}
-.displayerDetail{
-    font-family: $FP_Arsoo;
-}
-.displayerCartBtn{
-    font-family: $FP_Arsoo;
-    letter-spacing: 1px;
-}
-.dispalyerWelcome{
-    font-family: $A-Noor;
-}
+
+    .displyerInformation {
+        display: flex;
+        flex-flow: wrap column;
+    }
 }
