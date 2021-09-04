@@ -1,26 +1,15 @@
-import CartList from "../Components/Cart/CartList/CartList";
-import DisplayerContainer from "../Components/DisplayerContainer/DisplayerContainer";
-import ProductList from "../Components/ProductList/ProductList";
-import { ToastContainer } from "react-toastify";
 import "./App.scss";
-import ReservationProvider from "../Container/ReservationProvider";
-
+import { Route, Switch } from 'react-router-dom';
+import routes from '../Routes/Routes';
 const App = () => {
   return (
-    <ReservationProvider>
-      <CartList />
-      <DisplayerContainer />
-      <ProductList />
-      <ToastContainer
-          position="top-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={true}
-          draggable
-        />
-    </ReservationProvider>
+    <Switch>
+      {
+        routes.map((route, index) => (
+          <Route key={index} {...route}/>
+        ))
+      }
+    </Switch>
   );
 };
 
