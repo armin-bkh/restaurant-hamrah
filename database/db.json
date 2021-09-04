@@ -209,57 +209,42 @@
       "filter": "salad"
     }
   ],
-  "cart": [
-
-  ],
+  "cart": [],
   "tables": [
     {
       "id": 1,
-      "title": "میز شماره",
-      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
-      "totalPrice": 122121
-    },
-    {
-      "id": 2,
-      "title": "میز شماره",
-      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
-      "totalPrice": 122121
-    },
-    {
-      "id": 3,
-      "title": "میز شماره",
-      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
-      "totalPrice": 122121
-    },
-    {
-      "id": 4,
-      "title": "میز شماره",
-      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "userName": "حسینی",
+      "foods": [
+        "قرمه سبزنی",
+        "کباب لقمه",
+        "سالاد مرغ"
+      ],
       "totalPrice": 122121
     },
     {
       "id": 5,
-      "title": "میز شماره",
-      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
-      "totalPrice": 122121
-    },
-    {
-      "id": 6,
-      "title": "میز شماره",
-      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "userName": "حسینی",
+      "foods": [
+        "قرمه سبزنی",
+        "کباب لقمه",
+        "سالاد مرغ"
+      ],
       "totalPrice": 122121
     },
     {
       "id": 7,
-      "title": "میز شماره",
-      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "userName": "حسینی",
+      "foods": [
+        "قرمه سبزنی",
+        "کباب لقمه",
+        "سالاد مرغ"
+      ],
       "totalPrice": 122121
     }
   ],
-  "resinfo":
-    {
-      "name": "ارتا ارتباط اطلس",
-      "tableCount": 9,
-      "tel": "09213506158"
-    }
+  "resinfo": {
+    "name": "ارتا ارتباط اطلس",
+    "tableCount": 9,
+    "tel": "09213506158"
+  }
 }
