@@ -255,5 +255,12 @@
       "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
       "totalPrice": 122121
     }
+  ],
+  "resinfo": [
+    {
+      "name": "ارتا ارتباط اطلس",
+      "tableCount": 9,
+      "TEL": "09213506158"
+    }
   ]
 }
