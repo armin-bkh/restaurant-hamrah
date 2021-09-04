@@ -6,8 +6,7 @@ import ManageNavigation from "../ManageNavigation/ManageNavigation";
 const ManageHeader = () => {
     const [info, setInfo] = useState(null);
     const [error, setError] = useState(false);
-
-    console.log(info);
+    
     useEffect(()=>{
         const getInfo = async () =>{
             try{

@@ -4,7 +4,7 @@ import ManageProducts from "../Components/ManageProducts/ManageProducts";
 import ManageTable from "../Components/ManageTables/manageTables";
 import ManageLayout from "../Layouts/ManageLayout";
 
-const ManagePage = ({history, children}) => {
+const ManagePage = ({history}) => {
     useEffect(()=>{
         history.push("/manage/manage-tables")
     }, [])

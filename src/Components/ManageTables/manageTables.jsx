@@ -25,7 +25,7 @@ const ManageTable = () => {
         returnValue = <h1 className={`color-gradient text-6xl`}>میز های شما خالی است</h1>
     }
     if(tables && !error){
-        returnValue = tables.map(tb => <Table setTables={setTables} key={tb.id} resForm={tb} />)
+        returnValue = tables.map((tb) => <Table setTables={setTables} key={tb.id} resForm={tb} />)
     }
     
   return (

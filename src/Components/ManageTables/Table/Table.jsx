@@ -23,7 +23,7 @@ const Table = ({ resForm, setTables }) => {
     <form onSubmit={submitHandler}>
       <h1 className={`mb-9 text-center text-3xl FPArsoo`}>شماره میز: {resForm.id}</h1>
       <h1 className={`mb-4 text-sm FPArsoo`}>اقای/خانوم: {resForm.userName}</h1>
-      <h1 className={`mb-4 text-sm FPArsoo`}>سفارشات: {resForm.foods.map(fd => <span className={`mx-2`}>{fd}</span>)}</h1>
+      <h1 className={`mb-4 text-sm FPArsoo`}>سفارشات: {resForm.foods.map(fd => <span key={fd} className={`mx-2`}>{fd}</span>)}</h1>
       <h1 className={` text-sm FPArsoo`}>مبلغ نهایی: {totalPrice()} تومان</h1>
       <button className={`rounded-sm bg-gradient-to-r cursor-pointer 
              from-yellow-400 to-red-700 px-5 py-1 block w-full
