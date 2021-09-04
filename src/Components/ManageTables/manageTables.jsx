@@ -1,7 +1,25 @@
+import { useEffect } from "react";
+import { toast } from "react-toastify";
+
 const ManageTable = () => {
-    return ( 
-        <h1>لیست میزا ها</h1>
-     );
-}
- 
+    useEffect(()=>{
+        const getTables = async () =>{
+            try{
+                const { data } = await getAllTable(); 
+            }
+            catch(err){
+                toast.error("همه ی میز ها خالی است")
+            }
+        }
+        getTables();
+    }, [])
+  return (
+    <main>
+      <section>
+        
+      </section>
+    </main>
+  );
+};
+
 export default ManageTable;
