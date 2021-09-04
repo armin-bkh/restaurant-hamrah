@@ -1,14 +1,15 @@
-const Table = ({resForm}) => {
-    const clickHandler = () => {
-        alert("hello")
-    }
-    return ( 
-        <article onClick={clickHandler} className={`flex w-64 h-96`}>
-            <div className={`bg-gray-700`}></div>
-            <div className={`flex-grow bg-gray-700`}></div>
-            <div className={`bg-gray-700`}></div>
-        </article>
-     );
-}
- 
+const Table = ({ resForm }) => {
+  const clickHandler = () => {
+    alert(resForm.id)
+  };
+  return (
+    <article
+      onClick={clickHandler}
+      className={`border-2 flex justify-center items-center mx-3 my-4 h-96`}
+    >
+      <h1>{resForm.id}</h1>
+    </article>
+  );
+};
+
 export default Table;

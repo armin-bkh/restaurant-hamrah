@@ -210,43 +210,50 @@
     }
   ],
   "cart": [
-    [
-      {
-        "id": 3,
-        "title": "قرمه سبزی",
-        "price": "35000",
-        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-        "materials": [
-          "مرغ",
-          "گوجه",
-          "کاهو",
-          "روغن زیتون",
-          "لیمو",
-          "پیاز"
-        ],
-        "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-        "filter": "khoresht",
-        "quantity": 2,
-        "finalPrice": 70000
-      },
-      {
-        "id": 5,
-        "title": "کباب برگ",
-        "price": "32000",
-        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-        "materials": [
-          "مرغ",
-          "گوجه",
-          "کاهو",
-          "روغن زیتون",
-          "لیمو",
-          "پیاز"
-        ],
-        "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-        "filter": "kebab",
-        "quantity": 2,
-        "finalPrice": 64000
-      }
-    ]
+
+  ],
+  "tables": [
+    {
+      "id": 1,
+      "title": "میز شماره",
+      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "totalPrice": 122121
+    },
+    {
+      "id": 2,
+      "title": "میز شماره",
+      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "totalPrice": 122121
+    },
+    {
+      "id": 3,
+      "title": "میز شماره",
+      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "totalPrice": 122121
+    },
+    {
+      "id": 4,
+      "title": "میز شماره",
+      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "totalPrice": 122121
+    },
+    {
+      "id": 5,
+      "title": "میز شماره",
+      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "totalPrice": 122121
+    },
+    {
+      "id": 6,
+      "title": "میز شماره",
+      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "totalPrice": 122121
+    },
+    {
+      "id": 7,
+      "title": "میز شماره",
+      "foods": "sdfdsf, sdfsdf ,dsfsdf ,fsdfdsf",
+      "totalPrice": 122121
+    }
   ]
 }
