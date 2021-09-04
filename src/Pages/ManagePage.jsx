@@ -2,18 +2,18 @@ import { useEffect } from "react";
 import { Route } from "react-router-dom";
 import ManageProducts from "../Components/ManageProducts/ManageProducts";
 import ManageTable from "../Components/ManageTables/manageTables";
-import ManageUserLayout from "../Layouts/ManageUsersLayout";
+import ManageLayout from "../Layouts/ManageLayout";
 
-const ManageUser = ({history}) => {
+const ManagePage = ({history}) => {
     useEffect(()=>{
         history.push("/manage/manage-tables")
     }, [])
     return (
-        <ManageUserLayout>
+        <ManageLayout>
             <Route path="/manage/manage-tables" component={ManageTable}/>
             <Route path="/manage/manage-products" component={ManageProducts} />
-        </ManageUserLayout>
+        </ManageLayout>
      );
 }
  
-export default ManageUser;
+export default ManagePage;

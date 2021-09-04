@@ -5,7 +5,7 @@ const links = [
   { title: "مدیریت محصولات", to: "/manage/manage-products" },
 ];
 
-const ManageUserNavigation = () => {
+const ManageNavigation = () => {
   return (
     <nav className={`mt-10 border-b-2 border-yellow-400 py-2`}>
       <ul className={`flex`}>
@@ -25,4 +25,4 @@ const ManageUserNavigation = () => {
   );
 };
 
-export default ManageUserNavigation;
+export default ManageNavigation;

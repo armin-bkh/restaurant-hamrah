@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getInfRes } from "../../Services/getInfRes";
-import ManageUserNavigation from "../ManageUserNavigation/ManageUserNavigation";
+import ManageNavigation from "../ManageNavigation/ManageNavigation";
 
-const ManageUserHeader = () => {
+const ManageHeader = () => {
     const [info, setInfo] = useState(null);
     const [error, setError] = useState(false);
 
@@ -31,9 +31,9 @@ const ManageUserHeader = () => {
       </section>
       <h5 className={`text-white FPArsoo`}>شماره پشتیبانی: {info ? info.tel : null}</h5>
 
-    <ManageUserNavigation />
+    <ManageNavigation />
     </header>
   );
 };
 
-export default ManageUserHeader;
+export default ManageHeader;

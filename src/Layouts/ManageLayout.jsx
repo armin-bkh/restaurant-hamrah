@@ -1,9 +1,10 @@
 import ManageFooter from "../Components/ManageFooter/ManageFooter"
-import ManageUserHeader from "../Components/ManageUserHeader/ManageUserHeader"
+import ManageHeader from "../Components/ManageHeader/ManageHeader"
+
 const ManageUserLayout = ({children}) =>{
     return (
         <>
-            <ManageUserHeader />
+            <ManageHeader />
             {children}
             <ManageFooter />
         </>
