@@ -24,13 +24,13 @@ const ManageUserHeader = () => {
     }, [])
 
   return (  
-    <header className={`flex flex-col space-x-5 shadow-md px-3 py-5 color-gradient`}>
+    <header className={`flex flex-col shadow-md px-3 py-5 color-gradient`}>
       <section className={`flex justify-between items-center mb-8`}>
-        <h1 className={`text-3xl md:text-4xl xl:text-6xl `}>رستوران {info ? info.name : null}</h1>
-        <h6 className={`text-sm font-bold text-white`}>تعداد میز: 
+        <h1 className={`text-3xl md:text-4xl xl:text-6xl ${styles.FPArsoo}`}>رستوران {info ? info.name : null}</h1>
+        <h6 className={`text-sm font-bold text-white ${styles.FPArsoo}`}>تعداد میز: 
         <span className={`px-2 py-1 rounded-full to-red-700`}>{info ? info.tableCount : null}</span></h6>
       </section>
-      <h5 className={`text-white`}>شماره پشتیبانی: {info ? info.tel : null}</h5>
+      <h5 className={`text-white ${styles.FPArsoo}`}>شماره پشتیبانی: {info ? info.tel : null}</h5>
 
     <ManageUserNavigation />
     </header>
