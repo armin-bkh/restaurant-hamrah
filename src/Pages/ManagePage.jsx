@@ -6,10 +6,6 @@ import ManageLayout from "../Layouts/ManageLayout";
 
 const ManagePage = ({history}) => {
 
-    useEffect(()=>{
-        history.push("/manage/manage-tables")
-    }, [])
-
     return (
         <ManageLayout>
             <Route path="/manage/manage-tables" component={ManageTable} />

@@ -10,14 +10,14 @@ const links = [
 
 const ManageProductsNavigation = () => {
   return (
-    <aside className={`w-1/5 p-5 ${styles.productsNavigation}`}>
+    <aside className={`p-5 ANoor ${styles.productsNavigation}`}>
       <nav className={`sticky top-4`}>
         <ul className={`p-2 ${styles.navConitaner}`}>
           {links.map((link) => (
             <li key={link.to} className={`mb-4 w-full`}>
               <NavLink
-                className={`text-white w-full block py-2 border-b border-gray-800`}
-                activeClassName={`border-yellow-400`}
+                className={`text-white w-full block py-2 border-b border-gray-800 hover:text-yellow-400`}
+                activeClassName={`border-yellow-400 text-yellow-400`}
                 to={link.to}
               >
                 {link.title}
