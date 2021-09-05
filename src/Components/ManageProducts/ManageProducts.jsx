@@ -1,17 +1,20 @@
 import { Route } from 'react-router-dom';
 import ManageProductsNavigation from '../ManageProductsNavigation/ManageProductsNaviagtion';
+import ManageAddProduct from '../ManageAddProduct/ManageAddProduct';
+import ManageRemoveProduct from '../ManageRemoveProduct/ManageRemoveProduct';
+import ManageEditProduct from '../ManageEditProduct/ManageEditProduct';
 
 const ManageProducts = () => {
     return (
         <>
-            <main>
-                <Route path="/manage/manage-products/add-product" />
-                <Route path="/manage/manage-products/edit-product" />
-                <Route path="/manage/manage-products/remove-product" />
-            </main>
-            <aside>
+        <section className={`flex min-h-screen flex-row flex-wrap p-5`}>
             <ManageProductsNavigation />
-            </aside>
+            <main className={`flex-grow-1`}>
+                <Route path="/manage/manage-products/add-product" component={ManageAddProduct} />
+                <Route path="/manage/manage-products/edit-product" component={ManageEditProduct} />
+                <Route path="/manage/manage-products/remove-product" component={ManageRemoveProduct} />
+            </main>
+        </section>
         </>
      );
 }
