@@ -29,7 +29,7 @@ const ManageHeader = () => {
         <h6 className={`text-sm font-bold text-white FPArsoo`}>تعداد میز: 
         <span className={`px-2 py-1 rounded-full`}>{info ? info.tableCount : null}</span></h6>
       </section>
-      <h5 className={`text-white FPArsoo`}>شماره پشتیبانی: {info ? info.tel : null}</h5>
+      <h5 className={`text-sm sm:text-base md:text-lg text-white FPArsoo`}>شماره پشتیبانی: {info ? info.tel : null}</h5>
 
     <ManageNavigation />
     </header>
