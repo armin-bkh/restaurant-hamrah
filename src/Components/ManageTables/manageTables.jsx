@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getAllTable } from "../../Services/getAllTables";
+import TableLoadingSkeleton from "../LoadingSkeleton/TableLoadingSkeleton/TableLoadingSkeleton";
 import Table from "./Table/Table";
 
 const ManageTable = () => {
@@ -19,7 +20,7 @@ const ManageTable = () => {
         }
         getTables();
     }, [])
-    let returnValue = <h1 className={`color-gradient text-6xl`}>در حال پردازش...</h1>;
+    let returnValue = Array(8).fill().map((item, index) => <TableLoadingSkeleton key={index} />);
 
     if(error){
         returnValue = <h1 className={`color-gradient text-6xl`}>میز های شما خالی است</h1>
@@ -30,7 +31,7 @@ const ManageTable = () => {
     
   return (
     <main className="min-h-screen">
-      <section className={`${tables ? 'grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 ': 'flex justify-center items-center'}`}>
+      <section className={`grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-4 p-5`}>
         {
             returnValue
         }

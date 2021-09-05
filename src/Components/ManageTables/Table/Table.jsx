@@ -18,10 +18,10 @@ const Table = ({ resForm, setTables }) => {
     }
   return (
     <article
-      className={`text-white flex flex-col justify-center p-5 mx-3 my-4 h-96 ${styles.table}`}
+      className={`text-white flex flex-col justify-center p-5 h-96 ${styles.table}`}
     >
-    <form onSubmit={submitHandler}>
-      <h1 className={`mb-9 text-center text-3xl FPArsoo`}>شماره میز: {resForm.id}</h1>
+    <form className={`flex flex-col`} onSubmit={submitHandler}>
+      <h1 className={`mb-9 self-center w-24 h-24 flex justify-center items-center text-3xl bg-gradient-to-r from-yellow-400 to-red-700 rounded-full FPArsoo`}>{resForm.id}</h1>
       <h1 className={`mb-4 text-sm FPArsoo`}>اقای/خانوم: {resForm.userName}</h1>
       <h1 className={`mb-4 text-sm FPArsoo`}>سفارشات: {resForm.foods.map(fd => <span key={fd} className={`mx-2`}>{fd}</span>)}</h1>
       <h1 className={` text-sm FPArsoo`}>مبلغ نهایی: {totalPrice()} تومان</h1>
