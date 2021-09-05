@@ -1,9 +1,10 @@
 import { Link } from "react-router-dom";
 import { FaInstagram, FaLinkedin, FaTelegram, FaWhatsapp } from 'react-icons/fa';
+import styles from './ManageFooter.module.scss';
 
 const ManageFooter = () => {
   return (
-    <footer className={`px-5 py-4 text-yellow-400 shadow-md font-bold $FPArsoo`}>
+    <footer className={`px-5 py-4 text-yellow-400 shadow-md font-bold $FPArsoo ${styles.manageFooterContainer}`}>
       <p>تمامی حقوق ارتا ارتباط اطلس محفوظ است</p>
       <section>
         <nav className={`mt-4`}>
