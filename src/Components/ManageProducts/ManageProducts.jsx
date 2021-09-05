@@ -3,17 +3,18 @@ import ManageProductsNavigation from "../ManageProductsNavigation/ManageProducts
 import ManageAddProduct from "../ManageAddProduct/ManageAddProduct";
 import ManageRemoveProduct from "../ManageRemoveProduct/ManageRemoveProduct";
 import ManageEditProduct from "../ManageEditProduct/ManageEditProduct";
-import styles from './ManageProducts.module.scss';
+import styles from "./ManageProducts.module.scss";
 
 const ManageProducts = () => {
   return (
-    <>
-      <section
-        className={`grid gap-x-3 grid-col-1 md:grid-cols-3 lg:grid-cols-4 min-h-screen md:flex-row flex-wrap p-5`}
-      >
+        <main className={`grid gap-x-3 grid-col-1 min-h-screen md:grid-cols-3 lg:grid-cols-4 p-5 md:col-span-2 Dirooz lg:col-span-3`}>
         <ManageProductsNavigation />
-        <main className={`md:col-span-2 Dirooz lg:col-span-3`}>
-          <section className={`p-5 ${styles.manageProductsContianer}`}>
+          <section className={`md:col-span-2 Dirooz lg:col-span-3 p-5 ${styles.manageProductsContianer}`}>
+            <Route
+              path="/manage/manage-products"
+              component={ManageProductsDetail}
+              exact={true}
+            />
             <Route
               path="/manage/manage-products/add-product"
               component={ManageAddProduct}
@@ -28,9 +29,15 @@ const ManageProducts = () => {
             />
           </section>
         </main>
-      </section>
-    </>
   );
 };
 
 export default ManageProducts;
+
+const ManageProductsDetail = () => {
+  return (
+    <article>
+      <h1>برای مدیریت غذا بر روی یکی از گزینه ها کلیک کنید</h1>
+    </article>
+  );
+};
