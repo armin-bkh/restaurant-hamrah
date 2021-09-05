@@ -4,12 +4,8 @@ import ManageAddProduct from "../ManageAddProduct/ManageAddProduct";
 import ManageRemoveProduct from "../ManageRemoveProduct/ManageRemoveProduct";
 import ManageEditProduct from "../ManageEditProduct/ManageEditProduct";
 import styles from './ManageProducts.module.scss';
-// import { useEffect } from "react";
 
-const ManageProducts = ({history}) => {
-    // useEffect(()=>{
-    //     history.push("/manage/manage-products/add-product");
-    // }, [])
+const ManageProducts = () => {
   return (
     <>
       <section

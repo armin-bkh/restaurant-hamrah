@@ -1,24 +1,31 @@
+import styles from './ManageDetail.module.scss';
+
 const manageDetail = () => {
   return (
-    <main className={`text-white`}>
-        <h1>میز ها</h1>
-      <p>
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-        متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
-        نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-      </p>
-      <h1>غذاها</h1>
-      <p>
-      لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
-        از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
-        سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
-        متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و سه
-        درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می طلبد، تا با
-        نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی الخصوص طراحان
-      </p>
+    <main className={`text-white min-h-screen`}>
+      <section className={`flex justify-evenly p-5`}>
+        <article className={`bg-gray-500 p-5 rounded-lg relative ${styles.boxContainer}`}>
+          <h1 className={`mb-5 text-3xl FPArsoo`}>میز ها</h1>
+          <p className={`z-20 Dirooz`}>
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز،
+            و کاربردهای متنوع با ه
+          </p>
+          <h2 className={`absolute bottom-10 left-2 transform -rotate-90 text-xl
+           FPArsoo z-10 opacity-70 transition duration-500 ${styles.textMute}`}>میز ها</h2>
+        </article>
+        <article className={`bg-gray-500 p-5 rounded-lg relative ${styles.boxContainer}`}>
+          <h1 className={`mb-5 text-3xl FPArsoo`}>غذا</h1>
+          <p className={`z-20 Dirooz`}>
+            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
+            ستون و سطرآنچ
+          </p>
+          <h2 className={`absolute bottom-10 left-2 transform -rotate-90 text-xl
+           FPArsoo z-10 opacity-70 transition duration-500 ${styles.textMute}`}>غذا</h2>
+        </article>
+      </section>
     </main>
   );
 };
