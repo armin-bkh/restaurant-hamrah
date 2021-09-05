@@ -18,7 +18,7 @@ const CartList = () => {
   };
 
   return (
-    <section className={`mx-6 mt-5 p-6 ${styles.cartContainer}`}>
+    <section className={`mx-6 p-6 ${styles.cartContainer}`}>
       {!cart.length ? (
         <header className={`flex items-center justify-center bg-clip-text
          bg-gradient-to-r text-transparent from-yellow-400 to-red-700

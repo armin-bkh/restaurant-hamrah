@@ -6,11 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   direction: rtl;
+}
+.bgDark{
   background: url('../images/background.jpg') center no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;

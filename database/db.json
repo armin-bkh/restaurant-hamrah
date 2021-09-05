@@ -209,7 +209,28 @@
       "filter": "salad"
     }
   ],
-  "cart": [],
+  "cart": [
+    [
+      {
+        "id": 4,
+        "title": "زرشک پلو",
+        "price": "44000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
+        "materials": [
+          "مرغ",
+          "گوجه",
+          "کاهو",
+          "روغن زیتون",
+          "لیمو",
+          "پیاز"
+        ],
+        "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
+        "filter": "polo",
+        "quantity": 5,
+        "finalPrice": 220000
+      }
+    ]
+  ],
   "tables": [
     {
       "id": 1,
