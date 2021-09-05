@@ -1,5 +1,6 @@
 $ANoor: 'A-Noor';
 $FPArsoo: 'FP_Arsoo';
+$Dirooz: 'Dirooz';
 
 @font-face {
     font-family: "A-Noor";
@@ -11,11 +12,20 @@ $FPArsoo: 'FP_Arsoo';
     src: url('../fonts/FP_Arsoo.ttf');
 }
 
+@font-face {
+    font-family: "Dirooz";
+    src: url('../fonts/Dirooz.ttf');
+}
 
-.FPArsoo{
+
+.FPArsoo {
     font-family: $FPArsoo;
 }
 
-.ANoor{
+.ANoor {
     font-family: $ANoor;
+}
+
+.Dirooz {
+    font-family: $Dirooz;
 }
