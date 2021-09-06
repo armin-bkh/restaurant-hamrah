@@ -34,7 +34,7 @@ const ManageRemoveProduct = () => {
     }
 
     return ( 
-        <form className={`text-white borderRoundFull rounded-md`}>
+        <form className={`text-black borderRoundFull rounded-md`}>
             <ul>
                 {
                     returnValue

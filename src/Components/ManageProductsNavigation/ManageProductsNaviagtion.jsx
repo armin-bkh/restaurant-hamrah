@@ -15,7 +15,7 @@ const ManageProductsNavigation = () => {
           {links.map((link) => (
             <li key={link.to} className={`mb-4 w-full`}>
               <NavLink
-                className={`text-white w-full block py-2 border-b border-gray-800 hover:text-yellow-400`}
+                className={`text-black w-full block py-2 border-b border-gray-800 hover:text-yellow-400`}
                 activeClassName={`border-yellow-400 text-yellow-400`}
                 to={link.to}
               >

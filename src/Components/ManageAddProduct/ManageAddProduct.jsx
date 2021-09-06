@@ -45,7 +45,7 @@ const ManageAddProduct = () => {
     }
   };
   return (
-    <form className={`text-white flex flex-col p-5 rounded-md borderRoundFull`} onSubmit={sumbitHandler}>
+    <form className={`text-black flex flex-col p-5 rounded-md borderRoundFull`} onSubmit={sumbitHandler}>
       <label className={`mb- text-sm md:text-lg`} htmlFor="title">
         نام غذا:{" "}
       </label>

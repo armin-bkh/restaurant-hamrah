@@ -2,7 +2,7 @@ import styles from './ManageDetail.module.scss';
 
 const manageDetail = () => {
   return (
-    <main className={`text-white min-h-screen flex justify-evenly p-5 flex-col md:flex-row md:items-center flex-wrap`}>
+    <main className={`text-black min-h-screen flex justify-evenly p-5 flex-col md:flex-row md:items-center flex-wrap`}>
         <article className={`bg-gray-500 p-5 rounded-lg relative boxShadow bgDarkTop h-1/5 ${styles.boxContainer}`}>
           <h1 className={`mb-5 FPArsoo text-xl lg:text-3xl`}>میز ها</h1>
           <p className={`z-20 Dirooz text-sm lg:text-lg`}>

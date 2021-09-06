@@ -18,7 +18,7 @@ const Table = ({ resForm, setTables }) => {
     }
   return (
     <article
-      className={`text-white flex flex-col justify-center bgDark boxShadow p-5 h-96 ${styles.table}`}
+      className={`text-black flex flex-col justify-center bgDark boxShadow p-5 h-96 ${styles.table}`}
     >
     <form className={`flex flex-col`} onSubmit={submitHandler}>
       <h1 className={`mb-9 self-center w-24 h-24 flex justify-center items-center text-3xl

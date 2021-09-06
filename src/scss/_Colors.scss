@@ -1,8 +1,8 @@
-$bgDark: #363636;
-$bgDarkTop: #2e2e2e;
+$bgDark: #f3f3f3;
+$bgDarkTop: #ffffff;
 $bgDarkGradint: linear-gradient(to bottom, rgba($bgDarkTop, 1), rgba($bgDark, 1) 40%, transparent);
-$shadows: #020202;
-$skeletonDark: #232323;
+$shadows: #838080;
+$skeletonDark: #7c7b7b;
 
 .bgDark {
     background: $bgDark;

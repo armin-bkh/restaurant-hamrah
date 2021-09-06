@@ -1,10 +1,7 @@
-import styles from './RadioIComponent.module.scss';
-import '../../../scss/main.scss';
-
 const RadioIComponent = ({ onChange, filterState, filtervalue, lbl }) => {
     return ( 
         <div
-        className={`shadow-md relative text-sm py-1 w-14 ml-2 rounded-full bgDark boxShadow text-white`}
+        className={`shadow-md text-black relative text-sm py-1 w-14 ml-2 rounded-full bgDark boxShadow`}
       >
         <input
           id={filtervalue}

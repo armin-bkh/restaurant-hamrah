@@ -4,7 +4,7 @@ import styles from './ManageFooter.module.scss';
 
 const ManageFooter = () => {
   return (
-    <footer className={`text-xs sm:text-sm md:text-lg px-5 py-4 text-white bgDark Dirooz ${styles.manageFooterContainer}`}>
+    <footer className={`text-xs sm:text-sm md:text-lg px-5 py-4 text-black bgDark Dirooz ${styles.manageFooterContainer}`}>
       <p>تمامی حقوق ارتا ارتباط اطلس محفوظ است</p>
       <section>
         <nav className={`mt-4`}>

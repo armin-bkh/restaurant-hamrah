@@ -36,7 +36,7 @@ const ManageEditProduct = () => {
   }
 
   return (
-    <section className={`text-white`}>
+    <section className={`text-black`}>
       <ul className={`flex flex-col rounded-md borderRoundFull ${styles.list}`}>
         {returnValue}
       </ul>
