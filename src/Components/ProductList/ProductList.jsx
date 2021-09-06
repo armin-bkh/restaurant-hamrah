@@ -4,7 +4,6 @@ import { BiFoodMenu } from "react-icons/bi";
 import Filter from "../Filter/FIlter";
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../../Services/getAllProducts";
-import '../../scss/main.scss';
 import ProductsLoadingSkeleton from "../LoadingSkeleton/ProductsLoadingSkeleton/ProductsLoadingSkeleton";
 
 const ProductList = () => {

@@ -3,8 +3,6 @@ import { getAllProducts } from '../../Services/getAllProducts';
 import { BiTrash } from 'react-icons/bi';
 import { deleteProduct } from "../../Services/deleteProduct";
 import { numberWithCommas } from '../utils/CommaNumber';
-import '../../scss/main.scss';
-
 
 const ManageRemoveProduct = () => {
     const [products, setProducts] = useState(null);

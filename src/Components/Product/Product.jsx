@@ -2,7 +2,6 @@ import { useReservatioActions } from "../../Container/ReservationProvider";
 import { BiPin } from "react-icons/bi";
 import styles from "./Products.module.scss";
 import { useState } from "react";
-import '../../scss/main.scss';
 
 const Product = ({ inf }) => {
   const [pin, setPin] = useState(false);

@@ -4,7 +4,6 @@ import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
 import { putProduct } from "../../Services/putProduct";
 import styles from "./ManageEditProduct.module.scss";
-import '../../scss/main.scss';
 
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
