@@ -2,6 +2,7 @@ import { useReservatioActions } from "../../Container/ReservationProvider";
 import { BiPin } from "react-icons/bi";
 import styles from "./Products.module.scss";
 import { useState } from "react";
+import '../../scss/main.scss';
 
 const Product = ({ inf }) => {
   const [pin, setPin] = useState(false);
@@ -16,7 +17,7 @@ const Product = ({ inf }) => {
   };
 
   return  (
-    <figure className={`flex-grow-0 flex-shrink-0 ${styles.productContainer}`}>
+    <figure className={`flex-grow-0 flex-shrink-0 bgDark boxShadow ${styles.productContainer}`}>
  
       <img
         loading="lazy"

@@ -3,6 +3,7 @@ import CartItem from "../CartItem/CartItem";
 import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
 import { numberWithCommas } from "../../utils/CommaNumber";
+import '../../../scss/main.scss';
 import { useCart, useReservatioActions, useTotalPrice } from "../../../Container/ReservationProvider";
 
 const CartList = () => {
@@ -18,7 +19,7 @@ const CartList = () => {
   };
 
   return (
-    <section className={`mx-6 p-6 ${styles.cartContainer}`}>
+    <section className={`mx-6 p-6 bgGradient ${styles.cartContainer}`}>
       {!cart.length ? (
         <header className={`flex items-center justify-center bg-clip-text
          bg-gradient-to-r text-transparent from-yellow-400 to-red-700

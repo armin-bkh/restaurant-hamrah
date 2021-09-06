@@ -1,0 +1,42 @@
+$bgDark: #363636;
+$bgDarkTop: #2e2e2e;
+$bgDarkGradint: linear-gradient(to bottom, rgba($bgDarkTop, 1), rgba($bgDark, 1) 40%, transparent);
+$shadows: #020202;
+$skeletonDark: #232323;
+
+.bgDark {
+    background: $bgDark;
+}
+
+.bgDarkTop {
+    background: $bgDarkTop;
+}
+
+.bgGradient {
+    background: linear-gradient(to bottom, rgba($bgDarkTop, 1), rgba($bgDark, 1) 40%, transparent);
+}
+
+.bgSkeleton {
+    background: $skeletonDark;
+}
+
+.boxShadow {
+    box-shadow: 0 5px 10px $shadows;
+}
+
+.boxShodowInner {
+    box-shadow: inset 5px 5px 5px $shadows,
+        inset -5px -5px 5px $skeletonDark;
+}
+
+.borderBottom {
+    border-bottom: 2px $skeletonDark solid;
+
+    &:last-child {
+        border-bottom: none;
+    }
+}
+
+.borderRoundFull {
+    border: 2px $skeletonDark solid;
+}

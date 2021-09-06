@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { postProduct } from "../../Services/postProduct";
 import styles from "./ManageAddProduct.module.scss";
+import '../../scss/main.scss';
 
 const ManageAddProduct = () => {
   const [error, setError] = useState(false);
@@ -44,7 +45,7 @@ const ManageAddProduct = () => {
     }
   };
   return (
-    <form className={`text-white flex flex-col`} onSubmit={sumbitHandler}>
+    <form className={`text-white flex flex-col p-5 rounded-md borderRoundFull`} onSubmit={sumbitHandler}>
       <label className={`mb- text-sm md:text-lg`} htmlFor="title">
         نام غذا:{" "}
       </label>

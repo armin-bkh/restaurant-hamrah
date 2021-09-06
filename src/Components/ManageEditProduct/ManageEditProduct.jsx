@@ -4,6 +4,7 @@ import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
 import { putProduct } from "../../Services/putProduct";
 import styles from "./ManageEditProduct.module.scss";
+import '../../scss/main.scss';
 
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
@@ -37,7 +38,7 @@ const ManageEditProduct = () => {
 
   return (
     <section className={`text-white`}>
-      <ul className={`flex flex-col rounded-md ${styles.list}`}>
+      <ul className={`flex flex-col rounded-md borderRoundFull ${styles.list}`}>
         {returnValue}
       </ul>
     </section>
@@ -49,7 +50,7 @@ export default ManageEditProduct;
 const ProductItem = ({ inf, setProductId }) => {
   return (
     <li
-      className={`flex justify-between items-center px-4 py-3 text-sm md:text-lg ${styles.item}`}
+      className={`flex justify-between items-center px-4 py-3 text-sm md:text-lg borderBottom ${styles.item}`}
     >
       <div className={`w-20 h-20`}>
         <img className={`w-full h-full`} src={inf.img} alt={inf.title} />

@@ -23,7 +23,7 @@ const ManageHeader = () => {
     }, [])
 
   return (  
-    <header className={`flex flex-col shadow-md px-3 py-5 text text-red-700 ${styles.manageHeaderContainer}`}>
+    <header className={`flex flex-col shadow-md px-3 py-5 text bgDark boxShadow text-red-700 ${styles.manageHeaderContainer}`}>
       <section className={`flex justify-between items-center mb-8`}>
         <h1 className={`text-3xl md:text-4xl xl:text-6xl FPArsoo`}>رستوران {info ? info.name : null}</h1>
         <h6 className={`text-sm font-bold text-white Dirooz`}>تعداد میز: 

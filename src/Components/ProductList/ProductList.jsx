@@ -4,6 +4,7 @@ import { BiFoodMenu } from "react-icons/bi";
 import Filter from "../Filter/FIlter";
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../../Services/getAllProducts";
+import '../../scss/main.scss';
 import ProductsLoadingSkeleton from "../LoadingSkeleton/ProductsLoadingSkeleton/ProductsLoadingSkeleton";
 
 const ProductList = () => {
@@ -57,7 +58,7 @@ const ProductList = () => {
 
   return (
     <section
-      className={`mt-10 mx-6 flex flex-col px-2 py-6 overflow-x-hidden ${styles.productListContainer}`}
+      className={`mt-10 mx-6 flex flex-col px-2 py-6 overflow-x-hidden bgGradient ${styles.productListContainer}`}
     >
       <header className={`mb-3 px-2`}>
         <h1

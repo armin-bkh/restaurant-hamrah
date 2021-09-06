@@ -1,6 +1,5 @@
 import { NavLink } from "react-router-dom";
 import {} from "react-icons";
-import styles from './ManageProductsNavigation.module.scss';
 
 const links = [
   { to: "/manage/manage-products/add-product", title: "اضافه" },
@@ -10,9 +9,9 @@ const links = [
 
 const ManageProductsNavigation = () => {
   return (
-    <aside className={`ANoor mb-10 md:mb-0 ${styles.productsNavigation}`}>
+    <aside className={`ANoor mb-10 md:mb-0`}>
       <nav className={`sticky top-4`}>
-        <ul className={`p-2 ${styles.navConitaner}`}>
+        <ul className={`p-2 boxShadow rounded-md bgDark`}>
           {links.map((link) => (
             <li key={link.to} className={`mb-4 w-full`}>
               <NavLink
