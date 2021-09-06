@@ -36,7 +36,7 @@ export default ManageProducts;
 
 const ManageProductsDetail = () => {
   return (
-    <article>
+    <article className={`text-white`}>
       <h1>برای مدیریت غذا بر روی یکی از گزینه ها کلیک کنید</h1>
     </article>
   );

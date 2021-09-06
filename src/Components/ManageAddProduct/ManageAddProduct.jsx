@@ -45,65 +45,65 @@ const ManageAddProduct = () => {
   };
   return (
     <form className={`text-white flex flex-col`} onSubmit={sumbitHandler}>
-      <label className={`mb-3`} htmlFor="title">
+      <label className={`mb- text-sm md:text-lg`} htmlFor="title">
         نام غذا:{" "}
       </label>
       <input
-        className={`mb-5 bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
+        className={`mb-5 text-sm bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
         type="text"
         id="title"
         name="title"
         value={formValue.title}
         onChange={changeHandler}
       />
-      <label className={`mb-3`} htmlFor="price">
+      <label className={`mb-3 text-sm md:text-lg`} htmlFor="price">
         قیمت:{" "}
       </label>
       <input
-        className={`mb-5 bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
+        className={`mb-5 text-sm bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
         type="text"
         id="price"
         name="price"
         value={formValue.price}
         onChange={changeHandler}
       />
-      <label className={`mb-3`} htmlFor="information">
+      <label className={`mb-3 text-sm md:text-lg`} htmlFor="information">
         توضیحات:{" "}
       </label>
       <textarea
         rows="5"
-        className={`mb-5 bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
+        className={`mb-5 text-sm bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
         id="information"
         name="information"
         value={formValue.information}
         onChange={changeHandler}
       ></textarea>
-      <label className={`mb-3`} htmlFor="filter">
+      <label className={`mb-3 text-sm md:text-lg`} htmlFor="filter">
         دسته بندی:{" "}
       </label>
       <input
-        className={`mb-5 bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
+        className={`mb-5 text-sm bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
         type="text"
         id="filter"
         name="filter"
         value={formValue.filter}
         onChange={changeHandler}
       />
-      <label className={`mb-3`} htmlFor="materials">
+      <label className={`mb-3 text-sm md:text-lg`} htmlFor="materials">
         مخلفات:{" "}
       </label>
       <textarea
-        className={`mb-5 bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
+        className={`mb-5 text-sm bg-transparent rounded-md px-5 py-3 outline-none ${styles.boxShadowInner}`}
         id="materials"
         name="materials"
         value={formValue.materials}
         onChange={changeHandler}
       ></textarea>
-      <label className={`mb-3`} htmlFor="img">
+      <label className={`mb-3 text-sm md:text-lg`} htmlFor="img">
         عکس غذا:{" "}
       </label>
       <input
-        className={`w-max cursor-pointer`}
+        className={`w-max text-sm cursor-pointer`}
         value={formValue.img}
         type="file"
         id="img"

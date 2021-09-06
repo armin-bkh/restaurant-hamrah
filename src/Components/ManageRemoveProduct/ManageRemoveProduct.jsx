@@ -65,7 +65,7 @@ const DelProduct = ({inf, setProducts}) =>{
         }
     }
     return (
-        <li className={`flex items-center justify-between px-3 py-2 ${styles.item}`}>
+        <li className={`flex text-sm md:text-lg items-center justify-between px-3 py-2 ${styles.item}`}>
         <div className={`w-20 h-20`}>
             <img className={`w-full h-full`} src={inf.img} alt={inf.title} />
         </div>
