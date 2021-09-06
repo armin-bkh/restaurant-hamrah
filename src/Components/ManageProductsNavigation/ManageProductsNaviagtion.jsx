@@ -10,7 +10,7 @@ const links = [
 
 const ManageProductsNavigation = () => {
   return (
-    <aside className={`ANoor ${styles.productsNavigation}`}>
+    <aside className={`ANoor mb-10 md:mb-0 ${styles.productsNavigation}`}>
       <nav className={`sticky top-4`}>
         <ul className={`p-2 ${styles.navConitaner}`}>
           {links.map((link) => (
