@@ -1,0 +1,11 @@
+.form{
+    border: 2px #222222 solid;
+
+    .item{
+        border-bottom: 2px #222222 solid; 
+    
+        &:last-child{
+            border-bottom: none;
+        }
+    }
+}
