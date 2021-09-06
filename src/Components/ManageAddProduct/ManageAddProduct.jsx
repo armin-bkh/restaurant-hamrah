@@ -103,7 +103,7 @@ const ManageAddProduct = () => {
         عکس غذا:{" "}
       </label>
       <input
-        className={`cursor-pointer`}
+        className={`w-max cursor-pointer`}
         value={formValue.img}
         type="file"
         id="img"

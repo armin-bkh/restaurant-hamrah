@@ -2,17 +2,17 @@
   "products": [
     {
       "id": 1,
-      "title": "سالاد مرغ",
-      "price": "32000",
-      "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
+      "title": "سالاد گوجه خیار",
+      "price": "22000",
+      "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
       "filter": "salad"
     },
     {
       "id": 2,
-      "title": "قیمه بادمجان",
-      "price": "25000",
+      "title": "قیمه بادمجون",
+      "price": "38000",
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
