@@ -107,7 +107,7 @@ const Displayer = ({ productId }) => {
           <button
             type="submit"
             onClick={clickHandler}
-            className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm gradient
+            className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-md gradient
              FPArsoo tracking-widest text-white`}
           >
             افزودن به سبد خرید

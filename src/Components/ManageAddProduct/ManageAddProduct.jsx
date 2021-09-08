@@ -45,7 +45,7 @@ const ManageAddProduct = () => {
     }
   };
   return (
-    <form className={`text-black flex flex-col p-4 rounded-md boxShadowInner`} onSubmit={sumbitHandler}>
+    <form className={`text-black flex flex-col p-4 rounded-md boxShadow`} onSubmit={sumbitHandler}>
       <label className={`mb- text-sm xl:text-lg`} htmlFor="title">
         نام غذا:{" "}
       </label>
@@ -112,7 +112,7 @@ const ManageAddProduct = () => {
         name="img"
         onChange={changeHandler}
       />
-      <button type="submit" className={`mt-10 py-2 FPArsoo text-xl text-white gradient`}>ثبت</button>
+      <button type="submit" className={`mt-10 py-2 rounded-md FPArsoo text-xl text-white gradient`}>ثبت</button>
     </form>
   );
 };

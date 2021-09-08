@@ -48,7 +48,7 @@ const CartList = () => {
           <button
           type="submit"
             className={`text-sm w-full md:text-md lg:text-lg xl:text-xl
-             py-2 mt-3 rounded-sm gradient FPArsoo tracking-widest text-white`}
+             py-2 mt-3 rounded-md gradient FPArsoo tracking-widest text-white`}
           >
             ثبت سفارش
           </button>

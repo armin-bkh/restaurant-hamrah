@@ -3,6 +3,7 @@ import { BiPencil } from "react-icons/bi";
 import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
 import { putProduct } from "../../Services/putProduct";
+import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 import styles from "./ManageEditProduct.module.scss";
 
@@ -38,7 +39,7 @@ const ManageEditProduct = () => {
 
   return (
     <section className={`text-black`}>
-      <ul className={`boxShadowInner py-1 px-4`}>
+      <ul className={`boxShadowInner rounded-md py-1 px-4`}>
         {returnValue}
       </ul>
     </section>
@@ -105,31 +106,31 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
       
   }
 
-  let returnValue = <h1>برای ایجاد تغییر روی غذا مورد نظر کلیک کنید</h1>;
+  let returnValue;
 
   if (productId) {
-    returnValue = <h1>در حال پردازش</h1>;
+    returnValue = <EditFoodLoadingSkeleton />;
   }
 
   if(formValue && !error) {
     returnValue = (
-    <form onSubmit={SubmitHandler} className={`flex text-black flex-col w-full items-center px-4 py-3 boxShadow`}>
+    <form onSubmit={SubmitHandler} className={`flex text-black flex-col w-full my-3 items-center rounded-md px-4 py-3 boxShadow`}>
       <div className={`mb-5 flex-col justify-center items-center w-full`}>
         <label className={`ml-3 text-sm md:text-lg`}>نام غذا: </label>
-        <input className={`bg-transparent text-sm w-full px-3 py-2 rounded-md outline-none boxShadowInner`} value={formValue.title} name="title" onChange={changeHandler} />
+        <input className={`bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md outline-none boxShadow`} value={formValue.title} name="title" onChange={changeHandler} />
       </div>
       <div className={`mb-5 flex-col justify-center items-center w-full`}>
         <label className={`ml-3 text-sm md:text-lg`}>قیمت:</label>
-        <input className={`bg-transparent text-sm w-full px-3 py-2 rounded-md outline-none boxShadowInner`} value={formValue.price} name="price" onChange={changeHandler} />
+        <input className={`bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md outline-none boxShadow`} value={formValue.price} name="price" onChange={changeHandler} />
       </div>
       <div className={`mb-5 flex-col justify-center items-center w-full`}>
       <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
-        <input className={`bg-transparent text-sm w-full px-3 py-2 rounded-md outline-none boxShadowInner`} value={formValue.filter} name="filter" onChange={changeHandler} />
+        <input className={`bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md outline-none boxShadow`} value={formValue.filter} name="filter" onChange={changeHandler} />
       </div>
       <div className={`mb-5 flex-col justify-center w-full`}>
       <label className={`ml-3 text-sm md:text-lg`}>مخلفات:</label>
         <textarea
-        className={`bg-transparent text-sm w-full px-3 py-2 rounded-md h-52 outline-none boxShadowInner`}
+        className={`bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md h-52 outline-none boxShadow`}
           value={formValue.materials} name="materials"
           onChange={changeHandler}
         ></textarea>
@@ -139,17 +140,17 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
       توضیحات: 
       </label>
         <textarea
-        className={`bg-transparent px-3 text-sm w-full py-2 rounded-md h-52 outline-none boxShadowInner`}
+        className={`bg-transparent px-3 mt-2 text-sm w-full py-2 rounded-md h-52 outline-none boxShadow`}
           value={formValue.information} name="information"
           onChange={changeHandler}
         ></textarea>
       </div>
       <div className={`mb-5 w-full flex-col flex justify-start`}>
-        <label className={`ml-3`}>عکس غذا: </label>
-        <input className={`cursor-pointer text-sm`} type="file" name="img" accept=".jpg, .jpeg, .png" onChange={changeHandler} />
+        <label className={`ml-3 text-sm md:text-lg`}>عکس غذا: </label>
+        <input className={`cursor-pointer mt-2 text-sm`} type="file" name="img" accept=".jpg, .jpeg, .png" onChange={changeHandler} />
       </div>
 
-      <button className={`py-3 mt-14 w-full gradient FPArsoo text-xl text-white`} type="submit">ثبت</button>
+      <button className={`py-2 mt-14 w-full gradient FPArsoo text-xl rounded-md text-white`} type="submit">ثبت</button>
     </form>
     );
   }

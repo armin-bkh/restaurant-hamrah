@@ -26,8 +26,8 @@ const Table = ({ resForm, setTables }) => {
       <h1 className={`mb-4 text-sm Dirooz`}>اقا/خانوم: {resForm.userName}</h1>
       <h1 className={`mb-4 text-sm Dirooz`}>سفارشات: {resForm.foods.map(fd => <span key={fd} className={`mx-2`}>{fd}</span>)}</h1>
       <h1 className={` text-sm Dirooz`}>مبلغ نهایی: {totalPrice()} تومان</h1>
-      <button className={`rounded-sm cursor-pointer 
-             gradient px-5 py-1 block w-full text-white
+      <button className={`rounded-md cursor-pointer 
+             gradient py-2 block w-full text-white
               mx-auto mt-14 font-bold ANoor`} type="submit">حذف</button>
     </form>
     </article>
