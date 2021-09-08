@@ -25,7 +25,7 @@ const ProductList = () => {
   const filterHandler = async (value) =>{
     try{
       const { data } = await getAllProducts();
-      if( value === 'all'){
+      if(value === 'all'){
         setProducts(data);
         return;
       }

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { toast } from "react-toastify";
 import { getInfRes } from "../../Services/getInfRes";
 import ManageNavigation from "../ManageNavigation/ManageNavigation";
 import styles from './ManageHeader.module.scss';
@@ -15,7 +14,6 @@ const ManageHeader = () => {
                 setInfo(data);
             }
             catch(err){
-                toast.error("مشکلی پیش امده");
                 setError(true);
             }
         }
