@@ -68,7 +68,6 @@ const reducer = (state, action) => {
       }
       return {
         ...state,
-        totalPrice: action.totalPrice + state.totalPrice,
         cart: [...state.cart, action.data],
         notification: { type: "success", message: "به سبد خرید شما افزوده شد" },
       };
@@ -82,16 +81,7 @@ const reducer = (state, action) => {
       };
     }
     case "submitCart": {
-      Swal.fire({
-        title: "ثبت گردید",
-        text: "سفارش شما با موفقیت ثبت گردید",
-        icon: "success",
-        confirmButtonText: "تایید",
-        showCloseButton: true,
-        timer: 10000,
-        backdrop: true,
-      });
-      return {...state, cart: '', totalPrice: 0};
+      return {...state, cart: [], totalPrice: 0};
     }
     case "calcTotalPrice": {
       const cartItemsPrice = state.cart.map(item => item.finalPrice);
@@ -184,6 +174,15 @@ export const useReservatioActions = () => {
     try{
       const token = "SECURE POST";
       await postCart(cart, token);
+       Swal.fire({
+        title: "ثبت گردید",
+        text: "سفارش شما با موفقیت ثبت گردید",
+        icon: "success",
+        confirmButtonText: "تایید",
+        showCloseButton: true,
+        timer: 10000,
+        backdrop: true,
+      });
       dispatch({ type: "submitCart" });
     }
     catch(err){
