@@ -27,7 +27,7 @@ const ManageRemoveProduct = () => {
     let returnValue = Array(15).fill().map((item, index) => <FoodLoadingSkeleton key={index} />)
 
     if(error){
-        returnValue = <h1 className={`text-blue-400 text-center py-40 text-lg lg:text-3xl FPArsoo`}>فهرست غذا خالی است</h1>
+        returnValue = <h1 className={`text-blue-400 text-center py-20 lg:p-32 text-lg lg:text-3xl FPArsoo`}>فهرست غذا خالی است</h1>
     }
 
     if(products && !error){
@@ -71,7 +71,7 @@ const DelProduct = ({inf, setProducts}) =>{
     return (
         <li className={`flex text-sm md:text-lg rounded-md boxShadow items-center my-4 justify-between px-4 py-3`}>
         <div className={`w-20 h-20`}>
-            <img className={`w-full h-full`} src={inf.img} alt={inf.title} />
+            <img className={`w-full h-full`} loading="lazy" src={inf.img} alt={inf.title} />
         </div>
         <span>
             {inf.title}

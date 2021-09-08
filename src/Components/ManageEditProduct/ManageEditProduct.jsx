@@ -4,6 +4,7 @@ import { useToasts } from "react-toast-notifications";
 import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
 import { putProduct } from "../../Services/putProduct";
+import SelectBox from "../Common/SelectBox/SelectBox";
 import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 
@@ -27,7 +28,7 @@ const ManageEditProduct = () => {
   let returnValue = Array(15).fill().map((item, index) => <FoodLoadingSkeleton key={index} /> );
 
   if (error) {
-    returnValue = <h1 className={`text-blue-400 text-center py-40 text-lg lg:text-3xl FPArsoo`}>فهرست غذا خالی است</h1>;
+    returnValue = <h1 className={`text-blue-400 text-center py-20 lg:p-32 text-lg lg:text-3xl FPArsoo`}>فهرست غذا خالی است</h1>;
   }
   if (products && !error) {
     returnValue = products.map((pr) => {
@@ -54,7 +55,7 @@ const ProductItem = ({ inf, setProductId }) => {
       className={`flex justify-between items-center my-4 px-4 py-3 text-sm md:text-lg rounded-md boxShadow`}
     >
       <div className={`w-20 h-20`}>
-        <img className={`w-full h-full`} src={inf.img} alt={inf.title} />
+        <img className={`w-full h-full`} loading="lazy" src={inf.img} alt={inf.title} />
       </div>
       <span>{inf.title}</span>
       <span>{inf.price}</span>
@@ -94,6 +95,12 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
       [e.target.name]: e.target.value,
     });
   };
+  const selectChangeHandler = (selectedOption) =>{
+    setFormValue({
+      ...formValue,
+      filter: selectedOption.value
+    })
+  }
 
   const SubmitHandler = async (e) =>{
       e.preventDefault();
@@ -138,7 +145,7 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
       </div>
       <div className={`mb-5 flex-col justify-center items-center w-full`}>
       <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
-        <input className={`bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md outline-none boxShadow`} value={formValue.filter} name="filter" onChange={changeHandler} />
+        <SelectBox value={formValue.filter} onChange={selectChangeHandler} />
       </div>
       <div className={`mb-5 flex-col justify-center w-full`}>
       <label className={`ml-3 text-sm md:text-lg`}>مخلفات:</label>

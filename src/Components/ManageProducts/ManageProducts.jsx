@@ -36,7 +36,7 @@ export default ManageProducts;
 
 const ManageProductsDetail = () => {
   return (
-    <article className={`text-black flex justify-center sticky top-4`}>
+    <article className={`text-blue-400 FPArsoo text-lg lg:text-3xl flex justify-center sticky top-4`}>
       <h1>برای مدیریت غذا بر روی یکی از گزینه ها کلیک کنید</h1>
     </article>
   );

@@ -1,8 +1,7 @@
 import { useState } from "react";
 import { postProduct } from "../../Services/postProduct";
-import styles from "./ManageAddProduct.module.scss";
-import '../../scss/main.scss';
 import { useToasts } from "react-toast-notifications";
+import SelectBox from "../Common/SelectBox/SelectBox";
 
 const ManageAddProduct = () => {
   const [error, setError] = useState(false);
@@ -21,6 +20,12 @@ const ManageAddProduct = () => {
       [e.target.name]: e.target.value,
     });
   };
+  const selectChangeHandler = (selectedOption) =>{
+    setFormValue({
+      ...formValue,
+      filter: selectedOption.value,
+    })
+  }
   const sumbitHandler = async (e) => {
     e.preventDefault();
     if(
@@ -86,14 +91,7 @@ const ManageAddProduct = () => {
       <label className={`mb-3 text-sm xl:text-lg`} htmlFor="filter">
         دسته بندی:{" "}
       </label>
-      <input
-        className={`mb-5 text-sm bg-transparent rounded-md px-3 py-2 outline-none boxShadow`}
-        type="text"
-        id="filter"
-        name="filter"
-        value={formValue.filter}
-        onChange={changeHandler}
-      />
+      <SelectBox value={formValue.filter} onChange={selectChangeHandler}/>
       <label className={`mb-3 text-sm xl:text-lg`} htmlFor="materials">
         مخلفات:{" "}
       </label>
