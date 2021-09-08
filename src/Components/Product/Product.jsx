@@ -16,7 +16,7 @@ const Product = ({ inf }) => {
   };
 
   return  (
-    <figure className={`flex-grow-0 flex-shrink-0 bgDark boxShadow ${styles.productContainer}`}>
+    <figure className={`flex-grow-0 flex-shrink-0 bgLight boxShadow ${styles.productContainer}`}>
  
       <img
         loading="lazy"
@@ -40,9 +40,8 @@ const Product = ({ inf }) => {
           </span>
           <span>
             <BiPin
-              className="cursor-pointer text-xl transition-colors"
+              className={`${pin ? 'text-blue-400' : 'text-black' } cursor-pointer text-xl transition-colors`}
               onClick={likeHandler}
-              style={pin ? { color: "#f7362f" } : { color: "#fff" }}
             />
           </span>
         </div>

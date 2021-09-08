@@ -7,7 +7,6 @@ import { ToastContainer } from "react-toastify";
 const ReservationPage = () => {
   return (
     <ReservationProvider>
-      <div className={`bgDark min-h-screen`}>
         <CartList />
         <DisplyerContainer />
         <ProductList />
@@ -20,7 +19,6 @@ const ReservationPage = () => {
           rtl={true}
           draggable
         />
-      </div>
     </ReservationProvider>
   );
 };

@@ -4,9 +4,9 @@ import styles from "./ProductsLoadingSkeleton.module.scss";
 const ProductsLoadingSkeleton = () => {
   return (
     <article
-      className={`flex-shrink-0 flex-grow-0 ${styles.skeletonContainer}`}
+      className={`flex-shrink-0 flex-grow-0 bgLight boxShadow ${styles.skeletonContainer}`}
     >
-    <SkeletonTheme color={"#232323"} highlightColor={"#363636"}> 
+    <SkeletonTheme color={"#a8a7a7"} highlightColor={"#dbdbdb"}> 
         <div className={`${styles.skeletonImage}`}>
           <Skeleton
             style={{ borderRadius: "50%" }}

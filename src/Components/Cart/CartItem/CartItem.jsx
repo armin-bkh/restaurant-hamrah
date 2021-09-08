@@ -21,17 +21,17 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
     >
       <span
         className={`text-xs sm:text-sm md:text-md lg:text-lg
-       xl:text-xl text-white`}
+       xl:text-xl text-black`}
       >
         {foodN}
       </span>
       <span
         className={`hidden sm:block text-xs sm:text-sm md:text-md
-       lg:text-lg xl:text-xl text-white`}
+       lg:text-lg xl:text-xl text-black`}
       >
         قیمت واحد: {foodBPrice()}
       </span>
-      <div className={`flex justify-between items-center text-white`}>
+      <div className={`flex justify-between items-center text-black`}>
         <span
           className={`hidden sm:block text-xs sm:text-sm
          md:text-md lg:text-lg xl:text-xl`}
@@ -41,34 +41,33 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
         <button
           type="button"
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
-           bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 text-white`}
+          gradient-bottom cursor-pointer text-white`}
           onClick={() => incrementItemCartHandler(itemID)}
         >
           <BiPlus />
         </button>
         <span
-          className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl text-white`}
+          className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl text-black`}
         >
           {foodQ}
         </span>
         <button
           type="button"
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
-           bg-gradient-to-b from-gray-800 cursor-pointer to-gray-900 text-white`}
+          gradient-bottom cursor-pointer text-white`}
           onClick={() => decrementItemCartHandler(itemID)}
         >
           {foodQ > 1 ? <BiMinus /> : <BiTrash />}
         </button>
       </div>
       <span
-        className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl text-white`}
+        className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl text-black`}
       >
         قیمت: {foodFPrice()}
       </span>
       <button
         className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
-       bg-gradient-to-b from-gray-800 cursor-pointer
-        to-gray-900 text-white`}
+        gradient-bottom text-white`}
         type="button"
         onClick={() => deleteItemCartHandler(itemID)}
       >

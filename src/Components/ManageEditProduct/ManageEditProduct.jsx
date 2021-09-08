@@ -37,7 +37,7 @@ const ManageEditProduct = () => {
 
   return (
     <section className={`text-black`}>
-      <ul className={`flex flex-col rounded-md borderRoundFull ${styles.list}`}>
+      <ul className={`flex flex-col rounded-md boxShadowInner p-5`}>
         {returnValue}
       </ul>
     </section>
@@ -49,7 +49,7 @@ export default ManageEditProduct;
 const ProductItem = ({ inf, setProductId }) => {
   return (
     <li
-      className={`flex justify-between items-center px-4 py-3 text-sm md:text-lg borderBottom ${styles.item}`}
+      className={`flex justify-between items-center px-4 py-3 text-sm mb-5 md:text-lg rounded-md boxShadow`}
     >
       <div className={`w-20 h-20`}>
         <img className={`w-full h-full`} src={inf.img} alt={inf.title} />
@@ -57,7 +57,7 @@ const ProductItem = ({ inf, setProductId }) => {
       <span>{inf.title}</span>
       <span>{inf.price}</span>
       <button
-        className={`bg-gradient-to-b from-gray-700 to-gray-900 px-2 py-2 rounded-full`}
+        className={`gradient-bottom px-2 py-2 text-white rounded-full`}
         onClick={() => setProductId(inf.id)}
       >
         <BiPencil />
@@ -112,23 +112,23 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
 
   if(formValue && !error) {
     returnValue = (
-    <form onSubmit={SubmitHandler} className={`flex text-white flex-col w-full items-center px-4 py-3 ${styles.item}`}>
+    <form onSubmit={SubmitHandler} className={`flex text-black flex-col w-full items-center px-4 py-3 boxShadow`}>
       <div className={`mb-5 flex-col justify-center items-center w-full`}>
         <label className={`ml-3 text-sm md:text-lg`}>نام غذا: </label>
-        <input className={`bg-transparent text-sm w-full px-3 py-2 rounded-md outline-none ${styles.boxShadowInner}`} value={formValue.title} name="title" onChange={changeHandler} />
+        <input className={`bg-transparent text-sm w-full px-3 py-2 rounded-md outline-none boxShadowInner`} value={formValue.title} name="title" onChange={changeHandler} />
       </div>
       <div className={`mb-5 flex-col justify-center items-center w-full`}>
         <label className={`ml-3 text-sm md:text-lg`}>قیمت:</label>
-        <input className={`bg-transparent text-sm w-full px-3 py-2 rounded-md outline-none ${styles.boxShadowInner}`} value={formValue.price} name="price" onChange={changeHandler} />
+        <input className={`bg-transparent text-sm w-full px-3 py-2 rounded-md outline-none boxShadowInner`} value={formValue.price} name="price" onChange={changeHandler} />
       </div>
       <div className={`mb-5 flex-col justify-center items-center w-full`}>
       <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
-        <input className={`bg-transparent text-sm w-full px-3 py-2 rounded-md outline-none ${styles.boxShadowInner}`} value={formValue.filter} name="filter" onChange={changeHandler} />
+        <input className={`bg-transparent text-sm w-full px-3 py-2 rounded-md outline-none boxShadowInner`} value={formValue.filter} name="filter" onChange={changeHandler} />
       </div>
       <div className={`mb-5 flex-col justify-center w-full`}>
       <label className={`ml-3 text-sm md:text-lg`}>مخلفات:</label>
         <textarea
-        className={`bg-transparent text-sm w-full px-3 py-2 rounded-md h-52 outline-none ${styles.boxShadowInner}`}
+        className={`bg-transparent text-sm w-full px-3 py-2 rounded-md h-52 outline-none boxShadowInner`}
           value={formValue.materials} name="materials"
           onChange={changeHandler}
         ></textarea>
@@ -138,7 +138,7 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
       توضیحات: 
       </label>
         <textarea
-        className={`bg-transparent px-3 text-sm w-full py-2 rounded-md h-52 outline-none ${styles.boxShadowInner}`}
+        className={`bg-transparent px-3 text-sm w-full py-2 rounded-md h-52 outline-none boxShadowInner`}
           value={formValue.information} name="information"
           onChange={changeHandler}
         ></textarea>
@@ -148,7 +148,7 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
         <input className={`cursor-pointer text-sm`} type="file" name="img" accept=".jpg, .jpeg, .png" onChange={changeHandler} />
       </div>
 
-      <button className={`py-4 mt-14 w-full bg-gradient-to-l from-yellow-400 to-red-700`} type="submit">ثبت</button>
+      <button className={`py-3 mt-14 w-full gradient FPArsoo text-xl text-white`} type="submit">ثبت</button>
     </form>
     );
   }

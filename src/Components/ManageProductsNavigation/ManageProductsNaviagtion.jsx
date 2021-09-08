@@ -1,25 +1,29 @@
 import { NavLink } from "react-router-dom";
-import {} from "react-icons";
+import {BiBookAdd, } from "react-icons/bi";
+import { FaEdit } from 'react-icons/fa';
+import { HiFolderRemove } from 'react-icons/hi';
 
 const links = [
-  { to: "/manage/manage-products/add-product", title: "اضافه" },
-  { to: "/manage/manage-products/edit-product", title: "تغییر" },
-  { to: "/manage/manage-products/remove-product", title: "حذف" },
+  { to: "/manage/manage-products/add-product", title: "اضافه", icon: <BiBookAdd/> },
+  { to: "/manage/manage-products/edit-product", title: "تغییر", icon: <FaEdit/> },
+  { to: "/manage/manage-products/remove-product", title: "حذف", icon: <HiFolderRemove/> },
 ];
 
 const ManageProductsNavigation = () => {
   return (
     <aside className={`ANoor mb-10 md:mb-0`}>
       <nav className={`sticky top-4`}>
-        <ul className={`p-2 boxShadow rounded-md bgDark`}>
+        <ul className={`p-2 boxShadow rounded-md bgLight`}>
           {links.map((link) => (
-            <li key={link.to} className={`mb-4 w-full`}>
+            <li key={link.to} className={`my-2 text-sm lg:text-lg w-full flex justify-between items-center`}>
               <NavLink
-                className={`text-black w-full block py-2 border-b border-gray-800 hover:text-yellow-400`}
-                activeClassName={`border-yellow-400 text-yellow-400`}
+                className={`text-blue-400 w-full flex justify-between items-center
+                 py-2 border-b border-blue-200 hover:text-green-300`}
+                activeClassName={`border-blue-400 text-yellow-400`}
                 to={link.to}
               >
                 {link.title}
+                {link.icon}
               </NavLink>
             </li>
           ))}

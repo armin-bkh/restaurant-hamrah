@@ -34,7 +34,7 @@ const ManageRemoveProduct = () => {
     }
 
     return ( 
-        <form className={`text-black borderRoundFull rounded-md`}>
+        <form className={`text-black boxShadowInner rounded-md p-5`}>
             <ul>
                 {
                     returnValue
@@ -64,7 +64,7 @@ const DelProduct = ({inf, setProducts}) =>{
         }
     }
     return (
-        <li className={`flex text-sm md:text-lg items-center justify-between px-3 py-2 borderBottom`}>
+        <li className={`flex text-sm md:text-lg rounded-md boxShadow items-center justify-between mb-5 px-4 py-3`}>
         <div className={`w-20 h-20`}>
             <img className={`w-full h-full`} src={inf.img} alt={inf.title} />
         </div>
@@ -75,7 +75,7 @@ const DelProduct = ({inf, setProducts}) =>{
         <span>
             {price()}
         </span>
-            <button className={`rounded-full bg-gradient-to-b from-gray-700 to-gray-900 px-2 py-2`} type="submit" onClick={deleteHandler}>
+            <button className={`rounded-full text-white gradient-bottom px-2 py-2`} type="submit" onClick={deleteHandler}>
                 <BiTrash />
             </button>
         </li>

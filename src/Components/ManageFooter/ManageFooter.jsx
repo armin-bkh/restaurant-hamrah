@@ -4,22 +4,22 @@ import styles from './ManageFooter.module.scss';
 
 const ManageFooter = () => {
   return (
-    <footer className={`text-xs sm:text-sm md:text-lg px-5 py-4 text-black bgDark Dirooz ${styles.manageFooterContainer}`}>
+    <footer className={`text-xs sm:text-sm md:text-lg px-5 py-4 text-black bgLight Dirooz ${styles.manageFooterContainer}`}>
       <p>تمامی حقوق ارتا ارتباط اطلس محفوظ است</p>
       <section>
         <nav className={`mt-4`}>
           <ul className={`flex w-full justify-evenly items-center`}>
-            <li>
-              <Link className={`text-gray-900 hover:text-red-700 transition-colors duration-1000 text-3xl cursor-pointer`} to="/manage"><FaTelegram /></Link>
+            <li className={`w-14 h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}>
+              <Link className={`text-blue-400 text-3xl cursor-pointer`} to="/manage"><FaTelegram /></Link>
             </li>
-            <li>
-              <Link className={`text-gray-900 hover:text-red-700 transition-colors duration-1000 text-3xl cursor-pointer`} to="/manage"><FaWhatsapp /></Link>
+            <li className={`w-14 h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}>
+              <Link className={`text-blue-400 text-3xl cursor-pointer`} to="/manage"><FaWhatsapp /></Link>
             </li>
-            <li>
-              <Link className={`text-gray-900 hover:text-red-700 transition-colors duration-1000 text-3xl cursor-pointer`} to="/manage"><FaLinkedin /></Link>
+            <li className={`w-14 h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}>
+              <Link className={`text-blue-400 text-3xl cursor-pointer`} to="/manage"><FaLinkedin /></Link>
             </li>
-            <li>
-              <Link className={`text-gray-900 hover:text-red-700 transition-colors duration-1000 text-3xl cursor-pointer`} to="/manage"><FaInstagram /></Link>
+            <li className={`w-14 h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}>
+              <Link className={`text-blue-400 text-3xl cursor-pointer`} to="/manage"><FaInstagram /></Link>
             </li>
           </ul>
         </nav>

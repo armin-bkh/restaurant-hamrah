@@ -6,6 +6,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   direction: rtl;
+  background: #dbdbdb;
 }
 .bgDarkImage{
   background: url('../images/background.jpg') center no-repeat;
@@ -21,7 +22,13 @@ code {
 @tailwind components;
 .color-gradient{
   @apply bg-clip-text bg-gradient-to-r text-transparent
-    from-yellow-400 to-red-700;
+  from-green-300 to-blue-400;
+}
+.gradient{
+  @apply bg-gradient-to-r from-green-300 to-blue-400;
+}
+.gradient-bottom{
+  @apply bg-gradient-to-b from-green-300 to-blue-400;
 }
 @tailwind utilities;
 

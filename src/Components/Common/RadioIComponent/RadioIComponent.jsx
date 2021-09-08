@@ -1,7 +1,7 @@
 const RadioIComponent = ({ onChange, filterState, filtervalue, lbl }) => {
     return ( 
         <div
-        className={`shadow-md text-black relative text-sm py-1 w-14 ml-2 rounded-full bgDark boxShadow`}
+        className={`shadow-md text-black relative text-sm py-1 w-14 ml-2 rounded-full bgLight boxShadow`}
       >
         <input
           id={filtervalue}

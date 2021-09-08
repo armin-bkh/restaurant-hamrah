@@ -1,36 +1,37 @@
-$bgDark: #f3f3f3;
-$bgDarkTop: #ffffff;
-$bgDarkGradint: linear-gradient(to bottom, rgba($bgDarkTop, 1), rgba($bgDark, 1) 40%, transparent);
-$shadows: #838080;
-$skeletonDark: #7c7b7b;
+$bgLight: #dbdbdb;
+$bgLightTop: #eeeeee;
+$bgLightGradint: linear-gradient(to bottom, rgba($bgLightTop, 1), rgba($bgLight, 1) 40%, transparent);
+$shadows: #b3b2b2;
+$skeletonLight: #7c7b7b;
 
-.bgDark {
-    background: $bgDark;
+.bgLight {
+    background: $bgLight;
 }
 
-.bgDarkTop {
-    background: $bgDarkTop;
+.bgLightTop {
+    background: $bgLightTop;
 }
 
 .bgGradient {
-    background: linear-gradient(to bottom, rgba($bgDarkTop, 1), rgba($bgDark, 1) 40%, transparent);
+    background: linear-gradient(to bottom, rgba($bgLightTop, 1), rgba($bgLight, 1) 40%, transparent);
 }
 
 .bgSkeleton {
-    background: $skeletonDark;
+    background: $skeletonLight;
 }
 
 .boxShadow {
-    box-shadow: 0 5px 10px $shadows;
+    box-shadow: 5px 5px 15px $shadows,
+                -5px -5px 15px #ffffff;
 }
 
-.boxShodowInner {
+.boxShadowInner {
     box-shadow: inset 5px 5px 5px $shadows,
-        inset -5px -5px 5px $skeletonDark;
+        inset -5px -5px 5px #ffffff;
 }
 
 .borderBottom {
-    border-bottom: 2px $skeletonDark solid;
+    border-bottom: 2px $skeletonLight solid;
 
     &:last-child {
         border-bottom: none;
@@ -38,5 +39,5 @@ $skeletonDark: #7c7b7b;
 }
 
 .borderRoundFull {
-    border: 2px $skeletonDark solid;
+    border: 2px $skeletonLight solid;
 }

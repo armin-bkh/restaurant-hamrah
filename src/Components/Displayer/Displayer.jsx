@@ -39,10 +39,9 @@ const Displayer = ({ productId }) => {
       className={`text-center text-xl sm:text-3xl md:text-5xl
        flex justify-center items-center ${styles.dispalyerWelcome}`}
     >
-      <BiRestaurant className={`text-red-700 inline-block rounded-full ml-2`} />{" "}
+      <BiRestaurant className={`text-blue-400 inline-block rounded-full ml-2`} />{" "}
       <h1
-        className={`bg-clip-text bg-gradient-to-r text-transparent
-         from-yellow-400 to-red-700 ANoor`}
+        className={`bg-clip-text bg-gradient-to-r color-gradient py-3`}
       >
         خوش آمدید لطفا انتخاب کنید
       </h1>
@@ -66,12 +65,12 @@ const Displayer = ({ productId }) => {
             {product.title}
           </h1>
           <h3
-            className={`text-md lg:text-lg xl:text-2xl mt-4 FPArsoo text-yellow-400 text-center`}
+            className={`text-md lg:text-lg xl:text-2xl mt-4 FPArsoo text-blue-400 text-center`}
           >
             {productPrice()} تومان
           </h3>
           <h3
-            className={`text-md lg:text-lg xl:text-2xl mt-10 mb-2 ANoor text-yellow-400 tracking-widest`}
+            className={`text-md lg:text-lg xl:text-2xl mt-10 mb-2 ANoor text-blue-400 tracking-widest`}
           >
             توضیحات:
           </h3>
@@ -83,21 +82,21 @@ const Displayer = ({ productId }) => {
           <div className={`flex justify-center items-center`}>
             <button
               type="button"
-              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b
-               from-gray-800 cursor-pointer to-gray-900 tracking-widest`}
+              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full gradient-bottom
+               tracking-widest text-white`}
               onClick={() => setCount((prevCount) => prevCount + 1)}
             >
               <BiPlus />
             </button>
             <span
-              className={`text-sm md:text-md lg:text-lg xl:text-xl FPArsoo tracking-widest`}
+              className={`text-sm md:text-md lg:text-lg xl:text-xl FPArsoo text-blue-400 tracking-widest`}
             >
               {count}
             </span>
             <button
               type="button"
-              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full bg-gradient-to-b
-               from-gray-800 cursor-pointer to-gray-900 tracking-widest`}
+              className={`text-sm md:text-md lg:text-base p-1 mx-5 rounded-full gradient-bottom
+               tracking-widest text-white`}
               onClick={() =>
                 count > 1 && setCount((prevCount) => prevCount - 1)
               }
@@ -108,8 +107,8 @@ const Displayer = ({ productId }) => {
           <button
             type="submit"
             onClick={clickHandler}
-            className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm bg-gradient-to-r
-             from-yellow-400 to-red-700 FPArsoo tracking-widest`}
+            className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-sm gradient
+             FPArsoo tracking-widest text-white`}
           >
             افزودن به سبد خرید
           </button>

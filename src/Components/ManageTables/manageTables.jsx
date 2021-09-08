@@ -31,7 +31,7 @@ const ManageTable = () => {
     
   return (
     <main className="min-h-screen">
-      <section className={`grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-3 gap-y-4 p-5`}>
+      <section className={`grid grid-col-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-x-10 gap-y-8 p-5`}>
         {
             returnValue
         }

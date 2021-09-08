@@ -3,11 +3,11 @@ import ManageHeader from "../Components/ManageHeader/ManageHeader"
 
 const ManageUserLayout = ({children}) =>{
     return (
-        <div className={`bgDark`}>
+        <>
             <ManageHeader />
             {children}
             <ManageFooter />
-        </div>
+        </>
     )
 }
 

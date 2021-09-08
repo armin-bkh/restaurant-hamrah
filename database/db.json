@@ -98,15 +98,6 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
       "filter": "salad"
-    },
-    {
-      "title": "هویج پلو",
-      "price": "31500",
-      "information": "این غذا کاملا رژیمی است",
-      "materials": "برنج، هویج، زرشک، زعفرون",
-      "filter": "پلو",
-      "img": "C:\\fakepath\\13-hamburger-burger-png-image.png",
-      "id": 14
     }
   ],
   "cart": [],
