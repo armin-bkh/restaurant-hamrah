@@ -38,7 +38,7 @@
     },
     {
       "id": 6,
-      "title": "کباب لقمه",
+      "title": "کباب زعفرونی",
       "price": "32000",
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
@@ -48,15 +48,6 @@
     {
       "id": 7,
       "title": "جوجه",
-      "price": "32000",
-      "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-      "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
-      "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "kebab"
-    },
-    {
-      "id": 8,
-      "title": "چنجه",
       "price": "32000",
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
@@ -80,38 +71,10 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
       "filter": "polo"
-    },
-    {
-      "id": 11,
-      "title": "الو پلو",
-      "price": "32000",
-      "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-      "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
-      "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "polo"
-    },
-    {
-      "id": 13,
-      "title": "سالاد مرغ",
-      "price": "32000",
-      "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-      "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
-      "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "salad"
     }
   ],
   "cart": [],
   "tables": [
-    {
-      "id": 1,
-      "userName": "حسینی",
-      "foods": [
-        "قرمه سبزنی",
-        "کباب لقمه",
-        "سالاد مرغ"
-      ],
-      "totalPrice": 122121
-    },
     {
       "id": 5,
       "userName": "حسینی",

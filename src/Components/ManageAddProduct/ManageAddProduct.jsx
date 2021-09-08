@@ -2,9 +2,11 @@ import { useState } from "react";
 import { postProduct } from "../../Services/postProduct";
 import styles from "./ManageAddProduct.module.scss";
 import '../../scss/main.scss';
+import { useToasts } from "react-toast-notifications";
 
 const ManageAddProduct = () => {
   const [error, setError] = useState(false);
+  const { addToast } = useToasts();
   const [formValue, setFormValue] = useState({
     title: "",
     price: "",
@@ -21,32 +23,34 @@ const ManageAddProduct = () => {
   };
   const sumbitHandler = async (e) => {
     e.preventDefault();
-    try {
-      if (
-        formValue.title &&
-        formValue.price &&
-        formValue.information &&
-        formValue.filter &&
-        formValue.img &&
-        formValue.materials
-      ) {
-        await postProduct(formValue);
-        setFormValue({
-          title: "",
-          price: "",
-          information: "",
-          materials: "",
-          filter: "",
-          img: "",
-        });
+    if(
+      formValue.title &&
+      formValue.price &&
+      formValue.information &&
+      formValue.filter &&
+      formValue.img &&
+      formValue.materials
+    ){
+      try {
+          await postProduct(formValue);
+          setFormValue({
+            title: "",
+            price: "",
+            information: "",
+            materials: "",
+            filter: "",
+            img: "",
+          });
+          addToast(`اضافه شد`, {appearance: 'success'})
+      } catch (err) {
+        setError(true);
+        addToast(`مجددا تلاش کنید`, {appearance: 'error'})
       }
-    } catch (err) {
-      setError(true);
-    }
+    }else addToast('تمامیه اطلاعات ضروری است', {appearance: 'error'})
   };
   return (
     <form className={`text-black flex flex-col p-4 rounded-md boxShadow`} onSubmit={sumbitHandler}>
-      <label className={`mb- text-sm xl:text-lg`} htmlFor="title">
+      <label className={`mb-3 text-sm xl:text-lg`} htmlFor="title">
         نام غذا:{" "}
       </label>
       <input

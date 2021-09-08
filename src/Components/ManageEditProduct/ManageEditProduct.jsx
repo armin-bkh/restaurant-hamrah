@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
 import { BiPencil } from "react-icons/bi";
+import { useToasts } from "react-toast-notifications";
 import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
 import { putProduct } from "../../Services/putProduct";
 import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
-import styles from "./ManageEditProduct.module.scss";
 
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
@@ -32,7 +32,7 @@ const ManageEditProduct = () => {
   if (products && !error) {
     returnValue = products.map((pr) => {
         if(pr.id === productId) {
-            return <EditProduct productId={productId} setProducts={setProducts} setProductId={setProductId} />
+            return <EditProduct key={pr.id} productId={productId} setProducts={setProducts} setProductId={setProductId} />
         } else return <ProductItem key={pr.id} inf={pr} setProductId={setProductId} />
     });
   }
@@ -71,6 +71,7 @@ const ProductItem = ({ inf, setProductId }) => {
 const EditProduct = ({productId, setProducts, setProductId}) => {
   const [formValue, setFormValue] = useState(null);
   const [error, setError] = useState(false);
+  const {addToast} = useToasts();
 
   useEffect(() => {
     if (productId) {
@@ -80,6 +81,7 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
           setFormValue(data);
         } catch (error) {
           setError(true);
+          addToast('مجددا تلاش کنید', {appearance: 'error'})
         }
       };
       getProduct();
@@ -95,14 +97,25 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
 
   const SubmitHandler = async (e) =>{
       e.preventDefault();
-      try {
-          await putProduct(productId,{...formValue, id: productId})
-          const { data } = await getAllProducts();
-          setProducts(data);
-          setProductId('');
-      } catch (error) {
-          setError(true);
-      }
+      if(
+        formValue.title &&
+        formValue.price &&
+        formValue.information &&
+        formValue.filter &&
+        formValue.img &&
+        formValue.materials
+      ){
+        try {
+            await putProduct(productId,{...formValue, id: productId})
+            const { data } = await getAllProducts();
+            setProducts(data);
+            setProductId('');
+            addToast('تغییرات اعمال شد', {appearance: 'success'})
+        } catch (error) {
+            setError(true);
+            addToast('مجددا تلاش کنید', {appearance: 'error'})
+        }
+      } else addToast('تمامیه اطلاعات ضروری است', {appearance: 'error'})
       
   }
 

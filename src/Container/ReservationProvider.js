@@ -4,10 +4,9 @@ import {
   ReservationContext,
   ReservationDispatcherContext,
 } from "../Context/ReservationContext";
-import { toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import { postCart } from '../Services/postCart';
 import { getOneProduct } from '../Services/getOneProduct';
+import { useToasts } from 'react-toast-notifications';
 
 let initialState = {
   cart: [],
@@ -46,7 +45,7 @@ const reducer = (state, action) => {
           ...state,
           cart: filteredCart,
           notification: {
-            type: "error",
+            type: "success",
             message: "از سبد خرید شما حذف شد",
           },
         };
@@ -79,7 +78,7 @@ const reducer = (state, action) => {
       return {
         ...state,
         cart: filteredCart,
-        notification: { type: "error", message: "از سبد خرید شما حذف شد" },
+        notification: { type: "success", message: "از سبد خرید شما حذف شد" },
       };
     }
     case "submitCart": {
@@ -115,18 +114,19 @@ const reducer = (state, action) => {
 
 const ReservationProvider = ({ children }) => {
   const [reservationData, dispatch] = useReducer(reducer, initialState);
+  const { addToast } = useToasts();
 
   useEffect(() => {
     if (reservationData.notification) {
       const type = reservationData.notification.type;
       if (type === "success")
-        toast.success(reservationData.notification.message);
+      addToast(reservationData.notification.message, {appearance: type});
       if (type === "error")
-        toast.error(reservationData.notification.message);
+      addToast(reservationData.notification.message, {appearance: type});
       if (type === "info")
-        toast.info(reservationData.notification.message);
+      addToast(reservationData.notification.message, {appearance: type});
       if (type === "warning")
-        toast.warn(reservationData.notification.message);
+      addToast(reservationData.notification.message, {appearance: type});
     }
   }, [reservationData.notification]);
 

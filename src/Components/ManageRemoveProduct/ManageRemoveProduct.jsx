@@ -4,6 +4,8 @@ import { BiTrash } from 'react-icons/bi';
 import { deleteProduct } from "../../Services/deleteProduct";
 import { numberWithCommas } from '../utils/CommaNumber';
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
+import { useToasts } from 'react-toast-notifications';
+
 
 const ManageRemoveProduct = () => {
     const [products, setProducts] = useState(null);
@@ -49,7 +51,7 @@ export default ManageRemoveProduct;
 
 const DelProduct = ({inf, setProducts}) =>{
     const [error, setError] = useState(false);
-
+    const { addToast } = useToasts();
 
     const price = numberWithCommas(inf.price);
 
@@ -59,9 +61,11 @@ const DelProduct = ({inf, setProducts}) =>{
             await deleteProduct(inf.id);
             const { data } = await getAllProducts();
             setProducts(data);
+            addToast('حذف شد', {appearance: 'success',});
         }
         catch(err){
-            setError(true)
+            setError(true);
+            addToast('مجددا تلاش کنید', {appearance: 'error',});
         }
     }
     return (
