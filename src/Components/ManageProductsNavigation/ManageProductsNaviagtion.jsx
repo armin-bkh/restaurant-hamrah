@@ -18,7 +18,7 @@ const ManageProductsNavigation = () => {
             <li key={link.to} className={`my-2 text-sm lg:text-lg w-full flex justify-between items-center`}>
               <NavLink
                 className={`text-blue-400 w-full flex justify-between items-center
-                 py-2 border-b border-blue-200 hover:text-green-300`}
+                 py-2 border-b border-blue-200 hover:border-blue-400`}
                 activeClassName={`border-blue-400 text-yellow-400`}
                 to={link.to}
               >

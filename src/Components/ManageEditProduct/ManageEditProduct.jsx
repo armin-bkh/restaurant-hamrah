@@ -3,6 +3,7 @@ import { BiPencil } from "react-icons/bi";
 import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
 import { putProduct } from "../../Services/putProduct";
+import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 import styles from "./ManageEditProduct.module.scss";
 
 const ManageEditProduct = () => {
@@ -22,10 +23,10 @@ const ManageEditProduct = () => {
     getProducts();
   }, []);
 
-  let returnValue = <h1>در حال پردازش...</h1>;
+  let returnValue = Array(15).fill().map((item, index) => <FoodLoadingSkeleton key={index} /> );
 
   if (error) {
-    returnValue = <h1>فهرست خالی است</h1>;
+    returnValue = <h1 className={`text-blue-400 text-center py-40 text-lg lg:text-3xl FPArsoo`}>فهرست غذا خالی است</h1>;
   }
   if (products && !error) {
     returnValue = products.map((pr) => {
@@ -37,7 +38,7 @@ const ManageEditProduct = () => {
 
   return (
     <section className={`text-black`}>
-      <ul className={`flex flex-col rounded-md boxShadowInner p-5`}>
+      <ul className={`boxShadowInner py-1 px-4`}>
         {returnValue}
       </ul>
     </section>
@@ -49,7 +50,7 @@ export default ManageEditProduct;
 const ProductItem = ({ inf, setProductId }) => {
   return (
     <li
-      className={`flex justify-between items-center px-4 py-3 text-sm mb-5 md:text-lg rounded-md boxShadow`}
+      className={`flex justify-between items-center my-4 px-4 py-3 text-sm md:text-lg rounded-md boxShadow`}
     >
       <div className={`w-20 h-20`}>
         <img className={`w-full h-full`} src={inf.img} alt={inf.title} />

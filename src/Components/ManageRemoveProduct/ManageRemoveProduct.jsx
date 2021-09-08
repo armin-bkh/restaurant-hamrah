@@ -3,6 +3,7 @@ import { getAllProducts } from '../../Services/getAllProducts';
 import { BiTrash } from 'react-icons/bi';
 import { deleteProduct } from "../../Services/deleteProduct";
 import { numberWithCommas } from '../utils/CommaNumber';
+import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 
 const ManageRemoveProduct = () => {
     const [products, setProducts] = useState(null);
@@ -21,10 +22,10 @@ const ManageRemoveProduct = () => {
         getProducts();
     }, [])
 
-    let returnValue = <h1>در حال پردازش...</h1>
+    let returnValue = Array(15).fill().map((item, index) => <FoodLoadingSkeleton key={index} />)
 
     if(error){
-        returnValue = <h1>دیتا دریافت نشد</h1>
+        returnValue = <h1 className={`text-blue-400 text-center py-40 text-lg lg:text-3xl FPArsoo`}>فهرست غذا خالی است</h1>
     }
 
     if(products && !error){
@@ -34,7 +35,7 @@ const ManageRemoveProduct = () => {
     }
 
     return ( 
-        <form className={`text-black boxShadowInner rounded-md p-5`}>
+        <form className={`text-black boxShadowInner rounded-md py-1 px-4`}>
             <ul>
                 {
                     returnValue
@@ -64,7 +65,7 @@ const DelProduct = ({inf, setProducts}) =>{
         }
     }
     return (
-        <li className={`flex text-sm md:text-lg rounded-md boxShadow items-center justify-between mb-5 px-4 py-3`}>
+        <li className={`flex text-sm md:text-lg rounded-md boxShadow items-center my-4 justify-between px-4 py-3`}>
         <div className={`w-20 h-20`}>
             <img className={`w-full h-full`} src={inf.img} alt={inf.title} />
         </div>
