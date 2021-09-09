@@ -2,10 +2,8 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import AuthInput from "../../Common/AuthInput/AuthInput";
 
-const SignUpForm = ({ setExisting }) => {
+const LogInForm = ({ setExisting }) => {
   const [formValue, setFormValue] = useState({
-    resName: "",
-    resTel: "",
     resEmail: "",
     resPassword: "",
   });
@@ -19,7 +17,6 @@ const SignUpForm = ({ setExisting }) => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(formValue);
   };
 
   return (
@@ -27,22 +24,8 @@ const SignUpForm = ({ setExisting }) => {
       <h1
         className={`text-blue-400 font-bold text-2xl  lg:text-4xl Dirooz mb-16`}
       >
-        ثبت نام
+        ورود
       </h1>
-      <AuthInput
-        placeholder="نام رستوران"
-        value={formValue.resName}
-        onChange={changeHandler}
-        name="resName"
-        type="text"
-      />
-      <AuthInput
-        placeholder="شماره تماس"
-        value={formValue.resTel}
-        onChange={changeHandler}
-        name="resTel"
-        type="text"
-      />
       <AuthInput
         placeholder="آدرس الکترونیکی"
         value={formValue.resEmail}
@@ -61,18 +44,18 @@ const SignUpForm = ({ setExisting }) => {
       <Link
         className={`text-blue-400 font-bold FPArsoo`}
         to="/auth"
-        onClick={() => setExisting(true)}
+        onClick={() => setExisting(false)}
       >
-        ورود به رستوران من
+        اکانت ندارم
       </Link>
       <button
         type="submit"
         className={`mt-14 block w-full py-2 rounded-md FPArsoo text-lg gradient text-white`}
       >
-        ثبت
+        ورود
       </button>
     </form>
   );
 };
 
-export default SignUpForm;
+export default LogInForm;
