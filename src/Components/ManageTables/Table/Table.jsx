@@ -28,7 +28,7 @@ const Table = ({ resForm, setTables }) => {
       <form className={`flex flex-col`} onSubmit={submitHandler}>
         <h1
           className={`mb-9 self-center w-24 h-24 flex justify-center items-center text-3xl
-       gradient rounded-full FPArsoo text-white`}
+       gradient rounded-full FPArsoo text-white boxShadow`}
         >
           {resForm.id}
         </h1>
