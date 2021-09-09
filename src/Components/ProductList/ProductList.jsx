@@ -57,9 +57,9 @@ const ProductList = () => {
 
   return (
     <section
-      className={`mt-10 mx-6 flex flex-col px-2 py-6 overflow-x-hidden bgGradient ${styles.productListContainer}`}
+      className={`mt-10 mx-6 mb-4 flex flex-col px-2 py-6 overflow-x-hidden bgGradient ${styles.productListContainer}`}
     >
-      <header className={`mb-3 px-2`}>
+      <header className={`mb-3 px-4`}>
         <h1
           className={`mb-3 flex justify-start items-center text-base md:text-lg
            lg:text-xl text-blue-400 FPArsoo tracking-widest`}
@@ -70,7 +70,7 @@ const ProductList = () => {
         <Filter onFilter={filterHandler} />
       </header>
       <article
-        className={`flex flex-nowrap pt-11 pb-4 px-2 ${
+        className={`flex flex-nowrap pt-11 pb-4 px-4 ${
           products ? `overflow-x-scroll` : "overflow-x-hidden"
         } ${styles.productList}`}
       >

@@ -19,7 +19,7 @@ const CartList = () => {
   };
 
   return (
-    <section className={`mx-6 p-6 bgGradient ${styles.cartContainer}`}>
+    <section className={`mx-6 p-6 bgLight ${styles.cartContainer}`}>
       {!cart.length ? (
         <header className={`flex items-center justify-center bg-clip-text
           color-gradient FPArsoo`}>

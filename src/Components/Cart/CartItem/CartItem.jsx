@@ -17,7 +17,7 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
     <li
       className={`flex justify-between items-center
        text-xs sm:text-sm md:text-md lg:text-lg
-      xl:text-xl mb-5 FPArsoo`}
+      xl:text-xl mb-5 FPArsoo boxShadow py-3 px-4 rounded-md`}
     >
       <span
         className={`text-xs sm:text-sm md:text-md lg:text-lg
