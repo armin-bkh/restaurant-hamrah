@@ -25,6 +25,11 @@ $skeletonLight: #7c7b7b;
                 -5px -5px 15px #ffffff;
 }
 
+.boxShadowOuter{
+    box-shadow: -5px -5px 15px $shadows,
+                5px 5px 15px #ffffff;
+}
+
 .boxShadowInner {
     box-shadow: inset 5px 5px 5px $shadows,
         inset -5px -5px 5px #ffffff;

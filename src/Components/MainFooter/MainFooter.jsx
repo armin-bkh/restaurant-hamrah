@@ -1,15 +1,10 @@
 import { Link } from "react-router-dom";
-import {
-  FaInstagram,
-  FaLinkedin,
-  FaTelegram,
-  FaWhatsapp,
-} from "react-icons/fa";
+import { FaTelegram, FaWhatsapp, FaLinkedin, FaInstagram } from "react-icons/fa";
 
-const ManageFooter = () => {
+const MainFooter = () => {
   return (
     <footer
-      className={`text-xs sm:text-sm md:text-lg px-5 py-4 text-black bgLight Dirooz boxShadowOuter`}
+      className={`text-xs sm:text-sm md:text-lg px-5 py-4 text-black bgLight Dirooz boxShadowOuter rounded-t-3xl`}
     >
       <p>تمامی حقوق ارتا ارتباط اطلس محفوظ است</p>
       <nav className={`mt-4`}>
@@ -60,4 +55,4 @@ const ManageFooter = () => {
   );
 };
 
-export default ManageFooter;
+export default MainFooter;
