@@ -127,7 +127,7 @@ const DelProduct = ({ inf, setProducts, filterList }) => {
   };
   return (
     <li
-      className={`flex text-sm md:text-lg rounded-md boxShadow items-center my-4 justify-between px-4 py-3`}
+      className={`flex text-sm lg:text-lg 2xl:text-xl rounded-md boxShadow items-center my-4 justify-between px-4 py-3`}
     >
       <div className={`w-20 h-20`}>
         <img

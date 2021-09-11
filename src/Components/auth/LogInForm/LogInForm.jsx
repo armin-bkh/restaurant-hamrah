@@ -20,9 +20,9 @@ const LogInForm = ({ setExisting }) => {
   };
 
   return (
-    <form className={`boxShadow p-5 rounded-3xl`} onSubmit={submitHandler}>
+    <form className={`boxShadow p-5 rounded-3xl w-full md:max-w-lg lg:max-w-xl`} onSubmit={submitHandler}>
       <h1
-        className={`text-blue-400 font-bold text-2xl  lg:text-4xl Dirooz mb-16`}
+        className={`text-blue-400 font-bold text-lg  lg:text-4xl Dirooz mb-7 lg:mb-16`}
       >
         ورود
       </h1>
@@ -42,7 +42,7 @@ const LogInForm = ({ setExisting }) => {
       />
 
       <Link
-        className={`text-blue-400 font-bold FPArsoo`}
+        className={`text-blue-400 text-sm font-bold FPArsoo`}
         to="/auth"
         onClick={() => setExisting(false)}
       >
@@ -50,7 +50,7 @@ const LogInForm = ({ setExisting }) => {
       </Link>
       <button
         type="submit"
-        className={`mt-14 block w-full py-2 rounded-md FPArsoo text-lg gradient text-white`}
+        className={`mt-9 lg:mt-14 block w-full py-2 rounded-md FPArsoo text-lg gradient text-white`}
       >
         ورود
       </button>

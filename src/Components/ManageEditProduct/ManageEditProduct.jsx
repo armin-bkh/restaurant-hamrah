@@ -109,7 +109,7 @@ const ManageEditProduct = () => {
 
   return (
     <section className={`text-black boxShadowInner pt-4 rounded-md  pb-1 px-4`}>
-    <header className={`flex items-center justify-between`}>
+    <header className={`flex flex-col md:flex-row md:items-center md:justify-between`}>
       <SearchBox onSearch={searchProductsHandler}/>
       <SelectBox
         value={filter}
@@ -128,7 +128,7 @@ export default ManageEditProduct;
 const ProductItem = ({ inf, setProductId }) => {
   return (
     <li
-      className={`flex justify-between items-center my-4 px-4 py-3 text-sm md:text-lg rounded-md boxShadow`}
+      className={`flex text-sm lg:text-lg 2xl:text-xl justify-between items-center my-4 px-4 py-3 rounded-md boxShadow`}
     >
       <div className={`w-20 h-20`}>
         <img

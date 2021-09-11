@@ -20,7 +20,7 @@ const SelectBox = ({ options, ...rest  }) => {
   };
 
   return (
-    <div className={`boxShadow rounded-md mb-5 w-full ${options.length === 4 || 'md:w-32'}`}>
+    <div className={`boxShadow rounded-md ${options.length === 5 ? 'w-full md:w-32 mb-5 md:mb-0' : 'w-full mb-5'}`}>
       <Select
         styles={colourStyles}
         options={options}

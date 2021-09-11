@@ -33,7 +33,7 @@ const MainHeader = () => {
           {links.map((link) => (
             <li
               key={link.to}
-              className={`${link.to === "/auth" && "mr-auto"} text-xs md:text-lg lg:text-xl`}
+              className={`${link.to === "/auth" && "mr-auto"} text-xs sm:text-sm lg:text-lg xl:text-xl`}
             >
               <Link
                 className={`px-1 md:px-5 py-2 cursor-pointer text-blue-400 Dirooz hover:bg-blue-400
