@@ -4,6 +4,7 @@ import { useToasts } from "react-toast-notifications";
 import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
 import { putProduct } from "../../Services/putProduct";
+import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
@@ -135,40 +136,15 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
   if(formValue && !error) {
     returnValue = (
     <form onSubmit={SubmitHandler} className={`flex text-black flex-col w-full my-3 items-center rounded-md px-4 py-3 boxShadow`}>
-      <div className={`mb-5 flex-col justify-center items-center w-full`}>
-        <label className={`ml-3 text-sm md:text-lg`}>نام غذا: </label>
-        <input className={`bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md outline-none boxShadow`} value={formValue.title} name="title" onChange={changeHandler} />
-      </div>
-      <div className={`mb-5 flex-col justify-center items-center w-full`}>
-        <label className={`ml-3 text-sm md:text-lg`}>قیمت:</label>
-        <input className={`bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md outline-none boxShadow`} value={formValue.price} name="price" onChange={changeHandler} />
-      </div>
-      <div className={`mb-5 flex-col justify-center items-center w-full`}>
+      <ManageInputForm lbl={"نام غذا"} type="text" name="name" value={formValue.title} onChange={changeHandler} />
+      <ManageInputForm lbl={"قیمت"} type="text" name="price" value={formValue.price} onChange={changeHandler} />
+      <fieldset className={`mb-5 flex-col justify-center items-center w-full`}>
       <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
         <SelectBox value={formValue.filter} onChange={selectChangeHandler} />
-      </div>
-      <div className={`mb-5 flex-col justify-center w-full`}>
-      <label className={`ml-3 text-sm md:text-lg`}>مخلفات:</label>
-        <textarea
-        className={`bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md h-52 outline-none boxShadow`}
-          value={formValue.materials} name="materials"
-          onChange={changeHandler}
-        ></textarea>
-      </div>
-      <div className={`mb-5 flex-col w-full justify-start`}>
-      <label className={`ml-3 text-sm md:text-lg`}>
-      توضیحات: 
-      </label>
-        <textarea
-        className={`bg-transparent px-3 mt-2 text-sm w-full py-2 rounded-md h-52 outline-none boxShadow`}
-          value={formValue.information} name="information"
-          onChange={changeHandler}
-        ></textarea>
-      </div>
-      <div className={`mb-5 w-full flex-col flex justify-start`}>
-        <label className={`ml-3 text-sm md:text-lg`}>عکس غذا: </label>
-        <input className={`cursor-pointer mt-2 text-sm`} type="file" name="img" accept=".jpg, .jpeg, .png" onChange={changeHandler} />
-      </div>
+      </fieldset>
+      <ManageInputForm lbl={"مخلفات"} type="textarea" name="materials" value={formValue.materials} onChange={changeHandler} />
+      <ManageInputForm lbl={"توضیحات"} type="textarea" name="information" value={formValue.information} onChange={changeHandler} />
+      <ManageInputForm lbl={"عکس غذا"} type="file" name="img" accept=".jpg, .jpeg, .png" onChange={changeHandler} />
 
       <button className={`py-2 mt-14 w-full gradient FPArsoo text-xl rounded-md text-white`} type="submit">ثبت</button>
     </form>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import { postProduct } from "../../Services/postProduct";
 import { useToasts } from "react-toast-notifications";
 import SelectBox from "../Common/SelectBox/SelectBox";
+import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
 
 const ManageAddProduct = () => {
   const [error, setError] = useState(false);
@@ -20,101 +21,90 @@ const ManageAddProduct = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const selectChangeHandler = (selectedOption) =>{
+  const selectChangeHandler = (selectedOption) => {
     setFormValue({
       ...formValue,
       filter: selectedOption.value,
-    })
-  }
+    });
+  };
   const sumbitHandler = async (e) => {
     e.preventDefault();
-    if(
+    if (
       formValue.title &&
       formValue.price &&
       formValue.information &&
       formValue.filter &&
       formValue.img &&
       formValue.materials
-    ){
+    ) {
       try {
-          await postProduct(formValue);
-          setFormValue({
-            title: "",
-            price: "",
-            information: "",
-            materials: "",
-            filter: "",
-            img: "",
-          });
-          addToast(`اضافه شد`, {appearance: 'success'})
+        await postProduct(formValue);
+        setFormValue({
+          title: "",
+          price: "",
+          information: "",
+          materials: "",
+          filter: "",
+          img: "",
+        });
+        addToast(`اضافه شد`, { appearance: "success" });
       } catch (err) {
         setError(true);
-        addToast(`مجددا تلاش کنید`, {appearance: 'error'})
+        addToast(`مجددا تلاش کنید`, { appearance: "error" });
       }
-    }else addToast('تمامیه اطلاعات ضروری است', {appearance: 'error'})
+    } else addToast("تمامیه اطلاعات ضروری است", { appearance: "error" });
   };
   return (
-    <form className={`text-black flex flex-col p-4 rounded-md boxShadow`} onSubmit={sumbitHandler}>
-      <label className={`mb-3 text-sm xl:text-lg`} htmlFor="title">
-        نام غذا:{" "}
-      </label>
-      <input
-        className={`mb-5 text-sm bg-transparent rounded-md px-3 py-2 outline-none boxShadow`}
+    <form
+      className={`text-black flex flex-col p-4 rounded-md boxShadow`}
+      onSubmit={sumbitHandler}
+    >
+      <ManageInputForm
+        lbl="نام غذا"
         type="text"
-        id="title"
         name="title"
         value={formValue.title}
         onChange={changeHandler}
       />
-      <label className={`mb-3 text-sm xl:text-lg`} htmlFor="price">
-        قیمت:{" "}
-      </label>
-      <input
-        className={`mb-5 text-sm bg-transparent rounded-md px-3 py-2 outline-none boxShadow`}
+      <ManageInputForm
+        lbl="قیمت"
         type="text"
-        id="price"
         name="price"
         value={formValue.price}
         onChange={changeHandler}
       />
-      <label className={`mb-3 text-sm xl:text-lg`} htmlFor="information">
-        توضیحات:{" "}
+      <label className={`mb-3 text-sm xl:text-lg`}>
+        دسته بندی:{" "}
       </label>
-      <textarea
-        rows="5"
-        className={`mb-5 text-sm bg-transparent rounded-md px-3 py-2 outline-none boxShadow`}
-        id="information"
+      <SelectBox value={formValue.filter} onChange={selectChangeHandler} />
+      <ManageInputForm
+        lbl="توضیحات"
+        type="textarea"
         name="information"
         value={formValue.information}
         onChange={changeHandler}
-      ></textarea>
-      <label className={`mb-3 text-sm xl:text-lg`} htmlFor="filter">
-        دسته بندی:{" "}
-      </label>
-      <SelectBox value={formValue.filter} onChange={selectChangeHandler}/>
-      <label className={`mb-3 text-sm xl:text-lg`} htmlFor="materials">
-        مخلفات:{" "}
-      </label>
-      <textarea
-        className={`mb-5 text-sm bg-transparent rounded-md px-3 py-2 outline-none boxShadow`}
-        id="materials"
+      />
+      <ManageInputForm
+        lbl="مخلفات"
+        type="textarea"
         name="materials"
         value={formValue.materials}
         onChange={changeHandler}
-      ></textarea>
-      <label className={`mb-3 text-sm xl:text-lg`} htmlFor="img">
-        عکس غذا:{" "}
-      </label>
-      <input
-        className={`w-max text-sm cursor-pointer`}
-        value={formValue.img}
+      />
+      <ManageInputForm
+        lbl="عکس غذا"
         type="file"
-        id="img"
-        accept=".jpg, .jpeg, .png"
         name="img"
+        accept=".jpg, .jpeg, .png"
+        value={formValue.img}
         onChange={changeHandler}
       />
-      <button type="submit" className={`mt-10 py-2 rounded-md FPArsoo text-xl text-white gradient`}>ثبت</button>
+      <button
+        type="submit"
+        className={`mt-10 py-2 rounded-md FPArsoo text-xl text-white gradient`}
+      >
+        ثبت
+      </button>
     </form>
   );
 };
