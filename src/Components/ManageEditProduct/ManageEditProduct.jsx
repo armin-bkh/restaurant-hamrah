@@ -5,6 +5,7 @@ import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
 import { putProduct } from "../../Services/putProduct";
 import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
+import SearchBox from "../Common/SearchBox/SearchBox";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
@@ -28,7 +29,8 @@ const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState(null);
   const [error, setError] = useState(false);
-  const [filter, setFilter] = useState({ label: "همه" });
+  const [filter, setFilter] = useState({ label: "همه", value: 'all' });
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     const getProducts = async () => {
@@ -56,6 +58,25 @@ const ManageEditProduct = () => {
     setProducts(filteredProducts);
   };
 
+  const searchProductsHandler = async (value) => {
+    const { data } = await getAllProducts();
+
+    setSearch(value);
+    if (value.length > 0) {
+      const searchedProducts = products.filter((pr) =>
+        pr.title.toLowerCase().includes(value.toLowerCase())
+      );
+      setProducts(searchedProducts);
+    } else {
+      if (filter.value === "all") {
+        setProducts(data);
+        return;
+      } else {
+        setProducts(data.filter((pr) => pr.filter === filter.value));
+      }
+    }
+  };
+
   let returnValue = Array(15)
     .fill()
     .map((item, index) => <FoodLoadingSkeleton key={index} />);
@@ -75,6 +96,7 @@ const ManageEditProduct = () => {
         return (
           <EditProduct
             key={pr.id}
+            filterList={filter}
             productId={productId}
             setProducts={setProducts}
             setProductId={setProductId}
@@ -86,14 +108,17 @@ const ManageEditProduct = () => {
   }
 
   return (
-    <section className={`text-black boxShadowInner pt-4 pb-1 px-4`}>
+    <section className={`text-black boxShadowInner pt-4 rounded-md  pb-1 px-4`}>
+    <header className={`flex items-center justify-between`}>
+      <SearchBox onSearch={searchProductsHandler}/>
       <SelectBox
         value={filter}
         options={filteroptions}
         onChange={filterProductsHandler}
         placeholder="دسته بندی..."
       />
-      <ul className={`rounded-md `}>{returnValue}</ul>
+    </header>
+      <ul>{returnValue}</ul>
     </section>
   );
 };
@@ -125,7 +150,7 @@ const ProductItem = ({ inf, setProductId }) => {
   );
 };
 
-const EditProduct = ({ productId, setProducts, setProductId }) => {
+const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
   const [formValue, setFormValue] = useState(null);
   const [error, setError] = useState(false);
   const [filter, setFilter] = useState("");
@@ -175,7 +200,12 @@ const EditProduct = ({ productId, setProducts, setProductId }) => {
       try {
         await putProduct(productId, { ...formValue, id: productId });
         const { data } = await getAllProducts();
-        setProducts(data);
+        if(filterList.value === 'all'){
+          setProducts(data);
+        } 
+        else {
+          setProducts(data.filter(pr => pr.filter === filterList.value));
+        }
         setProductId("");
         addToast("تغییرات اعمال شد", { appearance: "success" });
       } catch (error) {
@@ -212,7 +242,7 @@ const EditProduct = ({ productId, setProducts, setProductId }) => {
           onChange={changeHandler}
         />
         <fieldset
-          className={`mb-5 flex-col justify-center items-center w-full`}
+          className={`flex-col justify-center items-center w-full`}
         >
           <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
           <SelectBox

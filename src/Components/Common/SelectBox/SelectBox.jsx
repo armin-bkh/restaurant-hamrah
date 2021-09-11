@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Select from "react-select";
 
 const SelectBox = ({ options, ...rest  }) => {
@@ -21,7 +20,7 @@ const SelectBox = ({ options, ...rest  }) => {
   };
 
   return (
-    <div className={`boxShadow rounded-md mb-5 w-full ${options.length === 4 || 'md:w-52'}`}>
+    <div className={`boxShadow rounded-md mb-5 w-full ${options.length === 4 || 'md:w-32'}`}>
       <Select
         styles={colourStyles}
         options={options}

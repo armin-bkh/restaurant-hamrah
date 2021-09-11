@@ -88,17 +88,17 @@ const ManageAddProduct = () => {
       </label>
       <SelectBox value={filter} options={options} onChange={selectChangeHandler} placeholder="دسته بندی..." />
       <ManageInputForm
-        lbl="توضیحات"
-        type="textarea"
-        name="information"
-        value={formValue.information}
-        onChange={changeHandler}
-      />
-      <ManageInputForm
         lbl="مخلفات"
         type="textarea"
         name="materials"
         value={formValue.materials}
+        onChange={changeHandler}
+      />
+      <ManageInputForm
+        lbl="توضیحات"
+        type="textarea"
+        name="information"
+        value={formValue.information}
         onChange={changeHandler}
       />
       <ManageInputForm
