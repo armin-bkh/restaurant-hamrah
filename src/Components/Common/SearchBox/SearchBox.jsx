@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
 
-const SearchBox = ({ onSearch, setSearch }) => {
+const SearchBox = ({ onSearch }) => {
   const [value, setValue] = useState("");
 
   const changeHandler = (e) => {
@@ -12,7 +12,7 @@ const SearchBox = ({ onSearch, setSearch }) => {
   return (
     <div className={`relative`}>
       <input
-        className={`outline-none px-3 py-2 w-full md:w-62 rounded-md mb-5 md:mb-0 bgLightTop`}
+        className={`outline-none px-3 py-2 w-full md:w-62 rounded-md mb-5 md:mb-0 bgLight boxShadow`}
         type="text"
         placeholder="جتسجو..."
         value={value}

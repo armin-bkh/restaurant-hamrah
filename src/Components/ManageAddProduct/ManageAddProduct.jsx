@@ -9,6 +9,12 @@ const options = [
   { label: "خورشت", value: "khoresht" },
   { label: "پلو", value: "polo" },
   { label: "سالاد", value: "salad" },
+  { label: "فست فود", value: "fast-food" },
+  { label: "پیتزا", value: "pizza" },
+  { label: "ساندویچ", value: "sandwitch" },
+  { label: "سرد", value: "cold" },
+  { label: "گرم", value: "warm" },
+  { label: "نوشیدنی", value: "drink" },
 ];
 
 const ManageAddProduct = () => {

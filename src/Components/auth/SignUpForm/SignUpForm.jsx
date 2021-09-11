@@ -23,7 +23,10 @@ const SignUpForm = ({ setExisting }) => {
   };
 
   return (
-    <form className={`boxShadow p-5 rounded-3xl w-full md:max-w-lg lg:max-w-xl`} onSubmit={submitHandler}>
+    <form
+      className={`boxShadow p-5 rounded-3xl w-full md:max-w-lg lg:max-w-xl`}
+      onSubmit={submitHandler}
+    >
       <h1
         className={`text-blue-400 font-bold text-lg lg:text-4xl Dirooz mb-7 lg:mb-16`}
       >

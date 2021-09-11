@@ -9,12 +9,19 @@ import SelectBox from "../Common/SelectBox/SelectBox";
 import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
+import { numberWithCommas } from "../utils/CommaNumber";
 
 const options = [
   { label: "کباب", value: "kebab" },
   { label: "خورشت", value: "khoresht" },
   { label: "پلو", value: "polo" },
   { label: "سالاد", value: "salad" },
+  { label: "فست فود", value: "fast-food" },
+  { label: "پیتزا", value: "pizza" },
+  { label: "ساندویچ", value: "sandwitch" },
+  { label: "سرد", value: "cold" },
+  { label: "گرم", value: "warm" },
+  { label: "نوشیدنی", value: "drink" },
 ];
 
 const filteroptions = [
@@ -23,6 +30,12 @@ const filteroptions = [
   { label: "خورشت", value: "khoresht" },
   { label: "پلو", value: "polo" },
   { label: "سالاد", value: "salad" },
+  { label: "فست فود", value: "fast-food" },
+  { label: "پیتزا", value: "pizza" },
+  { label: "ساندویچ", value: "sandwitch" },
+  { label: "سرد", value: "cold" },
+  { label: "گرم", value: "warm" },
+  { label: "نوشیدنی", value: "drink" },
 ];
 
 const ManageEditProduct = () => {
@@ -216,7 +229,7 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
         <ManageInputForm
           lbl={"نام غذا"}
           type="text"
-          name="name"
+          name="title"
           value={formValue.title}
           onChange={changeHandler}
         />

@@ -1,5 +1,10 @@
 import { Link } from "react-router-dom";
-import { FaTelegram, FaWhatsapp, FaLinkedin, FaInstagram } from "react-icons/fa";
+import {
+  FaTelegram,
+  FaWhatsapp,
+  FaLinkedin,
+  FaInstagram,
+} from "react-icons/fa";
 
 const MainFooter = () => {
   return (

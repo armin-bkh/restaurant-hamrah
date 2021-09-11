@@ -27,6 +27,9 @@ code {
 .gradient{
   @apply bg-gradient-to-r from-green-300 to-blue-400;
 }
+.gradient:hover{
+  @apply bg-gradient-to-l from-green-300 to-blue-400;
+}
 .gradient-bottom{
   @apply bg-gradient-to-b from-green-300 to-blue-400;
 }
