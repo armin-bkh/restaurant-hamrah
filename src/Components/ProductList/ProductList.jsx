@@ -59,7 +59,7 @@ const ProductList = () => {
     <section
       className={`mt-10 mx-6 mb-4 flex flex-col px-2 py-6 overflow-x-hidden bgGradient ${styles.productListContainer}`}
     >
-      <header className={`mb-3 px-4`}>
+      <header className={`mb-3 px-2`}>
         <h1
           className={`mb-3 flex justify-start items-center text-base md:text-lg
            lg:text-xl text-blue-400 FPArsoo tracking-widest`}
