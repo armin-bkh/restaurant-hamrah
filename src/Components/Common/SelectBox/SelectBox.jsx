@@ -1,19 +1,7 @@
 import { useEffect, useState } from "react";
 import Select from "react-select";
 
-const options = [
-  { label: "کباب", value: "kebab" },
-  { label: "خورشت", value: "khoresht" },
-  { label: "پلو", value: "polo" },
-  { label: "سالاد", value: "salad" },
-];
-
-const SelectBox = ({ value, onChange }) => {
-  const [defValue, setDefValue] = useState("");
-
-  useEffect(() => {
-    setDefValue(value.value);
-  }, [value]);
+const SelectBox = ({ options, ...rest  }) => {
 
   const colourStyles = {
     control: (styles) => ({
@@ -33,13 +21,11 @@ const SelectBox = ({ value, onChange }) => {
   };
 
   return (
-    <div className={`boxShadow rounded-md mb-5`}>
+    <div className={`boxShadow rounded-md mb-5 w-full ${options.length === 4 || 'md:w-52'}`}>
       <Select
-        placeholder="انتخاب کنید..."
         styles={colourStyles}
         options={options}
-        value={defValue}
-        onChange={onChange}
+        {...rest}
       />
     </div>
   );

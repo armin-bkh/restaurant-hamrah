@@ -5,11 +5,20 @@ import { deleteProduct } from "../../Services/deleteProduct";
 import { numberWithCommas } from '../utils/CommaNumber';
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 import { useToasts } from 'react-toast-notifications';
+import SelectBox from '../Common/SelectBox/SelectBox';
 
+const options = [
+    { label: "همه", value: "all" },
+    { label: "کباب", value: "kebab" },
+    { label: "خورشت", value: "khoresht" },
+    { label: "پلو", value: "polo" },
+    { label: "سالاد", value: "salad" },
+];
 
 const ManageRemoveProduct = () => {
     const [products, setProducts] = useState(null);
     const [error, setError] = useState(false);
+    const [filter, setFilter] = useState({ label: "همه" });
 
     useEffect(()=>{
         const getProducts = async () =>{
@@ -24,6 +33,18 @@ const ManageRemoveProduct = () => {
         getProducts();
     }, [])
 
+    const filterProductsHandler = async (selectedOption) =>{
+        setFilter(selectedOption);
+        await setProducts(null);
+        const { data } = await getAllProducts();
+        const filteredProducts = data.filter( pr => pr.filter === selectedOption.value);
+        if(selectedOption.value === 'all'){
+            setProducts(data);
+            return;
+        }
+        setProducts(filteredProducts);
+    }
+
     let returnValue = Array(15).fill().map((item, index) => <FoodLoadingSkeleton key={index} />)
 
     if(error){
@@ -37,7 +58,8 @@ const ManageRemoveProduct = () => {
     }
 
     return ( 
-        <form className={`text-black boxShadowInner rounded-md py-1 px-4`}>
+        <form className={`text-black boxShadowInner rounded-md pt-4 pb-1 px-4`}>
+        <SelectBox onChange={filterProductsHandler} options={options} value={filter} placeholder="دسته بندی..." />
             <ul>
                 {
                     returnValue

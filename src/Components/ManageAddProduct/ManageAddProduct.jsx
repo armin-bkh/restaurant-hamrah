@@ -4,6 +4,13 @@ import { useToasts } from "react-toast-notifications";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
 
+const options = [
+  { label: "کباب", value: "kebab" },
+  { label: "خورشت", value: "khoresht" },
+  { label: "پلو", value: "polo" },
+  { label: "سالاد", value: "salad" },
+];
+
 const ManageAddProduct = () => {
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
@@ -15,6 +22,8 @@ const ManageAddProduct = () => {
     filter: "",
     img: "",
   });
+  const [filter, setFilter] = useState('');
+
   const changeHandler = (e) => {
     setFormValue({
       ...formValue,
@@ -22,6 +31,7 @@ const ManageAddProduct = () => {
     });
   };
   const selectChangeHandler = (selectedOption) => {
+    setFilter(selectedOption);
     setFormValue({
       ...formValue,
       filter: selectedOption.value,
@@ -76,7 +86,7 @@ const ManageAddProduct = () => {
       <label className={`mb-3 text-sm xl:text-lg`}>
         دسته بندی:{" "}
       </label>
-      <SelectBox value={formValue.filter} onChange={selectChangeHandler} />
+      <SelectBox value={filter} options={options} onChange={selectChangeHandler} placeholder="دسته بندی..." />
       <ManageInputForm
         lbl="توضیحات"
         type="textarea"

@@ -9,10 +9,26 @@ import SelectBox from "../Common/SelectBox/SelectBox";
 import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 
+const options = [
+  { label: "کباب", value: "kebab" },
+  { label: "خورشت", value: "khoresht" },
+  { label: "پلو", value: "polo" },
+  { label: "سالاد", value: "salad" },
+];
+
+const filteroptions = [
+  { label: "همه", value: "all" },
+  { label: "کباب", value: "kebab" },
+  { label: "خورشت", value: "khoresht" },
+  { label: "پلو", value: "polo" },
+  { label: "سالاد", value: "salad" },
+];
+
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState(null);
   const [error, setError] = useState(false);
+  const [filter, setFilter] = useState({ label: "همه" });
 
   useEffect(() => {
     const getProducts = async () => {
@@ -26,24 +42,58 @@ const ManageEditProduct = () => {
     getProducts();
   }, []);
 
-  let returnValue = Array(15).fill().map((item, index) => <FoodLoadingSkeleton key={index} /> );
+  const filterProductsHandler = async (selectedOption) => {
+    setFilter(selectedOption);
+    await setProducts(null);
+    const { data } = await getAllProducts();
+    const filteredProducts = data.filter(
+      (pr) => pr.filter === selectedOption.value
+    );
+    if (selectedOption.value === "all") {
+      setProducts(data);
+      return;
+    }
+    setProducts(filteredProducts);
+  };
+
+  let returnValue = Array(15)
+    .fill()
+    .map((item, index) => <FoodLoadingSkeleton key={index} />);
 
   if (error) {
-    returnValue = <h1 className={`text-blue-400 text-center py-20 lg:p-32 text-lg lg:text-3xl FPArsoo`}>فهرست غذا خالی است</h1>;
+    returnValue = (
+      <h1
+        className={`text-blue-400 text-center py-20 lg:p-32 text-lg lg:text-3xl FPArsoo`}
+      >
+        فهرست غذا خالی است
+      </h1>
+    );
   }
   if (products && !error) {
     returnValue = products.map((pr) => {
-        if(pr.id === productId) {
-            return <EditProduct key={pr.id} productId={productId} setProducts={setProducts} setProductId={setProductId} />
-        } else return <ProductItem key={pr.id} inf={pr} setProductId={setProductId} />
+      if (pr.id === productId) {
+        return (
+          <EditProduct
+            key={pr.id}
+            productId={productId}
+            setProducts={setProducts}
+            setProductId={setProductId}
+          />
+        );
+      } else
+        return <ProductItem key={pr.id} inf={pr} setProductId={setProductId} />;
     });
   }
 
   return (
-    <section className={`text-black`}>
-      <ul className={`boxShadowInner rounded-md py-1 px-4`}>
-        {returnValue}
-      </ul>
+    <section className={`text-black boxShadowInner pt-4 pb-1 px-4`}>
+      <SelectBox
+        value={filter}
+        options={filteroptions}
+        onChange={filterProductsHandler}
+        placeholder="دسته بندی..."
+      />
+      <ul className={`rounded-md `}>{returnValue}</ul>
     </section>
   );
 };
@@ -56,7 +106,12 @@ const ProductItem = ({ inf, setProductId }) => {
       className={`flex justify-between items-center my-4 px-4 py-3 text-sm md:text-lg rounded-md boxShadow`}
     >
       <div className={`w-20 h-20`}>
-        <img className={`w-full h-full`} loading="lazy" src={inf.img} alt={inf.title} />
+        <img
+          className={`w-full h-full`}
+          loading="lazy"
+          src={inf.img}
+          alt={inf.title}
+        />
       </div>
       <span>{inf.title}</span>
       <span>{inf.price}</span>
@@ -70,10 +125,11 @@ const ProductItem = ({ inf, setProductId }) => {
   );
 };
 
-const EditProduct = ({productId, setProducts, setProductId}) => {
+const EditProduct = ({ productId, setProducts, setProductId }) => {
   const [formValue, setFormValue] = useState(null);
   const [error, setError] = useState(false);
-  const {addToast} = useToasts();
+  const [filter, setFilter] = useState("");
+  const { addToast } = useToasts();
 
   useEffect(() => {
     if (productId) {
@@ -81,9 +137,11 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
         try {
           const { data } = await getOneProduct(productId);
           setFormValue(data);
+          const currFilter = options.filter(op => op.value === data.filter);
+          setFilter({label: currFilter[0].label});
         } catch (error) {
           setError(true);
-          addToast('مجددا تلاش کنید', {appearance: 'error'})
+          addToast("مجددا تلاش کنید", { appearance: "error" });
         }
       };
       getProduct();
@@ -96,36 +154,36 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
       [e.target.name]: e.target.value,
     });
   };
-  const selectChangeHandler = (selectedOption) =>{
+  const selectChangeHandler = (selectedOption) => {
+    setFilter(selectedOption);
     setFormValue({
       ...formValue,
-      filter: selectedOption.value
-    })
-  }
+      filter: selectedOption.value,
+    });
+  };
 
-  const SubmitHandler = async (e) =>{
-      e.preventDefault();
-      if(
-        formValue.title &&
-        formValue.price &&
-        formValue.information &&
-        formValue.filter &&
-        formValue.img &&
-        formValue.materials
-      ){
-        try {
-            await putProduct(productId,{...formValue, id: productId})
-            const { data } = await getAllProducts();
-            setProducts(data);
-            setProductId('');
-            addToast('تغییرات اعمال شد', {appearance: 'success'})
-        } catch (error) {
-            setError(true);
-            addToast('مجددا تلاش کنید', {appearance: 'error'})
-        }
-      } else addToast('تمامیه اطلاعات ضروری است', {appearance: 'error'})
-      
-  }
+  const SubmitHandler = async (e) => {
+    e.preventDefault();
+    if (
+      formValue.title &&
+      formValue.price &&
+      formValue.information &&
+      formValue.filter &&
+      formValue.img &&
+      formValue.materials
+    ) {
+      try {
+        await putProduct(productId, { ...formValue, id: productId });
+        const { data } = await getAllProducts();
+        setProducts(data);
+        setProductId("");
+        addToast("تغییرات اعمال شد", { appearance: "success" });
+      } catch (error) {
+        setError(true);
+        addToast("مجددا تلاش کنید", { appearance: "error" });
+      }
+    } else addToast("تمامیه اطلاعات ضروری است", { appearance: "error" });
+  };
 
   let returnValue;
 
@@ -133,21 +191,66 @@ const EditProduct = ({productId, setProducts, setProductId}) => {
     returnValue = <EditFoodLoadingSkeleton />;
   }
 
-  if(formValue && !error) {
+  if (formValue && !error) {
     returnValue = (
-    <form onSubmit={SubmitHandler} className={`flex text-black flex-col w-full my-3 items-center rounded-md px-4 py-3 boxShadow`}>
-      <ManageInputForm lbl={"نام غذا"} type="text" name="name" value={formValue.title} onChange={changeHandler} />
-      <ManageInputForm lbl={"قیمت"} type="text" name="price" value={formValue.price} onChange={changeHandler} />
-      <fieldset className={`mb-5 flex-col justify-center items-center w-full`}>
-      <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
-        <SelectBox value={formValue.filter} onChange={selectChangeHandler} />
-      </fieldset>
-      <ManageInputForm lbl={"مخلفات"} type="textarea" name="materials" value={formValue.materials} onChange={changeHandler} />
-      <ManageInputForm lbl={"توضیحات"} type="textarea" name="information" value={formValue.information} onChange={changeHandler} />
-      <ManageInputForm lbl={"عکس غذا"} type="file" name="img" accept=".jpg, .jpeg, .png" onChange={changeHandler} />
+      <form
+        onSubmit={SubmitHandler}
+        className={`flex text-black flex-col w-full my-3 items-center rounded-md px-4 py-3 boxShadow`}
+      >
+        <ManageInputForm
+          lbl={"نام غذا"}
+          type="text"
+          name="name"
+          value={formValue.title}
+          onChange={changeHandler}
+        />
+        <ManageInputForm
+          lbl={"قیمت"}
+          type="text"
+          name="price"
+          value={formValue.price}
+          onChange={changeHandler}
+        />
+        <fieldset
+          className={`mb-5 flex-col justify-center items-center w-full`}
+        >
+          <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
+          <SelectBox
+            value={filter}
+            options={options}
+            onChange={selectChangeHandler}
+            placeholder="دسته بندی..."
+          />
+        </fieldset>
+        <ManageInputForm
+          lbl={"مخلفات"}
+          type="textarea"
+          name="materials"
+          value={formValue.materials}
+          onChange={changeHandler}
+        />
+        <ManageInputForm
+          lbl={"توضیحات"}
+          type="textarea"
+          name="information"
+          value={formValue.information}
+          onChange={changeHandler}
+        />
+        <ManageInputForm
+          lbl={"عکس غذا"}
+          type="file"
+          name="img"
+          accept=".jpg, .jpeg, .png"
+          onChange={changeHandler}
+        />
 
-      <button className={`py-2 mt-14 w-full gradient FPArsoo text-xl rounded-md text-white`} type="submit">ثبت</button>
-    </form>
+        <button
+          className={`py-2 mt-14 w-full gradient FPArsoo text-xl rounded-md text-white`}
+          type="submit"
+        >
+          ثبت
+        </button>
+      </form>
     );
   }
 
