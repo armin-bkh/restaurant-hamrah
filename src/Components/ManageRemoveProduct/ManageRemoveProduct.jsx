@@ -1,12 +1,11 @@
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../../Services/getAllProducts";
-import { BiTrash } from "react-icons/bi";
 import { deleteProduct } from "../../Services/deleteProduct";
-import { numberWithCommas } from "../utils/CommaNumber";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 import { useToasts } from "react-toast-notifications";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import SearchBox from "../Common/SearchBox/SearchBox";
+import ManageProductItem from "../ManageProductItem/ManageProductItem";
 
 const options = [
   { label: "همه", value: "all" },
@@ -21,6 +20,7 @@ const ManageRemoveProduct = () => {
   const [error, setError] = useState(false);
   const [filter, setFilter] = useState({ label: "همه", value: "all" });
   const [search, setSearch] = useState("");
+  const { addToast } = useToasts();
 
   useEffect(() => {
     const getProducts = async () => {
@@ -67,6 +67,20 @@ const ManageRemoveProduct = () => {
     }
   };
 
+  const removeProductHandler = async (id) => {
+    try {
+      await deleteProduct(id);
+      const { data } = await getAllProducts();
+      if (filter.value === "all") {
+        setProducts(data);
+      } else setProducts(data.filter((pr) => pr.filter === filter.value));
+      addToast("حذف شد", { appearance: "success" });
+    } catch (err) {
+      setError(true);
+      addToast("مجددا تلاش کنید", { appearance: "error" });
+    }
+  };
+
   let returnValue = Array(15)
     .fill()
     .map((item, index) => <FoodLoadingSkeleton key={index} />);
@@ -83,13 +97,20 @@ const ManageRemoveProduct = () => {
 
   if (products && !error) {
     returnValue = products.map((pr) => (
-      <DelProduct filterList={filter} key={pr.id} inf={pr} setProducts={setProducts} />
+      <ManageProductItem
+        key={pr.id}
+        inf={pr}
+        onSubmit={removeProductHandler}
+        type="remove"
+      />
     ));
   }
 
   return (
     <form className={`text-black boxShadowInner rounded-md pt-4 pb-1 px-4`}>
-      <header className={`flex flex-col md:flex-row md:items-center md:justify-between`}>
+      <header
+        className={`flex flex-col md:flex-row md:items-center md:justify-between`}
+      >
         <SearchBox onSearch={searchProductsHandler} />
         <SelectBox
           onChange={filterProductsHandler}
@@ -104,49 +125,3 @@ const ManageRemoveProduct = () => {
 };
 
 export default ManageRemoveProduct;
-
-const DelProduct = ({ inf, setProducts, filterList }) => {
-  const [error, setError] = useState(false);
-  const { addToast } = useToasts();
-
-  const price = numberWithCommas(inf.price);
-
-  const deleteHandler = async (e) => {
-    e.preventDefault();
-    try {
-      await deleteProduct(inf.id);
-      const { data } = await getAllProducts();
-      if(filterList.value === 'all'){
-        setProducts(data);
-      }else setProducts(data.filter(pr => pr.filter === filterList.value))
-      addToast("حذف شد", { appearance: "success" });
-    } catch (err) {
-      setError(true);
-      addToast("مجددا تلاش کنید", { appearance: "error" });
-    }
-  };
-  return (
-    <li
-      className={`flex text-sm lg:text-lg 2xl:text-xl rounded-md boxShadow items-center my-4 justify-between px-4 py-3`}
-    >
-      <div className={`w-20 h-20`}>
-        <img
-          className={`w-full h-full`}
-          loading="lazy"
-          src={inf.img}
-          alt={inf.title}
-        />
-      </div>
-      <span>{inf.title}</span>
-
-      <span>{price()}</span>
-      <button
-        className={`rounded-full text-white gradient-bottom px-2 py-2`}
-        type="submit"
-        onClick={deleteHandler}
-      >
-        <BiTrash />
-      </button>
-    </li>
-  );
-};

@@ -1,5 +1,4 @@
 import { useEffect, useState } from "react";
-import { BiPencil } from "react-icons/bi";
 import { useToasts } from "react-toast-notifications";
 import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
@@ -9,6 +8,7 @@ import SearchBox from "../Common/SearchBox/SearchBox";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
+import ManageProductItem from "../ManageProductItem/ManageProductItem";
 
 const options = [
   { label: "کباب", value: "kebab" },
@@ -29,8 +29,8 @@ const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState(null);
   const [error, setError] = useState(false);
-  const [filter, setFilter] = useState({ label: "همه", value: 'all' });
-  const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState({ label: "همه", value: "all" });
+  const [search, setSearch] = useState("");
 
   useEffect(() => {
     const getProducts = async () => {
@@ -43,6 +43,10 @@ const ManageEditProduct = () => {
     };
     getProducts();
   }, []);
+
+  const editProductHandler = (id) => {
+    setProductId(id);
+  };
 
   const filterProductsHandler = async (selectedOption) => {
     setFilter(selectedOption);
@@ -60,7 +64,6 @@ const ManageEditProduct = () => {
 
   const searchProductsHandler = async (value) => {
     const { data } = await getAllProducts();
-
     setSearch(value);
     if (value.length > 0) {
       const searchedProducts = products.filter((pr) =>
@@ -103,52 +106,36 @@ const ManageEditProduct = () => {
           />
         );
       } else
-        return <ProductItem key={pr.id} inf={pr} setProductId={setProductId} />;
+        return (
+          <ManageProductItem
+            key={pr.id}
+            inf={pr}
+            onSubmit={editProductHandler}
+            type="edit"
+          />
+        );
     });
   }
 
   return (
     <section className={`text-black boxShadowInner pt-4 rounded-md  pb-1 px-4`}>
-    <header className={`flex flex-col md:flex-row md:items-center md:justify-between`}>
-      <SearchBox onSearch={searchProductsHandler}/>
-      <SelectBox
-        value={filter}
-        options={filteroptions}
-        onChange={filterProductsHandler}
-        placeholder="دسته بندی..."
-      />
-    </header>
+      <header
+        className={`flex flex-col md:flex-row md:items-center md:justify-between`}
+      >
+        <SearchBox onSearch={searchProductsHandler} />
+        <SelectBox
+          value={filter}
+          options={filteroptions}
+          onChange={filterProductsHandler}
+          placeholder="دسته بندی..."
+        />
+      </header>
       <ul>{returnValue}</ul>
     </section>
   );
 };
 
 export default ManageEditProduct;
-
-const ProductItem = ({ inf, setProductId }) => {
-  return (
-    <li
-      className={`flex text-sm lg:text-lg 2xl:text-xl justify-between items-center my-4 px-4 py-3 rounded-md boxShadow`}
-    >
-      <div className={`w-20 h-20`}>
-        <img
-          className={`w-full h-full`}
-          loading="lazy"
-          src={inf.img}
-          alt={inf.title}
-        />
-      </div>
-      <span>{inf.title}</span>
-      <span>{inf.price}</span>
-      <button
-        className={`gradient-bottom px-2 py-2 text-white rounded-full`}
-        onClick={() => setProductId(inf.id)}
-      >
-        <BiPencil />
-      </button>
-    </li>
-  );
-};
 
 const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
   const [formValue, setFormValue] = useState(null);
@@ -162,8 +149,8 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
         try {
           const { data } = await getOneProduct(productId);
           setFormValue(data);
-          const currFilter = options.filter(op => op.value === data.filter);
-          setFilter({label: currFilter[0].label});
+          const currFilter = options.filter((op) => op.value === data.filter);
+          setFilter({ label: currFilter[0].label });
         } catch (error) {
           setError(true);
           addToast("مجددا تلاش کنید", { appearance: "error" });
@@ -200,11 +187,10 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
       try {
         await putProduct(productId, { ...formValue, id: productId });
         const { data } = await getAllProducts();
-        if(filterList.value === 'all'){
+        if (filterList.value === "all") {
           setProducts(data);
-        } 
-        else {
-          setProducts(data.filter(pr => pr.filter === filterList.value));
+        } else {
+          setProducts(data.filter((pr) => pr.filter === filterList.value));
         }
         setProductId("");
         addToast("تغییرات اعمال شد", { appearance: "success" });
@@ -241,9 +227,7 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
           value={formValue.price}
           onChange={changeHandler}
         />
-        <fieldset
-          className={`flex-col justify-center items-center w-full`}
-        >
+        <fieldset className={`flex-col justify-center items-center w-full`}>
           <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
           <SelectBox
             value={filter}
