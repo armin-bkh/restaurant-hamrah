@@ -3,13 +3,16 @@ import manageDetail from "../Components/manageDetail/ManageDetail";
 import ManageProducts from "../Components/ManageProducts/ManageProducts";
 import ManageTable from "../Components/ManageTables/manageTables";
 import ManageLayout from "../Layouts/ManageLayout";
+import { manageRoutes } from "../Routes/Routes";
 
-const ManagePage = ({ history }) => {
+const ManagePage = () => {
   return (
       <ManageLayout>
-        <Route path={"/manage"} component={manageDetail} exact={true} />
-        <Route path="/manage/manage-tables" component={ManageTable} />
-        <Route path="/manage/manage-products" component={ManageProducts} />
+        {
+          manageRoutes.map(route => (
+            <Route key={route.path} {...route} />
+          ))
+        }
       </ManageLayout>
   );
 };
