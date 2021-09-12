@@ -13,8 +13,9 @@ const HomeIntroduction = () => {
           className={`row-span-2 lg:row-span-3 flex items-center justify-center`}
         >
           <img
-            className={`w-full md:max-w-md lg:max-w-lg xl:max-w-xl h-full ${styles.imgShadow}`}
+            className={`w-full md:max-w-md lg:max-w-lg xl:max-w-xl h-full imgShadow ${styles.z}`}
             src={Home}
+            loading="lazy"
             alt={"رستویار"}
           />
         </article>

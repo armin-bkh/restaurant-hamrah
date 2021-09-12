@@ -1,10 +1,8 @@
 import { Route } from "react-router-dom";
 import ManageProductsNavigation from "../ManageProductsNavigation/ManageProductsNaviagtion";
-import ManageAddProduct from "../ManageAddProduct/ManageAddProduct";
-import ManageRemoveProduct from "../ManageRemoveProduct/ManageRemoveProduct";
-import ManageEditProduct from "../ManageEditProduct/ManageEditProduct";
 import styles from "./ManageProducts.module.scss";
 import { manageProductsRoutes } from "../../Routes/Routes";
+import setting from '../../images/Processing-pana.png';
 
 const ManageProducts = () => {
   return (
@@ -25,8 +23,9 @@ export default ManageProducts;
 
 export const ManageProductsDetail = () => {
   return (
-    <article className={`text-blue-400 Casablanca text-lg lg:text-3xl flex justify-center sticky top-4`}>
+    <article className={`text-blue-400 Casablanca text-lg lg:text-3xl flex flex-col items-center`}>
       <h1>برای مدیریت غذا بر روی یکی از گزینه ها کلیک کنید</h1>
+      <img className={`w-full h-full`} src={setting} alt="تنظیمات"/>
     </article>
   );
 };
