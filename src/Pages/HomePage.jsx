@@ -1,8 +1,9 @@
+import HomeIntroduction from "../Components/Home/HomeIntroduction";
 import MainLayout from "../Layouts/MainLayout";
 const HomePage = () => {
     return ( 
         <MainLayout>
-            <h1>خانه</h1>
+            <HomeIntroduction />
         </MainLayout>
      );
 }

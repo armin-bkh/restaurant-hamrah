@@ -26,7 +26,7 @@ const links = [
 const MainHeader = () => {
   return (
     <header
-      className={`py-5 px-3 bgLight boxShadow rounded-b-3xl sticky top-0 w-full`}
+      className={`py-5 px-3 bgLight boxShadow v sticky top-0 w-full`}
     >
       <nav>
         <ul className={`flex items-center`}>

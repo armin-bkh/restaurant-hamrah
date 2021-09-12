@@ -21,7 +21,7 @@ const ManageHeader = () => {
     }, [])
 
   return (  
-    <header className={`flex flex-col shadow-md px-3 py-5 text bgLight boxShadow text-red-700 ${styles.manageHeaderContainer}`}>
+    <header className={`flex flex-col shadow-md px-3 py-5 text bgLight boxShadow text-red-700 rounded-b-2xl`}>
       <section className={`flex justify-between items-center mb-8`}>
         <h1 className={`text-3xl md:text-4xl xl:text-6xl Casablanca color-gradient py-5`}>رستوران {info ? info.name : null}</h1>
         <h6 className={`text-sm font-bold text-black Dirooz`}>تعداد میز: 

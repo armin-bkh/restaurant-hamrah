@@ -28,7 +28,7 @@ const SignUpForm = ({ setExisting }) => {
       onSubmit={submitHandler}
     >
       <h1
-        className={`text-blue-400 font-bold text-lg lg:text-4xl Dirooz mb-7 lg:mb-16`}
+        className={`text-blue-400 font-bold text-lg lg:text-4xl Casablanca mb-7 lg:mb-16`}
       >
         ثبت نام
       </h1>
@@ -62,7 +62,7 @@ const SignUpForm = ({ setExisting }) => {
       />
 
       <Link
-        className={`text-sm text-blue-400 font-bold FPArsoo`}
+        className={`text-sm text-blue-400 font-bold Casablanca`}
         to="/auth"
         onClick={() => setExisting(true)}
       >
@@ -70,7 +70,7 @@ const SignUpForm = ({ setExisting }) => {
       </Link>
       <button
         type="submit"
-        className={`mt-9 lg:mt-14 -14 block w-full py-2 rounded-md FPArsoo text-lg gradient text-white`}
+        className={`mt-9 lg:mt-14 -14 block w-full py-2 tracking-widest rounded-md Casablanca text-lg gradient text-white`}
       >
         ثبت
       </button>
