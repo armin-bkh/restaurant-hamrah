@@ -3,6 +3,7 @@ import { postProduct } from "../../Services/postProduct";
 import { useToasts } from "react-toast-notifications";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
+import FormData from 'form-data'; 
 
 const options = [
   { label: "کباب", value: "kebab" },
@@ -31,10 +32,18 @@ const ManageAddProduct = () => {
   const [filter, setFilter] = useState('');
 
   const changeHandler = (e) => {
-    setFormValue({
-      ...formValue,
-      [e.target.name]: e.target.value,
-    });
+    if(e.target.files){
+      console.log("hello");
+      setFormValue({
+        ...formValue,
+        [e.target.name]: e.target.files,
+      });
+      return;
+    }
+      setFormValue({
+        ...formValue,
+        [e.target.name]: e.target.value,
+      });
   };
   const selectChangeHandler = (selectedOption) => {
     setFilter(selectedOption);
@@ -74,6 +83,7 @@ const ManageAddProduct = () => {
     <form
       className={`text-black flex flex-col p-4 rounded-md boxShadow`}
       onSubmit={sumbitHandler}
+      encType="multipart/form-data"
     >
       <ManageInputForm
         lbl="نام غذا"
@@ -112,7 +122,6 @@ const ManageAddProduct = () => {
         type="file"
         name="img"
         accept=".jpg, .jpeg, .png"
-        value={formValue.img}
         onChange={changeHandler}
       />
       <button
