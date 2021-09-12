@@ -22,7 +22,7 @@ const CartList = () => {
     <section className={`mx-6 p-6 bgLight ${styles.cartContainer}`}>
       {!cart.length ? (
         <header className={`flex items-center justify-center bg-clip-text
-          color-gradient FPArsoo`}>
+          color-gradient Casablanca`}>
           <h1
             className={`flex items-center text-lg sm:text-xl md:text-3xl`}
           >
@@ -44,11 +44,11 @@ const CartList = () => {
             ))}
           </ul>
           <h1 className={`text-sm w-full md:text-md lg:text-lg xl:text-xl 
-          FPArsoo text-black`}>مبلغ قابل پرداخت: {totalPricewithComma()} تومان</h1>
+          Dirooz text-black`}>مبلغ قابل پرداخت: <span className={`Casablanca`}>{totalPricewithComma()}</span> تومان</h1>
           <button
           type="submit"
             className={`text-sm w-full md:text-md lg:text-lg xl:text-xl
-             py-2 mt-3 rounded-md gradient FPArsoo tracking-widest text-white`}
+             py-2 mt-3 rounded-md gradient Casablanca tracking-widest text-white`}
           >
             ثبت سفارش
           </button>

@@ -28,7 +28,7 @@ const Table = ({ resForm, setTables }) => {
       <form className={`flex flex-col`} onSubmit={submitHandler}>
         <h1
           className={`mb-9 self-center w-24 h-24 flex justify-center items-center text-3xl
-       gradient rounded-full FPArsoo text-white boxShadow`}
+       gradient rounded-full Casablanca text-white boxShadow`}
         >
           {resForm.id}
         </h1>
@@ -41,11 +41,11 @@ const Table = ({ resForm, setTables }) => {
             </span>
           ))}
         </h1>
-        <h1 className={` text-sm Dirooz`}>مبلغ نهایی: {totalPrice()} تومان</h1>
+        <h1 className={` text-sm Dirooz`}>مبلغ نهایی: <span className={`Casablanca`}>{totalPrice()}</span> تومان</h1>
         <button
           className={`rounded-md cursor-pointer 
              gradient py-2 block w-full text-white
-              mx-auto mt-14 font-bold ANoor`}
+              mx-auto mt-14 font-bold Casablanca`}
           type="submit"
         >
           حذف

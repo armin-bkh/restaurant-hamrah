@@ -1,0 +1,22 @@
+.filterContainer {
+
+    scrollbar-color: #7aaef3 transparent;
+    scrollbar-width: thin;
+
+    /* width */
+    &::-webkit-scrollbar {
+        cursor: pointer;
+        height: 4px;
+    }
+
+    /* Track */
+    &::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    /* Handle */
+    &::-webkit-scrollbar-thumb {
+        background: #7aaef3;
+        border-radius: 2rem;
+    }
+}

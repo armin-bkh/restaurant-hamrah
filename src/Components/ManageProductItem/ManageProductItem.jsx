@@ -21,7 +21,7 @@ const ManageProductItem = ({ inf, onSubmit, type }) => {
         />
       </div>
       <span>{inf.title}</span>
-      <span>{price()}</span>
+      <span className={`Casablanca`}>{price()}</span>
       <button
         className={`gradient-bottom px-2 py-2 text-white rounded-full`}
         onClick={submitHandler}

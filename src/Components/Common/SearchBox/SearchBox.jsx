@@ -12,7 +12,7 @@ const SearchBox = ({ onSearch }) => {
   return (
     <div className={`relative`}>
       <input
-        className={`outline-none px-3 py-2 w-full md:w-62 rounded-md mb-5 md:mb-0 bgLight boxShadow`}
+        className={`outline-none Casablanca px-3 py-2 w-full md:w-62 rounded-md mb-5 md:mb-0 bgLight boxShadow`}
         type="text"
         placeholder="جتسجو..."
         value={value}

@@ -117,7 +117,7 @@ const ManageAddProduct = () => {
       />
       <button
         type="submit"
-        className={`mt-10 py-2 rounded-md FPArsoo text-xl text-white gradient`}
+        className={`mt-10 py-2 rounded-md Casablanca text-xl text-white gradient`}
       >
         ثبت
       </button>

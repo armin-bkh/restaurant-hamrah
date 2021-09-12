@@ -3,7 +3,7 @@
 
     .productList {
 
-        scrollbar-color: #7695be transparent;
+        scrollbar-color: #7aaef3 transparent;
         scrollbar-width: thin;
 
         /* width */
@@ -19,7 +19,7 @@
 
         /* Handle */
         &::-webkit-scrollbar-thumb {
-            background: #7695be;
+            background: #7aaef3;
             border-radius: 2rem;
         }
     }

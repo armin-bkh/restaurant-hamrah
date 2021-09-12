@@ -28,13 +28,13 @@ const Product = ({ inf }) => {
       
       <figcaption className={styles.productCaption}>
         <h1
-          className={`text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl mb-3 FPArsoo`}
+          className={`text-sm md:text-md lg:text-lg xl:text-xl 2xl:text-2xl mb-3 Casablanca`}
         >
           {inf.title}
         </h1>
         <div className="flex justify-between items-center">
           <span
-            className={`text-xs md:text-sm lg:text-md xl:text-lg 2xl:text-xl FPArsoo`}
+            className={`text-xs md:text-sm lg:text-md xl:text-lg 2xl:text-xl Casablanca`}
           >
             {inf.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")} تومان
           </span>

@@ -17,7 +17,7 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
     <li
       className={`flex justify-between items-center
        text-xs sm:text-sm md:text-md lg:text-lg
-      xl:text-xl mb-5 FPArsoo boxShadow py-3 px-4 rounded-md`}
+      xl:text-xl mb-5 Dirooz boxShadow py-3 px-4 rounded-md`}
     >
       <span
         className={`text-xs sm:text-sm md:text-md lg:text-lg
@@ -29,7 +29,7 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
         className={`hidden sm:block text-xs sm:text-sm md:text-md
        lg:text-lg xl:text-xl text-black`}
       >
-        قیمت واحد: {foodBPrice()}
+        قیمت واحد: <span className={`Casablanca`}>{foodBPrice()}</span>
       </span>
       <div className={`flex justify-between items-center text-black`}>
         <span
@@ -47,7 +47,7 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
           <BiPlus />
         </button>
         <span
-          className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl text-black`}
+          className={`text-xs sm:text-sm md:text-md  Casablanca lg:text-lg xl:text-xl text-black`}
         >
           {foodQ}
         </span>
@@ -63,7 +63,7 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
       <span
         className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl text-black`}
       >
-        قیمت: {foodFPrice()}
+        قیمت: <span className={`Casablanca`}>{foodFPrice()}</span>
       </span>
       <button
         className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full

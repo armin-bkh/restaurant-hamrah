@@ -46,7 +46,7 @@ const ProductList = () => {
   if (error)
     returnValue = (
       <h1
-        className={`text-base md:text-lg lg:text-xl text-blue-400 FPArsoo tracking-widest`}
+        className={`text-base md:text-lg lg:text-xl text-blue-400 Casablanca tracking-widest`}
       >
         منوی رستوران خالی است
       </h1>
@@ -62,7 +62,7 @@ const ProductList = () => {
       <header className={`mb-3 px-2`}>
         <h1
           className={`mb-3 flex justify-start items-center text-base md:text-lg
-           lg:text-xl text-blue-400 FPArsoo tracking-widest`}
+           lg:text-xl text-blue-400 Casablanca tracking-widest`}
         >
           <BiFoodMenu className={`ml-2 text-blue-400`} />
           منوی رستوران

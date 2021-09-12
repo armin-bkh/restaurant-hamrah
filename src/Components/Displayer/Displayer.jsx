@@ -41,7 +41,7 @@ const Displayer = ({ productId }) => {
     >
       <BiRestaurant className={`text-blue-400 inline-block rounded-full ml-2`} />{" "}
       <h1
-        className={`bg-clip-text bg-gradient-to-r color-gradient py-3`}
+        className={`bg-clip-text Casablanca bg-gradient-to-r color-gradient py-3`}
       >
         خوش آمدید لطفا انتخاب کنید
       </h1>
@@ -60,22 +60,22 @@ const Displayer = ({ productId }) => {
         />
         <article className={`${styles.displyerInformation}`}>
           <h1
-            className={`text-3xl lg:text-5xl xl:text-4xl text-center ANoor tracking-widest`}
+            className={`text-3xl lg:text-5xl xl:text-4xl text-center Casablanca tracking-widest`}
           >
             {product.title}
           </h1>
           <h3
-            className={`text-md lg:text-lg xl:text-2xl mt-4 FPArsoo text-blue-400 text-center`}
+            className={`text-md lg:text-lg xl:text-2xl mt-4 Casablanca text-blue-400 text-center`}
           >
             {productPrice()} تومان
           </h3>
           <h3
-            className={`text-md lg:text-lg xl:text-2xl mt-10 mb-2 ANoor text-blue-400 tracking-widest`}
+            className={`text-md lg:text-lg xl:text-2xl mt-10 mb-2 Casablanca text-blue-400 tracking-widest`}
           >
             توضیحات:
           </h3>
           <p
-            className={`mb-10 text-sm md:text-md lg:text-base FPArsoo text-justify`}
+            className={`mb-10 text-sm md:text-md lg:text-base Dirooz text-justify`}
           >
             {product.information}
           </p>
@@ -89,7 +89,7 @@ const Displayer = ({ productId }) => {
               <BiPlus />
             </button>
             <span
-              className={`text-sm md:text-md lg:text-lg xl:text-xl FPArsoo text-blue-400 tracking-widest`}
+              className={`text-sm md:text-md lg:text-lg xl:text-xl Casablanca text-blue-400 tracking-widest`}
             >
               {count}
             </span>
@@ -108,7 +108,7 @@ const Displayer = ({ productId }) => {
             type="submit"
             onClick={clickHandler}
             className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-md gradient
-             FPArsoo tracking-widest text-white`}
+            Casablanca tracking-widest text-white`}
           >
             افزودن به سبد خرید
           </button>

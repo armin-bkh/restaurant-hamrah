@@ -1,6 +1,7 @@
 $ANoor: 'A-Noor';
 $FPArsoo: 'FP_Arsoo';
 $Dirooz: 'Dirooz';
+$Casablanca: 'Casablanca';
 
 @font-face {
     font-family: "A-Noor";
@@ -17,6 +18,10 @@ $Dirooz: 'Dirooz';
     src: url('../fonts/Dirooz.ttf');
 }
 
+@font-face {
+    font-family: "Casablanca";
+    src: url('../fonts/Far_Casablanca.ttf');
+}
 
 .FPArsoo {
     font-family: $FPArsoo;
@@ -28,4 +33,8 @@ $Dirooz: 'Dirooz';
 
 .Dirooz {
     font-family: $Dirooz;
+}
+
+.Casablanca{
+    font-family: $Casablanca;
 }

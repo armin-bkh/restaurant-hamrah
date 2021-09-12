@@ -272,7 +272,7 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
         />
 
         <button
-          className={`py-2 mt-14 w-full gradient FPArsoo text-xl rounded-md text-white`}
+          className={`py-2 mt-14 w-full gradient Casablanca text-xl rounded-md text-white`}
           type="submit"
         >
           ثبت

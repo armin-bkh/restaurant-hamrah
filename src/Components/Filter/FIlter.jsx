@@ -1,5 +1,6 @@
 import { useState } from "react";
 import RadioIComponent from "../Common/RadioIComponent/RadioIComponent"
+import styles from './Filter.module.scss';
 
 const Filter = ({ onFilter }) => {
   const [filter, setFilter] = useState("");
@@ -10,7 +11,7 @@ const Filter = ({ onFilter }) => {
   };
 
   return (
-    <article className={`flex justify-start items-center px-3 py-4 overflow-y-hidden overflow-x-auto`}>
+    <article className={`flex justify-start items-center px-3 py-4 overflow-y-hidden overflow-x-auto ${styles.filterContainer}`}>
       <RadioIComponent onChange={changeHandler} filterValue="all" filterState={filter} lbl="همه" />
       <RadioIComponent onChange={changeHandler} filterValue="kebab" filterState={filter} lbl="کباب" />
       <RadioIComponent onChange={changeHandler} filterValue="polo" filterState={filter} lbl="پلو" />

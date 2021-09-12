@@ -9,7 +9,7 @@ import {
 const ManageFooter = () => {
   return (
     <footer
-      className={`text-xs sm:text-sm lg:text-lg px-5 py-4 text-black bgLight Dirooz boxShadowOuter`}
+      className={`text-xs sm:text-sm lg:text-lg px-5 py-4 text-black bgLight Casablanca boxShadowOuter`}
     >
       <p>تمامی حقوق ارتا ارتباط اطلس محفوظ است</p>
       <nav className={`mt-4`}>

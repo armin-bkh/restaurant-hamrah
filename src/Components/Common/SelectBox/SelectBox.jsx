@@ -8,11 +8,13 @@ const SelectBox = ({ options, ...rest }) => {
       border: `none`,
       cursor: "pointer",
       fontSize: '15px',
+      fontFamily: 'Casablanca',
     }),
     option: (styles, { data, isDisabled, isFocused, isSelected }) => {
       return {
         ...styles,
         color: "#000",
+        fontFamily: 'Casablanca',
         cursor: "pointer",
         background: isSelected && "#b3b2b2",
       };
