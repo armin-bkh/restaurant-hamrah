@@ -111,7 +111,7 @@ const ManageAddProduct = () => {
         <label className={`mb-3 text-sm xl:text-lg`}>دسته بندی: </label>
         <SelectBox
           value={filter}
-          options={filters}
+          options={filters.filter(op => op.value !== "همه")}
           onChange={selectChangeHandler}
           placeholder="دسته بندی..."
         />

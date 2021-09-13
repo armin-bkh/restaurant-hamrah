@@ -191,6 +191,56 @@
       "label": "خورشت",
       "value": "خورشت",
       "id": "FVJhG0G"
+    },
+    {
+      "label": "پلو",
+      "value": "پلو",
+      "id": "x5xW2TJ"
+    },
+    {
+      "label": "سالاد",
+      "value": "سالاد",
+      "id": "UgzeCdl"
+    },
+    {
+      "label": "نوشیدنی",
+      "value": "نوشیدنی",
+      "id": "Jvfl_ET"
+    },
+    {
+      "label": "سرد",
+      "value": "سرد",
+      "id": "HJ-oPRt"
+    },
+    {
+      "label": "گرم",
+      "value": "گرم",
+      "id": "Qr6vzOa"
+    },
+    {
+      "label": "پیتزا",
+      "value": "پیتزا",
+      "id": "QlKkWMv"
+    },
+    {
+      "label": "ساندویچ",
+      "value": "ساندویچ",
+      "id": "3SNKcR0"
+    },
+    {
+      "label": "برگر",
+      "value": "برگر",
+      "id": "Ssmq4ea"
+    },
+    {
+      "label": "گیاهی",
+      "value": "گیاهی",
+      "id": "kuaky-P"
+    },
+    {
+      "label": "سوخاری",
+      "value": "سوخاری",
+      "id": "zg_mg7U"
     }
   ]
 }
