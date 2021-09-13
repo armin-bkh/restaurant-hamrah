@@ -56,10 +56,14 @@ const ManageRemoveProduct = () => {
 
   const searchProductsHandler = async (value) => {
     const { data } = await getAllProducts();
-
     setSearch(value);
     if (value.length > 0) {
-      const searchedProducts = products.filter((pr) =>
+      if(filter.value === "all"){
+        setProducts(data.filter(pr => pr.title.toLowerCase().includes(value.toLowerCase())))
+        return;
+      }
+      const filteredroducts = data.filter(pr => pr.filter === filter.value);
+      const searchedProducts = filteredroducts.filter((pr) =>
         pr.title.toLowerCase().includes(value.toLowerCase())
       );
       setProducts(searchedProducts);

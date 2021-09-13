@@ -79,10 +79,13 @@ const ManageEditProduct = () => {
     const { data } = await getAllProducts();
     setSearch(value);
     if (value.length > 0) {
-      const searchedProducts = products.filter((pr) =>
-        pr.title.toLowerCase().includes(value.toLowerCase())
-      );
-      setProducts(searchedProducts);
+      if(filter.value === "all"){
+        setProducts(data.filter(pr => pr.title.toLowerCase().includes(value.toLowerCase())))
+        return;
+      }
+      const filteredProducts = data.filter(pr => pr.filter === filter.value);
+      setProducts(filteredProducts.filter((pr) =>
+      pr.title.toLowerCase().includes(value.toLowerCase())));
     } else {
       if (filter.value === "all") {
         setProducts(data);
