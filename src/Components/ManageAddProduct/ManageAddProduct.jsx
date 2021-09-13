@@ -3,7 +3,6 @@ import { postProduct } from "../../Services/postProduct";
 import { useToasts } from "react-toast-notifications";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
-import FormData from 'form-data'; 
 
 const options = [
   { label: "کباب", value: "kebab" },
@@ -36,7 +35,7 @@ const ManageAddProduct = () => {
       console.log("hello");
       setFormValue({
         ...formValue,
-        [e.target.name]: e.target.files,
+        [e.target.name]: e.target.files[0],
       });
       return;
     }
@@ -54,6 +53,12 @@ const ManageAddProduct = () => {
   };
   const sumbitHandler = async (e) => {
     e.preventDefault();
+    let formData = new FormData();
+
+    for (const key in formValue) {
+      formData.append(key, formValue[key])
+    }
+
     if (
       formValue.title &&
       formValue.price &&
@@ -61,10 +66,10 @@ const ManageAddProduct = () => {
       formValue.filter &&
       formValue.img &&
       formValue.materials
-    ) {
-      try {
-        await postProduct(formValue);
-        setFormValue({
+      ) {
+        try {
+          await postProduct(formData);
+          setFormValue({
           title: "",
           price: "",
           information: "",

@@ -191,6 +191,12 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
   };
 
   const SubmitHandler = async (e) => {
+    let formData = new FormData();
+
+    for (const key in formValue){
+      formData.append(key, formValue[key])
+    }
+
     e.preventDefault();
     if (
       formValue.title &&
@@ -201,7 +207,7 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
       formValue.materials
     ) {
       try {
-        await putProduct(productId, { ...formValue, id: productId });
+        await putProduct(productId, { ...formData, id: productId });
         const { data } = await getAllProducts();
         if (filterList.value === "all") {
           setProducts(data);
