@@ -24,7 +24,7 @@ const SelectBox = ({ options, ...rest }) => {
   return (
     <div
       className={`boxShadow rounded-md ${
-        options.some(op => op.value === 'all') ? "w-full md:w-32 mb-5 md:mb-0" : "w-full mb-5"
+        options.some(op => op.value === 'همه') ? "w-full md:w-32 mb-5 md:mb-0" : "w-full mb-5"
       }`}
     >
       <Select styles={colourStyles} options={options} {...rest} />

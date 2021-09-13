@@ -7,7 +7,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "salad"
+      "filter": "سالاد"
     },
     {
       "id": 2,
@@ -16,7 +16,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "khoresht"
+      "filter": "خورشت"
     },
     {
       "id": 3,
@@ -25,7 +25,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "khoresht"
+      "filter": "خورشت"
     },
     {
       "id": 5,
@@ -34,7 +34,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "kebab"
+      "filter": "کباب"
     },
     {
       "id": 6,
@@ -43,7 +43,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "kebab"
+      "filter": "کباب"
     },
     {
       "id": 7,
@@ -52,16 +52,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "polo"
-    },
-    {
-      "id": 8,
-      "title": "پیتزا پپرونی",
-      "price": "75000",
-      "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-      "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
-      "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "pizza"
+      "filter": "پلو"
     },
     {
       "id": 9,
@@ -70,7 +61,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "sandwitch"
+      "filter": "ساندویچ"
     },
     {
       "id": 10,
@@ -79,7 +70,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "drink"
+      "filter": "نوشیدنی"
     },
     {
       "id": 11,
@@ -88,7 +79,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "drink"
+      "filter": "نوشیدنی"
     },
     {
       "id": 12,
@@ -97,7 +88,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "polo"
+      "filter": "پلو"
     },
     {
       "id": 13,
@@ -106,7 +97,7 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "cold"
+      "filter": "سرد"
     }
   ],
   "cart": [],
@@ -196,5 +187,32 @@
     "name": "ارتا ارتباط اطلس",
     "tableCount": 9,
     "tel": "09213506158"
-  }
+  },
+  "filters": [
+    {
+      "id": "1",
+      "label": "همه",
+      "value": "همه"
+    },
+    {
+      "label": "دسر",
+      "value": "دسر",
+      "id": "n9yI3r7"
+    },
+    {
+      "label": "پیش غذا",
+      "value": "پیش غذا",
+      "id": "UKRprPA"
+    },
+    {
+      "label": "کباب",
+      "value": "کباب",
+      "id": "ecbO-yT"
+    },
+    {
+      "label": "فست فود",
+      "value": "فست فود",
+      "id": "CN0RfqX"
+    }
+  ]
 }

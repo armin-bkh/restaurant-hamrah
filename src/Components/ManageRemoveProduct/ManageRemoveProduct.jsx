@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../../Services/getAllProducts";
 import { deleteProduct } from "../../Services/deleteProduct";
+import { getAllFilters } from "../../Services/getAllFilters";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 import { useToasts } from "react-toast-notifications";
 import SelectBox from "../Common/SelectBox/SelectBox";
@@ -24,7 +25,8 @@ const options = [
 const ManageRemoveProduct = () => {
   const [products, setProducts] = useState(null);
   const [error, setError] = useState(false);
-  const [filter, setFilter] = useState({ label: "همه", value: "all" });
+  const [filter, setFilter] = useState({ label: "همه", value: "همه" });
+  const [filters, setFilters] = useState(null);
   const [search, setSearch] = useState("");
   const { addToast } = useToasts();
 
@@ -38,6 +40,15 @@ const ManageRemoveProduct = () => {
       }
     };
     getProducts();
+    const getFilters = async () => {
+      try {
+        const { data } = await getAllFilters();
+        setFilters(data);
+      } catch (err) {
+        setError(true);
+      }
+    };
+    getFilters();
   }, []);
 
   const filterProductsHandler = async (selectedOption) => {
@@ -47,7 +58,7 @@ const ManageRemoveProduct = () => {
     const filteredProducts = data.filter(
       (pr) => pr.filter === selectedOption.value
     );
-    if (selectedOption.value === "all") {
+    if (selectedOption.value === "همه") {
       setProducts(data);
       return;
     }
@@ -58,17 +69,21 @@ const ManageRemoveProduct = () => {
     const { data } = await getAllProducts();
     setSearch(value);
     if (value.length > 0) {
-      if(filter.value === "all"){
-        setProducts(data.filter(pr => pr.title.toLowerCase().includes(value.toLowerCase())))
+      if (filter.value === "همه") {
+        setProducts(
+          data.filter((pr) =>
+            pr.title.toLowerCase().includes(value.toLowerCase())
+          )
+        );
         return;
       }
-      const filteredroducts = data.filter(pr => pr.filter === filter.value);
+      const filteredroducts = data.filter((pr) => pr.filter === filter.value);
       const searchedProducts = filteredroducts.filter((pr) =>
         pr.title.toLowerCase().includes(value.toLowerCase())
       );
       setProducts(searchedProducts);
     } else {
-      if (filter.value === "all") {
+      if (filter.value === "همه") {
         setProducts(data);
         return;
       } else {
@@ -81,7 +96,7 @@ const ManageRemoveProduct = () => {
     try {
       await deleteProduct(id);
       const { data } = await getAllProducts();
-      if (filter.value === "all") {
+      if (filter.value === "همه") {
         setProducts(data);
       } else setProducts(data.filter((pr) => pr.filter === filter.value));
       addToast("حذف شد", { appearance: "success" });
@@ -122,12 +137,14 @@ const ManageRemoveProduct = () => {
         className={`flex flex-col md:flex-row md:items-center md:justify-between`}
       >
         <SearchBox onSearch={searchProductsHandler} />
-        <SelectBox
-          onChange={filterProductsHandler}
-          options={options}
-          value={filter}
-          placeholder="دسته بندی..."
-        />
+        {filters ? (
+          <SelectBox
+            onChange={filterProductsHandler}
+            options={filters}
+            value={filter}
+            placeholder="دسته بندی..."
+          />
+        ) : null}
       </header>
       <ul>{returnValue}</ul>
     </form>
