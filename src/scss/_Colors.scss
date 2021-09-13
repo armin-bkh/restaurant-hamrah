@@ -42,6 +42,8 @@ $skeletonLight: #7c7b7b;
 
 .imgShadow{
     filter: drop-shadow(0 0 15px #ffffff);
+    z-index: -1;
+    position: relative;
 }
 
 .borderBottom {

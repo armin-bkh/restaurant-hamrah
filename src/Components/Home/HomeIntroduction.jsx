@@ -1,19 +1,18 @@
 import Home from "../../images/Data report-bro.png";
 import { Link } from "react-router-dom";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import styles from "./Home.module.scss";
 
 const HomeIntroduction = () => {
   return (
     <main>
       <section
-        className={`h-screen grid grid-cols-1 lg:grid-cols-2 grid-rows-5 gap-y-2 lg:grid-rows-3`}
+        className={`min-h-screen grid grid-cols-1 lg:grid-cols-2 grid-rows-5 gap-y-2 lg:grid-rows-3`}
       >
         <article
           className={`row-span-2 lg:row-span-3 flex items-center justify-center`}
         >
           <img
-            className={`w-full md:max-w-md lg:max-w-lg xl:max-w-xl h-full imgShadow ${styles.z}`}
+            className={`w-full md:max-w-md lg:max-w-lg xl:max-w-xl h-full imgShadow`}
             src={Home}
             loading="lazy"
             alt={"رستویار"}
