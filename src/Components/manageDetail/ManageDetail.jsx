@@ -15,11 +15,12 @@ const manageDetail = () => {
           loading="lazy"
           alt="میز ها"
         />
-        <div className={`-translate-y-12 md:translate-y-0 transform`}>
-          <h1 className={`mb-5 Casablanca text-xl color-gradient lg:text-5xl`}>
+        <div className={`mr-5 -translate-y-12 md:translate-y-0 transform`}>
+          <h1 className={`mb-16 mr-5 Casablanca text-xl color-gradient lg:text-5xl 2xl:text-7xl`}>
             میز ها
           </h1>
-          <p className={`z-20 Dirooz text-sm lg:text-lg text-blue-400`}>
+          <p className={`z-20 Dirooz text-sm lg:text-lg xl:text-xl 2xl:text-2xl
+           3xl:text-3xl 4xl:text-4xl in text-blue-400 text-justify`}>
             در بخش میز ها شما میتوانید لیست میز هایی ک غذا سفارش داده اند را مشاهده
             نمایید و با کلیک بر روی دکمه حذف به راحتی آن را خالی کنید.
           </p>
@@ -40,11 +41,12 @@ const manageDetail = () => {
           loading="lazy"
           alt="غذا ها"
         />
-        <div className={`-translate-y-12 md:translate-y-0 transform`}>
-          <h1 className={`mb-5 Casablanca text-xl color-gradient lg:text-5xl`}>
+        <div className={`mr-5 -translate-y-12 md:translate-y-0 transform`}>
+          <h1 className={`mb-16 mr-5 Casablanca text-xl color-gradient lg:text-5xl 2xl:text-7xl`}>
             غذا ها
           </h1>
-          <p className={`z-20 Dirooz text-sm lg:text-lg text-blue-400`}>
+          <p className={`z-20 Dirooz text-sm lg:text-lg xl:text-xl 2xl:text-2xl
+           3xl:text-3xl 4xl:text-4xl in text-blue-400 text-justify`}>
             در بخش غذا ها میتوانید لیست غذاهای منو رستوران را کنترل کنید در سربرگ حذف غذا
             مورد نظر را حذف کنید در سربرگ اضافه غذای جدید اضافه کنید و در سربرگ تغییر مشخصات غذا های
             موجود را تغییر دهید
