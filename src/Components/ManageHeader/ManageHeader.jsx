@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { getInfRes } from "../../Services/getInfRes";
 import ManageNavigation from "../ManageNavigation/ManageNavigation";
-import styles from './ManageHeader.module.scss';
 
 const ManageHeader = () => {
     const [info, setInfo] = useState(null);

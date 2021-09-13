@@ -25,7 +25,8 @@ export const ManageProductsDetail = () => {
   return (
     <article className={`text-blue-400 Casablanca text-lg lg:text-3xl flex flex-col items-center`}>
       <h1>برای مدیریت غذا بر روی یکی از گزینه ها کلیک کنید</h1>
-      <img className={`w-full h-full`} src={setting} alt="تنظیمات"/>
+      <img className={`max-w-xs sm:max-wsm md:max-w-md lg:max-w-lg xl:max-w-xl
+      2xl:max-w-2xl 3xl:max-w-3xl imgShadow`} loading="lazy" src={setting} alt="تنظیمات"/>
     </article>
   );
 };

@@ -9,7 +9,6 @@ import SelectBox from "../Common/SelectBox/SelectBox";
 import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
-import { numberWithCommas } from "../utils/CommaNumber";
 
 const options = [
   { label: "کباب", value: "kebab" },
