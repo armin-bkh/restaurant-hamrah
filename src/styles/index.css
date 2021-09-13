@@ -41,6 +41,10 @@ code {
   box-sizing: border-box;
 }
 
+*::selection{
+  background: transparent;
+}
+
 a{
   text-decoration: none;
 }

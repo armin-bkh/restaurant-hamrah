@@ -4,16 +4,18 @@ import ManageEditProduct from "../Components/ManageEditProduct/ManageEditProduct
 import ManageProducts, { ManageProductsDetail } from "../Components/ManageProducts/ManageProducts";
 import ManageRemoveProduct from "../Components/ManageRemoveProduct/ManageRemoveProduct";
 import ManageTable from "../Components/ManageTables/manageTables";
+import AboutUsPage from "../Pages/AboutUsPage";
 import HomePage from "../Pages/HomePage";
 import ManagePage from "../Pages/ManagePage";
 import ReservationPage from "../Pages/ReservationPage";
-import SignUpPage from "../Pages/SignupPage";
+import AuthPage from "../Pages/AuthPage";
 
 export const routes = [
     {path: '/', component: HomePage, exact: true},
     {path: "/reservation", component: ReservationPage},
     {path: "/manage", component: ManagePage},
-    {path: "/auth", component: SignUpPage},
+    {path: "/auth", component: AuthPage},
+    {path: "/about-us", component: AboutUsPage},
 ]
 
 export const manageRoutes = [

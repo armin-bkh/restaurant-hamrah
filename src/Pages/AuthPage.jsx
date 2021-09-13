@@ -1,7 +1,7 @@
 import AuthContainer from "../Components/auth/authContainer/AuthContainer";
 import MainLayout from "../Layouts/MainLayout";
 
-const SignUpPage = () => {
+const AuthPage = () => {
   return (
       <MainLayout>
         <AuthContainer />
@@ -9,4 +9,4 @@ const SignUpPage = () => {
   )
 };
 
-export default SignUpPage;
+export default AuthPage;

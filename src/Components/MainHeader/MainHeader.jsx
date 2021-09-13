@@ -3,6 +3,7 @@ import { FaHome } from "react-icons/fa";
 import { RiReservedFill } from "react-icons/ri";
 import { SiManageiq } from "react-icons/si";
 import { HiOutlineLogin } from "react-icons/hi";
+import { FaUsers } from 'react-icons/fa';
 
 const links = [
   { to: "/", title: "خانه", icon: <FaHome className={`inline mg-1 lg:ml-3`} /> },
@@ -15,6 +16,11 @@ const links = [
     to: "/manage",
     title: "مدیریت",
     icon: <SiManageiq className={`inline ml-1 lg:ml-3`} />,
+  },
+  {
+    to: "/about-us",
+    title: "درباره ما",
+    icon: <FaUsers className={`inline ml-1 lg:ml-3`} />,
   },
   {
     to: "/auth",
