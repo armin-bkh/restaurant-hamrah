@@ -34,21 +34,14 @@ const ManageRemoveProduct = () => {
     const getProducts = async () => {
       try {
         const { data } = await getAllProducts();
+        const filtersL = await getAllFilters();
         setProducts(data);
+        setFilters(filtersL.data);
       } catch (err) {
         setError(true);
       }
     };
     getProducts();
-    const getFilters = async () => {
-      try {
-        const { data } = await getAllFilters();
-        setFilters(data);
-      } catch (err) {
-        setError(true);
-      }
-    };
-    getFilters();
   }, []);
 
   const filterProductsHandler = async (selectedOption) => {

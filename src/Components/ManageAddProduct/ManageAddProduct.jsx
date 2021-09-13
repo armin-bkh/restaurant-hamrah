@@ -6,19 +6,6 @@ import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
 import ManageAddFilter from "../ManageAddFilter/ManageAddFilter";
 import { getAllFilters } from "../../Services/getAllFilters";
 
-const options = [
-  { label: "کباب", value: "kebab" },
-  { label: "خورشت", value: "khoresht" },
-  { label: "پلو", value: "polo" },
-  { label: "سالاد", value: "salad" },
-  { label: "فست فود", value: "fast-food" },
-  { label: "پیتزا", value: "pizza" },
-  { label: "ساندویچ", value: "sandwitch" },
-  { label: "سرد", value: "cold" },
-  { label: "گرم", value: "warm" },
-  { label: "نوشیدنی", value: "drink" },
-];
-
 const ManageAddProduct = () => {
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
@@ -83,7 +70,7 @@ const ManageAddProduct = () => {
       formValue.materials
     ) {
       try {
-        await postProduct(formData);
+        await postProduct(formValue);
         setFormValue({
           title: "",
           price: "",

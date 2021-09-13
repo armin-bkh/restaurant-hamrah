@@ -28,15 +28,6 @@
       "filter": "خورشت"
     },
     {
-      "id": 5,
-      "title": "کباب برگ",
-      "price": "41000",
-      "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-      "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
-      "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "کباب"
-    },
-    {
       "id": 6,
       "title": "کباب زعفرونی",
       "price": "37000",
@@ -44,15 +35,6 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
       "filter": "کباب"
-    },
-    {
-      "id": 7,
-      "title": "سبزی پلو",
-      "price": "32000",
-      "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-      "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
-      "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "پلو"
     },
     {
       "id": 9,
@@ -80,15 +62,6 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
       "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
       "filter": "نوشیدنی"
-    },
-    {
-      "id": 12,
-      "title": "سبزی پلو",
-      "price": "32000",
-      "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستند",
-      "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو و سبزی\n",
-      "img": "https://www.freepnglogos.com/uploads/food-png/true-food-kitchen-35.png",
-      "filter": "پلو"
     },
     {
       "id": 13,
@@ -213,6 +186,11 @@
       "label": "فست فود",
       "value": "فست فود",
       "id": "CN0RfqX"
+    },
+    {
+      "label": "خورشت",
+      "value": "خورشت",
+      "id": "FVJhG0G"
     }
   ]
 }

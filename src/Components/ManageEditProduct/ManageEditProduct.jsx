@@ -183,11 +183,12 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
     if (productId) {
       const getProduct = async () => {
         try {
-          const { data } = await getOneProduct(productId);
-          setFormValue(data);
-          const currFilter = options.filter((op) => op.value === data.filter);
-          setFilter({ label: currFilter[0].label });
-        } catch (error) {
+          const  product = await getOneProduct(productId);
+          const  filterL  = await getAllFilters();
+          setFormValue(product.data);
+          setFilters(filterL.data);
+          setFilter(filterL.data.filter(op => op.value === product.data.filter));
+        } catch (err) {
           setError(true);
           addToast("مجددا تلاش کنید", { appearance: "error" });
         }
@@ -195,18 +196,6 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
       getProduct();
     }
   }, [productId]);
-
-  useEffect(() => {
-    const getFilters = async () => {
-      try {
-        const { data } = await getAllFilters();
-        setFilters(data);
-      } catch (err) {
-        setError(true);
-      }
-    };
-    getFilters();
-  }, []);
 
   const changeHandler = (e) => {
     setFormValue({
@@ -239,7 +228,7 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
       formValue.materials
     ) {
       try {
-        await putProduct(productId, { ...formData, id: productId });
+        await putProduct(productId, { ...formValue, id: productId });
         const { data } = await getAllProducts();
         if (filterList.value === "همه") {
           setProducts(data);
@@ -287,7 +276,7 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
             <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
             <SelectBox
               value={filter}
-              options={options}
+              options={filters.filter(op => op.value !== "همه")}
               onChange={selectChangeHandler}
               placeholder="دسته بندی..."
             />
