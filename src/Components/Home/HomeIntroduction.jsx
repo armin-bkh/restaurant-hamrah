@@ -42,7 +42,7 @@ const HomeIntroduction = () => {
         <article className={`flex items-center justify-center`}>
           <Link
             className={`Casablanca text-white gradient px-6 text-sm lg:text-lg md:px-10 py-3 rounded-md self-center`}
-            to="/manage"
+            to="/services"
           >
             توضیحات بیشتر
             <BiMessageSquareDetail className={`mr-3 inline`} />

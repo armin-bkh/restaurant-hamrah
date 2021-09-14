@@ -18,6 +18,7 @@ const ServicesPage = () => {
               className={`max-w-xs sm:max-w-sm md:max-w-md lg:w-full imgShadow block mx-auto`}
               src={QrCode}
               alt="QR-Code"
+              loading="lazy"
             />
             <h1
               className={`color-gradient text-2xl md:text-2xl lg:text-4xl xl:text-5xl mr-9 -mt-7 Casablanca mb-10`}
@@ -50,11 +51,12 @@ const ServicesPage = () => {
               className={`max-w-xs sm:max-w-sm md:max-w-md lg:w-full imgShadow block mx-auto`}
               src={Manage}
               alt="مدیریت"
+              loading="lazy"
             />
             <h1
               className={`color-gradient text-2xl md:text-2xl lg:text-4xl xl:text-5xl mr-9 -mt-7 Casablanca mb-10`}
             >
-              میز و محصول
+              محصول
             </h1>
             <p className={`text-justify mb-5 text-blue-400 Dirooz text-xs sm:text-sm`}>
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
@@ -81,12 +83,13 @@ const ServicesPage = () => {
             <img
               className={`max-w-xs sm:max-w-sm md:max-w-md lg:w-full imgShadow block mx-auto`}
               src={Food}
-              alt="غذا"
+              alt="میز"
+              loading="lazy"
             />
             <h1
               className={`color-gradient text-2xl md:text-2xl lg:text-4xl xl:text-5xl mr-9 -mt-7 Casablanca mb-10 `}
             >
-              سفارش
+              میز
             </h1>
             <p className={`text-justify mb-5 text-blue-400 Dirooz text-xs sm:text-sm`}>
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
