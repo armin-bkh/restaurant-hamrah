@@ -87,8 +87,11 @@ const ManageAddProduct = () => {
       }
     } else addToast("تمامیه اطلاعات ضروری است", { appearance: "error" });
   };
-  return filters ? (
+  return (
     <section className={`rounded-md boxShadow`}>
+    {
+      filters ?
+      <>
       <ManageAddFilter setFilters={setFilters} />
       <form
         className={`text-black flex flex-col p-4`}
@@ -144,8 +147,11 @@ const ManageAddProduct = () => {
           ثبت
         </button>
       </form>
+      </>
+       :
+       <EditFoodLoadingSkeleton />}
     </section>
-  ) : <EditFoodLoadingSkeleton />;
+      ) 
 };
 
 export default ManageAddProduct;

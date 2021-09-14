@@ -132,7 +132,7 @@ const ManageRemoveProduct = () => {
   return (
     <form className={`text-black boxShadowInner rounded-md pt-4 pb-1 px-4`}>
       <header
-        className={`flex flex-col md:flex-row md:items-center md:justify-between`}
+        className={`flex flex-col md:flex-row md:items-center md:justify-between pb-4`}
       >
         <SearchBox value={search} onSearch={searchProductsHandler} />
         {filters ? (

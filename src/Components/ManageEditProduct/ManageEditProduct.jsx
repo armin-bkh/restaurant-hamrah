@@ -138,7 +138,7 @@ const ManageEditProduct = () => {
   return (
     <section className={`text-black boxShadowInner pt-4 rounded-md  pb-1 px-4`}>
       <header
-        className={`flex flex-col md:flex-row md:items-center md:justify-between`}
+        className={`flex flex-col md:flex-row md:items-center md:justify-between pb-4`}
       >
         <SearchBox value={search} onSearch={searchProductsHandler} />
         {
@@ -179,7 +179,8 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList, searchL
       };
       getProduct();
     }
-  }, [productId]);
+
+  }, []);
 
   const changeHandler = (e) => {
     setFormValue({
