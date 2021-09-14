@@ -7,6 +7,7 @@ import { useToasts } from "react-toast-notifications";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import SearchBox from "../Common/SearchBox/SearchBox";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
+import SelectBoxLoadingSkeleton from "../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
 
 const options = [
   { label: "همه", value: "all" },
@@ -137,7 +138,7 @@ const ManageRemoveProduct = () => {
             value={filter}
             placeholder="دسته بندی..."
           />
-        ) : null}
+        ) : <SelectBoxLoadingSkeleton />}
       </header>
       <ul>{returnValue}</ul>
     </form>

@@ -9,6 +9,7 @@ import SearchBox from "../Common/SearchBox/SearchBox";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
+import SelectBoxLoadingSkeleton from "../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
 import ManageAddFilter from "../ManageAddFilter/ManageAddFilter";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
 
@@ -163,7 +164,7 @@ const ManageEditProduct = () => {
           options={filters}
           onChange={filterProductsHandler}
           placeholder="دسته بندی..."
-        /> : null}
+        /> : <SelectBoxLoadingSkeleton />}
       </header>
       <ul>{returnValue}</ul>
     </section>

@@ -5,6 +5,7 @@ import SelectBox from "../Common/SelectBox/SelectBox";
 import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
 import ManageAddFilter from "../ManageAddFilter/ManageAddFilter";
 import { getAllFilters } from "../../Services/getAllFilters";
+import EditFoodLoadingSkeleton from '../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton';
 
 const ManageAddProduct = () => {
   const [error, setError] = useState(false);
@@ -144,7 +145,7 @@ const ManageAddProduct = () => {
         </button>
       </form>
     </section>
-  ) : null;
+  ) : <EditFoodLoadingSkeleton />;
 };
 
 export default ManageAddProduct;
