@@ -1,11 +1,9 @@
 import { useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
 
-const SearchBox = ({ onSearch }) => {
-  const [value, setValue] = useState("");
+const SearchBox = ({ onSearch, value }) => {
 
   const changeHandler = (e) => {
-    setValue(e.target.value);
     onSearch(e.target.value);
   };
 
@@ -13,7 +11,8 @@ const SearchBox = ({ onSearch }) => {
     <div className={`relative`}>
       <input
         className={`outline-none Casablanca px-3 py-2 w-full md:w-62
-         rounded-md mb-5 md:mb-0 bgLight boxShadow placeholder-gray-500`}
+         rounded-md mb-5 md:mb-0 border bgLight boxShadow placeholder-gray-500
+         focus:border-blue-500 border-transparent`}
         type="text"
         placeholder="جتسجو..."
         value={value}

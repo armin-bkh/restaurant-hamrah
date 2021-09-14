@@ -1,9 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RadioIComponent from "../Common/RadioIComponent/RadioIComponent"
 import styles from './Filter.module.scss';
+import { getAllFilters } from '../../Services/getAllFilters';
 
 const Filter = ({ onFilter }) => {
-  const [filter, setFilter] = useState("");
+  const [filter, setFilter] = useState("همه");
+  const [filters, setFilters] = useState(null);
+
+  useEffect(() => {
+    const getFilters = async () =>{
+        const { data } = await getAllFilters();
+        setFilters(data);
+    }
+    getFilters();
+  }, []);
 
   const changeHandler = (e) => {
     setFilter(e.target.value);
@@ -12,17 +22,12 @@ const Filter = ({ onFilter }) => {
 
   return (
     <article className={`flex justify-start items-center px-3 py-4 overflow-y-hidden overflow-x-auto ${styles.filterContainer}`}>
-      <RadioIComponent onChange={changeHandler} filterValue="all" filterState={filter} lbl="همه" />
-      <RadioIComponent onChange={changeHandler} filterValue="kebab" filterState={filter} lbl="کباب" />
-      <RadioIComponent onChange={changeHandler} filterValue="polo" filterState={filter} lbl="پلو" />
-      <RadioIComponent onChange={changeHandler} filterValue="khoresht" filterState={filter} lbl="خورشت" />
-      <RadioIComponent onChange={changeHandler} filterValue="salad" filterState={filter} lbl="سالاد" />
-      <RadioIComponent onChange={changeHandler} filterValue="sandwich" filterState={filter} lbl="ساندویچ" />
-      <RadioIComponent onChange={changeHandler} filterValue="cold" filterState={filter} lbl="سرد" />
-      <RadioIComponent onChange={changeHandler} filterValue="warm" filterState={filter} lbl="گرم" />
-      <RadioIComponent onChange={changeHandler} filterValue="fastfood" filterState={filter} lbl="فستفود" />
-      <RadioIComponent onChange={changeHandler} filterValue="pizza" filterState={filter} lbl="پیتزا" />
-      <RadioIComponent onChange={changeHandler} filterValue="drink" filterState={filter} lbl="نوشیدنی" />
+      {
+        filters ? 
+        filters.map(fil => (
+          <RadioIComponent key={fil.value} value={fil.value} filterCur={filter} onChange={changeHandler} />
+        )) : null
+      }
     </article>
   );
 };

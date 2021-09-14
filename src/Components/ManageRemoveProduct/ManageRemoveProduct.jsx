@@ -32,6 +32,7 @@ const ManageRemoveProduct = () => {
   }, []);
 
   const filterProductsHandler = async (selectedOption) => {
+    setSearch('');
     setFilter(selectedOption);
     await setProducts(null);
     const { data } = await getAllProducts();
@@ -50,6 +51,7 @@ const ManageRemoveProduct = () => {
   };
 
   const searchProductsHandler = async (value) => {
+    await setProducts(null);
     const { data } = await getAllProducts();
     const filteredProducts = data.filter((pr) => pr.filter === filter.value);
     const searchedProducts = filteredProducts.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()));
@@ -81,11 +83,20 @@ const ManageRemoveProduct = () => {
 
   const removeProductHandler = async (id) => {
     try {
+      await setProducts(null);
       await deleteProduct(id);
       const { data } = await getAllProducts();
+      const filteredProducts = data.filter((pr) => pr.filter === filter.value);
+      const searchedProducts = filteredProducts.filter((pr) => pr.title.toLowerCase().includes(search.toLowerCase()));
       if (filter.value === "همه") {
         setProducts(data);
-      } else setProducts(data.filter((pr) => pr.filter === filter.value));
+        if(!data.length) setError(true)
+        else setError(false)
+      } else {
+        setProducts(searchedProducts ? searchedProducts : filteredProducts);
+        if(!searchedProducts.length) setError(true)
+        else setError(false)
+      }
       addToast("حذف شد", { appearance: "success" });
     } catch (err) {
       setError(true);
@@ -123,7 +134,7 @@ const ManageRemoveProduct = () => {
       <header
         className={`flex flex-col md:flex-row md:items-center md:justify-between`}
       >
-        <SearchBox onSearch={searchProductsHandler} />
+        <SearchBox value={search} onSearch={searchProductsHandler} />
         {filters ? (
           <SelectBox
             onChange={filterProductsHandler}

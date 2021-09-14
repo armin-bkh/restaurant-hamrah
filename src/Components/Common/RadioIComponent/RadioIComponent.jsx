@@ -1,32 +1,32 @@
 import { useState, useEffect } from "react";
 
-const RadioIComponent = ({ onChange, filterState, filterValue, lbl }) => {
+const RadioIComponent = ({ onChange, value, filterCur }) => {
   const [checked, setChecked] = useState(true);
 
   useEffect(() => {
-    if (filterState === filterValue) {
+    if (filterCur === value) {
       setChecked(true);
     } else setChecked(false);
-  }, [filterState, filterValue]);
+  }, [filterCur, value]);
 
   return (
     <div className={`text-black relative text-sm ml-2`}>
       <input
-        id={filterValue}
+        id={value}
         className={`sr-only w-full h-full`}
         type="radio"
-        checked={filterState === filterValue && true}
-        value={filterValue}
+        checked={checked}
+        value={value}
         onChange={onChange}
       />
       <label
-        className={`flex justify-center cursor-pointer items-center px-4 py-1
+        className={`text-xs md:text-sm flex justify-center cursor-pointer items-center px-4 py-1
          ANoor rounded-full bgLight ${
            checked ? "boxShadowInner" : "boxShadow"
          }`}
-        htmlFor={filterValue}
+        htmlFor={value}
       >
-        {lbl}
+        {value}
       </label>
     </div>
   );

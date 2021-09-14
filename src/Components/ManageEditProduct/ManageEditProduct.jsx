@@ -13,33 +13,6 @@ import SelectBoxLoadingSkeleton from "../LoadingSkeleton/SelectBoxLoadingSkeleto
 import ManageAddFilter from "../ManageAddFilter/ManageAddFilter";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
 
-const options = [
-  { label: "کباب", value: "kebab" },
-  { label: "خورشت", value: "khoresht" },
-  { label: "پلو", value: "polo" },
-  { label: "سالاد", value: "salad" },
-  { label: "فست فود", value: "fast-food" },
-  { label: "پیتزا", value: "pizza" },
-  { label: "ساندویچ", value: "sandwitch" },
-  { label: "سرد", value: "cold" },
-  { label: "گرم", value: "warm" },
-  { label: "نوشیدنی", value: "drink" },
-];
-
-const filteroptions = [
-  { label: "همه", value: "all" },
-  { label: "کباب", value: "kebab" },
-  { label: "خورشت", value: "khoresht" },
-  { label: "پلو", value: "polo" },
-  { label: "سالاد", value: "salad" },
-  { label: "فست فود", value: "fast-food" },
-  { label: "پیتزا", value: "pizza" },
-  { label: "ساندویچ", value: "sandwitch" },
-  { label: "سرد", value: "cold" },
-  { label: "گرم", value: "warm" },
-  { label: "نوشیدنی", value: "drink" },
-];
-
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState(null);
@@ -74,6 +47,7 @@ const ManageEditProduct = () => {
   };
 
   const filterProductsHandler = async (selectedOption) => {
+    setSearch('');
     setFilter(selectedOption);
     await setProducts(null);
     const { data } = await getAllProducts();
@@ -92,6 +66,7 @@ const ManageEditProduct = () => {
   };
 
   const searchProductsHandler = async (value) => {
+    await setProducts(null);
     const { data } = await getAllProducts();
     setSearch(value);
     const filteredProducts = data.filter((pr) => pr.filter === filter.value);
@@ -141,9 +116,11 @@ const ManageEditProduct = () => {
           <EditProduct
             key={pr.id}
             filterList={filter}
+            searchList={search}
             productId={productId}
             setProducts={setProducts}
             setProductId={setProductId}
+            err={setError}
           />
         );
       } else
@@ -163,7 +140,7 @@ const ManageEditProduct = () => {
       <header
         className={`flex flex-col md:flex-row md:items-center md:justify-between`}
       >
-        <SearchBox onSearch={searchProductsHandler} />
+        <SearchBox value={search} onSearch={searchProductsHandler} />
         {
           filters ? <SelectBox
           value={filter}
@@ -179,7 +156,7 @@ const ManageEditProduct = () => {
 
 export default ManageEditProduct;
 
-const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
+const EditProduct = ({ productId, setProducts, setProductId, filterList, searchList, err }) => {
   const [formValue, setFormValue] = useState(null);
   const [error, setError] = useState(false);
   const [filter, setFilter] = useState("");
@@ -235,15 +212,24 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList }) => {
       formValue.materials
     ) {
       try {
+        await setProducts(null)
         await putProduct(productId, { ...formValue, id: productId });
         const { data } = await getAllProducts();
+        const filteredProducts = data.filter((pr) => pr.filter === filterList.value);
+        const searchedProducts = filteredProducts.filter((pr) => pr.title.toLowerCase().includes(searchList.toLowerCase()));
         if (filterList.value === "همه") {
-          setProducts(data);
+          const searchedListInAll = data.filter((pr) => pr.title.toLowerCase().includes(searchList.toLowerCase()))
+          const newList = searchedListInAll.length ? searchedListInAll : filteredProducts;
+          setProducts(newList);
+          if(!newList) setError(true)
+          else setError(false)
         } else {
-          setProducts(data.filter((pr) => pr.filter === filterList.value));
+          setProducts(searchedProducts);
+          if(!searchedProducts.length) err(true)
+          else err(false)
         }
-        setProductId("");
         addToast("تغییرات اعمال شد", { appearance: "success" });
+        setProductId('');
       } catch (error) {
         setError(true);
         addToast("مجددا تلاش کنید", { appearance: "error" });

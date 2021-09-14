@@ -24,13 +24,18 @@ const ProductList = () => {
 
   const filterHandler = async (value) =>{
     try{
+      await setProducts(null);
       const { data } = await getAllProducts();
-      if(value === 'all'){
+      if(value === 'همه'){
         setProducts(data);
+        if(!data.length) setError(true)
+        else setError(false)
         return;
       }
       const filteredProducts = data.filter(pr => pr.filter === value);
       setProducts(filteredProducts);
+      if(!filteredProducts.length) setError(true)
+      else setError(false)
     }
     catch(err){
       setError(true);

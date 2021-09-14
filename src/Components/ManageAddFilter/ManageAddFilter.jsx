@@ -41,7 +41,7 @@ const ManageAddFilter = ({ setFilters }) =>{
     }
 
     return (
-        <form className={`w-full flex py-4 px-4 border-b border-gray-200`} onSubmit={submitHandler}>
+        <form className={`w-full flex py-4 px-4 border-b border-blue-400`} onSubmit={submitHandler}>
             <input className={`flex-grow rounded-r-md px-3 py-2 bgLight boxShadow
              outline-none Casablanca placeholder-gray-500 text-sm`} placeholder="افزودن دسته بندی..." value={filter.value} onChange={changeHandler} />
             <button className={`rounded-l-md gradient text-white px-3`} type="submit"><BiPlus/></button>

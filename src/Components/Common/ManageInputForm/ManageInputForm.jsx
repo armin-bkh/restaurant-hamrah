@@ -13,7 +13,8 @@ const ManageInputForm = ({ type, lbl, ...rest }) => {
       ) : (
         <input
           placeholder={`${lbl}...`}
-          className={`placeholder-gray-500 Casablanca focus:border-blue-500 border-transparent border bg-transparent mt-2 text-sm w-full ${
+          className={`placeholder-gray-500 Casablanca focus:border-blue-500 border-transparent border
+           bg-transparent mt-2 text-sm w-full ${
             type === "file" || "px-3 py-2 rounded-md outline-none boxShadow"
           }`}
           type={type}
