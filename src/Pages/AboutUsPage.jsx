@@ -1,7 +1,13 @@
 import MainLayout from "../Layouts/MainLayout";
 import Company from "../images/Company-amico.png";
+import { useEffect } from "react";
 
 const AboutUsPage = () => {
+
+  useEffect(()=>{
+    document.title = "درباره ما"  
+  }, [])
+
   return (
     <MainLayout>
       <main>

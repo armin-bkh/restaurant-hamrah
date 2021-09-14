@@ -9,6 +9,7 @@ import HomePage from "../Pages/HomePage";
 import ManagePage from "../Pages/ManagePage";
 import ReservationPage from "../Pages/ReservationPage";
 import AuthPage from "../Pages/AuthPage";
+import ServicesPage from "../Pages/ServicesPage";
 
 export const routes = [
     {path: '/', component: HomePage, exact: true},
@@ -16,6 +17,7 @@ export const routes = [
     {path: "/manage", component: ManagePage},
     {path: "/auth", component: AuthPage},
     {path: "/about-us", component: AboutUsPage},
+    {path: "/services", component: ServicesPage},
 ]
 
 export const manageRoutes = [
