@@ -82,35 +82,41 @@ const ManageEditProduct = () => {
     );
     if (selectedOption.value === "همه") {
       setProducts(data);
+      if(!data.length) setError(true)
+      else setError(false)
       return;
     }
     setProducts(filteredProducts);
+    if(!filteredProducts.length) setError(true)
+    else setError(false)
   };
 
   const searchProductsHandler = async (value) => {
     const { data } = await getAllProducts();
     setSearch(value);
+    const filteredProducts = data.filter((pr) => pr.filter === filter.value);
+    const searchedProducts = filteredProducts.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()));
     if (value.length > 0) {
       if (filter.value === "همه") {
-        setProducts(
-          data.filter((pr) =>
-            pr.title.toLowerCase().includes(value.toLowerCase())
-          )
-        );
+        const searchedProductsInAll = data.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()))
+        setProducts(searchedProductsInAll);
+        if(!searchedProductsInAll.length) setError(true)
+        else setError(false);
         return;
       }
-      const filteredProducts = data.filter((pr) => pr.filter === filter.value);
-      setProducts(
-        filteredProducts.filter((pr) =>
-          pr.title.toLowerCase().includes(value.toLowerCase())
-        )
-      );
+      setProducts(searchedProducts);
+      if(!searchedProducts.length) setError(true)
+      else setError(false)
     } else {
       if (filter.value === "همه") {
         setProducts(data);
+        if(!data.length) setError(true)
+        else setError(false)
         return;
       } else {
-        setProducts(data.filter((pr) => pr.filter === filter.value));
+        setProducts(filteredProducts);
+        if(!filteredProducts.length) setError(true)
+        else setError(false)
       }
     }
   };

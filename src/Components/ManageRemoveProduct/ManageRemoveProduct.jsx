@@ -9,22 +9,8 @@ import SearchBox from "../Common/SearchBox/SearchBox";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
 import SelectBoxLoadingSkeleton from "../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
 
-const options = [
-  { label: "همه", value: "all" },
-  { label: "کباب", value: "kebab" },
-  { label: "خورشت", value: "khoresht" },
-  { label: "پلو", value: "polo" },
-  { label: "سالاد", value: "salad" },
-  { label: "فست فود", value: "fast-food" },
-  { label: "پیتزا", value: "pizza" },
-  { label: "ساندویچ", value: "sandwitch" },
-  { label: "سرد", value: "cold" },
-  { label: "گرم", value: "warm" },
-  { label: "نوشیدنی", value: "drink" },
-];
-
 const ManageRemoveProduct = () => {
-  const [products, setProducts] = useState(null);
+  const [products, setProducts] = useState('');
   const [error, setError] = useState(false);
   const [filter, setFilter] = useState({ label: "همه", value: "همه" });
   const [filters, setFilters] = useState(null);
@@ -54,34 +40,41 @@ const ManageRemoveProduct = () => {
     );
     if (selectedOption.value === "همه") {
       setProducts(data);
+      if(!data.length) setError(true)
+      else setError(false)
       return;
     }
     setProducts(filteredProducts);
+    if(!filteredProducts.length) setError(true)
+    else setError(false)
   };
 
   const searchProductsHandler = async (value) => {
     const { data } = await getAllProducts();
+    const filteredProducts = data.filter((pr) => pr.filter === filter.value);
+    const searchedProducts = filteredProducts.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()));
     setSearch(value);
     if (value.length > 0) {
       if (filter.value === "همه") {
-        setProducts(
-          data.filter((pr) =>
-            pr.title.toLowerCase().includes(value.toLowerCase())
-          )
-        );
+        const searchedProductsInAll = data.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()))
+        setProducts(searchedProductsInAll);
+        if(!searchedProductsInAll.length) setError(true)
+        else setError(false)
         return;
       }
-      const filteredroducts = data.filter((pr) => pr.filter === filter.value);
-      const searchedProducts = filteredroducts.filter((pr) =>
-        pr.title.toLowerCase().includes(value.toLowerCase())
-      );
       setProducts(searchedProducts);
+      if(!searchedProducts.length) setError(true)
+      else setError(false)
     } else {
       if (filter.value === "همه") {
         setProducts(data);
+        if(!data.length) setError(true)
+        else setError(false)
         return;
       } else {
-        setProducts(data.filter((pr) => pr.filter === filter.value));
+        setProducts(filteredProducts);
+        if(!filteredProducts.length) setError(true)
+        else setError(false)
       }
     }
   };
