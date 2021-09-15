@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { RiReservedFill } from "react-icons/ri";
 import { SiManageiq } from "react-icons/si";
-import { HiOutlineLogin } from "react-icons/hi";
+import { MdContactMail } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { IoIosJournal, IoIosFingerPrint } from "react-icons/io";
 
@@ -13,16 +13,6 @@ const links = [
     icon: <FaHome className={`inline mg-1 lg:ml-3`} />,
   },
   {
-    to: "/reservation",
-    title: "رزرو",
-    icon: <RiReservedFill className={`inline ml-1 lg:ml-3`} />,
-  },
-  {
-    to: "/manage",
-    title: "مدیریت",
-    icon: <SiManageiq className={`inline ml-1 lg:ml-3`} />,
-  },
-  {
     to: "/services",
     title: "خدمات",
     icon: <IoIosJournal className={`inline ml-1 lg:ml-3`} />,
@@ -31,6 +21,11 @@ const links = [
     to: "/about-us",
     title: "درباره ما",
     icon: <FaUsers className={`inline ml-1 lg:ml-3`} />,
+  },
+  {
+    to: "/contact",
+    title: "تماس با ما",
+    icon: <MdContactMail className={`inline ml-1 lg:ml-3`} />,
   },
   {
     to: "/auth",

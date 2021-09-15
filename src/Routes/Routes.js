@@ -12,28 +12,30 @@ import AuthPage from "../Pages/AuthPage";
 import ServicesPage from "../Pages/ServicesPage";
 import NotFoundPage from "../Pages/NotFoundPage";
 import NotFound from "../Components/NotFound/NotFound";
+import ContactPage from '../Pages/ContactPage';
 
 export const routes = [
     {path: '/', component: HomePage, exact: true},
-    {path: "/reservation", component: ReservationPage},
+    {path: "/reservation", component: ReservationPage, exact: true},
     {path: "/manage", component: ManagePage},
-    {path: "/auth", component: AuthPage},
-    {path: "/about-us", component: AboutUsPage},
-    {path: "/services", component: ServicesPage},
+    {path: "/auth", component: AuthPage, exact: true},
+    {path: "/about-us", component: AboutUsPage, exact: true},
+    {path: "/services", component: ServicesPage, exact: true},
+    {path: "/contact", component: ContactPage, exact: true},
     {path: "*", component: NotFoundPage},
 ]
 
 export const manageRoutes = [
     {path: '/manage', component: manageDetail, exact: true},
-    {path: '/manage/manage-tables', component: ManageTable, exact: true},
-    {path: '/manage/manage-products', component: ManageProducts},
+    {path: '/manage/manage-tables', component: ManageTable,},
+    {path: '/manage/manage-products', component: ManageProducts,},
     {path: "*", component: NotFound},
 ]
 
 export const manageProductsRoutes = [
     {path: '/manage/manage-products' , component: ManageProductsDetail, exact: true},
-    {path: '/manage/manage-products/edit-product', component: ManageEditProduct},
-    {path: '/manage/manage-products/remove-product', component: ManageRemoveProduct},
-    {path: '/manage/manage-products/add-product', component: ManageAddProduct},
+    {path: '/manage/manage-products/edit-product', component: ManageEditProduct, exact: true},
+    {path: '/manage/manage-products/remove-product', component: ManageRemoveProduct, exact: true},
+    {path: '/manage/manage-products/add-product', component: ManageAddProduct, exact: true},
     {path: "*", component: NotFound},
 ]

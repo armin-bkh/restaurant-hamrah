@@ -82,7 +82,7 @@ const ServicesPage = () => {
           </article>
           <article className={`flex flex-col p-10`}>
             <img
-              className={`max-w-xs sm:max-w-sm md:max-w-md lg:w-full imgShadow block mx-auto`}
+              className={`max-w-xs sm:max-w-sm md:max-w-md lg:w-full h-full imgShadow block mx-auto`}
               src={Food}
               alt="میز"
               loading="lazy"
