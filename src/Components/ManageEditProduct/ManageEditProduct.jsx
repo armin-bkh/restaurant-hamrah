@@ -116,10 +116,10 @@ const ManageEditProduct = () => {
       await setProductList(null)
       await setProducts(null)
       await putProduct(productId, { ...formValue, id: productId });
+      await setProductId(null);
       const { data } = await getAllProducts();
       setProducts(data);
       addToast("تغییرات اعمال شد", { appearance: "success" });
-      setProductId(null);
     } catch (error) {
       setError(true);
       addToast("مجددا تلاش کنید", { appearance: "error" });

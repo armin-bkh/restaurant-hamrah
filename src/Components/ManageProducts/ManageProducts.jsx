@@ -28,7 +28,7 @@ export default ManageProducts;
 export const ManageProductsDetail = () => {
   return (
     <article
-      className={`text-blue-400 Casablanca text-lg lg:text-3xl flex flex-col items-center`}
+      className={`color-gradient Casablanca text-lg lg:text-3xl flex flex-col items-center`}
     >
       <h1>برای مدیریت غذا بر روی یکی از گزینه ها کلیک کنید</h1>
       <img

@@ -9,7 +9,7 @@ body {
   background: #dbdbdb;
 }
 .bgDarkImage{
-  background: url('../images/background.jpg') center no-repeat;
+  background: url('../Assets/images/background.jpg') center no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
