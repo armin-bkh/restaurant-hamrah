@@ -16,10 +16,12 @@ import ManageProductItem from "../ManageProductItem/ManageProductItem";
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState(null);
+  const [productList, setProductList] = useState(null);
   const [error, setError] = useState(false);
   const [filter, setFilter] = useState({ label: "همه", value: "همه" });
   const [filters, setFilters] = useState(null);
   const [search, setSearch] = useState("");
+  const { addToast } = useToasts();
 
   useEffect(() => {
     const getProducts = async () => {
@@ -42,59 +44,87 @@ const ManageEditProduct = () => {
     getFilters();
   }, []);
 
+  useEffect(()=>{
+    if(products){
+      if(filter.value !== "همه"){
+        const filteredProducts = products.filter(pr => pr.filter === filter.value);
+        const searchedProducts = filteredProducts.filter(pr => pr.title.toLowerCase().includes(search.toLowerCase()));
+        const newList = searchedProducts ? searchedProducts : filteredProducts;
+        setProductList(newList);
+        if(!newList.length) setError(true)
+        else setError(false)
+      } else {
+        setProductList(products)
+        if(!products.length) setError(true)
+        else setError(false)
+      }
+    }
+  }, [products])
+
   const editProductHandler = (id) => {
     setProductId(id);
   };
 
-  const filterProductsHandler = async (selectedOption) => {
+  const filterProductsHandler = (selectedOption) => {
     setSearch('');
     setFilter(selectedOption);
-    await setProducts(null);
-    const { data } = await getAllProducts();
-    const filteredProducts = data.filter(
+    const filteredProducts = products.filter(
       (pr) => pr.filter === selectedOption.value
     );
     if (selectedOption.value === "همه") {
-      setProducts(data);
-      if(!data.length) setError(true)
+      setProductList(products);
+      if(!products.length) setError(true)
       else setError(false)
       return;
     }
-    setProducts(filteredProducts);
+    setProductList(filteredProducts);
     if(!filteredProducts.length) setError(true)
     else setError(false)
   };
 
-  const searchProductsHandler = async (value) => {
-    await setProducts(null);
-    const { data } = await getAllProducts();
+  const searchProductsHandler = (value) => {
     setSearch(value);
-    const filteredProducts = data.filter((pr) => pr.filter === filter.value);
+    const filteredProducts = products.filter((pr) => pr.filter === filter.value);
     const searchedProducts = filteredProducts.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()));
     if (value.length > 0) {
       if (filter.value === "همه") {
-        const searchedProductsInAll = data.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()))
-        setProducts(searchedProductsInAll);
+        const searchedProductsInAll = products.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()))
+        setProductList(searchedProductsInAll);
         if(!searchedProductsInAll.length) setError(true)
         else setError(false);
         return;
       }
-      setProducts(searchedProducts);
+      setProductList(searchedProducts);
       if(!searchedProducts.length) setError(true)
       else setError(false)
     } else {
       if (filter.value === "همه") {
-        setProducts(data);
-        if(!data.length) setError(true)
+        setProductList(products);
+        if(!products.length) setError(true)
         else setError(false)
         return;
       } else {
-        setProducts(filteredProducts);
+        setProductList(filteredProducts);
         if(!filteredProducts.length) setError(true)
         else setError(false)
       }
     }
   };
+
+  const submitHandler = async (formValue) =>{
+    try {
+      await setProductList(null)
+      await setProducts(null)
+      await putProduct(productId, { ...formValue, id: productId });
+      const { data } = await getAllProducts();
+      setProducts(data);
+      addToast("تغییرات اعمال شد", { appearance: "success" });
+      setProductId(null);
+    } catch (error) {
+      setError(true);
+      addToast("مجددا تلاش کنید", { appearance: "error" });
+    } 
+  }
 
   let returnValue = Array(15)
     .fill()
@@ -109,18 +139,14 @@ const ManageEditProduct = () => {
       </h1>
     );
   }
-  if (products && !error) {
-    returnValue = products.map((pr) => {
+  if (productList && !error) {
+    returnValue = productList.map((pr) => {
       if (pr.id === productId) {
         return (
           <EditProduct
             key={pr.id}
-            filterList={filter}
-            searchList={search}
             productId={productId}
-            setProducts={setProducts}
-            setProductId={setProductId}
-            err={setError}
+            onSubmit={submitHandler}
           />
         );
       } else
@@ -156,7 +182,7 @@ const ManageEditProduct = () => {
 
 export default ManageEditProduct;
 
-const EditProduct = ({ productId, setProducts, setProductId, filterList, searchList, err }) => {
+const EditProduct = ({ onSubmit, productId }) => {
   const [formValue, setFormValue] = useState(null);
   const [error, setError] = useState(false);
   const [filter, setFilter] = useState("");
@@ -179,7 +205,6 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList, searchL
       };
       getProduct();
     }
-
   }, []);
 
   const changeHandler = (e) => {
@@ -188,6 +213,7 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList, searchL
       [e.target.name]: e.target.value,
     });
   };
+  
   const selectChangeHandler = (selectedOption) => {
     setFilter(selectedOption);
     setFormValue({
@@ -196,14 +222,14 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList, searchL
     });
   };
 
-  const SubmitHandler = async (e) => {
+  const SubmitHandler = (e) => {
+    e.preventDefault();
     let formData = new FormData();
 
     for (const key in formValue) {
       formData.append(key, formValue[key]);
     }
 
-    e.preventDefault();
     if (
       formValue.title &&
       formValue.price &&
@@ -212,29 +238,7 @@ const EditProduct = ({ productId, setProducts, setProductId, filterList, searchL
       formValue.img &&
       formValue.materials
     ) {
-      try {
-        await setProducts(null)
-        await putProduct(productId, { ...formValue, id: productId });
-        const { data } = await getAllProducts();
-        const filteredProducts = data.filter((pr) => pr.filter === filterList.value);
-        const searchedProducts = filteredProducts.filter((pr) => pr.title.toLowerCase().includes(searchList.toLowerCase()));
-        if (filterList.value === "همه") {
-          const searchedListInAll = data.filter((pr) => pr.title.toLowerCase().includes(searchList.toLowerCase()))
-          const newList = searchedListInAll.length ? searchedListInAll : filteredProducts;
-          setProducts(newList);
-          if(!newList) setError(true)
-          else setError(false)
-        } else {
-          setProducts(searchedProducts);
-          if(!searchedProducts.length) err(true)
-          else err(false)
-        }
-        addToast("تغییرات اعمال شد", { appearance: "success" });
-        setProductId('');
-      } catch (error) {
-        setError(true);
-        addToast("مجددا تلاش کنید", { appearance: "error" });
-      }
+      onSubmit(formValue);
     } else addToast("تمامیه اطلاعات ضروری است", { appearance: "error" });
   };
 
