@@ -1,5 +1,5 @@
 import MainLayout from "../Layouts/MainLayout";
-import Company from "../images/Company-amico.png";
+import Company from "../Assets/SVG/company-animate.svg";
 import { useEffect } from "react";
 
 const AboutUsPage = () => {

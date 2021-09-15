@@ -2,7 +2,7 @@ import { Route, Switch } from "react-router-dom";
 import ManageProductsNavigation from "../ManageProductsNavigation/ManageProductsNaviagtion";
 import styles from "./ManageProducts.module.scss";
 import { manageProductsRoutes } from "../../Routes/Routes";
-import setting from "../../images/Processing-pana.png";
+import setting from "../../Assets/SVG/processing-animate.svg";
 
 const ManageProducts = () => {
   return (

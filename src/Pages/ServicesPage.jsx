@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import MainLayout from "../Layouts/MainLayout";
-import QrCode from "../images/QR Code-bro.png";
-import Manage from "../images/At work-bro.png";
-import Food from "../images/Pizza sharing-pana.png";
+import QrCode from "../Assets/SVG/qr-code-animate.svg";
+import Manage from "../Assets/SVG/at-work-animate.svg";
+import Food from "../Assets/SVG/pizza-sharing-animate.svg";
 
 const ServicesPage = () => {
   

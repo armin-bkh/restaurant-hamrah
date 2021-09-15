@@ -1,5 +1,5 @@
-import table from "../../images/Data report-amico.png";
-import food from "../../images/Social interaction-amico.png";
+import table from "../../Assets/SVG/data-report-animate.svg";
+import food from "../../Assets/SVG/social-interaction-1-animate.svg";
 
 const manageDetail = () => {
   return (

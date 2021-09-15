@@ -1,4 +1,4 @@
-import Home from "../../images/Data report-bro.png";
+import Home from "../../Assets/SVG/data-report-animate (1).svg";
 import { Link } from "react-router-dom";
 import { BiMessageSquareDetail } from "react-icons/bi";
 

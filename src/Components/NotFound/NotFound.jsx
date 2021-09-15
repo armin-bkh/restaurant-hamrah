@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import NotFoundSvg from "../../Assets/oops-404-error-with-a-broken-robot-animate.svg";
+import NotFoundSvg from "../../Assets/SVG/oops-404-error-with-a-broken-robot-animate.svg";
 import { Link } from "react-router-dom";
 
 const NotFound = ({ history }) => {
