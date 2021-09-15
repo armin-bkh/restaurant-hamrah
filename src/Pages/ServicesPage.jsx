@@ -5,6 +5,7 @@ import Manage from "../images/At work-bro.png";
 import Food from "../images/Pizza sharing-pana.png";
 
 const ServicesPage = () => {
+  
   useEffect(() => {
     document.title = "خدمات";
   }, []);
