@@ -12,7 +12,7 @@ const AboutUsPage = () => {
     <MainLayout>
       <main>
         <section
-          className={`grid grid-cols-1 md:grid-cols-2 md:grid-rows-4 py-4 min-h-screen`}
+          className={`grid grid-cols-1 md:grid-cols-2 md:grid-rows-4 py-4 min-h-screen p-5`}
         >
           <article>
             <h1 className={`color-gradient lg:text-8xl text-3xl md:text-5xl py-3 text-center Casablanca`}>
@@ -29,7 +29,7 @@ const AboutUsPage = () => {
             />
           </article>
           <article className={`mb-7`}>
-            <p className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify px-3`}>
+            <p className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify`}>
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -37,7 +37,7 @@ const AboutUsPage = () => {
             </p>
           </article>
           <article className={`mb-3`}>
-            <p className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify px-3`}>
+            <p className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify`}>
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -50,7 +50,7 @@ const AboutUsPage = () => {
             </p>
           </article>
           <article>
-            <p className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify px-3`}>
+            <p className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify`}>
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد

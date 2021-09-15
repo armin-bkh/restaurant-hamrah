@@ -46,8 +46,12 @@ const ManageRemoveProduct = () => {
         if(!newList.length) setError(true)
         else setError(false)
       } else {
-        setProductList(products);
-        if(!products.length) setError(true)
+        const searchedProducts = products.filter((pr) =>
+          pr.title.toLowerCase().includes(search.toLowerCase())
+        );
+        const newList = searchedProducts ? searchedProducts : products;
+        setProductList(newList);
+        if(!newList.length) setError(true)
         else setError(false)
       }
     }

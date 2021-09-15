@@ -14,11 +14,11 @@ const ContactPage = () => {
             >
               تماس با ما
             </h1>
-            <h1 className={`text-blue-400 text-lg md:text-xl lg:text-xl mb-2`}>
+            <h1 className={`text-blue-400 text-base md:text-xl lg:text-2xl mb-2`}>
               آدرس الکترونیکی: arminbkh0921@yahoo.com
             </h1>
-            <h1 className={`text-blue-400 text-lg md:text-xl lg:text-xl`}>
-              واتس اپ:<br/> 09213506150
+            <h1 className={`text-blue-400 text-base md:text-xl lg:text-2xl`}>
+              واتس اپ: 09213506150
             </h1>
           </article>
           <article className={`row-start-1 md:row-span-2 flex justify-center items-center`}>

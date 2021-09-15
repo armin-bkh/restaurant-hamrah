@@ -4,9 +4,9 @@ import { BiMessageSquareDetail } from "react-icons/bi";
 
 const HomeIntroduction = () => {
   return (
-    <main>
+    <main className={`min-h-screen`}>
       <section
-        className={`min-h-screen grid grid-cols-1 lg:grid-cols-2 grid-rows-5 gap-y-2 lg:grid-rows-3`}
+        className={`grid grid-cols-1 lg:grid-cols-2 gap-y-2 lg:grid-rows-3 p-5`}
       >
         <article
           className={`row-span-2 lg:row-span-3 flex items-center justify-center`}
@@ -28,7 +28,7 @@ const HomeIntroduction = () => {
           </h1>
         </header>
 
-        <article className={`flex items-end justify-center px-2`}>
+        <article className={`flex items-end justify-center mb-5 lg:mb-0`}>
           <p
             className={`text-blue-400 md:font-bold text-sm md:text-lg Dirooz text-justify`}
           >

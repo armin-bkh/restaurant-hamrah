@@ -14,7 +14,7 @@ const ServicesPage = () => {
     <MainLayout>
       <main className={`min-h-screen`}>
         <section className={`grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3`}>
-          <article className={`flex flex-col p-10`}>
+          <article className={`flex flex-col p-5`}>
             <img
               className={`max-w-xs sm:max-w-sm md:max-w-md lg:w-full imgShadow block mx-auto`}
               src={QrCode}
@@ -47,7 +47,7 @@ const ServicesPage = () => {
               دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به
             </p>
           </article>
-          <article className={`flex flex-col p-10`}>
+          <article className={`flex flex-col p-5`}>
             <img
               className={`max-w-xs sm:max-w-sm md:max-w-md lg:w-full imgShadow block mx-auto`}
               src={Manage}
@@ -80,7 +80,7 @@ const ServicesPage = () => {
               دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به
             </p>
           </article>
-          <article className={`flex flex-col p-10`}>
+          <article className={`flex flex-col p-5`}>
             <img
               className={`max-w-xs sm:max-w-sm md:max-w-md lg:w-full h-full imgShadow block mx-auto`}
               src={Food}

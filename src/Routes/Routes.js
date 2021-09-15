@@ -27,7 +27,7 @@ export const routes = [
 
 export const manageRoutes = [
     {path: '/manage', component: manageDetail, exact: true},
-    {path: '/manage/manage-tables', component: ManageTable,},
+    {path: '/manage/manage-tables', component: ManageTable, exact: true},
     {path: '/manage/manage-products', component: ManageProducts,},
     {path: "*", component: NotFound},
 ]

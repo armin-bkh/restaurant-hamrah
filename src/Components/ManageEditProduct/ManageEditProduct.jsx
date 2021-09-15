@@ -33,88 +33,102 @@ const ManageEditProduct = () => {
       }
     };
     getProducts();
-    const getFilters = async () =>{
-      try{
+    const getFilters = async () => {
+      try {
         const { data } = await getAllFilters();
         setFilters(data);
-      }catch(err){
+      } catch (err) {
         setError(true);
       }
-    }
+    };
     getFilters();
   }, []);
 
-  useEffect(()=>{
-    if(products){
-      if(filter.value !== "همه"){
-        const filteredProducts = products.filter(pr => pr.filter === filter.value);
-        const searchedProducts = filteredProducts.filter(pr => pr.title.toLowerCase().includes(search.toLowerCase()));
+  useEffect(() => {
+    if (products) {
+      if (filter.value !== "همه") {
+        const filteredProducts = products.filter(
+          (pr) => pr.filter === filter.value
+        );
+        const searchedProducts = filteredProducts.filter((pr) =>
+          pr.title.toLowerCase().includes(search.toLowerCase())
+        );
         const newList = searchedProducts ? searchedProducts : filteredProducts;
         setProductList(newList);
-        if(!newList.length) setError(true)
-        else setError(false)
+        if (!newList.length) setError(true);
+        else setError(false);
       } else {
-        setProductList(products)
-        if(!products.length) setError(true)
-        else setError(false)
+        const searchedProducts = products.filter((pr) =>
+          pr.title.toLowerCase().includes(search.toLowerCase())
+        );
+        const newList = searchedProducts ? searchedProducts : products;
+        setProductList(newList);
+        if (!newList.length) setError(true);
+        else setError(false);
       }
     }
-  }, [products])
+  }, [products]);
 
   const editProductHandler = (id) => {
     setProductId(id);
   };
 
   const filterProductsHandler = (selectedOption) => {
-    setSearch('');
+    setSearch("");
     setFilter(selectedOption);
     const filteredProducts = products.filter(
       (pr) => pr.filter === selectedOption.value
     );
     if (selectedOption.value === "همه") {
       setProductList(products);
-      if(!products.length) setError(true)
-      else setError(false)
+      if (!products.length) setError(true);
+      else setError(false);
       return;
     }
     setProductList(filteredProducts);
-    if(!filteredProducts.length) setError(true)
-    else setError(false)
+    if (!filteredProducts.length) setError(true);
+    else setError(false);
   };
 
   const searchProductsHandler = (value) => {
     setSearch(value);
-    const filteredProducts = products.filter((pr) => pr.filter === filter.value);
-    const searchedProducts = filteredProducts.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()));
+    const filteredProducts = products.filter(
+      (pr) => pr.filter === filter.value
+    );
+    const searchedProducts = filteredProducts.filter((pr) =>
+      pr.title.toLowerCase().includes(value.toLowerCase())
+    );
     if (value.length > 0) {
       if (filter.value === "همه") {
-        const searchedProductsInAll = products.filter((pr) => pr.title.toLowerCase().includes(value.toLowerCase()))
+        const searchedProductsInAll = products.filter((pr) =>
+          pr.title.toLowerCase().includes(value.toLowerCase())
+        );
         setProductList(searchedProductsInAll);
-        if(!searchedProductsInAll.length) setError(true)
+        if (!searchedProductsInAll.length) setError(true);
         else setError(false);
         return;
       }
       setProductList(searchedProducts);
-      if(!searchedProducts.length) setError(true)
-      else setError(false)
+      if (!searchedProducts.length) setError(true);
+      else setError(false);
     } else {
       if (filter.value === "همه") {
         setProductList(products);
-        if(!products.length) setError(true)
-        else setError(false)
+        if (!products.length) setError(true);
+        else setError(false);
         return;
       } else {
         setProductList(filteredProducts);
-        if(!filteredProducts.length) setError(true)
-        else setError(false)
+        if (!filteredProducts.length) setError(true);
+        else setError(false);
       }
     }
   };
 
-  const submitHandler = async (formValue) =>{
+  const submitHandler = async (formValue) => {
     try {
-      await setProductList(null)
-      await setProducts(null)
+      await setProductList(null);
+      await setProducts(null);
       await putProduct(productId, { ...formValue, id: productId });
       await setProductId(null);
       const { data } = await getAllProducts();
@@ -123,8 +137,8 @@ const ManageEditProduct = () => {
     } catch (error) {
       setError(true);
       addToast("مجددا تلاش کنید", { appearance: "error" });
-    } 
-  }
+    }
+  };
 
   let returnValue = Array(15)
     .fill()
@@ -167,13 +181,16 @@ const ManageEditProduct = () => {
         className={`flex flex-col md:flex-row md:items-center md:justify-between pb-4`}
       >
         <SearchBox value={search} onSearch={searchProductsHandler} />
-        {
-          filters ? <SelectBox
-          value={filter}
-          options={filters}
-          onChange={filterProductsHandler}
-          placeholder="دسته بندی..."
-        /> : <SelectBoxLoadingSkeleton />}
+        {filters ? (
+          <SelectBox
+            value={filter}
+            options={filters}
+            onChange={filterProductsHandler}
+            placeholder="دسته بندی..."
+          />
+        ) : (
+          <SelectBoxLoadingSkeleton />
+        )}
       </header>
       <ul>{returnValue}</ul>
     </section>
@@ -193,11 +210,13 @@ const EditProduct = ({ onSubmit, productId }) => {
     if (productId) {
       const getProduct = async () => {
         try {
-          const  product = await getOneProduct(productId);
-          const  filterL  = await getAllFilters();
+          const product = await getOneProduct(productId);
+          const filterL = await getAllFilters();
           setFormValue(product.data);
           setFilters(filterL.data);
-          setFilter(filterL.data.filter(op => op.value === product.data.filter));
+          setFilter(
+            filterL.data.filter((op) => op.value === product.data.filter)
+          );
         } catch (err) {
           setError(true);
           addToast("مجددا تلاش کنید", { appearance: "error" });
@@ -213,7 +232,7 @@ const EditProduct = ({ onSubmit, productId }) => {
       [e.target.name]: e.target.value,
     });
   };
-  
+
   const selectChangeHandler = (selectedOption) => {
     setFilter(selectedOption);
     setFormValue({
@@ -274,7 +293,7 @@ const EditProduct = ({ onSubmit, productId }) => {
             <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
             <SelectBox
               value={filter}
-              options={filters.filter(op => op.value !== "همه")}
+              options={filters.filter((op) => op.value !== "همه")}
               onChange={selectChangeHandler}
               placeholder="دسته بندی..."
             />
