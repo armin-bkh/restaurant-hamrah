@@ -21,11 +21,11 @@ const ManageHeader = () => {
 
   return (  
     <header className={`flex flex-col shadow-md px-3 py-5 text bgLight boxShadow`}>
-      <section className={`flex justify-between items-center mb-8`}>
+      <article className={`flex justify-between items-center mb-8`}>
         <h1 className={`text-3xl md:text-4xl xl:text-6xl Casablanca color-gradient py-5`}>رستوران {info ? info.name : null}</h1>
         <h6 className={`text-sm font-bold text-black Dirooz`}>تعداد میز: 
         <span className={`px-2 py-1 rounded-full Casablanca`}>{info ? info.tableCount : null}</span></h6>
-      </section>
+      </article>
       <h5 className={`text-sm sm:text-base md:text-lg text-black Dirooz`}>شماره پشتیبانی: <span className={`Casablanca`}>{info ? info.tel : null}</span></h5>
 
     <ManageNavigation />

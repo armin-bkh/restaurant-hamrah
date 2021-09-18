@@ -18,15 +18,15 @@ const HomeIntroduction = () => {
             alt={"رستویار"}
           />
         </article>
-        <header
-          className={`color-gradient flex items-center justify-center row-start-1 row-end-2`}
+        <article
+          className={`flex items-center justify-center row-start-1 row-end-2`}
         >
           <h1
             className={`text-5xl lg:text-9xl color-gradient tracking-widest Casablanca font-extrabold`}
           >
             رستویار
           </h1>
-        </header>
+        </article>
 
         <article className={`flex items-end justify-center mb-5 lg:mb-0 row-span-2`}>
           <p
@@ -43,8 +43,8 @@ const HomeIntroduction = () => {
             className={`Casablanca text-white gradient px-6 text-sm lg:text-lg md:px-10 py-3 rounded-md self-center`}
             to="/services"
           >
-            توضیحات بیشتر
-            <BiMessageSquareDetail className={`mr-3 inline`} />
+            <BiMessageSquareDetail className={`ml-3 inline`} />
+            توضیحات بیشتر...
           </Link>
         </article>
       </section>

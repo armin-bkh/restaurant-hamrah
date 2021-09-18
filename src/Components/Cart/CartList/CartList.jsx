@@ -1,6 +1,5 @@
 import React from "react";
 import CartItem from "../CartItem/CartItem";
-import styles from "./CartList.module.scss";
 import { BiCartAlt } from "react-icons/bi";
 import { numberWithCommas } from "../../utils/CommaNumber";
 import '../../../scss/main.scss';
@@ -19,7 +18,7 @@ const CartList = () => {
   };
 
   return (
-    <section className={`mx-6 p-6 bgLight ${styles.cartContainer}`}>
+    <section className={`mx-6 p-6 bgLight rounded-md`}>
       {!cart.length ? (
         <header className={`flex items-center justify-center bg-clip-text
           color-gradient Casablanca`}>

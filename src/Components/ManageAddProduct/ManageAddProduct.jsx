@@ -88,7 +88,7 @@ const ManageAddProduct = () => {
     } else addToast("تمامیه اطلاعات ضروری است", { appearance: "error" });
   };
   return (
-    <section className={`rounded-md boxShadow`}>
+    <article className={`rounded-md boxShadow`}>
     {
       filters ?
       <>
@@ -150,7 +150,7 @@ const ManageAddProduct = () => {
       </>
        :
        <EditFoodLoadingSkeleton />}
-    </section>
+    </article>
       ) 
 };
 
