@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import {
   FaTelegram,
-  FaWhatsapp,
   FaLinkedin,
   FaInstagram,
+  FaTwitter,
 } from "react-icons/fa";
 
 const MainFooter = () => {
@@ -17,42 +17,46 @@ const MainFooter = () => {
           <li
             className={`w-6 h-6 lg:w-14 lg:h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}
           >
-            <Link
+            <a
               className={`text-blue-400 text-sm md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
-              to="/manage"
+              href="https://www.telegram.me/Ar921dvl"
+              target="_blank" rel="noreferrer"
             >
               <FaTelegram />
-            </Link>
+            </a>
           </li>
           <li
             className={`w-6 h-6 lg:w-14 lg:h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}
           >
-            <Link
+            <a
               className={`text-blue-400 text-sm md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
-              to="/manage"
+              href="#"
+              target="_blank" rel="noreferrer"
             >
-              <FaWhatsapp />
-            </Link>
+              <FaTwitter />
+            </a>
           </li>
           <li
             className={`w-6 h-6 lg:w-14 lg:h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}
           >
-            <Link
+            <a
               className={`text-blue-400 text-sm md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
-              to="/manage"
+              href="https://www.linkedin.com/in/armin-bakhshi-627805217"
+              target="_blank" rel="noreferrer"
             >
               <FaLinkedin />
-            </Link>
+            </a>
           </li>
           <li
             className={`w-6 h-6 lg:w-14 lg:h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}
           >
-            <Link
+            <a
               className={`text-blue-400 text-sm md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
-              to="/manage"
+              href="https://www.instagram.com/rminbkh"
+              target="_blank" rel="noreferrer"
             >
               <FaInstagram />
-            </Link>
+            </a>
           </li>
         </ul>
       </nav>
