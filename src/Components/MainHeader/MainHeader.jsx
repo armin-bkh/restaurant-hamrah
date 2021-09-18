@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
-import { RiReservedFill } from "react-icons/ri";
-import { SiManageiq } from "react-icons/si";
 import { MdContactMail } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
 import { IoIosJournal, IoIosFingerPrint } from "react-icons/io";

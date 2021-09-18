@@ -7,6 +7,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   direction: rtl;
   background: #dbdbdb;
+  overflow-y: auto;
+  scrollbar-color: #dbdbdb #93C5FD;
+  scrollbar-width: auto;
 }
 .bgDarkImage{
   background: url('../Assets/images/background.jpg') center no-repeat;
@@ -51,4 +54,18 @@ a{
 
 ul{
   list-style-type: none;
+}
+
+body::-webkit-scrollbar {
+  width: .7em;
+  background-color: #dbdbdb;
+}
+ 
+body::-webkit-scrollbar-track {
+  box-shadow: 0 0 5px #000;
+}
+ 
+body::-webkit-scrollbar-thumb {
+  background-color: #93C5FD;
+  border-radius: 5px;
 }
