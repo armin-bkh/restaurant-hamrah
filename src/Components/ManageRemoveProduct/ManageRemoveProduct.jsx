@@ -19,7 +19,7 @@ const ManageRemoveProduct = () => {
   const { addToast } = useToasts();
 
   useEffect(() => {
-    const getProducts = async () => {
+    const fetchData = async () => {
       try {
         const { data } = await getAllProducts();
         const filtersL = await getAllFilters();
@@ -29,7 +29,7 @@ const ManageRemoveProduct = () => {
         setError(true);
       }
     };
-    getProducts();
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -58,7 +58,6 @@ const ManageRemoveProduct = () => {
   }, [products]);
 
   const filterProductsHandler = (selectedOption) => {
-    setProductList(null);
     setSearch("");
     setFilter(selectedOption);
     const filteredProducts = products.filter(
@@ -76,7 +75,6 @@ const ManageRemoveProduct = () => {
   };
 
   const searchProductsHandler = (value) => {
-    setProductList(null);
     const filteredProducts = products.filter(
       (pr) => pr.filter === filter.value
     );

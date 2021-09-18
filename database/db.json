@@ -145,56 +145,7 @@
       "filter": "پلو"
     }
   ],
-  "cart": [
-    [
-      {
-        "id": 5,
-        "title": "پیتزا مخصوص",
-        "price": "50000",
-        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
-        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
-        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
-        "filter": "پیتزا",
-        "quantity": 2,
-        "finalPrice": 100000
-      },
-      {
-        "id": 2,
-        "title": "سالاد مرغ",
-        "price": "12000",
-        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
-        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
-        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
-        "filter": "سالاد",
-        "quantity": 2,
-        "finalPrice": 24000
-      }
-    ],
-    [
-      {
-        "id": 2,
-        "title": "سالاد مرغ",
-        "price": "12000",
-        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
-        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
-        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
-        "filter": "سالاد",
-        "quantity": 1,
-        "finalPrice": 12000
-      },
-      {
-        "id": 12,
-        "title": "قیمه",
-        "price": "31000",
-        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
-        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
-        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
-        "filter": "خورشت",
-        "quantity": 3,
-        "finalPrice": 93000
-      }
-    ]
-  ],
+  "cart": [],
   "tables": [
     {
       "id": 1,
@@ -228,7 +179,7 @@
     }
   ],
   "resinfo": {
-    "name": "ارتا ارتباط اطلس",
+    "name": "آرتا ارتباط اطلس",
     "tableCount": 9,
     "tel": "09213506158"
   },

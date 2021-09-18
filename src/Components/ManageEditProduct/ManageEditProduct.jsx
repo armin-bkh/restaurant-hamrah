@@ -24,24 +24,17 @@ const ManageEditProduct = () => {
   const { addToast } = useToasts();
 
   useEffect(() => {
-    const getProducts = async () => {
+    const fetchData = async () => {
       try {
         const { data } = await getAllProducts();
+        const filterL = await getAllFilters();
+        setFilters(filterL.data);
         setProducts(data);
       } catch (error) {
         setError(true);
       }
     };
-    getProducts();
-    const getFilters = async () => {
-      try {
-        const { data } = await getAllFilters();
-        setFilters(data);
-      } catch (err) {
-        setError(true);
-      }
-    };
-    getFilters();
+    fetchData();
   }, []);
 
   useEffect(() => {
@@ -75,6 +68,7 @@ const ManageEditProduct = () => {
 
   const filterProductsHandler = (selectedOption) => {
     setSearch("");
+    setProductId('');
     setFilter(selectedOption);
     const filteredProducts = products.filter(
       (pr) => pr.filter === selectedOption.value
@@ -92,6 +86,7 @@ const ManageEditProduct = () => {
 
   const searchProductsHandler = (value) => {
     setSearch(value);
+    setProductId('');
     const filteredProducts = products.filter(
       (pr) => pr.filter === filter.value
     );
