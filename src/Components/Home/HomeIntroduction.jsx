@@ -28,18 +28,17 @@ const HomeIntroduction = () => {
           </h1>
         </header>
 
-        <article className={`flex items-end justify-center mb-5 lg:mb-0`}>
+        <article className={`flex items-end justify-center mb-5 lg:mb-0 row-span-2`}>
           <p
             className={`text-blue-400 md:font-bold text-sm md:text-lg Dirooz text-justify`}
           >
-            {" "}
             مدیریت سفارشات رستوران با کمک تکنولوژی! میدونی هدف ما اینه که وقت
             هیچکس گرفته نشه، ینی هیچکس قرار نیست از مشتری سفارشی به صورت دستی
             بگیره ...
           </p>
         </article>
 
-        <article className={`flex items-center justify-center`}>
+        <article className={`flex items-center justify-center mt-10`}>
           <Link
             className={`Casablanca text-white gradient px-6 text-sm lg:text-lg md:px-10 py-3 rounded-md self-center`}
             to="/services"

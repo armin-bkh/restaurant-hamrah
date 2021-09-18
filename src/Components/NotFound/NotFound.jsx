@@ -2,13 +2,18 @@ import { useEffect } from 'react';
 import NotFoundSvg from "../../Assets/SVG/oops-404-error-with-a-broken-robot-animate.svg";
 import { Link, withRouter } from "react-router-dom";
 
-const NotFound = ({ history }) => {
-
-  console.log(history);
+const NotFound = ({ location, history }) => {
 
     useEffect(()=>{
-        document.title = "404!"
+        document.title = "404!";
     }, [])
+
+    const goBackHandler = () =>{
+      const pathAddress = location.pathname;
+      const breakPoint = pathAddress.lastIndexOf('/');
+      const pushLocation = pathAddress.slice(0, breakPoint);
+      history.push(pushLocation);
+    }
 
   return (
     <section className={`p-10 flex flex-col items-center`}>
@@ -31,7 +36,7 @@ const NotFound = ({ history }) => {
           صفحه اصلی
         </Link>
         <button
-          onClick={history.goBack}
+          onClick={goBackHandler}
           className={`px-10 py-2 gradient Casablanca text-white rounded-md text-sm lg:text-lg mt-5 md:mt-0 md:mr-5`}
         >
           بازگشت
