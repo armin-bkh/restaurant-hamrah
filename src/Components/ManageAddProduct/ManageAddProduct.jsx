@@ -35,7 +35,6 @@ const ManageAddProduct = () => {
 
   const changeHandler = (e) => {
     if (e.target.files) {
-      console.log("hello");
       setFormValue({
         ...formValue,
         [e.target.name]: e.target.files[0],
@@ -57,37 +56,38 @@ const ManageAddProduct = () => {
   const sumbitHandler = async (e) => {
     e.preventDefault();
     console.log(formValue);
-    let formData = new FormData();
+    // let formData = new FormData();
 
-    for (const key in formValue) {
-      formData.append(key, formValue[key]);
-    }
+    // for (const key in formValue) {
+    //   formData.append(key, formValue[key]);
+    // }
 
-    if (
-      formValue.title &&
-      formValue.price &&
-      formValue.information &&
-      formValue.filter &&
-      formValue.img &&
-      formValue.materials
-    ) {
-      try {
-        await postProduct(formValue);
-        setFormValue({
-          title: "",
-          price: "",
-          information: "",
-          materials: "",
-          filter: "",
-          img: "",
-        });
-        addToast(`اضافه شد`, { appearance: "success" });
-      } catch (err) {
-        setError(true);
-        addToast(`مجددا تلاش کنید`, { appearance: "error" });
-      }
-    } else addToast("تمامیه اطلاعات ضروری است", { appearance: "error" });
+    // if (
+    //   formValue.title &&
+    //   formValue.price &&
+    //   formValue.information &&
+    //   formValue.filter &&
+    //   formValue.img &&
+    //   formValue.materials
+    // ) {
+    //   try {
+    //     await postProduct(formValue);
+    //     setFormValue({
+    //       title: "",
+    //       price: "",
+    //       information: "",
+    //       materials: "",
+    //       filter: "",
+    //       img: "",
+    //     });
+    //     addToast(`اضافه شد`, { appearance: "success" });
+    //   } catch (err) {
+    //     setError(true);
+    //     addToast(`مجددا تلاش کنید`, { appearance: "error" });
+    //   }
+    // } else addToast("تمامیه اطلاعات ضروری است", { appearance: "error" });
   };
+
   return (
     <article className={`rounded-md boxShadow`}>
     {
@@ -134,10 +134,11 @@ const ManageAddProduct = () => {
           value={formValue.information}
           onChange={changeHandler}
         />
-        <ManageInputForm
+         <ManageInputForm
           lbl="عکس غذا"
           type="file"
           name="img"
+          value={formValue.img}
           accept=".jpg, .jpeg, .png"
           onChange={changeHandler}
         />

@@ -49,12 +49,12 @@ const EditFoodLoadingSkeleton = () => {
             <Skeleton width={`100%`} height={150} />
           </div>
         </div>
-        <div className={`mb-5`}>
-          <span>
+        <div className={`mb-5 flex`}>
+          <span className={`ml-3`}>
             <Skeleton width={100} height={30} />
           </span>
-          <div className={`mt-2`}>
-            <Skeleton width={180} height={30} />
+          <div>
+            <Skeleton width={110} height={30} />
           </div>
         </div>
 

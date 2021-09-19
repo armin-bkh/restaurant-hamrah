@@ -1,13 +1,16 @@
-const ManageInputForm = ({ type, lbl, ...rest }) => {
+const ManageInputForm = ({ type, lbl, value, ...rest }) => {
+  
   let returnValue = (
     <input
       placeholder={`${lbl}...`}
       className={`placeholder-gray-500 Casablanca focus:border-blue-500 border-transparent border
            bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md outline-none boxShadow`}
       type={type}
+      value={value}
       {...rest}
     />
   );
+
   if (type === "textarea") {
     returnValue = (
       <textarea
@@ -15,6 +18,7 @@ const ManageInputForm = ({ type, lbl, ...rest }) => {
         className={`placeholder-gray-500 Casablanca focus:border-blue-500 border-transparent 
           border bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md h-52
            outline-none boxShadow`}
+        value={value}
         {...rest}
       ></textarea>
     );
@@ -28,7 +32,7 @@ const ManageInputForm = ({ type, lbl, ...rest }) => {
           className={`gradient text-white Casablanca px-5 py-1 cursor-pointer rounded-md`}
           htmlFor={lbl}
         >
-          {lbl}
+          {value ? value.name : lbl}
         </label>
       </div>
     );
