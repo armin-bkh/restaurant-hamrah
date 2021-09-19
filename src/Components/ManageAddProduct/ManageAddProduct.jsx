@@ -56,6 +56,7 @@ const ManageAddProduct = () => {
   };
   const sumbitHandler = async (e) => {
     e.preventDefault();
+    console.log(formValue);
     let formData = new FormData();
 
     for (const key in formValue) {
