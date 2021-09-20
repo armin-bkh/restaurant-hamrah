@@ -36,7 +36,7 @@ const ProductList = () => {
       else setError(false);
   }, [products])
 
-  const filterHandler = (value) =>{
+  const filterProductsHandler = (value) =>{
     setFilter(value);
       if(value === 'همه'){
         setProductList(products);
@@ -50,7 +50,7 @@ const ProductList = () => {
       else setError(false);
   }
 
-  const pinHandler = (id) =>{
+  const pinProductHandler = (id) =>{
     const savedProducts = [...products];
     const index = savedProducts.findIndex(pr => pr.id === id);
     const selectedEl = {...savedProducts[index]}
@@ -75,7 +75,7 @@ const ProductList = () => {
     );
 
   if (productList && !error)
-    returnValue = productList.map((Pr) => <Product key={Pr.id} onPin={pinHandler} inf={Pr} />);
+    returnValue = productList.map((Pr) => <Product key={Pr.id} onPin={pinProductHandler} inf={Pr} />);
 
   return (
     <section
@@ -89,7 +89,7 @@ const ProductList = () => {
           <BiFoodMenu className={`ml-2 text-blue-400`} />
           منوی رستوران
         </h1>
-        <Filter onFilter={filterHandler} />
+        <Filter onFilter={filterProductsHandler} />
       </header>
       <article
         className={`flex flex-nowrap pt-11 pb-4 px-4 ${
