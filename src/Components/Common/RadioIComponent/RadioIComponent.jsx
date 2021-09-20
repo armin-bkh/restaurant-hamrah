@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-const RadioIComponent = ({ onChange, value, filterCur }) => {
+const RadioIComponent = ({ onChange, value, name, filterCur }) => {
   const [checked, setChecked] = useState(true);
 
   useEffect(() => {
@@ -18,6 +18,7 @@ const RadioIComponent = ({ onChange, value, filterCur }) => {
         checked={checked}
         value={value}
         onChange={onChange}
+        name={name}
       />
       <label
         className={`text-xs md:text-sm flex justify-center cursor-pointer items-center px-4 py-1

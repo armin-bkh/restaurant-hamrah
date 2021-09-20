@@ -25,7 +25,7 @@ const Filter = ({ onFilter }) => {
       {
         filters ? 
         filters.map(fil => (
-          <RadioIComponent key={fil.value} value={fil.value} filterCur={filter} onChange={changeHandler} />
+          <RadioIComponent key={fil.value} value={fil.value} name="filRes" filterCur={filter} onChange={changeHandler} />
         )) : null
       }
     </article>

@@ -8,6 +8,7 @@ import ProductsLoadingSkeleton from "../LoadingSkeleton/ProductsLoadingSkeleton/
 
 const ProductList = () => {
   const [products, setProducts] = useState(null);
+  const [productList, setProductList] = useState(null);
   const [error, setError] = useState(false);
 
   useEffect(() => {
@@ -15,6 +16,7 @@ const ProductList = () => {
       try {
         const { data } = await getAllProducts();
         setProducts(data);
+        setProductList(data);
       } catch (err) {
         setError(true);
       }
@@ -22,24 +24,17 @@ const ProductList = () => {
     getProducts();
   }, []);
 
-  const filterHandler = async (value) =>{
-    try{
-      await setProducts(null);
-      const { data } = await getAllProducts();
+  const filterHandler = (value) =>{
       if(value === 'همه'){
-        setProducts(data);
-        if(!data.length) setError(true)
+        setProductList(products);
+        if(!products.length) setError(true)
         else setError(false)
         return;
       }
-      const filteredProducts = data.filter(pr => pr.filter === value);
-      setProducts(filteredProducts);
+      const filteredProducts = products.filter(pr => pr.filter === value);
+      setProductList(filteredProducts);
       if(!filteredProducts.length) setError(true)
-      else setError(false)
-    }
-    catch(err){
-      setError(true);
-    }
+      else setError(false);;
   }
 
   let returnValue = (
@@ -57,8 +52,8 @@ const ProductList = () => {
       </h1>
     );
 
-  if (products && !error)
-    returnValue = products.map((Pr) => <Product key={Pr.id} inf={Pr} />);
+  if (productList && !error)
+    returnValue = productList.map((Pr) => <Product key={Pr.id} inf={Pr} />);
 
   return (
     <section
