@@ -1,10 +1,8 @@
 import { useReservatioActions } from "../../Container/ReservationProvider";
 import { BiPin } from "react-icons/bi";
 import styles from "./Products.module.scss";
-import { useState } from "react";
 
-const Product = ({ inf }) => {
-  const [pin, setPin] = useState(false);
+const Product = ({ inf, onPin }) => {
   const { toShowHandler } = useReservatioActions();
 
   const clickHandler = () => {
@@ -12,8 +10,10 @@ const Product = ({ inf }) => {
   };
 
   const likeHandler = () => {
-    setPin((prevpin) => !prevpin);
+    onPin(inf.id);
   };
+
+   
 
   return  (
     <figure className={`flex-grow-0 flex-shrink-0 bgLight boxShadow ${styles.productContainer}`}>
@@ -40,7 +40,7 @@ const Product = ({ inf }) => {
           </span>
           <span>
             <BiPin
-              className={`${pin ? 'text-blue-400' : 'text-black' } cursor-pointer text-xl transition-colors`}
+              className={`${inf.pin ? 'text-blue-400' : 'text-black' } cursor-pointer text-xl transition-colors`}
               onClick={likeHandler}
             />
           </span>

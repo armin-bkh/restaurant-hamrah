@@ -13,7 +13,7 @@ const RadioIComponent = ({ onChange, value, name, filterCur }) => {
     <div className={`text-black relative text-sm ml-2`}>
       <input
         id={value}
-        className={`sr-only w-full h-full`}
+        className={`sr-only`}
         type="radio"
         checked={checked}
         value={value}
@@ -21,7 +21,7 @@ const RadioIComponent = ({ onChange, value, name, filterCur }) => {
         name={name}
       />
       <label
-        className={`text-xs md:text-sm flex justify-center cursor-pointer items-center px-4 py-1
+        className={`text-xs md:text-sm flex items-center w-16 h-6 md:w-24 md:h-8 justify-center cursor-pointer
          ANoor rounded-full bgLight ${
            checked ? "boxShadowInner" : "boxShadow"
          }`}

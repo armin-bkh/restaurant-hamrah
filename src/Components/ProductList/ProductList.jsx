@@ -10,6 +10,7 @@ const ProductList = () => {
   const [products, setProducts] = useState(null);
   const [productList, setProductList] = useState(null);
   const [error, setError] = useState(false);
+  const [filter, setFilter] = useState('همه');
 
   useEffect(() => {
     const getProducts = async () => {
@@ -24,7 +25,19 @@ const ProductList = () => {
     getProducts();
   }, []);
 
+  useEffect(()=>{
+    if(filter === 'همه'){
+      setProductList(products);
+        return;
+    }
+    const filteredProducts = products.filter(pr => pr.filter === filter);
+      setProductList(filteredProducts);
+      if(!filteredProducts.length) setError(true)
+      else setError(false);
+  }, [products])
+
   const filterHandler = (value) =>{
+    setFilter(value);
       if(value === 'همه'){
         setProductList(products);
         if(!products.length) setError(true)
@@ -34,7 +47,16 @@ const ProductList = () => {
       const filteredProducts = products.filter(pr => pr.filter === value);
       setProductList(filteredProducts);
       if(!filteredProducts.length) setError(true)
-      else setError(false);;
+      else setError(false);
+  }
+
+  const pinHandler = (id) =>{
+    const savedProducts = [...products];
+    const index = savedProducts.findIndex(pr => pr.id === id);
+    const selectedEl = {...savedProducts[index]}
+    selectedEl.pin = !selectedEl.pin;
+    savedProducts[index] = selectedEl;
+    setProducts(savedProducts);
   }
 
   let returnValue = (
@@ -48,12 +70,12 @@ const ProductList = () => {
       <h1
         className={`text-base md:text-lg lg:text-xl text-blue-400 Casablanca tracking-widest`}
       >
-        منوی رستوران خالی است
+       { filter ? 'غذایی در این دسته بندی موجود نمی باشد': 'منوی رستوران خالی است'}
       </h1>
     );
 
   if (productList && !error)
-    returnValue = productList.map((Pr) => <Product key={Pr.id} inf={Pr} />);
+    returnValue = productList.map((Pr) => <Product key={Pr.id} onPin={pinHandler} inf={Pr} />);
 
   return (
     <section
