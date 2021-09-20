@@ -33,27 +33,31 @@ const ManageRemoveProduct = () => {
   }, []);
 
   useEffect(() => {
-    if (products) {
-      if (filter.value !== "همه") {
-        const filteredProducts = products.filter(
-          (pr) => pr.filter === filter.value
-        );
-        const searchedProducts = filteredProducts.filter((pr) =>
-          pr.title.toLowerCase().includes(search.toLowerCase())
-        );
-        const newList = searchedProducts ? searchedProducts : filteredProducts;
-        setProductList(newList);
-        if(!newList.length) setError(true)
-        else setError(false)
-      } else {
-        const searchedProducts = products.filter((pr) =>
-          pr.title.toLowerCase().includes(search.toLowerCase())
-        );
-        const newList = searchedProducts ? searchedProducts : products;
-        setProductList(newList);
-        if(!newList.length) setError(true)
-        else setError(false)
-      }
+    // if (products) {
+    //   if (filter.value !== "همه") {
+    //     const filteredProducts = products.filter(
+    //       (pr) => pr.filter === filter.value
+    //     );
+    //     const searchedProducts = filteredProducts.filter((pr) =>
+    //       pr.title.toLowerCase().includes(search.toLowerCase())
+    //     );
+    //     const newList = searchedProducts ? searchedProducts : filteredProducts;
+    //     setProductList(newList);
+    //     if(!newList.length) setError(true)
+    //     else setError(false)
+    //   } else {
+    //     const searchedProducts = products.filter((pr) =>
+    //       pr.title.toLowerCase().includes(search.toLowerCase())
+    //     );
+    //     const newList = searchedProducts ? searchedProducts : products;
+    //     setProductList(newList);
+    //     if(!newList.length) setError(true)
+    //     else setError(false)
+    //   }
+    // }
+    if(products){
+      if(search) searchProductsHandler(search);
+      else filterProductsHandler(filter);
     }
   }, [products]);
 
@@ -132,7 +136,7 @@ const ManageRemoveProduct = () => {
       <h1
         className={`text-blue-400 text-center py-20 lg:p-32 text-lg lg:text-3xl FPArsoo`}
       >
-        فهرست غذا خالی است
+        {filter.value === 'همه' ? 'فهرست غذا خالی است' : 'این دسته بندی خالی است'}
       </h1>
     );
   }

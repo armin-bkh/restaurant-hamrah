@@ -26,13 +26,17 @@ const ProductList = () => {
   }, []);
 
   useEffect(()=>{
-    filterProductsHandler(filter);
+    if(products){
+      filterProductsHandler(filter);
+    }
   }, [products])
 
   const filterProductsHandler = (value) =>{
     setFilter(value);
       if(value === 'همه'){
         setProductList(products);
+        if(!products.length) setError(true)
+        else setError(false);
         return;
       }
       const filteredProducts = products.filter(pr => pr.filter === value);
