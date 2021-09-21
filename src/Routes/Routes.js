@@ -13,6 +13,7 @@ import ServicesPage from "../Pages/ServicesPage";
 import NotFoundPage from "../Pages/NotFoundPage";
 import NotFound from "../Components/NotFound/NotFound";
 import ContactPage from '../Pages/ContactPage';
+import Reports from "../Components/Reports/Reports";
 
 export const routes = [
     {path: '/', component: HomePage, exact: true},
@@ -29,6 +30,7 @@ export const manageRoutes = [
     {path: '/manage', component: manageDetail, exact: true},
     {path: '/manage/manage-tables', component: ManageTable, exact: true},
     {path: '/manage/manage-products', component: ManageProducts,},
+    {path: '/manage/report', component: Reports, exact: true},
     {path: "*", component: NotFound},
 ]
 

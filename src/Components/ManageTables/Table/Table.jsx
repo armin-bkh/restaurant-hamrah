@@ -11,7 +11,6 @@ const Table = ({ resForm, setTables }) => {
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
-      await setTables(null);
       await deleteTable(resForm.id);
       const { data } = await getAllTable();
       setTables(data);
