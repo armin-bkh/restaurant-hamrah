@@ -59,7 +59,7 @@ const ManageEditProduct = () => {
       //   if (!newList.length) setError(true);
       //   else setError(false);
       // }
-      if(search) searchProductsHandler(search);
+      if (search) searchProductsHandler(search);
       else filterProductsHandler(filter);
     }
   }, [products]);
@@ -70,7 +70,7 @@ const ManageEditProduct = () => {
 
   const filterProductsHandler = (selectedOption) => {
     setSearch("");
-    setProductId('');
+    setProductId("");
     setFilter(selectedOption);
     const filteredProducts = products.filter(
       (pr) => pr.filter === selectedOption.value
@@ -88,7 +88,7 @@ const ManageEditProduct = () => {
 
   const searchProductsHandler = (value) => {
     setSearch(value);
-    setProductId('');
+    setProductId("");
     const filteredProducts = products.filter(
       (pr) => pr.filter === filter.value
     );
@@ -137,6 +137,12 @@ const ManageEditProduct = () => {
     }
   };
 
+  const returnError = () => {
+    if (filter.value !== "همه") return "این دسته بندی خالی است";
+    if (search) return "غذای مورد نظر یافت نشد";
+    return "فهرست غذا خالی است";
+  };
+
   let returnValue = Array(15)
     .fill()
     .map((item, index) => <FoodLoadingSkeleton key={index} />);
@@ -144,9 +150,9 @@ const ManageEditProduct = () => {
   if (error) {
     returnValue = (
       <h1
-        className={`text-blue-400 text-center py-20 lg:p-32 text-lg lg:text-3xl FPArsoo`}
+        className={`text-blue-400 text-center py-20 lg:p-32 text-lg lg:text-3xl Casablanca`}
       >
-        {filter.value === 'همه' ? 'فهرست غذا خالی است' : 'این دسته بندی خالی است'}
+        {returnError()}
       </h1>
     );
   }
@@ -177,16 +183,21 @@ const ManageEditProduct = () => {
       <header
         className={`flex flex-col md:flex-row md:items-center md:justify-between pb-4`}
       >
-        <SearchBox value={search} onSearch={searchProductsHandler} />
         {filters ? (
-          <SelectBox
-            value={filter}
-            options={filters}
-            onChange={filterProductsHandler}
-            placeholder="دسته بندی..."
-          />
+          <>
+            <SearchBox value={search} onSearch={searchProductsHandler} />
+            <SelectBox
+              value={filter}
+              options={filters}
+              onChange={filterProductsHandler}
+              placeholder="دسته بندی..."
+            />
+          </>
         ) : (
-          <SelectBoxLoadingSkeleton />
+          <>
+            <SelectBoxLoadingSkeleton />
+            <SelectBoxLoadingSkeleton />
+          </>
         )}
       </header>
       <ul>{returnValue}</ul>
