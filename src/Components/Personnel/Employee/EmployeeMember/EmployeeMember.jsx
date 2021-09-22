@@ -35,7 +35,7 @@ const EmployeeMember = ({ location, match, history }) => {
   const removeHandler = async () => {
     try {
       await deleteEmployee(employeeID);
-      addToast('از کادر پرسنل حذف شد', {appearance: 'success'});
+      addToast(`${employee.name} از کادر پرسنل حذف شد`, {appearance: 'success'});
       history.push("/manage/personnel");
     } catch (error) {
       setError(true);
@@ -74,7 +74,7 @@ const EmployeeMember = ({ location, match, history }) => {
          text-xl py-2 block w-full mt-20 cursor-pointer transition hover:bg-blue-400 hover:text-white`}
           onClick={removeHandler}
         >
-          حذف از {employee.job} ها
+          حذف از {employee.job}
         </button>
       </section>
     );

@@ -30,9 +30,11 @@ const Personnel = () => {
         try {
             await deleteEmployee(id);
             const filteredPersonnel = personnel.filter(emp => emp.id !== id);
+            const index = personnel.findIndex(emp => emp.id === id);
+            const name = personnel[index].name;
             setPersonnel(filteredPersonnel);
             setAllPersonnel(filteredPersonnel);
-            addToast('از کادر پرسنل حذف شد', {appearance: 'success'})
+            addToast(`${name} از کادر پرسنل حذف شد`, {appearance: 'success'})
         } catch (err) {
             setError(true);
             addToast('مجددا تلاش کنید', {appearance: 'error'})
@@ -43,7 +45,7 @@ const Personnel = () => {
         <main className={`min-h-screen p-5`}>
                 <h1 className={`color-gradient text-5xl Casablanca mb-14`}>کادر رستوران</h1>
             <section className={`relative`}>
-                <Link to="/manage/personnel/add-employee" className={`absolute -top-10 right-4 text-blue-400 flex items-center text-2xl Casablanca`}> <AiOutlineUserAdd className={`ml-3`} /> افزودن به کادر رستوران</Link>
+                <Link to="/manage/personnel/add-employee" className={`absolute -top-10 left-4 text-blue-400 flex items-center text-2xl Casablanca`}> <AiOutlineUserAdd className={`ml-3`} /> افزودن به کادر رستوران</Link>
                 {
                     personnel ? 
                     personnel.map(emp => <Employee key={emp.id} employee={emp} onDelete={() => deleteEmployeeHandler(emp.id)} />) : 
