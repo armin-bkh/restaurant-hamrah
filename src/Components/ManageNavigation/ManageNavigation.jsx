@@ -3,11 +3,13 @@ import { BiMessageSquareDetail } from 'react-icons/bi';
 import { SiAirtable } from 'react-icons/si';
 import { IoFastFoodOutline } from 'react-icons/io5';
 import { BsCardChecklist } from 'react-icons/bs';
+import { HiUserGroup } from 'react-icons/hi';
 
 const links = [
   { title: "میز ها", to: "/manage/manage-tables", icon: <SiAirtable className={`inline ml-2`}/> },
   { title: "غذا", to: "/manage/manage-products", icon: <IoFastFoodOutline className={`inline ml-2`}/>  },
   { title: "گزارشات", to: "/manage/report", icon: <BsCardChecklist className={`inline ml-2`}/>  },
+  { title: "پرسنل", to: "/manage/personnel", icon: <HiUserGroup className={`inline ml-2`}/>  },
   { title: <BiMessageSquareDetail className={`inline`}/>, to: "/manage", exact:true},
 ];
 
