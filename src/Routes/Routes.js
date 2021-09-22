@@ -15,6 +15,7 @@ import NotFound from "../Components/NotFound/NotFound";
 import ContactPage from '../Pages/ContactPage';
 import Reports from "../Components/Reports/Reports";
 import Personnel from "../Components/Personnel/Personnel";
+import EmployeeMember from "../Components/Personnel/Employee/EmployeeMember/EmployeeMember";
 
 export const routes = [
     {path: '/', component: HomePage, exact: true},
@@ -33,6 +34,7 @@ export const manageRoutes = [
     {path: '/manage/manage-products', component: ManageProducts,},
     {path: '/manage/report', component: Reports, exact: true},
     {path: '/manage/personnel', component: Personnel, exact: true},
+    {path: '/manage/personnel/employee-:id', component: EmployeeMember, },
     {path: "*", component: NotFound},
 ]
 
