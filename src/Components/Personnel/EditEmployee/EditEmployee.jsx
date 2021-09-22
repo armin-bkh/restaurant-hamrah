@@ -46,7 +46,7 @@ const EditEmployee = ({ history, match }) => {
 
   return (
     <main className={`min-h-screen flex items-center justify-center p-5`}>
-      <section className={`w-2/5`}>
+      <section className={`w-full md:max-w-lg lg:max-w-xl`}>
         {!formValue ? (
           <h1 className={`text-blue-400 text-5xl`}>Loading...</h1>
         ) : (
@@ -54,7 +54,7 @@ const EditEmployee = ({ history, match }) => {
             className={`p-5 boxShadow flex flex-col Casablanca rounded-md w-full`}
             onSubmit={submitHandler}
           >
-            <h1 className={`text-blue-400 mb-10 text-5xl`}>تغییر اطلاعات</h1>
+            <h1 className={`text-blue-400 mb-10 text-3xl md:text-5xl`}>تغییر اطلاعات</h1>
             <ManageInputForm
               value={formValue.name}
               type="text"

@@ -43,9 +43,10 @@ const Personnel = () => {
 
     return ( 
         <main className={`min-h-screen p-5`}>
-                <h1 className={`color-gradient text-5xl Casablanca mb-14`}>کادر رستوران</h1>
+                <h1 className={`color-gradient text-4xl md:text-5xl Casablanca mb-14`}>کادر رستوران</h1>
             <section className={`relative`}>
-                <Link to="/manage/personnel/add-employee" className={`absolute -top-10 left-4 text-blue-400 flex items-center text-2xl Casablanca`}> <AiOutlineUserAdd className={`ml-3`} /> افزودن به کادر رستوران</Link>
+                <Link to="/manage/personnel/add-employee" className={`absolute -top-10 left-4 text-blue-400
+                 flex items-center  text-lg md:text-2xl Casablanca`}> <AiOutlineUserAdd className={`ml-3`} /> افزودن به کادر رستوران</Link>
                 {
                     personnel ? 
                     personnel.map(emp => <Employee key={emp.id} employee={emp} onDelete={() => deleteEmployeeHandler(emp.id)} />) : 

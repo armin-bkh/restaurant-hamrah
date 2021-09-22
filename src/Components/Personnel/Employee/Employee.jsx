@@ -10,12 +10,12 @@ const Employee = ({ employee, onDelete }) => {
     <Link className={`flex-grow`} to={{pathname: `/manage/personnel/employee-${employee.id}`, state: { employee }}}>
         <div className={`flex items-center justify-between w-1/4`}>
           <div className={`flex items-center justify-center`}>
-            <FaUserCircle className={`ml-3 text-gray-800 text-5xl`} />
+            <FaUserCircle className={`ml-3 text-gray-800 text-3xl md:text-5xl`} />
             <div>
-              <h1 className={`text-black text-xl font-bold Dirooz`}>
+              <h1 className={`text-black text-sm md:text-xl font-bold Dirooz`}>
                 {employee.name}
               </h1>
-              <h4 className={`text-gray-800 text-sm font-medium`}>
+              <h4 className={`text-gray-800 text-xs md:text-sm font-medium`}>
                 {employee.tel}
               </h4>
             </div>
@@ -27,14 +27,14 @@ const Employee = ({ employee, onDelete }) => {
         
         <Link
           to={`/manage/personnel/edit-employee-${employee.id}`}
-          className={`text-white gradient rounded-full text-xl
+          className={`text-white gradient rounded-full text-sm md:text-xl
                  p-2 cursor-pointer`}
         >
           <AiOutlineUserSwitch />
         </Link>
         <button
           onClick={onDelete}
-          className={`text-white gradient rounded-full text-xl
+          className={`text-white gradient rounded-full text-sm md:text-xl
                  p-2 mr-2 cursor-pointer`}
         >
           <AiOutlineUserDelete />

@@ -20,7 +20,7 @@ const ManageNavigation = () => {
         {links.map((link) => (
           <li key={link.to} style={link.to === "/manage" ? {marginRight: 'auto'} : null}>
             <NavLink
-              className={`text-blue-400 px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
+              className={`text-blue-400 text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
               activeClassName={`border-t-4 border-blue-400`}
               to={link.to}
               exact={link.exact || false}
