@@ -16,6 +16,7 @@ import ContactPage from '../Pages/ContactPage';
 import Reports from "../Components/Reports/Reports";
 import Personnel from "../Components/Personnel/Personnel";
 import EmployeeMember from "../Components/Personnel/Employee/EmployeeMember/EmployeeMember";
+import AddEmployee from "../Components/Personnel/AddEmployee/AddEmployee";
 
 export const routes = [
     {path: '/', component: HomePage, exact: true},
@@ -29,19 +30,20 @@ export const routes = [
 ]
 
 export const manageRoutes = [
-    {path: '/manage', component: manageDetail, exact: true},
+    {path: '/manage/personnel/employee-:id', component: EmployeeMember, },
+    {path: '/manage/personnel/add-employee', component: AddEmployee, },
+    {path: '/manage/personnel', component: Personnel, exact: true},
+    {path: '/manage/report', component: Reports, exact: true},
     {path: '/manage/manage-tables', component: ManageTable, exact: true},
     {path: '/manage/manage-products', component: ManageProducts,},
-    {path: '/manage/report', component: Reports, exact: true},
-    {path: '/manage/personnel', component: Personnel, exact: true},
-    {path: '/manage/personnel/employee-:id', component: EmployeeMember, },
+    {path: '/manage', component: manageDetail, exact: true},
     {path: "*", component: NotFound},
 ]
 
 export const manageProductsRoutes = [
-    {path: '/manage/manage-products' , component: ManageProductsDetail, exact: true},
     {path: '/manage/manage-products/edit-product', component: ManageEditProduct, exact: true},
     {path: '/manage/manage-products/remove-product', component: ManageRemoveProduct, exact: true},
     {path: '/manage/manage-products/add-product', component: ManageAddProduct, exact: true},
+    {path: '/manage/manage-products' , component: ManageProductsDetail, exact: true},
     {path: "*", component: NotFound},
 ]

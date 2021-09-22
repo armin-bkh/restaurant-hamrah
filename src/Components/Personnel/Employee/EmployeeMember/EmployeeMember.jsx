@@ -4,10 +4,12 @@ import { FaUserCircle } from "react-icons/fa";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { deleteEmployee } from "../../../../Services/deleteEmployee";
 import { getEmployee } from '../../../../Services/getEmployee';
+import { useToasts } from "react-toast-notifications";
 
 const EmployeeMember = ({ location, match, history }) => {
   const [employee, setEmployee] = useState(null);
   const [error, setError] = useState(false);
+  const { addToast } = useToasts();
   const employeeID = match.params.id;
 
   useEffect(() => {
@@ -33,9 +35,11 @@ const EmployeeMember = ({ location, match, history }) => {
   const removeHandler = async () => {
     try {
       await deleteEmployee(employeeID);
+      addToast('از کادر پرسنل حذف شد', {appearance: 'success'});
       history.push("/manage/personnel");
     } catch (error) {
       setError(true);
+      addToast('مجددا تلاش کنید', {appearance: 'error'})
     }
   };
 
