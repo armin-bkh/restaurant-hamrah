@@ -17,6 +17,7 @@ import Reports from "../Components/Reports/Reports";
 import Personnel from "../Components/Personnel/Personnel";
 import EmployeeMember from "../Components/Personnel/Employee/EmployeeMember/EmployeeMember";
 import AddEmployee from "../Components/Personnel/AddEmployee/AddEmployee";
+import EditEmployee from '../Components/Personnel/EditEmployee/EditEmployee';
 
 export const routes = [
     {path: '/', component: HomePage, exact: true},
@@ -31,6 +32,7 @@ export const routes = [
 
 export const manageRoutes = [
     {path: '/manage/personnel/employee-:id', component: EmployeeMember, },
+    {path: '/manage/personnel/edit-employee-:id', component: EditEmployee, },
     {path: '/manage/personnel/add-employee', component: AddEmployee, },
     {path: '/manage/personnel', component: Personnel, exact: true},
     {path: '/manage/report', component: Reports, exact: true},

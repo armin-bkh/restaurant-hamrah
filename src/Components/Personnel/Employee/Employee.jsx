@@ -1,4 +1,4 @@
-import { AiOutlineUserDelete } from "react-icons/ai";
+import { AiOutlineUserDelete, AiOutlineUserSwitch } from "react-icons/ai";
 import { FaUserCircle } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -23,13 +23,23 @@ const Employee = ({ employee, onDelete }) => {
           <h3 className={`text-black text-sm Dirooz`}>{employee.job}</h3>
         </div>
     </Link>
+    <div className={`flex items-center justify-between`}>
+        
+        <Link
+          to={`/manage/personnel/edit-employee-${employee.id}`}
+          className={`text-white gradient rounded-full text-xl
+                 p-2 cursor-pointer`}
+        >
+          <AiOutlineUserSwitch />
+        </Link>
         <button
           onClick={onDelete}
           className={`text-white gradient rounded-full text-xl
-                 p-2 mx-2 cursor-pointer`}
+                 p-2 mr-2 cursor-pointer`}
         >
           <AiOutlineUserDelete />
         </button>
+    </div>
       </article>
   );
 };
