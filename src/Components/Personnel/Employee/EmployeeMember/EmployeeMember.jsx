@@ -6,6 +6,8 @@ import { AiFillEdit } from 'react-icons/ai';
 import { deleteEmployee } from "../../../../Services/deleteEmployee";
 import { getEmployee } from '../../../../Services/getEmployee';
 import { useToasts } from "react-toast-notifications";
+import styles from './EmployeeMember.module.scss';
+import EmployeeMemberLoaidngSkeleton from '../../../LoadingSkeleton/EmployeeMemberLoadingSkeleton/EmployeeMemberLoadingSkeleton';
 
 const EmployeeMember = ({ location, match, history }) => {
   const [employee, setEmployee] = useState(null);
@@ -44,20 +46,21 @@ const EmployeeMember = ({ location, match, history }) => {
     }
   };
 
-  let returnValue = <h1>loading...</h1>;
-  if (employee) {
+  let returnValue = <EmployeeMemberLoaidngSkeleton />;
+
+  if (employee && !error) {
     returnValue = (
-      <section className={`max-w-md md:max-w-xl boxShadow p-5 rounded-md`}>
+      <section className={`max-w-md md:max-w-xl boxShadow p-5 rounded-md ${styles.employeeProfile} flex flex-col`}>
         <Link to="/manage/personnel">
           <BsBoxArrowInRight className={`text-2xl text-blue-400`} />
         </Link>
         <div className={`flex items-center justify-center mb-2`}>
         <div className={`relative rounded-full`}>
           <FaUserCircle
-            className={`text-gray-800 m-0 text-9xl`}
+            className={`text-gray-800 m-0 ${styles.userIcon}`}
           />
           <Link className={`border-2 border-blue-400 text-blue-400 p-0.5 text-lg rounded-full
-           inline absolute right-0 top-5`}
+           inline absolute ${styles.editIcon}`}
            to={`/manage/personnel/edit-employee-${employee.id}`}>
              <AiFillEdit />
            </Link>
@@ -78,7 +81,7 @@ const EmployeeMember = ({ location, match, history }) => {
         </div>
         <button
           className={`rounded-md border border-blue-400 text-blue-400 Dirooz
-         text-lg md:text-xl py-2 block w-full mt-20 cursor-pointer transition 
+         text-lg md:text-xl py-2 block w-full mt-auto cursor-pointer transition 
          hover:bg-blue-400 hover:text-white`}
           onClick={removeHandler}
         >

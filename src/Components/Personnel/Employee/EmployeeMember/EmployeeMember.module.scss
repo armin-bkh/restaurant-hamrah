@@ -1,0 +1,26 @@
+.employeeProfile {
+    height: 40rem;
+
+
+    @media screen and (max-width: 900px) {
+        height: 35rem;
+    }
+
+    .userIcon {
+        font-size: 20rem;
+
+        @media screen and (max-width: 900px) {
+            font-size: 15rem;
+        }
+    }
+
+    .editIcon {
+        right: 14px;
+        top: 40px;
+
+        @media screen and (min-width: 900px) {
+            right: 36px;
+            top: 40px;
+        }
+    }
+}
