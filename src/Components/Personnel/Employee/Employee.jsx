@@ -9,7 +9,7 @@ const Employee = ({ employee, onDelete }) => {
       >
     <Link className={`flex-grow`} to={{pathname: `/manage/personnel/employee-${employee.id}`, state: { employee }}}>
         <div className={`flex items-center justify-between w-1/4`}>
-          <div className={`flex items-center justify-center`}>
+          <div className={`flex items-center justify-center ml-2`}>
             <FaUserCircle className={`ml-3 text-gray-800 text-3xl md:text-5xl`} />
             <div>
               <h1 className={`text-black text-sm md:text-xl font-bold Dirooz`}>
