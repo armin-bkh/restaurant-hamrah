@@ -3,6 +3,7 @@ import { getEmployee } from "../../../Services/getEmployee";
 import { putEmployee } from "../../../Services/putEmployee";
 import ManageInputForm from "../../Common/ManageInputForm/ManageInputForm";
 import { useToasts } from "react-toast-notifications";
+import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadingSkeleton/EditEmployeeLoadingSkeleton";
 
 const EditEmployee = ({ history, match }) => {
   const [formValue, setFormValue] = useState(null);
@@ -48,7 +49,7 @@ const EditEmployee = ({ history, match }) => {
     <main className={`min-h-screen flex items-center justify-center p-5`}>
       <section className={`w-full md:max-w-lg lg:max-w-xl`}>
         {!formValue ? (
-          <h1 className={`text-blue-400 text-5xl`}>Loading...</h1>
+          <EditEmployeeLoadingSkelton />
         ) : (
           <form
             className={`p-5 boxShadow flex flex-col Casablanca rounded-md w-full`}
