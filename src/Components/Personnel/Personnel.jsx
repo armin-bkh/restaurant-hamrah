@@ -66,11 +66,11 @@ const Personnel = () => {
   }
 
   return (
-    <main className={`min-h-screen p-5`}>
+    <main className={`p-5`}>
       <h1 className={`color-gradient text-4xl md:text-5xl Casablanca mb-14`}>
         کادر رستوران
       </h1>
-      <section className={`relative`}>
+      <section className={`relative boxShadowInner rounded-md min-h-screen py-1 px-5`}>
         <Link
           to="/manage/personnel/add-employee"
           className={`absolute -top-10 left-4 text-blue-400

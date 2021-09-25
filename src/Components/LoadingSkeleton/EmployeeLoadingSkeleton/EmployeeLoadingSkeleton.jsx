@@ -4,7 +4,7 @@ const EmployeeLoadingSkeleton = () => {
   return (
     <SkeletonTheme color={"#a8a7a7"} highlightColor={"#dbdbdb"}>
       <div
-        className={`flex items-center justify-between boxShadow px-5 py-3 mb-3 rounded-md`}
+        className={`flex items-center justify-between boxShadow px-5 py-3 my-4 rounded-md`}
       >
         <div className={`flex items-center justify-between w-1/4`}>
           <div className={`flex items-center justify-center ml-2`}>

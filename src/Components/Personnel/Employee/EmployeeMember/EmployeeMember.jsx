@@ -59,7 +59,7 @@ const EmployeeMember = ({ location, match, history }) => {
           <FaUserCircle
             className={`text-gray-800 m-0 ${styles.userIcon}`}
           />
-          <Link className={`border-2 border-blue-400 text-blue-400 p-0.5 text-lg rounded-full
+          <Link className={`border-2 border-blue-400 text-blue-400 p-1 text-lg md:text-2xl rounded-full
            inline absolute ${styles.editIcon}`}
            to={`/manage/personnel/edit-employee-${employee.id}`}>
              <AiFillEdit />
