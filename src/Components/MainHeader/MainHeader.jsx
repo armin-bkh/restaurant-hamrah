@@ -26,8 +26,8 @@ const links = [
     icon: <MdContactMail className={`inline ml-1 lg:ml-3`} />,
   },
   {
-    to: "/auth",
-    title: "ورود/ثبت نام",
+    to: "/login",
+    title: "ورود",
     icon: <IoIosFingerPrint className={`inline ml-1 lg:ml-3`} />,
   },
 ];
@@ -41,7 +41,7 @@ const MainHeader = () => {
             <li
               key={link.to}
               className={`${
-                link.to === "/auth" && "mr-auto"
+                link.to === "/login" && "mr-auto"
               } text-xs sm:text-sm lg:text-lg xl:text-xl`}
             >
               <Link

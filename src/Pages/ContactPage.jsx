@@ -1,7 +1,13 @@
 import MainLayout from "../Layouts/MainLayout";
 import Contact from "../Assets/SVG/emails-animate.svg";
+import { useEffect } from "react";
 
 const ContactPage = () => {
+
+  useEffect(()=>{
+    document.title = "تماس با ما"
+  }, [])
+
   return (
     <MainLayout>
       <main className={`min-h-screen`}>
