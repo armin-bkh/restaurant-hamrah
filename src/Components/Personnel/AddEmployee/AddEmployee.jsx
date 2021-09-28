@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import ManageInputForm from '../../Common/ManageInputForm/ManageInputForm';
 import { useToasts } from 'react-toast-notifications';
 import { postEmployee } from '../../../Services/postEmployee';
+import UserJobContext from '../../../Context/UserJobContext';
 
 const AddEmployee = ({ history }) => {
     const [formValue, setFormValue] = useState({
@@ -11,6 +12,14 @@ const AddEmployee = ({ history }) => {
         id: '',
     })
     const { addToast } = useToasts();
+    const userJob = useContext(UserJobContext);
+
+    useEffect(()=>{
+      if(userJob !== "مدیریت") {
+        history.push('/manage');
+        return;
+      }
+    }, [])
 
     const changeHandler = (e) =>{
         setFormValue({

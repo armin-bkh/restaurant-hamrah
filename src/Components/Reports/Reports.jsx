@@ -1,8 +1,16 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import UserJobContext from "../../Context/UserJobContext";
 
-const Reports = () => {
+const Reports = ({ history }) => {
     const [reports, setReports] = useState(null);
     const [reportList, setReportList] = useState(null);
+    const userJob = useContext(UserJobContext);
+
+    useEffect(()=>{
+      if(userJob === "حسابدار" || userJob === "مدیریت") {
+        return;
+      } else { history.push('/manage') }
+    }, [])
 
   return (
     <main className={`min-h-screen p-5`}>

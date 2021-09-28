@@ -1,17 +1,23 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { getEmployee } from "../../../Services/getEmployee";
 import { putEmployee } from "../../../Services/putEmployee";
 import ManageInputForm from "../../Common/ManageInputForm/ManageInputForm";
 import { useToasts } from "react-toast-notifications";
 import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadingSkeleton/EditEmployeeLoadingSkeleton";
+import UserJobContext from "../../../Context/UserJobContext";
 
 const EditEmployee = ({ history, match }) => {
   const [formValue, setFormValue] = useState(null);
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
   const employeeID = match.params.id;
-
+  const userJob = useContext(UserJobContext);
+  
   useEffect(() => {
+    if(userJob !== "مدیریت") {
+      history.push('/manage');
+      return;
+    }
     const fetchEmployee = async () => {
       try {
         const { data } = await getEmployee(employeeID);

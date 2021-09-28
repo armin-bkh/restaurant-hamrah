@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { BsBoxArrowInRight } from "react-icons/bs";
@@ -8,31 +8,35 @@ import { getEmployee } from '../../../../Services/getEmployee';
 import { useToasts } from "react-toast-notifications";
 import styles from './EmployeeMember.module.scss';
 import EmployeeMemberLoaidngSkeleton from '../../../LoadingSkeleton/EmployeeMemberLoadingSkeleton/EmployeeMemberLoadingSkeleton';
+import UserJobContext from "../../../../Context/UserJobContext";
 
 const EmployeeMember = ({ location, match, history }) => {
   const [employee, setEmployee] = useState(null);
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
   const employeeID = match.params.id;
+  const userJob = useContext(UserJobContext);
 
   useEffect(() => {
-    if (location.state) {
-      const { employee } = location.state;
-      setEmployee(employee);
-      return;
-    }
-    if(employeeID){
-        const fetchEmployee = async () =>{
-            try{
-                const { data } = await getEmployee(employeeID);
-                setEmployee(data);
-            } catch(err){
-                setError(true);
-                history.push('/manage/personnel');
-            }
-        }
-        fetchEmployee();
-    }
+    if(userJob === "حسابدار" || userJob === "مدیریت") {
+      if (location.state) {
+        const { employee } = location.state;
+        setEmployee(employee);
+        return;
+      }
+      if(employeeID){
+          const fetchEmployee = async () =>{
+              try{
+                  const { data } = await getEmployee(employeeID);
+                  setEmployee(data);
+              } catch(err){
+                  setError(true);
+                  history.push('/manage/personnel');
+              }
+          }
+          fetchEmployee();
+      }
+    } else { history.push('/manage') }
   }, []);
 
   const removeHandler = async () => {

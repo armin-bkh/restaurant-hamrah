@@ -36,10 +36,10 @@ const links = [
 ];
 
 const ManageNavigation = () => {
-  
+
   const userJob = useContext(UserJobContext);
   let returnValue;
-  if (userJob === "گارسون") {
+  if (userJob === "گارسون" || userJob === "آشپز" || userJob === "سرآشپز" || userJob === "منشی") {
     returnValue = links.map((link) => {
       if (link.to === "/manage/manage-tables" || link.to === "/manage") {
         return (

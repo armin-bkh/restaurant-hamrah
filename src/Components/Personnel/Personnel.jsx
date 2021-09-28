@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { deleteEmployee } from "../../Services/deleteEmployee";
@@ -6,24 +6,28 @@ import { getAllPersonnel } from "../../Services/getAllPersonnel";
 import Employee from "./Employee/Employee";
 import { useToasts } from "react-toast-notifications";
 import EmployeeLoadingSkeleton from "../LoadingSkeleton/EmployeeLoadingSkeleton/EmployeeLoadingSkeleton";
+import UserJobContext from "../../Context/UserJobContext";
 
-const Personnel = () => {
+const Personnel = ({ history }) => {
   const [personnel, setPersonnel] = useState(null);
   const [allPersonnel, setAllPersonnel] = useState(null);
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
+  const userJob = useContext(UserJobContext);
 
   useEffect(() => {
-    const fetchPersonnel = async () => {
-      try {
-        const { data } = await getAllPersonnel();
-        setPersonnel(data);
-        setAllPersonnel(data);
-      } catch (err) {
-        setError(true);
-      }
-    };
-    fetchPersonnel();
+    if(userJob === "حسابدار" || userJob === "مدیریت") {
+      const fetchPersonnel = async () => {
+        try {
+          const { data } = await getAllPersonnel();
+          setPersonnel(data);
+          setAllPersonnel(data);
+        } catch (err) {
+          setError(true);
+        }
+      };
+      fetchPersonnel();
+    } else { history.push('/manage') }
   }, []);
 
   const deleteEmployeeHandler = async (id) => {

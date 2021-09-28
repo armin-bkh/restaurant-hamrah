@@ -2,8 +2,18 @@ import { Route, Switch } from "react-router-dom";
 import ManageProductsNavigation from "../ManageProductsNavigation/ManageProductsNaviagtion";
 import { manageProductsRoutes } from "../../Routes/Routes";
 import setting from "../../Assets/SVG/processing-animate.svg";
+import { useContext, useEffect } from "react";
+import UserJobContext from "../../Context/UserJobContext";
 
-const ManageProducts = () => {
+const ManageProducts = ({ history }) => {
+  const userJob = useContext(UserJobContext);
+
+  useEffect(()=>{
+    if(userJob === "حسابدار" || userJob === "مدیریت") {
+      return;
+    } else { history.push('/manage') }
+  }, [])
+
   return (
     <main
       className={`grid gap-x-3 grid-col-1 min-h-screen md:grid-cols-3 lg:grid-cols-4 p-5 md:col-span-2 Dirooz lg:col-span-3`}
