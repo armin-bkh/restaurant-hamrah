@@ -36,8 +36,8 @@ const links = [
 ];
 
 const ManageNavigation = () => {
+  
   const userJob = useContext(UserJobContext);
-  console.log(userJob)
   let returnValue;
   if (userJob === "گارسون") {
     returnValue = links.map((link) => {

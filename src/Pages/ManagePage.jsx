@@ -8,7 +8,11 @@ const ManagePage = ({ history, location }) => {
   const [user, setUser] = useState(null);
   useEffect(() => {
     document.title = "مدیریت";
-    if (!location.state) history.push("/login");
+    if (!location.state) {
+      const userData = JSON.parse(localStorage.getItem('resaurantUser'));
+      if(!userData) history.push('/login');
+      setUser(userData);
+    }
     else {
       const { employee } = location.state;
       setUser(employee);
