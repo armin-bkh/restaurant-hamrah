@@ -1,24 +1,27 @@
 import { Route, Switch } from "react-router-dom";
 import ManageLayout from "../Layouts/ManageLayout";
 import { manageRoutes } from "../Routes/Routes";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
-const ManagePage = ({ history }) => {
-
-  useEffect(()=>{
+const ManagePage = ({ history, location }) => {
+  useEffect(() => {
     document.title = "مدیریت";
-  }, [])
+    if (!location.state) history.push("/login");
+    else {
+      const { employee } = location.state;
+    }
+  }, []);
 
   return (
-      <ManageLayout>
+    location.state ? 
+    <ManageLayout>
       <Switch>
-        {
-          manageRoutes.map(route => (
-            <Route key={route.path} {...route} />
-          ))
-        }
+        {manageRoutes.map((route) => (
+          <Route key={route.path} {...route} />
+        ))}
       </Switch>
-      </ManageLayout>
+    </ManageLayout> :
+    null
   );
 };
 

@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import AuthInput from "../../Common/AuthInput/AuthInput";
 
-const SignUpForm = ({ setExisting }) => {
+const SignUpForm = ({ history }) => {
   const [formValue, setFormValue] = useState({
     resName: "",
     resTel: "",
@@ -63,8 +63,7 @@ const SignUpForm = ({ setExisting }) => {
 
       <Link
         className={`text-sm text-blue-400 font-bold Casablanca`}
-        to="/auth"
-        onClick={() => setExisting(true)}
+        to="/login"
       >
         ورود به رستوران من
       </Link>

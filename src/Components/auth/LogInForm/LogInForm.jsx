@@ -1,11 +1,13 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import AuthInput from "../../Common/AuthInput/AuthInput";
+import { getAllPersonnel } from '../../../Services/getAllPersonnel';
+import { getEmployee } from '../../../Services/getEmployee';
 
-const LogInForm = ({ setExisting }) => {
+const LogInForm = ({ history }) => {
   const [formValue, setFormValue] = useState({
-    resEmail: "",
-    resPassword: "",
+    userName: "",
+    userPassword: "",
   });
 
   const changeHandler = (e) => {
@@ -15,8 +17,15 @@ const LogInForm = ({ setExisting }) => {
     });
   };
 
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+    try{
+      const { data } = await getAllPersonnel();
+      if(data.find(em => em.id === formValue.userPassword && em.name === formValue.userName)){
+        const { data } = await getEmployee(formValue.userPassword);
+        history.push('/manage', { employee: data })
+      }
+    } catch(err) {}
   };
 
   return (
@@ -27,24 +36,23 @@ const LogInForm = ({ setExisting }) => {
         ورود
       </h1>
       <AuthInput
-        placeholder="آدرس الکترونیکی"
-        value={formValue.resEmail}
+        placeholder="نام کاربری..."
+        value={formValue.userName}
         onChange={changeHandler}
-        name="resEmail"
-        type="email"
+        name="userName"
+        type="text"
       />
       <AuthInput
-        placeholder="پسورد"
-        value={formValue.resPassword}
+        placeholder="کد ورود..."
+        value={formValue.userPassword}
         onChange={changeHandler}
-        name="resPassword"
+        name="userPassword"
         type="password"
       />
 
       <Link
         className={`text-blue-400 text-sm font-bold Casablanca`}
-        to="/auth"
-        onClick={() => setExisting(false)}
+        to="/signup"
       >
         اکانت ندارم
       </Link>
@@ -58,4 +66,4 @@ const LogInForm = ({ setExisting }) => {
   );
 };
 
-export default LogInForm;
+export default withRouter(LogInForm);

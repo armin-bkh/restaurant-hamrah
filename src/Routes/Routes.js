@@ -8,7 +8,6 @@ import AboutUsPage from "../Pages/AboutUsPage";
 import HomePage from "../Pages/HomePage";
 import ManagePage from "../Pages/ManagePage";
 import ReservationPage from "../Pages/ReservationPage";
-import AuthPage from "../Pages/AuthPage";
 import ServicesPage from "../Pages/ServicesPage";
 import NotFoundPage from "../Pages/NotFoundPage";
 import NotFound from "../Components/NotFound/NotFound";
@@ -18,12 +17,15 @@ import Personnel from "../Components/Personnel/Personnel";
 import EmployeeMember from "../Components/Personnel/Employee/EmployeeMember/EmployeeMember";
 import AddEmployee from "../Components/Personnel/AddEmployee/AddEmployee";
 import EditEmployee from '../Components/Personnel/EditEmployee/EditEmployee';
+import LoginPage from "../Pages/LoginPage";
+import SignupPage from "../Pages/SignupPage";
 
 export const routes = [
     {path: '/', component: HomePage, exact: true},
     {path: "/reservation", component: ReservationPage, exact: true},
     {path: "/manage", component: ManagePage},
-    {path: "/auth", component: AuthPage, exact: true},
+    {path: "/login", component: LoginPage, exact: true},
+    {path: "/signup", component: SignupPage, exact: true},
     {path: "/about-us", component: AboutUsPage, exact: true},
     {path: "/services", component: ServicesPage, exact: true},
     {path: "/contact", component: ContactPage, exact: true},
