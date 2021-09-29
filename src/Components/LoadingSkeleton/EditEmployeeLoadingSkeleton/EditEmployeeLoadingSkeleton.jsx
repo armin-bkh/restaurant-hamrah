@@ -4,8 +4,11 @@ const EditEmployeeLoadingSkelton = () => {
   return (
     <SkeletonTheme color={"#a8a7a7"} highlightColor={"#dbdbdb"}>
       <div className={`p-5 boxShadow flex flex-col rounded-md w-full`}>
-        <div className={`mb-10`}>
-          <Skeleton width={120} height={40} />
+        <div className={`w-full mb-5`}>
+        <Skeleton width={`100%`} height={30} />
+        </div>
+        <div className={`mb-10 w-28 h-10 md:w-52 md:h-12`}>
+          <Skeleton width={`100%`} height={`100%`} />
         </div>
         <div className={`mb-5`}>
           <div>
