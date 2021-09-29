@@ -9,7 +9,7 @@ const ManagePage = ({ history, location }) => {
   useEffect(() => {
     document.title = "مدیریت";
     if (!location.state) {
-      const userData = JSON.parse(localStorage.getItem('resaurantUser'));
+      const userData = JSON.parse(localStorage.getItem('restaurantUser'));
       if(!userData) history.push('/login');
       setUser(userData);
     }

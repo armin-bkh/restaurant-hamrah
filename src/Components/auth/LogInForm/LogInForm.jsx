@@ -9,6 +9,7 @@ const LogInForm = ({ history }) => {
     userName: "",
     userPassword: "",
   });
+  const [error, setError] = useState('');
 
   const changeHandler = (e) => {
     setFormValue({
@@ -23,7 +24,7 @@ const LogInForm = ({ history }) => {
       const { data } = await getAllPersonnel();
       if(data.find(em => em.id === formValue.userPassword && em.name === formValue.userName)){
         const { data } = await getEmployee(formValue.userPassword);
-        localStorage.setItem('resaurantUser', JSON.stringify(data));
+        localStorage.setItem('restaurantUser', JSON.stringify(data));
         history.push('/manage', { employee: data })
       }
     } catch(err) {}
