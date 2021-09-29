@@ -23,7 +23,7 @@ const ManageProductItem = ({ inf, onSubmit, type }) => {
       <span>{inf.title}</span>
       <span className={`Casablanca`}>{price()}</span>
       <button
-        className={`gradient-bottom px-2 py-2 text-white rounded-full`}
+        className={`bg-blue-400 px-2 py-2 text-white rounded-full`}
         onClick={submitHandler}
       >
         {type === "edit" ? <BiPencil /> : <BiTrash />}

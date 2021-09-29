@@ -48,6 +48,10 @@ code {
   background: transparent;
 }
 
+input::selection{
+  background: #507feb;
+}
+
 a{
   text-decoration: none;
 }

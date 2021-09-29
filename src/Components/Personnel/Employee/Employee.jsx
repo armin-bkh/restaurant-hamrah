@@ -34,14 +34,14 @@ const Employee = ({ employee, onDelete }) => {
       <div className={`flex items-center justify-between`}>
         <Link
           to={`/manage/personnel/edit-employee-${employee.id}`}
-          className={`text-white gradient rounded-full text-sm md:text-xl
+          className={`text-white bg-blue-400 rounded-full text-sm md:text-xl
                  p-2 cursor-pointer`}
         >
           <AiOutlineUserSwitch />
         </Link>
         <button
           onClick={onDelete}
-          className={`text-white gradient rounded-full text-sm md:text-xl
+          className={`text-white bg-blue-400 rounded-full text-sm md:text-xl
                  p-2 mr-2 cursor-pointer`}
         >
           <AiOutlineUserDelete />
