@@ -92,11 +92,11 @@ const AddEmployee = ({ history }) => {
                 onChange={changeHandler}
               />
               <fieldset>
-                <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
+                <label className={`ml-3 text-sm md:text-lg`}>وظیفه:</label>
                 <SelectBox
                   value={filter}
                   options={filters.filter((op) => op.value !== "همه")}
-                  placeholder="دسته بندی..."
+                  placeholder="وظیفه..."
                   onChange={selectChangeHandler}
                 />
               </fieldset>
