@@ -3,8 +3,10 @@ import { useToasts } from 'react-toast-notifications';
 import { postFilter } from '../../Services/postFilter';
 import { getAllFilters } from '../../Services/getAllFilters';
 import { BiPlus } from 'react-icons/bi';
+import { postUserFilter } from '../../Services/postUserFilter';
+import { getUserFilters } from '../../Services/getuserFilters';
 
-const ManageAddFilter = ({ setFilters }) =>{
+const ManageAddFilter = ({ setFilters, type }) =>{
     const [filter, setFilter] = useState({
         label: '',
         value: '',
@@ -24,9 +26,15 @@ const ManageAddFilter = ({ setFilters }) =>{
 
         if(filter.value){
             try{
-                await postFilter(filter);
-                const { data } = await getAllFilters();
-                setFilters(data);
+                if(type === "foods"){
+                    await postFilter(filter);
+                    const { data } = await getAllFilters();
+                    setFilters(data);
+                } else {
+                    await postUserFilter(filter);
+                    const {data} = await getUserFilters();
+                    setFilters(data);
+                }
                 addToast('با موفقیت افزوده شد', { appearance: "success" })
                 setFilter({
                     label: '',

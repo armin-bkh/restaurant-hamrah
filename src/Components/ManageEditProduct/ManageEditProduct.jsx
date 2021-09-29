@@ -278,7 +278,7 @@ const EditProduct = ({ onSubmit, productId }) => {
   if (formValue && !error && filters) {
     returnValue = (
       <li className={`boxShadow`}>
-        <ManageAddFilter setFilters={setFilters} />
+        <ManageAddFilter setFilters={setFilters} type="foods" />
         <form
           onSubmit={SubmitHandler}
           className={`flex text-black flex-col w-full my-3 items-center rounded-md px-4 py-3`}

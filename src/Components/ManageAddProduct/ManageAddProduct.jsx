@@ -93,7 +93,7 @@ const ManageAddProduct = () => {
     {
       filters ?
       <>
-      <ManageAddFilter setFilters={setFilters} />
+      <ManageAddFilter setFilters={setFilters} type="foods" />
       <form
         className={`text-black flex flex-col p-4`}
         onSubmit={sumbitHandler}
