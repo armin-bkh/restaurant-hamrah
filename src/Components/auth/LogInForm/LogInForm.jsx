@@ -12,6 +12,7 @@ const LogInForm = ({ history }) => {
   const [error, setError] = useState('');
 
   const changeHandler = (e) => {
+    setError('');
     setFormValue({
       ...formValue,
       [e.target.name]: e.target.value,
@@ -20,14 +21,28 @@ const LogInForm = ({ history }) => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    try{
-      const { data } = await getAllPersonnel();
-      if(data.find(em => em.id === formValue.userPassword && em.name === formValue.userName)){
-        const { data } = await getEmployee(formValue.userPassword);
-        localStorage.setItem('restaurantUser', JSON.stringify(data));
-        history.push('/manage', { employee: data })
-      }
-    } catch(err) {}
+    if(formValue.userName || formValue.userPassword){
+      if(formValue.userName){
+        if(formValue.userPassword){
+          try{
+            const { data } = await getAllPersonnel();
+            if(data.find(em => em.id === formValue.userPassword && em.name === formValue.userName)){
+              const { data } = await getEmployee(formValue.userPassword);
+              localStorage.setItem('restaurantUser', JSON.stringify(data));
+              history.push('/manage', { employee: data })
+            } else setError('حساب کاربری مورد نظر یافت نشد')
+          } catch(err) {  }
+        } else  setError('کد ورود ضروری است') 
+      } else  setError('نام کاربری ضروری است') 
+    } else  setError('نام کاربری و کد ورود ضروری است') 
+    // try{
+    //   const { data } = await getAllPersonnel();
+    //   if(data.find(em => em.id === formValue.userPassword && em.name === formValue.userName)){
+    //     const { data } = await getEmployee(formValue.userPassword);
+    //     localStorage.setItem('restaurantUser', JSON.stringify(data));
+    //     history.push('/manage', { employee: data })
+    //   }
+    // } catch(err) {}
   };
 
   return (
@@ -51,9 +66,9 @@ const LogInForm = ({ history }) => {
         name="userPassword"
         type="password"
       />
-
+      {error && <p className={`text-sm text-red-700 Dirooz font-bold -mt-3 mb-5`}>{error}</p>}
       <Link
-        className={`text-blue-400 text-sm font-bold Casablanca`}
+        className={`text-green-600 text-lg font-bold Dirooz`}
         to="/signup"
       >
         اکانت ندارم
