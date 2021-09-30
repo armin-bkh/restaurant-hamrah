@@ -1,13 +1,6 @@
 import { BiTrash } from "react-icons/bi";
 
-const GroupItem = ({ label, type, index }) => {
-  const removeFilterItemHandler = async () => {
-      try{
-        
-      } catch(err){
-
-      }
-  };
+const GroupItem = ({ label, index, onDelete }) => {
   return (
     <li
       className={`px-3 flex items-center justify-between Dirooz text-gray-700 text-lg font-medium border-b border-blue-300`}
@@ -17,7 +10,7 @@ const GroupItem = ({ label, type, index }) => {
         <p className={`py-4`}>{label}</p>
       </div>
       <button
-        onClick={removeFilterItemHandler}
+        onClick={onDelete}
         className={`p-2 rounded-full bg-blue-400 text-white`}
       >
         <BiTrash />

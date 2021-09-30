@@ -23,7 +23,7 @@ const ManageFiltersGroups = () => {
           {
               groups ?
               groups.map((gr)=> (
-                  <Group key={gr[1].length} group={gr[1].filter(it => it.value !== "همه")} title={gr[0]} />
+                  <Group key={gr[1].length} groups={gr[1].filter(it => it.value !== "همه")} setGroups={setGroups} title={gr[0]} />
               )) :
                null
           }
