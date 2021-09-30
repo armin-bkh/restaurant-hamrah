@@ -41,16 +41,16 @@ export const manageRoutes = [
     {path: '/manage/personnel/add-employee', component: AddEmployee, exact: true},
     {path: '/manage/personnel', component: Personnel, exact: true},
     {path: '/manage/report', component: Reports, exact: true},
-    {path: '/manage/manage-tables', component: ManageTable, exact: true},
-    {path: '/manage/manage-products', component: ManageProducts,},
+    {path: '/manage/tables', component: ManageTable, exact: true},
+    {path: '/manage/products', component: ManageProducts,},
     {path: '/manage', component: manageDetail, exact: true},
     {path: "*", component: NotFound},
 ]
 
 export const manageProductsRoutes = [
-    {path: '/manage/manage-products/edit-product', component: ManageEditProduct, exact: true},
-    {path: '/manage/manage-products/remove-product', component: ManageRemoveProduct, exact: true},
-    {path: '/manage/manage-products/add-product', component: ManageAddProduct, exact: true},
-    {path: '/manage/manage-products' , component: ManageProductsDetail, exact: true},
+    {path: '/manage/products/edit-product', component: ManageEditProduct, exact: true},
+    {path: '/manage/products/remove-product', component: ManageRemoveProduct, exact: true},
+    {path: '/manage/products/add-product', component: ManageAddProduct, exact: true},
+    {path: '/manage/products' , component: ManageProductsDetail, exact: true},
     {path: "*", component: NotFound},
 ]

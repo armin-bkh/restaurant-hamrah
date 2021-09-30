@@ -4,9 +4,9 @@ import { FaEdit } from 'react-icons/fa';
 import { HiFolderRemove } from 'react-icons/hi';
 
 const links = [
-  { to: "/manage/manage-products/add-product", title: "اضافه", icon: <BiBookAdd/> },
-  { to: "/manage/manage-products/edit-product", title: "تغییر", icon: <FaEdit/> },
-  { to: "/manage/manage-products/remove-product", title: "حذف", icon: <HiFolderRemove/> },
+  { to: "/manage/products/add-product", title: "اضافه", icon: <BiBookAdd/> },
+  { to: "/manage/products/edit-product", title: "تغییر", icon: <FaEdit/> },
+  { to: "/manage/products/remove-product", title: "حذف", icon: <HiFolderRemove/> },
 ];
 
 const ManageProductsNavigation = () => {

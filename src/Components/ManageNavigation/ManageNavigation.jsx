@@ -11,12 +11,12 @@ import { useContext } from "react";
 const links = [
   {
     title: "میز ها",
-    to: "/manage/manage-tables",
+    to: "/manage/tables",
     icon: <SiAirtable className={`inline ml-2`} />,
   },
   {
     title: "غذا",
-    to: "/manage/manage-products",
+    to: "/manage/products",
     icon: <IoFastFoodOutline className={`inline ml-2`} />,
   },
   {
