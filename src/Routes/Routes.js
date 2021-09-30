@@ -20,6 +20,7 @@ import AddEmployee from "../Components/Personnel/AddEmployee/AddEmployee";
 import EditEmployee from '../Components/Personnel/EditEmployee/EditEmployee';
 import LoginPage from "../Pages/LoginPage";
 import SignupPage from "../Pages/SignupPage";
+import ManageFiltersGroups from "../Components/ManageFiltersGroups/ManageFiltersGroups";
 
 export const routes = [
     {path: '/', component: HomePage, exact: true},
@@ -34,9 +35,10 @@ export const routes = [
 ]
 
 export const manageRoutes = [
-    {path: '/manage/personnel/employee-:id', component: EmployeeMember, },
-    {path: '/manage/personnel/edit-employee-:id', component: EditEmployee, },
-    {path: '/manage/personnel/add-employee', component: AddEmployee, },
+    {path: '/manage/filter-groups', component: ManageFiltersGroups, exact: true},
+    {path: '/manage/personnel/employee-:id', component: EmployeeMember, exact: true},
+    {path: '/manage/personnel/edit-employee-:id', component: EditEmployee, exact: true},
+    {path: '/manage/personnel/add-employee', component: AddEmployee, exact: true},
     {path: '/manage/personnel', component: Personnel, exact: true},
     {path: '/manage/report', component: Reports, exact: true},
     {path: '/manage/manage-tables', component: ManageTable, exact: true},

@@ -4,6 +4,7 @@ import { SiAirtable } from "react-icons/si";
 import { IoFastFoodOutline } from "react-icons/io5";
 import { BsCardChecklist } from "react-icons/bs";
 import { HiUserGroup } from "react-icons/hi";
+import { FaLayerGroup } from "react-icons/fa";
 import UserJobContext from "../../Context/UserJobContext";
 import { useContext } from "react";
 
@@ -17,6 +18,11 @@ const links = [
     title: "غذا",
     to: "/manage/manage-products",
     icon: <IoFastFoodOutline className={`inline ml-2`} />,
+  },
+  {
+    title: "دسته بندی ها",
+    to: "/manage/filter-groups",
+    icon: <FaLayerGroup className={`inline ml-2`} />,
   },
   {
     title: "گزارشات",
@@ -36,10 +42,14 @@ const links = [
 ];
 
 const ManageNavigation = () => {
-
   const userJob = useContext(UserJobContext);
   let returnValue;
-  if (userJob === "گارسون" || userJob === "آشپز" || userJob === "سرآشپز" || userJob === "منشی") {
+  if (
+    userJob === "گارسون" ||
+    userJob === "آشپز" ||
+    userJob === "سرآشپز" ||
+    userJob === "منشی"
+  ) {
     returnValue = links.map((link) => {
       if (link.to === "/manage/manage-tables" || link.to === "/manage") {
         return (
@@ -81,7 +91,13 @@ const ManageNavigation = () => {
   }
   if (userJob === "حسابدار") {
     returnValue = links.map((link) => {
-      if (link.to === "/manage/manage-tables" || link.to === "/manage/report" || link.to === "/manage/manage-products" || link.to === "/manage") {
+      if (
+        link.to === "/manage/manage-tables" ||
+        link.to === "/manage/report" ||
+        link.to === "/manage/manage-products" ||
+        link.to === "/manage" ||
+        link.to === "/manage/filter-groups"
+      ) {
         return (
           <li
             key={link.to}
