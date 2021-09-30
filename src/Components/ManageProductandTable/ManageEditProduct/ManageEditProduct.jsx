@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { useToasts } from "react-toast-notifications";
-import { getFoodFilters } from "../../Services/getFoodFilters";
-import { getAllProducts } from "../../Services/getAllProducts";
-import { getOneProduct } from "../../Services/getOneProduct";
-import { putProduct } from "../../Services/putProduct";
-import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
-import SearchBox from "../Common/SearchBox/SearchBox";
-import SelectBox from "../Common/SelectBox/SelectBox";
-import EditFoodLoadingSkeleton from "../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
-import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
-import SelectBoxLoadingSkeleton from "../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
-import ManageAddFilter from "../ManageAddFilter/ManageAddFilter";
+import { getFoodFilters } from "../../../Services/getFoodFilters";
+import { getAllProducts } from "../../../Services/getAllProducts";
+import { getOneProduct } from "../../../Services/getOneProduct";
+import { putProduct } from "../../../Services/putProduct";
+import ManageInputForm from "../../Common/ManageInputForm/ManageInputForm";
+import SearchBox from "../../Common/SearchBox/SearchBox";
+import SelectBox from "../../Common/SelectBox/SelectBox";
+import EditFoodLoadingSkeleton from "../../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton";
+import FoodLoadingSkeleton from "../../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
+import SelectBoxLoadingSkeleton from "../../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
+import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
 
 const ManageEditProduct = () => {

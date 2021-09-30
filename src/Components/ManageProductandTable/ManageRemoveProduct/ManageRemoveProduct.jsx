@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { getAllProducts } from "../../Services/getAllProducts";
-import { deleteProduct } from "../../Services/deleteProduct";
-import { getFoodFilters } from "../../Services/getFoodFilters";
-import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
+import { getAllProducts } from "../../../Services/getAllProducts";
+import { deleteProduct } from "../../../Services/deleteProduct";
+import { getFoodFilters } from "../../../Services/getFoodFilters";
+import FoodLoadingSkeleton from "../../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 import { useToasts } from "react-toast-notifications";
-import SelectBox from "../Common/SelectBox/SelectBox";
-import SearchBox from "../Common/SearchBox/SearchBox";
+import SelectBox from "../../Common/SelectBox/SelectBox";
+import SearchBox from "../../Common/SearchBox/SearchBox";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
-import SelectBoxLoadingSkeleton from "../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
+import SelectBoxLoadingSkeleton from "../../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
 
 const ManageRemoveProduct = () => {
   const [products, setProducts] = useState(null);

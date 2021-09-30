@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { getAllTable } from "../../Services/getAllTables";
-import TableLoadingSkeleton from "../LoadingSkeleton/TableLoadingSkeleton/TableLoadingSkeleton";
+import { getAllTable } from "../../../Services/getAllTables";
+import TableLoadingSkeleton from "../../LoadingSkeleton/TableLoadingSkeleton/TableLoadingSkeleton";
 import Table from "./Table/Table";
 
 const ManageTable = () => {

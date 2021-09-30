@@ -1,9 +1,10 @@
-import ManageAddProduct from "../Components/ManageAddProduct/ManageAddProduct";
+
 import manageDetail from "../Components/manageDetail/ManageDetail";
-import ManageEditProduct from "../Components/ManageEditProduct/ManageEditProduct";
-import ManageProducts, { ManageProductsDetail } from "../Components/ManageProducts/ManageProducts";
-import ManageRemoveProduct from "../Components/ManageRemoveProduct/ManageRemoveProduct";
-import ManageTable from "../Components/ManageTables/manageTables";
+import ManageEditProduct from "../Components/ManageProductandTable/ManageEditProduct/ManageEditProduct";
+import ManageProducts, { ManageProductsDetail } from "../Components/ManageProductandTable/ManageProducts/ManageProducts";
+import ManageRemoveProduct from "../Components/ManageProductandTable/ManageRemoveProduct/ManageRemoveProduct";
+import ManageTable from "../Components/ManageProductandTable/ManageTables/ManageTables";
+import ManageAddProduct from "../Components/ManageProductandTable/ManageAddProduct/ManageAddProduct";
 import AboutUsPage from "../Pages/AboutUsPage";
 import HomePage from "../Pages/HomePage";
 import ManagePage from "../Pages/ManagePage";

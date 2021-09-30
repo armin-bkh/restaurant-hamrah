@@ -1,6 +1,6 @@
-import { deleteTable } from "../../../Services/deleteTable";
-import { getAllTable } from "../../../Services/getAllTables";
-import { numberWithCommas } from "../../utils/CommaNumber";
+import { deleteTable } from "../../../../Services/deleteTable";
+import { getAllTable } from "../../../../Services/getAllTables";
+import { numberWithCommas } from "../../../utils/CommaNumber";
 import { useToasts } from "react-toast-notifications";
 
 const Table = ({ resForm, setTables }) => {

@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react";
-import { postProduct } from "../../Services/postProduct";
+import { postProduct } from "../../../Services/postProduct";
 import { useToasts } from "react-toast-notifications";
-import SelectBox from "../Common/SelectBox/SelectBox";
-import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
-import ManageAddFilter from "../ManageAddFilter/ManageAddFilter";
-import { getFoodFilters } from "../../Services/getFoodFilters";
-import EditFoodLoadingSkeleton from '../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton';
+import SelectBox from "../../Common/SelectBox/SelectBox";
+import ManageInputForm from "../../Common/ManageInputForm/ManageInputForm";
+import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
+import { getFoodFilters } from "../../../Services/getFoodFilters";
+import EditFoodLoadingSkeleton from '../../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton';
 
 const ManageAddProduct = () => {
   const [error, setError] = useState(false);

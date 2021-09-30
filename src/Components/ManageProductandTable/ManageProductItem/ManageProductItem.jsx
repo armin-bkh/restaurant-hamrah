@@ -1,4 +1,4 @@
-import { numberWithCommas } from "../utils/CommaNumber";
+import { numberWithCommas } from "../../utils/CommaNumber";
 import { BiTrash, BiPencil } from "react-icons/bi";
 
 const ManageProductItem = ({ inf, onSubmit, type }) => {
