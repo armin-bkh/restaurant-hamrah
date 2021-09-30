@@ -4,7 +4,7 @@ import { useToasts } from "react-toast-notifications";
 import { postEmployee } from "../../../Services/postEmployee";
 import UserJobContext from "../../../Context/UserJobContext";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
-import { getUserFilters } from "../../../Services/getuserFilters";
+import { getUserFilters } from "../../../Services/getUserFilters";
 import SelectBox from "../../Common/SelectBox/SelectBox";
 import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadingSkeleton/EditEmployeeLoadingSkeleton";
 

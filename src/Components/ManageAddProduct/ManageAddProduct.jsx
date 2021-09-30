@@ -4,7 +4,7 @@ import { useToasts } from "react-toast-notifications";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import ManageInputForm from "../Common/ManageInputForm/ManageInputForm";
 import ManageAddFilter from "../ManageAddFilter/ManageAddFilter";
-import { getAllFilters } from "../../Services/getAllFilters";
+import { getFoodFilters } from "../../Services/getFoodFilters";
 import EditFoodLoadingSkeleton from '../LoadingSkeleton/EditFoodLoadingSkeleton/EditFoodLoadingSkeleton';
 
 const ManageAddProduct = () => {
@@ -24,7 +24,7 @@ const ManageAddProduct = () => {
   useEffect(() => {
     const getFilters = async () => {
       try {
-        const { data } = await getAllFilters();
+        const { data } = await getFoodFilters();
         setFilters(data);
       } catch (err) {
         setError(true);

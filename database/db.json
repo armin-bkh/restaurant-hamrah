@@ -211,7 +211,7 @@
     "tableCount": 9,
     "tel": "09213506158"
   },
-  "filters": [
+  "foodFilters": [
     {
       "id": "1",
       "label": "همه",
@@ -301,6 +301,16 @@
       "label": "ترشیجات",
       "value": "ترشیجات",
       "id": "D5KU6nu"
+    },
+    {
+      "label": "asd",
+      "value": "asd",
+      "id": "WIHlZfV"
+    },
+    {
+      "label": "asd",
+      "value": "asd",
+      "id": "cuheMzQ"
     }
   ],
   "personnel": [
@@ -427,6 +437,11 @@
       "label": "مسئول پارکینگ",
       "value": "مسئول پارکینگ",
       "id": 10
+    },
+    {
+      "label": "hg",
+      "value": "hg",
+      "id": 11
     }
   ]
 }

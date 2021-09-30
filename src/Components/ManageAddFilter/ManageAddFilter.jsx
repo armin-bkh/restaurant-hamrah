@@ -1,10 +1,10 @@
 import { useState } from 'react';
 import { useToasts } from 'react-toast-notifications';
-import { postFilter } from '../../Services/postFilter';
-import { getAllFilters } from '../../Services/getAllFilters';
+import { postFoodFilter } from '../../Services/postFoodFilter';
+import { getFoodFilters } from '../../Services/getFoodFilters';
 import { BiPlus } from 'react-icons/bi';
 import { postUserFilter } from '../../Services/postUserFilter';
-import { getUserFilters } from '../../Services/getuserFilters';
+import { getUserFilters } from '../../Services/getUserFilters';
 
 const ManageAddFilter = ({ setFilters, type }) =>{
     const [filter, setFilter] = useState({
@@ -23,12 +23,11 @@ const ManageAddFilter = ({ setFilters, type }) =>{
 
     const submitHandler = async (e) =>{
         e.preventDefault();
-
         if(filter.value){
             try{
                 if(type === "foods"){
-                    await postFilter(filter);
-                    const { data } = await getAllFilters();
+                    await postFoodFilter(filter);
+                    const { data } = await getFoodFilters();
                     setFilters(data);
                 } else {
                     await postUserFilter(filter);

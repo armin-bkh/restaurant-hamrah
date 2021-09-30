@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useToasts } from "react-toast-notifications";
-import { getAllFilters } from "../../Services/getAllFilters";
+import { getFoodFilters } from "../../Services/getFoodFilters";
 import { getAllProducts } from "../../Services/getAllProducts";
 import { getOneProduct } from "../../Services/getOneProduct";
 import { putProduct } from "../../Services/putProduct";
@@ -27,7 +27,7 @@ const ManageEditProduct = () => {
     const fetchData = async () => {
       try {
         const { data } = await getAllProducts();
-        const filterL = await getAllFilters();
+        const filterL = await getFoodFilters();
         setFilters(filterL.data);
         setProducts(data);
       } catch (error) {
@@ -219,7 +219,7 @@ const EditProduct = ({ onSubmit, productId }) => {
       const getProduct = async () => {
         try {
           const product = await getOneProduct(productId);
-          const filterL = await getAllFilters();
+          const filterL = await getFoodFilters();
           setFormValue(product.data);
           setFilters(filterL.data);
           setFilter(

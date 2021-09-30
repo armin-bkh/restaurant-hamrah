@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { getAllProducts } from "../../Services/getAllProducts";
 import { deleteProduct } from "../../Services/deleteProduct";
-import { getAllFilters } from "../../Services/getAllFilters";
+import { getFoodFilters } from "../../Services/getFoodFilters";
 import FoodLoadingSkeleton from "../LoadingSkeleton/FoodLoadingSkeleton/FoodLoadingSkeleton";
 import { useToasts } from "react-toast-notifications";
 import SelectBox from "../Common/SelectBox/SelectBox";
@@ -22,7 +22,7 @@ const ManageRemoveProduct = () => {
     const fetchData = async () => {
       try {
         const { data } = await getAllProducts();
-        const filtersL = await getAllFilters();
+        const filtersL = await getFoodFilters();
         setProducts(data);
         setFilters(filtersL.data);
       } catch (err) {

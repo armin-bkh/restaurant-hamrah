@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import RadioIComponent from "../Common/RadioIComponent/RadioIComponent"
 import styles from './Filter.module.scss';
-import { getAllFilters } from '../../Services/getAllFilters';
+import { getFoodFilters } from '../../Services/getFoodFilters';
 
 const Filter = ({ onFilter }) => {
   const [filter, setFilter] = useState("همه");
@@ -9,7 +9,7 @@ const Filter = ({ onFilter }) => {
 
   useEffect(() => {
     const getFilters = async () =>{
-        const { data } = await getAllFilters();
+        const { data } = await getFoodFilters();
         setFilters(data);
     }
     getFilters();

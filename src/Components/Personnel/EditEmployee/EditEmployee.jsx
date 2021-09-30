@@ -7,7 +7,7 @@ import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadin
 import UserJobContext from "../../../Context/UserJobContext";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import SelectBox from '../../Common/SelectBox/SelectBox';
-import { getUserFilters } from "../../../Services/getuserFilters";
+import { getUserFilters } from "../../../Services/getUserFilters";
 
 const EditEmployee = ({ history, match }) => {
   const [formValue, setFormValue] = useState(null);
