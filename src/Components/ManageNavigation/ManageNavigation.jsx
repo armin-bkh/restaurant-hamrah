@@ -60,11 +60,11 @@ const ManageNavigation = () => {
           <li
             key={link.to}
             style={link.to === "/manage" && !open  ? { marginRight: "auto" } : null}
-            className={`mb-3 md:mb-0`}
+            className={`my-1 md:mb-0 text-blue-400`}
           >
             <NavLink
-              className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 md:rounded-md`}
-              activeClassName={`border-t-2 md:border-t-4 border-blue-400`}
+              className={`${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
+              activeClassName={`bg-blue-400 text-white  md:border-t-4 border-blue-400`}
               to={link.to}
               exact={link.exact || false}
             >
@@ -81,11 +81,11 @@ const ManageNavigation = () => {
       <li
         key={link.to}
         style={link.to === "/manage" && !open ? { marginRight: "auto" } : null}
-        className={`mb-3 md:mb-0`}
+        className={`my-1 md:mb-0 text-blue-400`}
       >
         <NavLink
-          className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 md:rounded-md`}
-          activeClassName={`border-t-2 md:border-t-4 border-blue-400`}
+          className={`${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
+          activeClassName={`bg-blue-400 text-white md:border-t-4 border-blue-400`}
           to={link.to}
           exact={link.exact || false}
         >
@@ -108,11 +108,11 @@ const ManageNavigation = () => {
           <li
             key={link.to}
             style={link.to === "/manage" && !open  ? { marginRight: "auto" } : null}
-            className={`mb-3 md:mb-0`}
+            className={`my-1 md:mb-0 text-blue-400`}
           >
             <NavLink
-              className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 md:rounded-md`}
-              activeClassName={`border-t-2 md:border-t-4 border-blue-400`}
+              className={` ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
+              activeClassName={`bg-blue-400 text-white md:border-t-4 border-blue-400`}
               to={link.to}
               exact={link.exact || false}
             >
@@ -132,7 +132,7 @@ const ManageNavigation = () => {
         <div className={`h-1.5 my-1.5 rounded-sm bg-blue-400`}></div>
         <div className={`${open ? 'w-3/5 rounded-tr-xl rounded-l-sm' : 'w-full rounded-sm'} transition-all mr-auto h-1.5 my-1.5 bg-blue-400`}></div>
         </button>
-      <ul className={`flex flex-col md:flex-row overflow-hidden transition-all ${open ? `${styles.h17} boxShadowInner p-2 rounded-md` : 'md:h-auto h-0'}`}>
+      <ul className={`flex flex-col md:flex-row overflow-hidden transition-all ${open ? `h-auto boxShadowInner p-2 rounded-md` : 'md:h-auto h-0'}`}>
         {/* {links.map((link) => (
           <li
             key={link.to}
