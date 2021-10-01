@@ -63,8 +63,8 @@ const ManageNavigation = () => {
             className={`mb-3 md:mb-0`}
           >
             <NavLink
-              className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
-              activeClassName={`border-t-4 border-blue-400`}
+              className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 md:rounded-md`}
+              activeClassName={`border-t-2 md:border-t-4 border-blue-400`}
               to={link.to}
               exact={link.exact || false}
             >
@@ -84,8 +84,8 @@ const ManageNavigation = () => {
         className={`mb-3 md:mb-0`}
       >
         <NavLink
-          className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
-          activeClassName={`border-t-4 border-blue-400`}
+          className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 md:rounded-md`}
+          activeClassName={`border-t-2 md:border-t-4 border-blue-400`}
           to={link.to}
           exact={link.exact || false}
         >
@@ -111,8 +111,8 @@ const ManageNavigation = () => {
             className={`mb-3 md:mb-0`}
           >
             <NavLink
-              className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
-              activeClassName={`border-t-4 border-blue-400`}
+              className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 md:rounded-md`}
+              activeClassName={`border-t-2 md:border-t-4 border-blue-400`}
               to={link.to}
               exact={link.exact || false}
             >
