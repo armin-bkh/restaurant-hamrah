@@ -6,12 +6,14 @@ import { BiChevronDown } from "react-icons/bi";
 import { FaFolder, FaFolderOpen } from "react-icons/fa";
 import GroupItem from "./GroupItem/GroupItem";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
+import { useToasts } from 'react-toast-notifications';
 
 const Group = ({ title, group, setGroup }) => {
   const [filterGroup, setFilterGroup] = useState(null);
   const [error, setError] = useState(false);
   const [open, setOpen] = useState(false);
   const [height, setHeight] = useState(0);
+  const { addToast } = useToasts();
 
   useEffect(() => {
     const filteredGroup = group.filter((it) => it.value !== "همه");
@@ -21,7 +23,7 @@ const Group = ({ title, group, setGroup }) => {
     setHeight(h);
   }, []);
 
-  const deleteFilterItemHandler = async (id) => {
+  const deleteFilterItemHandler = async (id, label) => {
     try {
       if (title === "محصولات") {
         await deleteProductFilter(id);
@@ -38,8 +40,10 @@ const Group = ({ title, group, setGroup }) => {
         filteredGroup.map((it) => (h += 62));
         setHeight(h);
       }
+      addToast(`${label} با موفقیت از ${title} حذف شد`, {appearance: 'success'})
     } catch (err) {
       setError(true);
+      addToast(`مجددا تلاش کنید`, {appearance: 'error'})
     }
   };
 
@@ -85,7 +89,7 @@ const Group = ({ title, group, setGroup }) => {
                 key={it.id}
                 index={index + 1}
                 label={it.value}
-                onDelete={() => deleteFilterItemHandler(it.id)}
+                onDelete={() => deleteFilterItemHandler(it.id, it.label)}
               />
             ))
           : null}
