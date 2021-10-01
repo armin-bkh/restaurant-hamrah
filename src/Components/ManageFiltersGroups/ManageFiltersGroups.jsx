@@ -17,9 +17,9 @@ const ManageFiltersGroups = () => {
     }, [])
 
   return (
-    <main className={`min-h-screen`}>
-        <section className={`p-5`}>
+    <main className={`p-5`}>
           <h1 className={`text-5xl color-gradient Casablanca`}>دسته بندی ها</h1>
+        <section className={`min-h-screen boxShadowInner py-1 px-5 mt-14`}>
           {
               groups ?
               groups.map((gr)=> (
