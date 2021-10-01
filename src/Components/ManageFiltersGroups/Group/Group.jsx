@@ -1,43 +1,52 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { deleteProductFilter } from "../../../Services/deleteProductFilter";
 import { deleteUserFilter } from "../../../Services/deleteUserFilter";
-import { getFoodFilters } from "../../../Services/getFoodFilters";
-import { getUserFilters } from "../../../Services/getUserFilters";
+import styles from "./Group.module.scss";
 import { BiChevronDown } from "react-icons/bi";
 import { FaFolder, FaFolderOpen } from "react-icons/fa";
 import GroupItem from "./GroupItem/GroupItem";
 
-const Group = ({ title, groups, setGroups }) => {
+const Group = ({ title, group, setGroup }) => {
+  const [filterGroup, setFilterGroup] = useState(null);
   const [error, setError] = useState(false);
   const [open, setOpen] = useState(false);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    const filteredGroup = group.filter((it) => it.value !== "همه");
+    setFilterGroup(filteredGroup);
+    let h = 0;
+    filteredGroup.map((it) => (h += 62));
+    setHeight(h);
+  }, []);
 
   const deleteFilterItemHandler = async (id) => {
     try {
       if (title === "محصولات") {
         await deleteProductFilter(id);
-        const food = await getFoodFilters();
-        const job = await getUserFilters();
-        const filters = [
-          ["محصولات", food.data],
-          ["پرسنل", job.data],
-        ];
-        setGroups(filters);
+        const filteredGroup = filterGroup.filter((it) => it.id !== id);
+        setFilterGroup(filteredGroup);
+        let h = 0;
+        filteredGroup.map((it) => (h += 62));
+        setHeight(h);
       } else {
         await deleteUserFilter(id);
-        const food = await getFoodFilters();
-        const job = await getUserFilters();
-        const filters = [
-          ["محصولات", food.data],
-          ["پرسنل", job.data],
-        ];
-        setGroups(filters);
+        const filteredGroup = filterGroup.filter((it) => it.id !== id);
+        setFilterGroup(filteredGroup);
+        let h = 0;
+        filteredGroup.map((it) => (h += 62));
+        setHeight(h);
       }
     } catch (err) {
       setError(true);
     }
   };
+
   return (
-    <article className={`boxShadow rounded-md p-5 my-4 transition ${!open ? 'h-20 overflow-hidden' : ' h-auto'}`}>
+    <article
+      style={{ height: open ? `${height + 91}px` : "5rem" }}
+      className={`boxShadow rounded-md p-5 my-4 overflow-hidden ${styles.hTransition}`}
+    >
       <header
         onClick={() => setOpen((prevState) => !prevState)}
         className={`flex cursor-pointer items-center justify-between`}
@@ -57,14 +66,16 @@ const Group = ({ title, groups, setGroups }) => {
         />
       </header>
       <ul className={`mt-5`}>
-        {groups.map((it, index) => (
-          <GroupItem
-            key={it.id}
-            index={index + 1}
-            label={it.value}
-            onDelete={() => deleteFilterItemHandler(it.id)}
-          />
-        ))}
+        {filterGroup
+          ? filterGroup.map((it, index) => (
+              <GroupItem
+                key={it.id}
+                index={index + 1}
+                label={it.value}
+                onDelete={() => deleteFilterItemHandler(it.id)}
+              />
+            ))
+          : null}
       </ul>
     </article>
   );
