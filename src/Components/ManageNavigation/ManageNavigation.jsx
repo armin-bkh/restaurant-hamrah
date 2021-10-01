@@ -6,7 +6,8 @@ import { BsCardChecklist } from "react-icons/bs";
 import { HiUserGroup } from "react-icons/hi";
 import { FaLayerGroup } from "react-icons/fa";
 import UserJobContext from "../../Context/UserJobContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import styles from './ManageNavigation.module.scss';
 
 const links = [
   {
@@ -42,7 +43,10 @@ const links = [
 ];
 
 const ManageNavigation = () => {
+  const [open, setOpen] = useState(false);
   const userJob = useContext(UserJobContext);
+
+  
   let returnValue;
   if (
     userJob === "گارسون" ||
@@ -55,10 +59,11 @@ const ManageNavigation = () => {
         return (
           <li
             key={link.to}
-            style={link.to === "/manage" ? { marginRight: "auto" } : null}
+            style={link.to === "/manage" && !open  ? { marginRight: "auto" } : null}
+            className={`mb-3 md:mb-0`}
           >
             <NavLink
-              className={`text-blue-400 text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
+              className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
               activeClassName={`border-t-4 border-blue-400`}
               to={link.to}
               exact={link.exact || false}
@@ -75,10 +80,11 @@ const ManageNavigation = () => {
     returnValue = links.map((link) => (
       <li
         key={link.to}
-        style={link.to === "/manage" ? { marginRight: "auto" } : null}
+        style={link.to === "/manage" && !open ? { marginRight: "auto" } : null}
+        className={`mb-3 md:mb-0`}
       >
         <NavLink
-          className={`text-blue-400 text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
+          className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
           activeClassName={`border-t-4 border-blue-400`}
           to={link.to}
           exact={link.exact || false}
@@ -101,10 +107,11 @@ const ManageNavigation = () => {
         return (
           <li
             key={link.to}
-            style={link.to === "/manage" ? { marginRight: "auto" } : null}
+            style={link.to === "/manage" && !open  ? { marginRight: "auto" } : null}
+            className={`mb-3 md:mb-0`}
           >
             <NavLink
-              className={`text-blue-400 text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
+              className={`text-blue-400 ${open && 'w-full'} block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
               activeClassName={`border-t-4 border-blue-400`}
               to={link.to}
               exact={link.exact || false}
@@ -119,8 +126,13 @@ const ManageNavigation = () => {
   }
 
   return (
-    <nav className={`mt-10 border-b-2 border-blue-400 py-2`}>
-      <ul className={`flex`}>
+    <nav className={`mt-10 border-b-2 border-blue-400 pt-2 pb-2 md:pb-0`}>
+      <button type="button" onClick={()=> setOpen(prevState => !prevState)} className={`w-8 md:hidden block mr-auto`}>
+        <div className={`${open ? 'w-3/5 rounded-bl-xl rounded-r-sm' : 'w-full rounded-sm'} transition-all ml-auto h-1.5 my-1.5 bg-blue-400`}></div>
+        <div className={`h-1.5 my-1.5 rounded-sm bg-blue-400`}></div>
+        <div className={`${open ? 'w-3/5 rounded-tr-xl rounded-l-sm' : 'w-full rounded-sm'} transition-all mr-auto h-1.5 my-1.5 bg-blue-400`}></div>
+        </button>
+      <ul className={`flex flex-col md:flex-row overflow-hidden transition-all ${open ? `${styles.h17} boxShadowInner p-2 rounded-md` : 'md:h-auto h-0'}`}>
         {/* {links.map((link) => (
           <li
             key={link.to}
