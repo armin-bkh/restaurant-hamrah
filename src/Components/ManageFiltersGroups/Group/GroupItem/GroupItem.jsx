@@ -9,7 +9,7 @@ const GroupItem = ({ label, index, onDelete }) => {
     >
       <div className={`flex items-center`}>
         <span className={`text-blue-400 p-2 ml-5`}>{index}</span>
-        <p className={`py-4`}>{label}</p>
+        <p className={`py-4 text-sm md:text-lg lg:text-xl`}>{label}</p>
       </div>
       <button
         onClick={onDelete}

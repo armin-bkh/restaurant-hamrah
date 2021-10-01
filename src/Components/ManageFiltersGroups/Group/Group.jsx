@@ -60,7 +60,7 @@ const Group = ({ title, group, setGroup }) => {
         onClick={() => setOpen((prevState) => !prevState)}
         className={`flex cursor-pointer items-center justify-between mb-7`}
       >
-        <h1 className={`text-gray-900 font-bold text-2xl Dirooz`}>
+        <h1 className={`text-gray-900 font-bold text-sm md:text-lg lg:text-2xl Dirooz`}>
           {!open ? (
             <FaFolder className={`inline text-blue-400 ml-3`} />
           ) : (
