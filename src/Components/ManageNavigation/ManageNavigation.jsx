@@ -55,7 +55,7 @@ const ManageNavigation = () => {
     userJob === "منشی"
   ) {
     returnValue = links.map((link) => {
-      if (link.to === "/manage/manage-tables" || link.to === "/manage") {
+      if (link.to === "/manage/tables" || link.to === "/manage") {
         return (
           <li
             key={link.to}
@@ -98,9 +98,9 @@ const ManageNavigation = () => {
   if (userJob === "حسابدار") {
     returnValue = links.map((link) => {
       if (
-        link.to === "/manage/manage-tables" ||
+        link.to === "/manage/tables" ||
         link.to === "/manage/report" ||
-        link.to === "/manage/manage-products" ||
+        link.to === "/manage/products" ||
         link.to === "/manage" ||
         link.to === "/manage/filter-groups"
       ) {

@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import UserJobContext from "../../Context/UserJobContext";
 import { getFoodFilters } from '../../Services/getFoodFilters';
 import { getUserFilters } from '../../Services/getUserFilters';
 import FilterGroupLoadingSkeleton from "../LoadingSkeleton/FilterGroupLoadingSkeleton/FilterGroupLoadingSkeleton";
 import Group from './Group/Group';
 
-const ManageFiltersGroups = () => {
+const ManageFiltersGroups = ({ history }) => {
     const [foodGroup, setFoodGroup] = useState(null);
     const [jobGroup, setJobGroup] = useState(null);
+    const userJob = useContext(UserJobContext)
 
     useEffect(()=>{
+      if(userJob === "حسابدار" || userJob === "مدیریت") {
         const fetchFilters = async () =>{
             const food = await getFoodFilters();
             const job = await getUserFilters();
@@ -16,7 +19,8 @@ const ManageFiltersGroups = () => {
             setJobGroup(job.data);
         }
         fetchFilters();
-    }, [])
+      } else { history.push('/manage') }
+      }, [])
 
 
   return (
