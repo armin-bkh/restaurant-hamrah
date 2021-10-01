@@ -5,7 +5,7 @@ const GroupItem = ({ label, index, onDelete }) => {
   return (
     <li
       className={`px-3 flex items-center justify-between Dirooz text-gray-700 text-lg
-       font-medium border-b border-blue-300 ${styles.h62}`}
+       font-medium border-b border-blue-400 border-dashed ${styles.h62}`}
     >
       <div className={`flex items-center`}>
         <span className={`text-blue-400 p-2 ml-5`}>{index}</span>

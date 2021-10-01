@@ -256,6 +256,21 @@
       "label": "برگر",
       "value": "برگر",
       "id": "Ssmq4ea"
+    },
+    {
+      "label": "صبحانه",
+      "value": "صبحانه",
+      "id": "TVBdAa4"
+    },
+    {
+      "label": "سوخاری",
+      "value": "سوخاری",
+      "id": "7zNnyUU"
+    },
+    {
+      "label": "گرم",
+      "value": "گرم",
+      "id": "ZtH0xVe"
     }
   ],
   "personnel": [
@@ -367,6 +382,11 @@
       "label": "مدیریت",
       "value": "مدیریت",
       "id": 9
+    },
+    {
+      "label": "قصاب",
+      "value": "قصاب",
+      "id": 10
     }
   ]
 }

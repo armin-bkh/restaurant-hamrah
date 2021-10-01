@@ -5,6 +5,7 @@ import styles from "./Group.module.scss";
 import { BiChevronDown } from "react-icons/bi";
 import { FaFolder, FaFolderOpen } from "react-icons/fa";
 import GroupItem from "./GroupItem/GroupItem";
+import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 
 const Group = ({ title, group, setGroup }) => {
   const [filterGroup, setFilterGroup] = useState(null);
@@ -42,14 +43,22 @@ const Group = ({ title, group, setGroup }) => {
     }
   };
 
+  const addFilterItemHandler = (data) =>{
+    const filteredGroup = data.filter((it) => it.value !== "همه");
+    setFilterGroup(filteredGroup);
+    let h = 0;
+    filteredGroup.map((it) => (h += 62));
+    setHeight(h);
+  }
+
   return (
     <article
-      style={{ height: open ? `${height + 91}px` : "5rem" }}
+      style={{ height: open ? `${height + 189}px` : "4.5rem" }}
       className={`boxShadow rounded-md p-5 my-4 overflow-hidden ${styles.hTransition}`}
     >
       <header
         onClick={() => setOpen((prevState) => !prevState)}
-        className={`flex cursor-pointer items-center justify-between`}
+        className={`flex cursor-pointer items-center justify-between mb-7`}
       >
         <h1 className={`text-gray-900 font-bold text-2xl Dirooz`}>
           {!open ? (
@@ -65,6 +74,10 @@ const Group = ({ title, group, setGroup }) => {
           }`}
         />
       </header>
+      <ManageAddFilter
+        setFilters={addFilterItemHandler}
+        type={title === "محصولات" ? "foods" : "users"}
+      />
       <ul className={`mt-5`}>
         {filterGroup
           ? filterGroup.map((it, index) => (
