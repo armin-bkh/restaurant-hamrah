@@ -8,12 +8,39 @@ import UserJobContext from "../../../Context/UserJobContext";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import SelectBox from '../../Common/SelectBox/SelectBox';
 import { getUserFilters } from "../../../Services/getUserFilters";
+import { useFormik } from "formik";
+import * as Yup from 'yup';
+
+const validationSchema = Yup.object({
+  name: Yup.string().required('نام فرد مورد نظر ضروری است'),
+  tel: Yup.string().required('شماره تماس فرد مورد نظر ضروری است').matches(/^([0-9]{11})+$/, 'شماره تماس اشتباه وارد شده است'),
+  job: Yup.string().required('شغل فرد مورد نظر ضروری است'),
+  id: Yup.string().required('کد ملی فرد مورد نظر ضروری است'),
+})
 
 const EditEmployee = ({ history, match }) => {
+
+  const onSubmit = async (values) => {
+    try {
+        await putEmployee(employeeID, values);
+        addToast(`تغییرات با موفقییت انجام شد`, { appearance: "success" });
+        history.push("/manage/personnel");
+    } catch (err) {
+      setError(true);
+      addToast(`مجددا تلاش کنید`, { appearance: "error" });
+    }
+  };
+
   const [formValue, setFormValue] = useState(null);
+  const formik = useFormik({
+    onSubmit,
+    initialValues: formValue,
+    validationSchema,
+    validateOnMount: true,
+    enableReinitialize: true,
+  });
   const [error, setError] = useState(false);
   const [filters, setFilters] = useState(null);
-  const [filter, setFilter] = useState("");
   const { addToast } = useToasts();
   const employeeID = match.params.id;
   const userJob = useContext(UserJobContext);
@@ -29,8 +56,6 @@ const EditEmployee = ({ history, match }) => {
         setFormValue(employee.data);
         const filters = await getUserFilters();
         setFilters(filters.data);
-        setFilter(filters.data.filter(op => op.value === employee.data.job));
-        console.log(filters.data.filter(op => op.value === employee.data.job));
       } catch (err) {
         setError(true);
         history.push("/manage/personnel");
@@ -39,81 +64,62 @@ const EditEmployee = ({ history, match }) => {
     fetchEmployee();
   }, []);
 
-  const changeHandler = (e) => {
-    setFormValue({
-      ...formValue,
-      [e.target.name]: e.target.value,
-    });
-  };
 
-  const selectChangeHandler = (selectedOption) => {
-    setFilter(selectedOption);
-    setFormValue({
-      ...formValue,
-      job: selectedOption.value,
-    });
-  };
-
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    try {
-      if (formValue.name && formValue.id && formValue.tel && formValue.job) {
-        await putEmployee(employeeID, formValue);
-        addToast(`تغییرات با موفقییت انجام شد`, { appearance: "success" });
-        history.push("/manage/personnel");
-      } else addToast(`تمامی اطلاعات ضروری است`, { appearance: "error" });
-    } catch (err) {
-      setError(true);
-      addToast(`مجددا تلاش کنید`, { appearance: "error" });
-    }
-  };
 
   return (
     <main className={`min-h-screen flex items-center justify-center p-5`}>
       <section
         className={`w-full boxShadow md:max-w-lg rounded-md lg:max-w-xl`}
       >
-        {!formValue || !filters ? (
+        {!formik.values || !filters ? (
           <EditEmployeeLoadingSkelton />
         ) : (
           <>
             <ManageAddFilter setFilters={setFilters} type="personnel" />
             <form
               className={`p-5 flex flex-col Casablanca w-full`}
-              onSubmit={submitHandler}
+              onSubmit={formik.handleSubmit}
             >
               <h1 className={`text-blue-400 mb-10 text-3xl md:text-5xl`}>
                 تغییر اطلاعات
               </h1>
               <ManageInputForm
-                value={formValue.name}
+              formik={formik}
+                value={formik.values.name}
                 type="text"
                 name="name"
                 lbl="نام"
-                onChange={changeHandler}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
               <ManageInputForm
-                value={formValue.tel}
+              formik={formik}
+                value={formik.values.tel}
                 type="text"
                 name="tel"
                 lbl="شماره تماس"
-                onChange={changeHandler}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
               <fieldset>
                 <label className={`ml-3 text-sm md:text-lg`}>وظیفه:</label>
                 <SelectBox
-                  value={filter}
-                  onChange={selectChangeHandler}
+                formik={formik}
+                  value={formik.values.job}
+                  onChange={(selectedOption) => formik.setFieldValue("job", selectedOption.value)}
+                  onBlur={() => formik.setFieldTouched("job", true)}
                   placeholder="وظیفه..."
                   options={filters.filter((op) => op.value !== "همه")}
                 />
               </fieldset>
               <ManageInputForm
-                value={formValue.id}
+              formik={formik}
+                value={formik.values.id}
                 type="text"
                 name="id"
                 lbl="کد ملی"
-                onChange={changeHandler}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
 
               <button

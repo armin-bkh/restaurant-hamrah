@@ -15,7 +15,7 @@ const Personnel = ({ history }) => {
   const [personnel, setPersonnel] = useState(null);
   const [allPersonnel, setAllPersonnel] = useState(null);
   const [filters, setFilters] = useState(null);
-  const [filter, setFilter] = useState({label: "همه", value: "همه"});
+  const [filter, setFilter] = useState('همه');
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
   const userJob = useContext(UserJobContext);

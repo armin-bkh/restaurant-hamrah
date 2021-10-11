@@ -42,14 +42,7 @@ const AddEmployee = ({ history }) => {
     onSubmit,
     validateOnMount: true,
   });
-  const [formValue, setFormValue] = useState({
-    name: "",
-    tel: "",
-    job: "",
-    id: "",
-  });
   const [filters, setFilters] = useState(null);
-  const [filter, setFilter] = useState("");
   const { addToast } = useToasts();
   const userJob = useContext(UserJobContext);
 
@@ -64,21 +57,6 @@ const AddEmployee = ({ history }) => {
     };
     fetchUserFilters();
   }, []);
-
-  const changeHandler = (e) => {
-    setFormValue({
-      ...formValue,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const selectChangeHandler = (selectedOption) => {
-    setFilter(selectedOption);
-    setFormValue({
-      ...formValue,
-      job: selectedOption.value,
-    });
-  };
 
   return (
     <main className={`min-h-screen flex items-center justify-center p-5`}>
