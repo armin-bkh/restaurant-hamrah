@@ -7,8 +7,41 @@ import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import { getUserFilters } from "../../../Services/getUserFilters";
 import SelectBox from "../../Common/SelectBox/SelectBox";
 import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadingSkeleton/EditEmployeeLoadingSkeleton";
+import { useFormik } from "formik";
+import * as Yup from 'yup';
+
+const initialValues = {
+  name: "",
+  tel: "",
+  job: "",
+  id: "",
+};
+
+const validationSchema = Yup.object({
+  name: Yup.string().required('نام فرد مورد نظر ضروری است'),
+  tel: Yup.string().required('شماره تماس فرد مورد نظر ضروری است').matches(/^([0-9]{11})+$/, 'شماره تماس اشتباه وارد شده است'),
+  job: Yup.string().required('شغل فرد مورد نظر ضروری است'),
+  id: Yup.string().required('کد ملی فرد مورد نظر ضروری است'),
+})
 
 const AddEmployee = ({ history }) => {
+
+  const onSubmit = async (values) => {
+    try {
+        await postEmployee(values);
+        addToast(`${values.name} به کادر پرسنل اضافه شد`, {
+          appearance: "success",
+        });
+        history.push("/manage/personnel");
+    } catch (err) {}
+  };
+
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit,
+    validateOnMount: true,
+  });
   const [formValue, setFormValue] = useState({
     name: "",
     tel: "",
@@ -47,19 +80,6 @@ const AddEmployee = ({ history }) => {
     });
   };
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    try {
-      if (formValue.id && formValue.job && formValue.name && formValue.tel) {
-        await postEmployee(formValue);
-        addToast(`${formValue.name} به کادر پرسنل اضافه شد`, {
-          appearance: "success",
-        });
-        history.push("/manage/personnel");
-      } else addToast("تمامیه اطلاعات الزامی است", { appearance: "error" });
-    } catch (err) {}
-  };
-
   return (
     <main className={`min-h-screen flex items-center justify-center p-5`}>
       <section
@@ -72,46 +92,56 @@ const AddEmployee = ({ history }) => {
             <ManageAddFilter setFilters={setFilters} type="personnel" />
             <form
               className={`p-5 flex flex-col Casablanca w-full`}
-              onSubmit={submitHandler}
+              onSubmit={formik.handleSubmit}
             >
               <h1 className={`text-blue-400 mb-10 text-3xl md:text-5xl`}>
                 افزودن به کادر
               </h1>
               <ManageInputForm
-                value={formValue.name}
+              formik={formik}
+                value={formik.values.name}
                 type="text"
                 name="name"
                 lbl="نام"
-                onChange={changeHandler}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
               <ManageInputForm
-                value={formValue.tel}
+              formik={formik}
+                value={formik.values.tel}
                 type="text"
                 name="tel"
                 lbl="شماره تماس"
-                onChange={changeHandler}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
               <fieldset>
                 <label className={`ml-3 text-sm md:text-lg`}>وظیفه:</label>
                 <SelectBox
-                  value={filter}
+                formik={formik}
+                  name="job"
+                  value={formik.values.job}
                   options={filters.filter((op) => op.value !== "همه")}
                   placeholder="وظیفه..."
-                  onChange={selectChangeHandler}
+                  onChange={(selectedOption)=> formik.setFieldValue("job", selectedOption.value)}
+                  onBlur={() => formik.setFieldTouched('job', true)}
                 />
               </fieldset>
               <ManageInputForm
-                value={formValue.id}
+              formik={formik}
+                value={formik.values.id}
                 type="text"
                 name="id"
                 lbl="کد ملی"
-                onChange={changeHandler}
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
               />
 
               <button
                 className={`py-2 border border-blue-400 text-blue-400 transition
-             hover:bg-blue-400 rounded-md hover:text-white`}
+              rounded-md  ${formik.isValid ? 'hover:text-white hover:bg-blue-400' : 'opacity-40'}`}
                 type="submit"
+                disabled={!formik.isValid}
               >
                 ثبت
               </button>
