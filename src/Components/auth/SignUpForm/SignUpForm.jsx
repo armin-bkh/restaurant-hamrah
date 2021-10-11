@@ -1,31 +1,47 @@
-import { useEffect, useState } from "react";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 import { Link } from "react-router-dom";
 import AuthInput from "../../Common/AuthInput/AuthInput";
 
+const onSubmit = (values) => {
+  console.log(values);
+};
+
+const initialValues = {
+  resName: "",
+  resTel: "",
+  resEmail: "",
+  resPassword: "",
+};
+
+const validationSchema = Yup.object({
+  resName: Yup.string().required("نام رستوران را وارد کنید"),
+  resTel: Yup.string().required("خط ثابت رستوران را وارد کنید").matches(/^([0-9]{11})+$/, "شماره وارد شده صحیح نمی باشد"),
+  resEmail: Yup.string()
+    .required("آدرس الکترونیکی را وارد کنید")
+    .email("آدرس الکترونیکی وارد شده صحیح نمی باشد"),
+  resPassword: Yup.string().required("رمز ورود را وارد کنید"),
+});
+
+const inputExplain = [
+  "نام رستوران",
+  "خط ثابت رستوران به همراه کد استان",
+  "آدرس الکترونیکی رستوران",
+  "رمز ورود رستوران",
+]
+
 const SignUpForm = ({ history }) => {
-  const [formValue, setFormValue] = useState({
-    resName: "",
-    resTel: "",
-    resEmail: "",
-    resPassword: "",
+  const formik = useFormik({
+    initialValues,
+    validationSchema,
+    onSubmit,
+    validateOnMount: true,
   });
-
-  const changeHandler = (e) => {
-    setFormValue({
-      ...formValue,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const submitHandler = (e) => {
-    e.preventDefault();
-    console.log(formValue);
-  };
 
   return (
     <form
       className={`boxShadow p-5 rounded-3xl w-full md:max-w-lg lg:max-w-xl`}
-      onSubmit={submitHandler}
+      onSubmit={formik.handleSubmit}
     >
       <h1
         className={`text-blue-400 font-bold text-lg lg:text-4xl Casablanca mb-7 lg:mb-16`}
@@ -33,32 +49,44 @@ const SignUpForm = ({ history }) => {
         ثبت نام
       </h1>
       <AuthInput
+        formik={formik}
         placeholder="نام رستوران"
-        value={formValue.resName}
-        onChange={changeHandler}
+        value={formik.values.resName}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         name="resName"
         type="text"
+        explain={inputExplain[0]}
       />
       <AuthInput
+        formik={formik}
         placeholder="شماره تماس"
-        value={formValue.resTel}
-        onChange={changeHandler}
+        value={formik.values.resTel}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         name="resTel"
         type="text"
+        explain={inputExplain[1]}
       />
       <AuthInput
+        formik={formik}
         placeholder="آدرس الکترونیکی"
-        value={formValue.resEmail}
-        onChange={changeHandler}
+        value={formik.values.resEmail}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         name="resEmail"
         type="email"
+        explain={inputExplain[2]}
       />
       <AuthInput
+        formik={formik}
         placeholder="پسورد"
-        value={formValue.resPassword}
-        onChange={changeHandler}
+        value={formik.values.resPassword}
+        onChange={formik.handleChange}
+        onBlur={formik.handleBlur}
         name="resPassword"
         type="password"
+        explain={inputExplain[3]}
       />
 
       <Link
@@ -69,7 +97,12 @@ const SignUpForm = ({ history }) => {
       </Link>
       <button
         type="submit"
-        className={`mt-9 lg:mt-14 -14 block w-full py-2 tracking-widest rounded-md Casablanca text-lg gradient text-white`}
+        className={`mt-9 lg:mt-14 -14 block w-full py-2 tracking-widest rounded-md Casablanca text-lg ${
+          formik.isValid
+            ? "gradient text-white"
+            : "text-blue-400 border-2 border-blue-400 opacity-40"
+        }`}
+        disabled={!formik.isValid}
       >
         ثبت
       </button>
