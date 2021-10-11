@@ -40,16 +40,6 @@ const ManageAddProduct = () => {
     validateOnMount: true,
   });
   const [error, setError] = useState(false);
-  const { addToast } = useToasts();
-  const [formValue, setFormValue] = useState({
-    title: "",
-    price: "",
-    information: "",
-    materials: "",
-    filter: "",
-    img: "",
-  });
-  const [filter, setFilter] = useState("");
   const [filters, setFilters] = useState(null);
 
   useEffect(() => {
@@ -63,61 +53,6 @@ const ManageAddProduct = () => {
     };
     getFilters();
   }, []);
-
-  const changeHandler = (e) => {
-    if (e.target.files) {
-      setFormValue({
-        ...formValue,
-        [e.target.name]: e.target.files[0],
-      });
-      return;
-    }
-    setFormValue({
-      ...formValue,
-      [e.target.name]: e.target.value,
-    });
-  };
-  const selectChangeHandler = (selectedOption) => {
-    setFilter(selectedOption);
-    setFormValue({
-      ...formValue,
-      filter: selectedOption.value,
-    });
-  };
-  const sumbitHandler = async (e) => {
-    e.preventDefault();
-    console.log(formValue);
-    // let formData = new FormData();
-
-    // for (const key in formValue) {
-    //   formData.append(key, formValue[key]);
-    // }
-
-    // if (
-    //   formValue.title &&
-    //   formValue.price &&
-    //   formValue.information &&
-    //   formValue.filter &&
-    //   formValue.img &&
-    //   formValue.materials
-    // ) {
-    //   try {
-    //     await postProduct(formValue);
-    //     setFormValue({
-    //       title: "",
-    //       price: "",
-    //       information: "",
-    //       materials: "",
-    //       filter: "",
-    //       img: "",
-    //     });
-    //     addToast(`اضافه شد`, { appearance: "success" });
-    //   } catch (err) {
-    //     setError(true);
-    //     addToast(`مجددا تلاش کنید`, { appearance: "error" });
-    //   }
-    // } else addToast("تمامیه اطلاعات ضروری است", { appearance: "error" });
-  };
 
   return (
     <article className={`rounded-md boxShadow`}>

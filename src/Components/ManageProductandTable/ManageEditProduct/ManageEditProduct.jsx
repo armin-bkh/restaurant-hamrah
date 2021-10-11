@@ -12,6 +12,8 @@ import FoodLoadingSkeleton from "../../LoadingSkeleton/FoodLoadingSkeleton/FoodL
 import SelectBoxLoadingSkeleton from "../../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
+import * as Yup from 'yup';
+import { useFormik } from "formik";
 
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
@@ -39,26 +41,6 @@ const ManageEditProduct = () => {
 
   useEffect(() => {
     if (products) {
-      // if (filter.value !== "همه") {
-      //   const filteredProducts = products.filter(
-      //     (pr) => pr.filter === filter.value
-      //   );
-      //   const searchedProducts = filteredProducts.filter((pr) =>
-      //     pr.title.toLowerCase().includes(search.toLowerCase())
-      //   );
-      //   const newList = searchedProducts ? searchedProducts : filteredProducts;
-      //   setProductList(newList);
-      //   if (!newList.length) setError(true);
-      //   else setError(false);
-      // } else {
-      //   const searchedProducts = products.filter((pr) =>
-      //     pr.title.toLowerCase().includes(search.toLowerCase())
-      //   );
-      //   const newList = searchedProducts ? searchedProducts : products;
-      //   setProductList(newList);
-      //   if (!newList.length) setError(true);
-      //   else setError(false);
-      // }
       if (search) searchProductsHandler(search);
       else filterProductsHandler(filter);
     }
@@ -126,7 +108,7 @@ const ManageEditProduct = () => {
     try {
       await setProductList(null);
       await setProducts(null);
-      await putProduct(productId, { ...formValue, id: productId });
+      await putProduct(productId, formValue);
       await setProductId(null);
       const { data } = await getAllProducts();
       setProducts(data);
@@ -207,10 +189,28 @@ const ManageEditProduct = () => {
 
 export default ManageEditProduct;
 
+const validationSchema = Yup.object({
+  id: Yup.number().required(),
+  title: Yup.string().required("نام غذا ضروری است"),
+  price: Yup.string().required("قیمت غذا ضروری است").matches(/^([0-9])+$/, 'قیمت غذا باید عدد باشد'),
+  information: Yup.string().required("توضیحات غذا ضروری است"),
+  materials: Yup.string().required("مخلفات غذا ضروری است"),
+  filter: Yup.string().required("دسته بندی غذا ضروری است"),
+  img: Yup.string().notRequired(),
+  pin: Yup.boolean().notRequired(),
+});
+
+
 const EditProduct = ({ onSubmit, productId }) => {
   const [formValue, setFormValue] = useState(null);
+  const formik = useFormik({
+    onSubmit: (values) => onSubmit(values),
+    initialValues: formValue,
+    validationSchema,
+    enableReinitialize: true,
+    validateOnMount: true,
+  })
   const [error, setError] = useState(false);
-  const [filter, setFilter] = useState("");
   const [filters, setFilters] = useState(null);
   const { addToast } = useToasts();
 
@@ -222,9 +222,6 @@ const EditProduct = ({ onSubmit, productId }) => {
           const filterL = await getFoodFilters();
           setFormValue(product.data);
           setFilters(filterL.data);
-          setFilter(
-            filterL.data.filter((op) => op.value === product.data.filter)
-          );
         } catch (err) {
           setError(true);
           addToast("مجددا تلاش کنید", { appearance: "error" });
@@ -233,41 +230,6 @@ const EditProduct = ({ onSubmit, productId }) => {
       getProduct();
     }
   }, []);
-
-  const changeHandler = (e) => {
-    setFormValue({
-      ...formValue,
-      [e.target.name]: e.target.value,
-    });
-  };
-
-  const selectChangeHandler = (selectedOption) => {
-    setFilter(selectedOption);
-    setFormValue({
-      ...formValue,
-      filter: selectedOption.value,
-    });
-  };
-
-  const SubmitHandler = (e) => {
-    e.preventDefault();
-    let formData = new FormData();
-
-    for (const key in formValue) {
-      formData.append(key, formValue[key]);
-    }
-
-    if (
-      formValue.title &&
-      formValue.price &&
-      formValue.information &&
-      formValue.filter &&
-      formValue.img &&
-      formValue.materials
-    ) {
-      onSubmit(formValue);
-    } else addToast("تمامیه اطلاعات ضروری است", { appearance: "error" });
-  };
 
   let returnValue;
 
@@ -280,57 +242,74 @@ const EditProduct = ({ onSubmit, productId }) => {
       <li className={`boxShadow`}>
         <ManageAddFilter setFilters={setFilters} type="foods" />
         <form
-          onSubmit={SubmitHandler}
+          onSubmit={formik.handleSubmit}
           className={`flex text-black flex-col w-full my-3 items-center rounded-md px-4 py-3`}
         >
           <ManageInputForm
+          formik={formik}
             lbl={"نام غذا"}
             type="text"
             name="title"
-            value={formValue.title}
-            onChange={changeHandler}
+            value={formik.values.title}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
           <ManageInputForm
+          formik={formik}
             lbl={"قیمت"}
             type="text"
             name="price"
-            value={formValue.price}
-            onChange={changeHandler}
+            value={formik.values.price}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
           />
           <fieldset className={`flex-col justify-center items-center w-full`}>
             <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
             <SelectBox
-              value={filter}
+            formik={formik}
+            name="filter"
+              value={formik.values.filter}
               options={filters.filter((op) => op.value !== "همه")}
-              onChange={selectChangeHandler}
+              onChange={(selectedOption)=> formik.setFieldValue("filter", selectedOption.value)}
+              onBlur={() => formik.setFieldTouched("filter", true)}
               placeholder="دسته بندی..."
             />
           </fieldset>
           <ManageInputForm
+          formik={formik}
             lbl={"مخلفات"}
             type="textarea"
             name="materials"
-            value={formValue.materials}
-            onChange={changeHandler}
+            value={formik.values.materials}
+            onChange={formik.handleChange}
           />
           <ManageInputForm
+          formik={formik}
             lbl={"توضیحات"}
             type="textarea"
             name="information"
-            value={formValue.information}
-            onChange={changeHandler}
+            value={formik.values.information}
+            onChange={formik.handleChange}
           />
           <ManageInputForm
+          formik={formik}
             lbl={"عکس غذا"}
             type="file"
             name="img"
+            // value={formik.values.img}
             accept=".jpg, .jpeg, .png"
-            onChange={changeHandler}
+            onChange={(e) => formik.setFieldValue("img", e.terget.files[0])}
+            onBlur={() => formik.setFieldTouched("img", true)}
           />
 
           <button
-            className={`py-2 mt-14 w-full gradient Casablanca text-xl rounded-md text-white`}
+            className={`mt-10 py-2 w-full rounded-md Casablanca text-xl text-white ${
+                  formik.isValid
+                  ? "gradient"
+                  : "border-2 border-blue-400 text-blue-400 opacity-40 cursor-default"
+              }`}
             type="submit"
+            disabled={!formik.isValid}
           >
             ثبت
           </button>
