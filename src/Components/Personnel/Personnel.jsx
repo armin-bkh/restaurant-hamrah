@@ -15,13 +15,13 @@ const Personnel = ({ history }) => {
   const [personnel, setPersonnel] = useState(null);
   const [allPersonnel, setAllPersonnel] = useState(null);
   const [filters, setFilters] = useState(null);
-  const [filter, setFilter] = useState('همه');
+  const [filter, setFilter] = useState({ value: "همه", label: "همه" });
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
   const userJob = useContext(UserJobContext);
 
   useEffect(() => {
-    if(userJob === "حسابدار" || userJob === "مدیریت") {
+    if (userJob === "حسابدار" || userJob === "مدیریت") {
       const fetchPersonnel = async () => {
         try {
           const { data } = await getAllPersonnel();
@@ -34,17 +34,23 @@ const Personnel = ({ history }) => {
         }
       };
       fetchPersonnel();
-    } else { history.push('/manage') }
+    } else {
+      history.push("/manage");
+    }
   }, []);
+
+  useEffect(() => {
+    if (allPersonnel) filterPersonnelHandler(filter);
+  }, [allPersonnel]);
 
   const deleteEmployeeHandler = async (id) => {
     try {
       await deleteEmployee(id);
-      const filteredPersonnel = personnel.filter((emp) => emp.id !== id);
+      const filteredPersonnel = allPersonnel.filter((emp) => emp.id !== id);
       const index = personnel.findIndex((emp) => emp.id === id);
       const name = personnel[index].name;
-      setPersonnel(filteredPersonnel);
       setAllPersonnel(filteredPersonnel);
+      setPersonnel(filteredPersonnel);
       addToast(`${name} از کادر پرسنل حذف شد`, { appearance: "success" });
     } catch (err) {
       setError(true);
@@ -52,15 +58,26 @@ const Personnel = ({ history }) => {
     }
   };
 
-  const filterPersonnelHandler = (selectedOption) =>{
+  const filterPersonnelHandler = (selectedOption) => {
     setFilter(selectedOption);
-    if(selectedOption.value === "همه"){
+    if (selectedOption.value === "همه") {
       setPersonnel(allPersonnel);
+      if (!allPersonnel.length) setError(true);
+      else setError(false);
       return;
     }
-    const filteredPersonnel = allPersonnel.filter(em => em.job === selectedOption.value);
+    const filteredPersonnel = allPersonnel.filter(
+      (em) => em.job === selectedOption.value
+    );
     setPersonnel(filteredPersonnel);
-  }
+    if (!filteredPersonnel.length) setError(true);
+    else setError(false);
+  };
+
+  const returnError = () => {
+    if (filter.value !== "همه") return "این دسته بندی خالی است";
+    return "کادر پرسنل خالی است";
+  };
 
   let returnValue = Array(20)
     .fill()
@@ -80,7 +97,7 @@ const Personnel = ({ history }) => {
     returnValue = (
       <article className={`flex h-96 justify-center items-center`}>
         <h1 className={`text-blue-400 text-3xl md:text-6xl Casablanca`}>
-          کادر پرسنل خالی است
+          {returnError()}
         </h1>
       </article>
     );
@@ -91,7 +108,9 @@ const Personnel = ({ history }) => {
       <h1 className={`color-gradient text-4xl md:text-5xl Casablanca mb-14`}>
         کادر رستوران
       </h1>
-      <section className={`relative boxShadowInner rounded-md min-h-screen py-1 px-5`}>
+      <section
+        className={`relative boxShadowInner rounded-md min-h-screen py-1 px-5`}
+      >
         <Link
           to="/manage/personnel/add-employee"
           className={`absolute -top-10 left-4 text-blue-400
@@ -100,11 +119,15 @@ const Personnel = ({ history }) => {
           <AiOutlineUserAdd className={`ml-3`} /> افزودن به کادر رستوران
         </Link>
         <header className={`mt-3 flex justify-end items-center`}>
-          {
-            filters ? 
-            <SelectBox options={filters} value={filter} onChange={filterPersonnelHandler}/> :
+          {filters ? (
+            <SelectBox
+              options={filters}
+              value={filter.value}
+              onChange={filterPersonnelHandler}
+            />
+          ) : (
             <SelectBoxLoadingSkeleton />
-          }
+          )}
         </header>
         {returnValue}
       </section>
