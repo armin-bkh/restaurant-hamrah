@@ -250,18 +250,14 @@ const EditProduct = ({ onSubmit, productId }) => {
             lbl={"نام غذا"}
             type="text"
             name="title"
-            value={formik.values.title}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            {...formik.getFieldProps("title")}
           />
           <ManageInputForm
           formik={formik}
             lbl={"قیمت"}
             type="text"
             name="price"
-            value={formik.values.price}
-            onChange={formik.handleChange}
-            onBlur={formik.handleBlur}
+            {...formik.getFieldProps("price")}
           />
           <fieldset className={`flex-col justify-center items-center w-full`}>
             <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
@@ -280,16 +276,14 @@ const EditProduct = ({ onSubmit, productId }) => {
             lbl={"مخلفات"}
             type="textarea"
             name="materials"
-            value={formik.values.materials}
-            onChange={formik.handleChange}
+            {...formik.getFieldProps("materials")}
           />
           <ManageInputForm
           formik={formik}
             lbl={"توضیحات"}
             type="textarea"
             name="information"
-            value={formik.values.information}
-            onChange={formik.handleChange}
+            {...formik.getFieldProps("information")}
           />
           <ManageInputForm
           formik={formik}

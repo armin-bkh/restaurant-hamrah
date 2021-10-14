@@ -16,7 +16,9 @@ const initialValues = {
 
 const validationSchema = Yup.object({
   resName: Yup.string().required("نام رستوران را وارد کنید"),
-  resTel: Yup.string().required("خط ثابت رستوران را وارد کنید").matches(/^([0-9]{11})+$/, "شماره وارد شده صحیح نمی باشد"),
+  resTel: Yup.string()
+    .required("خط ثابت رستوران را وارد کنید")
+    .matches(/^([0-9]{11})+$/, "شماره وارد شده صحیح نمی باشد"),
   resEmail: Yup.string()
     .required("آدرس الکترونیکی را وارد کنید")
     .email("آدرس الکترونیکی وارد شده صحیح نمی باشد"),
@@ -28,7 +30,7 @@ const inputExplain = [
   "خط ثابت رستوران به همراه کد استان",
   "آدرس الکترونیکی رستوران",
   "رمز ورود رستوران",
-]
+];
 
 const SignUpForm = ({ history }) => {
   const formik = useFormik({
@@ -51,9 +53,7 @@ const SignUpForm = ({ history }) => {
       <AuthInput
         formik={formik}
         placeholder="نام رستوران"
-        value={formik.values.resName}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        {...formik.getFieldProps("resName")}
         name="resName"
         type="text"
         explain={inputExplain[0]}
@@ -61,9 +61,7 @@ const SignUpForm = ({ history }) => {
       <AuthInput
         formik={formik}
         placeholder="شماره تماس"
-        value={formik.values.resTel}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        {...formik.getFieldProps("resTel")}
         name="resTel"
         type="text"
         explain={inputExplain[1]}
@@ -71,9 +69,7 @@ const SignUpForm = ({ history }) => {
       <AuthInput
         formik={formik}
         placeholder="آدرس الکترونیکی"
-        value={formik.values.resEmail}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        {...formik.getFieldProps("resEmail")}
         name="resEmail"
         type="email"
         explain={inputExplain[2]}
@@ -81,9 +77,7 @@ const SignUpForm = ({ history }) => {
       <AuthInput
         formik={formik}
         placeholder="پسورد"
-        value={formik.values.resPassword}
-        onChange={formik.handleChange}
-        onBlur={formik.handleBlur}
+        {...formik.getFieldProps("resPassword")}
         name="resPassword"
         type="password"
         explain={inputExplain[3]}

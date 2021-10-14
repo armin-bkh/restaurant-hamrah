@@ -85,21 +85,17 @@ const EditEmployee = ({ history, match }) => {
               </h1>
               <ManageInputForm
               formik={formik}
-                value={formik.values.name}
                 type="text"
                 name="name"
                 lbl="نام"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                {...formik.getFieldProps("name")}
               />
               <ManageInputForm
               formik={formik}
-                value={formik.values.tel}
                 type="text"
                 name="tel"
                 lbl="شماره تماس"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                {...formik.getFieldProps("tel")}
               />
               <fieldset>
                 <label className={`ml-3 text-sm md:text-lg`}>وظیفه:</label>
@@ -114,12 +110,10 @@ const EditEmployee = ({ history, match }) => {
               </fieldset>
               <ManageInputForm
               formik={formik}
-                value={formik.values.id}
                 type="text"
                 name="id"
                 lbl="کد ملی"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                {...formik.getFieldProps("id")}
               />
 
               <button

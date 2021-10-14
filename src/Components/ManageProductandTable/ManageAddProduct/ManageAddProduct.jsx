@@ -24,7 +24,9 @@ const initialValues = {
 
 const validationSchema = Yup.object({
   title: Yup.string().required("نام غذا ضروری است"),
-  price: Yup.string().required("قیمت غذا ضروری است").matches(/^([0-9])+$/, 'قیمت غذا باید عدد باشد'),
+  price: Yup.string()
+    .required("قیمت غذا ضروری است")
+    .matches(/^([0-9])+$/, "قیمت غذا باید عدد باشد"),
   information: Yup.string().required("توضیحات غذا ضروری است"),
   materials: Yup.string().required("مخلفات غذا ضروری است"),
   filter: Yup.string().required("دسته بندی غذا ضروری است"),
@@ -69,22 +71,18 @@ const ManageAddProduct = () => {
               lbl="نام غذا"
               type="text"
               name="title"
-              value={formik.values.title}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps("title")}
             />
             <ManageInputForm
               formik={formik}
               lbl="قیمت"
               type="text"
               name="price"
-              value={formik.values.price}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps("price")}
             />
             <label className={`mb-3 text-sm xl:text-lg`}>دسته بندی: </label>
             <SelectBox
-            formik={formik}
+              formik={formik}
               value={formik.values.filter}
               name="filter"
               options={filters.filter((op) => op.value !== "همه")}
@@ -99,18 +97,14 @@ const ManageAddProduct = () => {
               lbl="مخلفات"
               type="textarea"
               name="materials"
-              value={formik.values.materials}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps("materials")}
             />
             <ManageInputForm
               formik={formik}
               lbl="توضیحات"
               type="textarea"
               name="information"
-              value={formik.values.information}
-              onChange={formik.handleChange}
-              onBlur={formik.handleBlur}
+              {...formik.getFieldProps("information")}
             />
             <ManageInputForm
               formik={formik}
@@ -125,7 +119,7 @@ const ManageAddProduct = () => {
             <button
               type="submit"
               className={`mt-10 py-2 rounded-md Casablanca text-xl text-white ${
-                  formik.isValid
+                formik.isValid
                   ? "gradient"
                   : "border-2 border-blue-400 text-blue-400 opacity-40 cursor-default"
               }`}

@@ -8,7 +8,7 @@ import { getUserFilters } from "../../../Services/getUserFilters";
 import SelectBox from "../../Common/SelectBox/SelectBox";
 import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadingSkeleton/EditEmployeeLoadingSkeleton";
 import { useFormik } from "formik";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 
 const initialValues = {
   name: "",
@@ -18,21 +18,22 @@ const initialValues = {
 };
 
 const validationSchema = Yup.object({
-  name: Yup.string().required('نام فرد مورد نظر ضروری است'),
-  tel: Yup.string().required('شماره تماس فرد مورد نظر ضروری است').matches(/^([0-9]{11})+$/, 'شماره تماس اشتباه وارد شده است'),
-  job: Yup.string().required('شغل فرد مورد نظر ضروری است'),
-  id: Yup.string().required('کد ملی فرد مورد نظر ضروری است'),
-})
+  name: Yup.string().required("نام فرد مورد نظر ضروری است"),
+  tel: Yup.string()
+    .required("شماره تماس فرد مورد نظر ضروری است")
+    .matches(/^([0-9]{11})+$/, "شماره تماس اشتباه وارد شده است"),
+  job: Yup.string().required("شغل فرد مورد نظر ضروری است"),
+  id: Yup.string().required("کد ملی فرد مورد نظر ضروری است"),
+});
 
 const AddEmployee = ({ history }) => {
-
   const onSubmit = async (values) => {
     try {
-        await postEmployee(values);
-        addToast(`${values.name} به کادر پرسنل اضافه شد`, {
-          appearance: "success",
-        });
-        history.push("/manage/personnel");
+      await postEmployee(values);
+      addToast(`${values.name} به کادر پرسنل اضافه شد`, {
+        appearance: "success",
+      });
+      history.push("/manage/personnel");
     } catch (err) {}
   };
 
@@ -76,48 +77,48 @@ const AddEmployee = ({ history }) => {
                 افزودن به کادر
               </h1>
               <ManageInputForm
-              formik={formik}
-                value={formik.values.name}
+                formik={formik}
                 type="text"
                 name="name"
                 lbl="نام"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                {...formik.getFieldProps("name")}
               />
               <ManageInputForm
-              formik={formik}
-                value={formik.values.tel}
+                formik={formik}
                 type="text"
                 name="tel"
                 lbl="شماره تماس"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                {...formik.getFieldProps("tel")}
               />
               <fieldset>
                 <label className={`ml-3 text-sm md:text-lg`}>وظیفه:</label>
                 <SelectBox
-                formik={formik}
+                  formik={formik}
                   name="job"
                   value={formik.values.job}
                   options={filters.filter((op) => op.value !== "همه")}
                   placeholder="وظیفه..."
-                  onChange={(selectedOption)=> formik.setFieldValue("job", selectedOption.value)}
-                  onBlur={() => formik.setFieldTouched('job', true)}
+                  onChange={(selectedOption) =>
+                    formik.setFieldValue("job", selectedOption.value)
+                  }
+                  onBlur={() => formik.setFieldTouched("job", true)}
                 />
               </fieldset>
               <ManageInputForm
-              formik={formik}
-                value={formik.values.id}
+                formik={formik}
                 type="text"
                 name="id"
                 lbl="کد ملی"
-                onChange={formik.handleChange}
-                onBlur={formik.handleBlur}
+                {...formik.getFieldProps("id")}
               />
 
               <button
                 className={`py-2 border border-blue-400 text-blue-400 transition
-              rounded-md  ${formik.isValid ? 'hover:text-white hover:bg-blue-400' : 'opacity-40'}`}
+              rounded-md  ${
+                formik.isValid
+                  ? "hover:text-white hover:bg-blue-400"
+                  : "opacity-40"
+              }`}
                 type="submit"
                 disabled={!formik.isValid}
               >
