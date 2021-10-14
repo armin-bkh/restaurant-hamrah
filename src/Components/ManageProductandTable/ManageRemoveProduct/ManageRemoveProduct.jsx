@@ -33,28 +33,6 @@ const ManageRemoveProduct = () => {
   }, []);
 
   useEffect(() => {
-    // if (products) {
-    //   if (filter.value !== "همه") {
-    //     const filteredProducts = products.filter(
-    //       (pr) => pr.filter === filter.value
-    //     );
-    //     const searchedProducts = filteredProducts.filter((pr) =>
-    //       pr.title.toLowerCase().includes(search.toLowerCase())
-    //     );
-    //     const newList = searchedProducts ? searchedProducts : filteredProducts;
-    //     setProductList(newList);
-    //     if(!newList.length) setError(true)
-    //     else setError(false)
-    //   } else {
-    //     const searchedProducts = products.filter((pr) =>
-    //       pr.title.toLowerCase().includes(search.toLowerCase())
-    //     );
-    //     const newList = searchedProducts ? searchedProducts : products;
-    //     setProductList(newList);
-    //     if(!newList.length) setError(true)
-    //     else setError(false)
-    //   }
-    // }
     if (products) {
       if (search) searchProductsHandler(search);
       else filterProductsHandler(filter);

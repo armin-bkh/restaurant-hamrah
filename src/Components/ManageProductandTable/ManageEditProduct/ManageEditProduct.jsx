@@ -12,7 +12,7 @@ import FoodLoadingSkeleton from "../../LoadingSkeleton/FoodLoadingSkeleton/FoodL
 import SelectBoxLoadingSkeleton from "../../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
-import * as Yup from 'yup';
+import * as Yup from "yup";
 import { useFormik } from "formik";
 
 const ManageEditProduct = () => {
@@ -192,14 +192,15 @@ export default ManageEditProduct;
 const validationSchema = Yup.object({
   id: Yup.number().required(),
   title: Yup.string().required("نام غذا ضروری است"),
-  price: Yup.string().required("قیمت غذا ضروری است").matches(/^([0-9])+$/, 'قیمت غذا باید عدد باشد'),
+  price: Yup.string()
+    .required("قیمت غذا ضروری است")
+    .matches(/^([0-9])+$/, "قیمت غذا باید عدد باشد"),
   information: Yup.string().required("توضیحات غذا ضروری است"),
   materials: Yup.string().required("مخلفات غذا ضروری است"),
   filter: Yup.string().required("دسته بندی غذا ضروری است"),
   img: Yup.string().notRequired(),
   pin: Yup.boolean().notRequired(),
 });
-
 
 const EditProduct = ({ onSubmit, productId }) => {
   const [formValue, setFormValue] = useState(null);
@@ -209,7 +210,7 @@ const EditProduct = ({ onSubmit, productId }) => {
     validationSchema,
     enableReinitialize: true,
     validateOnMount: true,
-  })
+  });
   const [error, setError] = useState(false);
   const [filters, setFilters] = useState(null);
   const { addToast } = useToasts();
@@ -246,14 +247,14 @@ const EditProduct = ({ onSubmit, productId }) => {
           className={`flex text-black flex-col w-full my-3 items-center rounded-md px-4 py-3`}
         >
           <ManageInputForm
-          formik={formik}
+            formik={formik}
             lbl={"نام غذا"}
             type="text"
             name="title"
             {...formik.getFieldProps("title")}
           />
           <ManageInputForm
-          formik={formik}
+            formik={formik}
             lbl={"قیمت"}
             type="text"
             name="price"
@@ -262,31 +263,33 @@ const EditProduct = ({ onSubmit, productId }) => {
           <fieldset className={`flex-col justify-center items-center w-full`}>
             <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
             <SelectBox
-            formik={formik}
-            name="filter"
+              formik={formik}
+              name="filter"
               value={formik.values.filter}
               options={filters.filter((op) => op.value !== "همه")}
-              onChange={(selectedOption)=> formik.setFieldValue("filter", selectedOption.value)}
+              onChange={(selectedOption) =>
+                formik.setFieldValue("filter", selectedOption.value)
+              }
               onBlur={() => formik.setFieldTouched("filter", true)}
               placeholder="دسته بندی..."
             />
           </fieldset>
           <ManageInputForm
-          formik={formik}
+            formik={formik}
             lbl={"مخلفات"}
             type="textarea"
             name="materials"
             {...formik.getFieldProps("materials")}
           />
           <ManageInputForm
-          formik={formik}
+            formik={formik}
             lbl={"توضیحات"}
             type="textarea"
             name="information"
             {...formik.getFieldProps("information")}
           />
           <ManageInputForm
-          formik={formik}
+            formik={formik}
             lbl={"عکس غذا"}
             type="file"
             name="img"
@@ -298,10 +301,10 @@ const EditProduct = ({ onSubmit, productId }) => {
 
           <button
             className={`mt-10 py-2 w-full rounded-md Casablanca text-xl text-white ${
-                  formik.isValid
-                  ? "gradient"
-                  : "border-2 border-blue-400 text-blue-400 opacity-40 cursor-default"
-              }`}
+              formik.isValid
+                ? "gradient"
+                : "border-2 border-blue-400 text-blue-400 opacity-40 cursor-default"
+            }`}
             type="submit"
             disabled={!formik.isValid}
           >
