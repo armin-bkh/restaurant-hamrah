@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { getInfRes } from "../../Services/getInfRes";
+import ProgressBarScroll from "../Common/ScrollIndicator/ScrollIndicator";
 import ManageNavigation from "../ManageNavigation/ManageNavigation";
 
 const ManageHeader = () => {
