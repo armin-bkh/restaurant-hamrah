@@ -11,7 +11,7 @@ const ManageAddFilter = ({ setFilters, type }) =>{
         label: '',
         value: '',
     })
-    const [err, setError] = useState(false);
+    const [error, setError] = useState(false);
     const { addToast } = useToasts();
 
     const changeHandler = (e) =>{

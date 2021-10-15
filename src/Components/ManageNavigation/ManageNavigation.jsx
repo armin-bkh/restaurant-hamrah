@@ -7,7 +7,6 @@ import { HiUserGroup } from "react-icons/hi";
 import { FaLayerGroup } from "react-icons/fa";
 import UserJobContext from "../../Context/UserJobContext";
 import { useContext, useState, useEffect } from "react";
-import styles from "./ManageNavigation.module.scss";
 
 const managerLinks = [
   {

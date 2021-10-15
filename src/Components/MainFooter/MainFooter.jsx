@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import {
   FaTelegram,
   FaLinkedin,
@@ -30,7 +29,7 @@ const MainFooter = () => {
           >
             <a
               className={`text-blue-400 text-sm md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
-              href="#"
+              href="https://www.varzesh3.com"
               target="_blank" rel="noreferrer"
             >
               <FaTwitter />

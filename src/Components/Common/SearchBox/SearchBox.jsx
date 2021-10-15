@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { RiSearch2Line } from "react-icons/ri";
 
 const SearchBox = ({ onSearch, value }) => {
