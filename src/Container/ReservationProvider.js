@@ -98,11 +98,11 @@ const reducer = (state, action) => {
       }
     }
     case "buyOneItemCart": {
-      console.log(action.value);
+      console.log(action.value.name, action.value.price);
       return { ...state }
     }
     case "buyCart": {
-      console.log(action.value);
+      console.log(action.value, state.totalPrice);
       return { ...state }
     }
     default:

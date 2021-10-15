@@ -68,7 +68,7 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
         <button
           type="button"
           className={`text-blue-400 text-xs sm:text-sm lg:text-lg xl:text-xl Dirooz border border-blue-400 hover:text-white hover:bg-blue-400 transition rounded-md py-1 px-2 md:px-5 ml-1 md:ml-5`}
-          onClick={() => buyOneItemCartHandler(foodN)}
+          onClick={() => buyOneItemCartHandler({name: foodN, price: foodBP * foodQ})}
         >
           پرداخت
         </button>
