@@ -97,6 +97,14 @@ const reducer = (state, action) => {
         notification: {type: action.status, message: action.message}
       }
     }
+    case "buyOneItemCart": {
+      console.log(action.value);
+      return { ...state }
+    }
+    case "buyCart": {
+      console.log(action.value);
+      return { ...state }
+    }
     default:
       return state;
   }
@@ -194,6 +202,14 @@ export const useReservatioActions = () => {
     dispatch({ type: "toShow", id: id });
   };
 
+  const buyOneItemCartHandler = (item) => {
+    dispatch({type: "buyOneItemCart", value: item});
+  }
+
+  const buyCartHandler = (cart) =>{
+    dispatch({type: "buyCart", value: cart});
+  }
+
 
   return {
     addToCartHandler,
@@ -202,6 +218,8 @@ export const useReservatioActions = () => {
     decrementItemCartHandler,
     submitCartHandler,
     toShowHandler,
+    buyOneItemCartHandler,
+    buyCartHandler,
   };
 };
 export const useTotalPrice = () =>{
