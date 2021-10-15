@@ -44,13 +44,18 @@ const CartList = () => {
           </ul>
           <h1 className={`text-sm w-full md:text-md lg:text-lg xl:text-xl 
           Dirooz text-black`}>مبلغ قابل پرداخت: <span className={`Casablanca`}>{totalPricewithComma()}</span> تومان</h1>
+          <fieldset className={`mt-3 flex items-center`}>
           <button
           type="submit"
-            className={`text-sm w-full md:text-md lg:text-lg xl:text-xl
-             py-2 mt-3 rounded-md gradient Casablanca tracking-widest text-white`}
+            className={`text-sm flex-grow md:text-md lg:text-lg xl:text-xl
+             py-2 rounded-md gradient Casablanca tracking-widest text-white ml-3`}
           >
             ثبت سفارش
           </button>
+          <button type="button" className={`px-5 py-2 Dirooz text-sm text-blue-400 border border-blue-400 hover:text-white hover:bg-blue-400 transition rounded-md md:text-md lg:text-lg xl:text-xl`} onClick={() => console.log('buyed')}>
+            پرداخت
+          </button>
+          </fieldset>
         </form>
       )}
     </section>

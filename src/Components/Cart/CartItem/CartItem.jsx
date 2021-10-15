@@ -60,19 +60,26 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
           {foodQ > 1 ? <BiMinus /> : <BiTrash />}
         </button>
       </div>
-      <span
-        className={`text-xs sm:text-sm md:text-md lg:text-lg xl:text-xl text-black`}
-      >
+      <span className={`text-xs sm:text-sm lg:text-lg xl:text-xl text-black`}>
         قیمت: <span className={`Casablanca`}>{foodFPrice()}</span>
       </span>
-      <button
-        className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
+      <div className={`flex items-center justify-between`}>
+        <button
+          type="button"
+          className={`text-blue-400 text-xs sm:text-sm lg:text-lg xl:text-xl Dirooz border border-blue-400 hover:text-white hover:bg-blue-400 transition rounded-md py-1 px-2 md:px-5 ml-1 md:ml-5`}
+          onClick={() => console.log("buyed")}
+        >
+          پرداخت
+        </button>
+        <button
+          className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
         gradient-bottom text-white`}
-        type="button"
-        onClick={() => deleteItemCartHandler(itemID)}
-      >
-        <BiTrash />
-      </button>
+          type="button"
+          onClick={() => deleteItemCartHandler(itemID)}
+        >
+          <BiTrash />
+        </button>
+      </div>
     </li>
   );
 };
