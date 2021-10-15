@@ -60,6 +60,14 @@ ul{
   list-style-type: none;
 }
 
+button{
+  cursor: pointer;
+}
+
+button:disabled{
+  cursor: default;
+}
+
 body::-webkit-scrollbar {
   width: .7em;
   background-color: #dbdbdb;

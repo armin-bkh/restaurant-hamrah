@@ -16,7 +16,7 @@ const ScrollIndicator = () => {
 
     return ( 
         <div className={`h-1 lg:h-1.5 bgLight z-50 fixed top-0 left-0 w-full`}>
-            <div className={`bg-gradient-to-l from-blue-500 to-green-300 h-full rounded-b-md`} style={{width: `${scroll}%`}}></div>
+            <div className={`bg-gradient-to-l transition-all from-blue-500 to-green-300 h-full rounded-b-md`} style={{width: `${scroll}%`}}></div>
         </div>
      );
 }
