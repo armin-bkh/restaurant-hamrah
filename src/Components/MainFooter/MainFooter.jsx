@@ -10,7 +10,7 @@ const MainFooter = () => {
     <footer
       className={`text-xs sm:text-sm lg:text-lg px-5 py-4 text-black bgLight Casablanca boxShadowOuter`}
     >
-      <p>تمامی حقوق ارتا ارتباط اطلس محفوظ است</p>
+      <p>تمامی حقوق آرمین بخشی محفوظ است</p>
       <nav className={`mt-4`}>
         <ul className={`flex w-full justify-evenly items-center`}>
           <li
