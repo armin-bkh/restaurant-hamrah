@@ -4,9 +4,9 @@ import {
   ReservationContext,
   ReservationDispatcherContext,
 } from "../Context/ReservationContext";
-import { postCart } from '../Services/postCart';
-import { getOneProduct } from '../Services/getOneProduct';
-import { useToasts } from 'react-toast-notifications';
+import { postCart } from "../Services/postCart";
+import { getOneProduct } from "../Services/getOneProduct";
+import { useToasts } from "react-toast-notifications";
 
 let initialState = {
   cart: [],
@@ -53,7 +53,7 @@ const reducer = (state, action) => {
         selectedItem.quantity--;
         selectedItem.finalPrice = selectedItem.price * selectedItem.quantity;
         cartClone[index] = selectedItem;
-        return { ...state, cart: cartClone};
+        return { ...state, cart: cartClone };
       }
     }
     case "addToCart": {
@@ -81,29 +81,29 @@ const reducer = (state, action) => {
       };
     }
     case "submitCart": {
-      return {...state, cart: [], totalPrice: 0};
+      return { ...state, cart: [], totalPrice: 0 };
     }
     case "calcTotalPrice": {
-      const cartItemsPrice = state.cart.map(item => item.finalPrice);
-      if(!cartItemsPrice.length){
-        return {...state, totalPrice: 0}
+      const cartItemsPrice = state.cart.map((item) => item.finalPrice);
+      if (!cartItemsPrice.length) {
+        return { ...state, totalPrice: 0 };
       }
       const totalPrice = cartItemsPrice.reduce((total, num) => total + num);
-      return {...state, totalPrice: totalPrice}
+      return { ...state, totalPrice: totalPrice };
     }
     case "errorGetOneProduct": {
       return {
-        ...state, 
-        notification: {type: action.status, message: action.message}
-      }
+        ...state,
+        notification: { type: action.status, message: action.message },
+      };
     }
     case "buyOneItemCart": {
       console.log(action.value.name, action.value.price);
-      return { ...state }
+      return { ...state };
     }
     case "buyCart": {
       console.log(action.value, state.totalPrice);
-      return { ...state }
+      return { ...state, cart: [], totalPrice: 0 };
     }
     default:
       return state;
@@ -118,13 +118,13 @@ const ReservationProvider = ({ children }) => {
     if (reservationData.notification) {
       const type = reservationData.notification.type;
       if (type === "success")
-      addToast(reservationData.notification.message, {appearance: type});
+        addToast(reservationData.notification.message, { appearance: type });
       if (type === "error")
-      addToast(reservationData.notification.message, {appearance: type});
+        addToast(reservationData.notification.message, { appearance: type });
       if (type === "info")
-      addToast(reservationData.notification.message, {appearance: type});
+        addToast(reservationData.notification.message, { appearance: type });
       if (type === "warning")
-      addToast(reservationData.notification.message, {appearance: type});
+        addToast(reservationData.notification.message, { appearance: type });
     }
   }, [reservationData.notification]);
 
@@ -151,38 +151,42 @@ export const useReservatioActions = () => {
   const dispatch = useContext(ReservationDispatcherContext);
 
   const addToCartHandler = async (item) => {
-      try {
-        const { data } = await getOneProduct(item.id)
-        await dispatch({
-          type: "addToCart",
-          data: { ...data, quantity: item.quantity, finalPrice: data.price * item.quantity },
-        });
-        dispatch({type: "calcTotalPrice"})
-      } catch (err) {
-        dispatch({ type: "errorGetOneProduct", message: err, status: "error" });
-      }
+    try {
+      const { data } = await getOneProduct(item.id);
+      await dispatch({
+        type: "addToCart",
+        data: {
+          ...data,
+          quantity: item.quantity,
+          finalPrice: data.price * item.quantity,
+        },
+      });
+      dispatch({ type: "calcTotalPrice" });
+    } catch (err) {
+      dispatch({ type: "errorGetOneProduct", message: err, status: "error" });
+    }
   };
 
   const deleteItemCartHandler = async (id) => {
     await dispatch({ type: "deleteItemCart", id: id });
-    dispatch({type: "calcTotalPrice"})
+    dispatch({ type: "calcTotalPrice" });
   };
 
   const incrementItemCartHandler = async (id) => {
-   await  dispatch({ type: "incrementCountItemCart", id: id });
-    dispatch({type: "calcTotalPrice"})
+    await dispatch({ type: "incrementCountItemCart", id: id });
+    dispatch({ type: "calcTotalPrice" });
   };
 
   const decrementItemCartHandler = async (id) => {
     await dispatch({ type: "decrementCountItemCart", id: id });
-    dispatch({type: "calcTotalPrice"})
+    dispatch({ type: "calcTotalPrice" });
   };
 
   const submitCartHandler = async (cart) => {
-    try{
+    try {
       const token = "SECURE POST";
       await postCart(cart, token);
-       Swal.fire({
+      Swal.fire({
         title: "ثبت گردید",
         text: "سفارش شما با موفقیت ثبت گردید",
         icon: "success",
@@ -192,8 +196,7 @@ export const useReservatioActions = () => {
         backdrop: true,
       });
       dispatch({ type: "submitCart" });
-    }
-    catch(err){
+    } catch (err) {
       console.log(err);
     }
   };
@@ -203,13 +206,32 @@ export const useReservatioActions = () => {
   };
 
   const buyOneItemCartHandler = (item) => {
-    dispatch({type: "buyOneItemCart", value: item});
-  }
+    dispatch({ type: "buyOneItemCart", value: item });
+    Swal.fire({
+      title: "پرداخت شد",
+      text: `هزینه ${item.qty > 1 ? `${item.qty} عدد` : ""} ${
+        item.name
+      } پرداخت شد`,
+      icon: "success",
+      confirmButtonText: "تایید",
+      showCloseButton: true,
+      timer: 10000,
+      backdrop: true,
+    });
+  };
 
-  const buyCartHandler = (cart) =>{
-    dispatch({type: "buyCart", value: cart});
-  }
-
+  const buyCartHandler = (cart) => {
+    dispatch({ type: "buyCart", value: cart });
+    Swal.fire({
+      title: "پرداخت شد",
+      text: `تراکنش با موفقیت انجام شد`,
+      icon: "success",
+      confirmButtonText: "تایید",
+      showCloseButton: true,
+      timer: 10000,
+      backdrop: true,
+    });
+  };
 
   return {
     addToCartHandler,
@@ -222,7 +244,7 @@ export const useReservatioActions = () => {
     buyCartHandler,
   };
 };
-export const useTotalPrice = () =>{
+export const useTotalPrice = () => {
   const { totalPrice } = useContext(ReservationContext);
-  return totalPrice
-}
+  return totalPrice;
+};
