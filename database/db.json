@@ -8,7 +8,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "سالاد",
-      "pin": false
+      "pin": false,
+      "off": ""
     },
     {
       "id": 3,
@@ -18,7 +19,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "سالاد",
-      "pin": false
+      "pin": false,
+      "off": ""
     },
     {
       "id": 4,
@@ -28,7 +30,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "فست فود",
-      "pin": false
+      "pin": false,
+      "off": ""
     },
     {
       "id": 5,
@@ -38,7 +41,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "پیتزا",
-      "pin": false
+      "pin": false,
+      "off": ""
     },
     {
       "id": 6,
@@ -48,7 +52,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "سرد",
-      "pin": false
+      "pin": false,
+      "off": ""
     },
     {
       "id": 7,
@@ -58,7 +63,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "پیتزا",
-      "pin": false
+      "pin": false,
+      "off": "15"
     },
     {
       "id": 8,
@@ -68,7 +74,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "ساندویچ",
-      "pin": false
+      "pin": false,
+      "off": ""
     },
     {
       "id": 9,
@@ -77,7 +84,9 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
-      "filter": "ساندویچ"
+      "filter": "ساندویچ",
+      "pin": false,
+      "off": ""
     },
     {
       "id": 11,
@@ -87,7 +96,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "خورشت",
-      "pin": false
+      "pin": false,
+      "off": ""
     },
     {
       "id": 12,
@@ -96,7 +106,9 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
-      "filter": "خورشت"
+      "filter": "خورشت",
+      "pin": false,
+      "off": ""
     },
     {
       "id": 14,
@@ -105,7 +117,9 @@
       "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
-      "filter": "پلو"
+      "filter": "پلو",
+      "pin": false,
+      "off": ""
     },
     {
       "id": 15,
@@ -115,7 +129,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "پلو",
-      "pin": false
+      "pin": false,
+      "off": ""
     },
     {
       "id": 16,
@@ -125,7 +140,8 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "پلو",
-      "pin": false
+      "pin": false,
+      "off": ""
     },
     {
       "id": 18,
@@ -135,12 +151,11 @@
       "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "پلو",
-      "pin": false
+      "pin": false,
+      "off": ""
     }
   ],
-  "cart": [
-    
-  ],
+  "cart": [],
   "tables": [
     {
       "id": 1,
@@ -245,7 +260,7 @@
       "name": "ایلیا جعفری",
       "tel": "09123382121",
       "id": "21424332111",
-      "job": "قضاب"
+      "job": "قصاب"
     },
     {
       "name": "علی سلیمانی",
@@ -347,6 +362,11 @@
       "label": "آشپز دوم",
       "value": "آشپز دوم",
       "id": 14
+    },
+    {
+      "label": "قصاب",
+      "value": "قصاب",
+      "id": 15
     }
   ]
 }

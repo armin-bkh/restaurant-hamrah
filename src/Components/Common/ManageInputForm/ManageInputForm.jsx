@@ -1,5 +1,4 @@
-const ManageInputForm = ({ type, lbl, value , formik, name, ...rest }) => {
-  
+const ManageInputForm = ({ type, lbl, value, formik, name, ...rest }) => {
   let returnValue = (
     <input
       placeholder={`${lbl}...`}
@@ -16,7 +15,7 @@ const ManageInputForm = ({ type, lbl, value , formik, name, ...rest }) => {
     returnValue = (
       <textarea
         placeholder={`${lbl}...`}
-      name={name}
+        name={name}
         className={`placeholder-gray-500 Casablanca focus:border-blue-500 border-transparent 
           border bg-transparent mt-2 text-sm w-full px-3 py-2 rounded-md h-52
            outline-none boxShadow`}
@@ -29,7 +28,13 @@ const ManageInputForm = ({ type, lbl, value , formik, name, ...rest }) => {
   if (type === "file") {
     returnValue = (
       <div className={`flex items-center`}>
-        <input className={`sr-only`} id={lbl} type={type} name={name} {...rest} />
+        <input
+          className={`sr-only`}
+          id={lbl}
+          type={type}
+          name={name}
+          {...rest}
+        />
         <label
           className={`gradient text-white Casablanca px-5 py-1 cursor-pointer rounded-md`}
           htmlFor={lbl}
@@ -50,9 +55,11 @@ const ManageInputForm = ({ type, lbl, value , formik, name, ...rest }) => {
     >
       <label className={`ml-3 text-sm md:text-lg`}>{lbl}: </label>
       {returnValue}
-      { formik.errors[name] && formik.touched[name] && (
-        <span className={`text-xs md:text-hg text-red-700 Dirooz mr-3`}>{formik.errors[name]}</span>
-      ) }
+      {formik.errors[name] && formik.touched[name] && (
+        <span className={`text-xs md:text-hg text-red-700 Dirooz mr-3`}>
+          {formik.errors[name]}
+        </span>
+      )}
     </fieldset>
   );
 };

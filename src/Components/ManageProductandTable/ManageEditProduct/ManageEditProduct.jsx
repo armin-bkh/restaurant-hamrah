@@ -14,6 +14,7 @@ import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import ManageProductItem from "../ManageProductItem/ManageProductItem";
 import * as Yup from "yup";
 import { useFormik } from "formik";
+import ManageOffInput from "../../Common/ManageOffInput/ManageOffInput";
 
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
@@ -195,6 +196,10 @@ const validationSchema = Yup.object({
   price: Yup.string()
     .required("قیمت غذا ضروری است")
     .matches(/^([0-9])+$/, "قیمت غذا باید عدد باشد"),
+  off: Yup.string()
+    .notRequired()
+    .max(3, "تخفیف بیش از حد مجاز است")
+    .matches(/^([0-9])+$/, "تخفیف غذا باید عدد باشد"),
   information: Yup.string().required("توضیحات غذا ضروری است"),
   materials: Yup.string().required("مخلفات غذا ضروری است"),
   filter: Yup.string().required("دسته بندی غذا ضروری است"),
@@ -259,6 +264,13 @@ const EditProduct = ({ onSubmit, productId }) => {
             type="text"
             name="price"
             {...formik.getFieldProps("price")}
+          />
+          <ManageOffInput
+            lbl="تخفیف"
+            name="off"
+            formik={formik}
+            value={formik.values.off}
+            {...formik.getFieldProps("off")}
           />
           <fieldset className={`flex-col justify-center items-center w-full`}>
             <label className={`ml-3 text-sm md:text-lg`}>دسته بندی:</label>
