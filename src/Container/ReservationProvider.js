@@ -31,7 +31,10 @@ const reducer = (state, action) => {
       const cartClone = [...state.cart];
       const selectedItem = { ...state.cart[index] };
       selectedItem.quantity++;
-      selectedItem.finalPrice = selectedItem.price * selectedItem.quantity;
+      selectedItem.finalPrice = selectedItem.off
+        ? (selectedItem.price - (selectedItem.off * selectedItem.price) / 100) *
+          selectedItem.quantity
+        : selectedItem.price * selectedItem.quantity;
       cartClone[index] = selectedItem;
       return { ...state, cart: cartClone };
     }
@@ -51,7 +54,11 @@ const reducer = (state, action) => {
         };
       } else {
         selectedItem.quantity--;
-        selectedItem.finalPrice = selectedItem.price * selectedItem.quantity;
+        selectedItem.finalPrice = selectedItem.off
+          ? (selectedItem.price -
+              (selectedItem.off * selectedItem.price) / 100) *
+            selectedItem.quantity
+          : selectedItem.price * selectedItem.quantity;
         cartClone[index] = selectedItem;
         return { ...state, cart: cartClone };
       }
@@ -81,6 +88,7 @@ const reducer = (state, action) => {
       };
     }
     case "submitCart": {
+      console.log(state.cart, state.totalPrice);
       return { ...state, cart: [], totalPrice: 0 };
     }
     case "calcTotalPrice": {
@@ -89,7 +97,7 @@ const reducer = (state, action) => {
         return { ...state, totalPrice: 0 };
       }
       const totalPrice = cartItemsPrice.reduce((total, num) => total + num);
-      return { ...state, totalPrice: totalPrice };
+      return { ...state, totalPrice };
     }
     case "errorGetOneProduct": {
       return {
@@ -158,7 +166,9 @@ export const useReservatioActions = () => {
         data: {
           ...data,
           quantity: item.quantity,
-          finalPrice: data.price * item.quantity,
+          finalPrice: data.off
+            ? (data.price - (data.off * data.price) / 100) * item.quantity
+            : data.price * item.quantity,
         },
       });
       dispatch({ type: "calcTotalPrice" });

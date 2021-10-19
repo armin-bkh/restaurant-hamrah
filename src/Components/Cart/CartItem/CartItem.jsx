@@ -2,7 +2,7 @@ import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
 import { useReservatioActions } from "../../../Container/ReservationProvider";
 import { numberWithCommas } from "../../utils/CommaNumber";
 
-const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
+const CartItem = ({ food }) => {
   const {
     deleteItemCartHandler,
     decrementItemCartHandler,
@@ -10,9 +10,9 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
     buyOneItemCartHandler,
   } = useReservatioActions();
 
-  const foodBPrice = numberWithCommas(foodBP);
-
-  const foodFPrice = numberWithCommas(foodBP * foodQ);
+  const price = food.off
+    ? food.price - (food.off * food.price) / 100
+    : food.price;
 
   return (
     <li
@@ -24,13 +24,14 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
         className={`text-xs sm:text-sm md:text-md lg:text-lg
        xl:text-xl text-black`}
       >
-        {foodN}
+        {food.title}
       </span>
       <span
         className={`hidden sm:block text-xs sm:text-sm md:text-md
        lg:text-lg xl:text-xl text-black`}
       >
-        قیمت واحد: <span className={`Casablanca`}>{foodBPrice()}</span>
+        قیمت واحد:{" "}
+        <span className={`Casablanca`}>{numberWithCommas(price)}</span>
       </span>
       <div className={`flex justify-between items-center text-black`}>
         <span
@@ -43,26 +44,29 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
           type="button"
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
           gradient-bottom cursor-pointer text-white`}
-          onClick={() => incrementItemCartHandler(itemID)}
+          onClick={() => incrementItemCartHandler(food.id)}
         >
           <BiPlus />
         </button>
         <span
           className={`text-xs sm:text-sm md:text-md  Casablanca lg:text-lg xl:text-xl text-black`}
         >
-          {foodQ}
+          {food.quantity}
         </span>
         <button
           type="button"
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
           gradient-bottom cursor-pointer text-white`}
-          onClick={() => decrementItemCartHandler(itemID)}
+          onClick={() => decrementItemCartHandler(food.id)}
         >
-          {foodQ > 1 ? <BiMinus /> : <BiTrash />}
+          {food.quantity > 1 ? <BiMinus /> : <BiTrash />}
         </button>
       </div>
       <span className={`text-xs sm:text-sm lg:text-lg xl:text-xl text-black`}>
-        قیمت: <span className={`Casablanca`}>{foodFPrice()}</span>
+        قیمت:{" "}
+        <span className={`Casablanca`}>
+          {numberWithCommas(price * food.quantity)}
+        </span>
       </span>
       <div className={`flex items-center justify-between`}>
         <button
@@ -70,9 +74,9 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
           className={`text-blue-400 text-xs sm:text-sm lg:text-lg xl:text-xl Dirooz border border-blue-400 hover:text-white hover:bg-blue-400 transition rounded-md py-1 px-2 md:px-5 ml-1 md:ml-5`}
           onClick={() =>
             buyOneItemCartHandler({
-              name: foodN,
-              price: foodBP * foodQ,
-              qty: foodQ,
+              name: food.title,
+              price: food.price * food.quantity,
+              qty: food.quantity,
             })
           }
         >
@@ -82,7 +86,7 @@ const CartItem = ({ itemID, foodN, foodBP, foodQ }) => {
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
         gradient-bottom text-white`}
           type="button"
-          onClick={() => deleteItemCartHandler(itemID)}
+          onClick={() => deleteItemCartHandler(food.id)}
         >
           <BiTrash />
         </button>

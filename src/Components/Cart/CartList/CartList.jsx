@@ -14,8 +14,6 @@ const CartList = () => {
   const { submitCartHandler, buyCartHandler } = useReservatioActions();
   const totalPrice = useTotalPrice();
 
-  const totalPricewithComma = numberWithCommas(totalPrice);
-
   const submitHandler = (e) => {
     e.preventDefault();
     submitCartHandler(cart);
@@ -37,13 +35,7 @@ const CartList = () => {
         <form onSubmit={submitHandler}>
           <ul className={`mb-11`}>
             {cart.map((item) => (
-              <CartItem
-                itemID={item.id}
-                key={item.id}
-                foodN={item.title}
-                foodBP={item.price}
-                foodQ={item.quantity}
-              />
+              <CartItem key={item.id} food={item} />
             ))}
           </ul>
           <h1
@@ -51,7 +43,8 @@ const CartList = () => {
           Dirooz text-black`}
           >
             مبلغ قابل پرداخت:{" "}
-            <span className={`Casablanca`}>{totalPricewithComma()}</span> تومان
+            <span className={`Casablanca`}>{numberWithCommas(totalPrice)}</span>
+            تومان
           </h1>
           <fieldset className={`mt-3 flex items-center`}>
             <button

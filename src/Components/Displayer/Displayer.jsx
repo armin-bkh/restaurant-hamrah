@@ -12,8 +12,6 @@ const Displayer = ({ productId }) => {
   const [count, setCount] = useState(1);
   const [error, setError] = useState(false);
 
-  const productPrice = numberWithCommas(product.price);
-
   const clickHandler = () => {
     addToCartHandler({ id: product.id, quantity: count });
     setCount(1);
@@ -39,7 +37,9 @@ const Displayer = ({ productId }) => {
       className={`text-center text-xl sm:text-3xl md:text-5xl
        flex justify-center items-center ${styles.dispalyerWelcome}`}
     >
-      <BiRestaurant className={`text-blue-400 inline-block rounded-full ml-2`} />{" "}
+      <BiRestaurant
+        className={`text-blue-400 inline-block rounded-full ml-2`}
+      />{" "}
       <h1
         className={`bg-clip-text Casablanca bg-gradient-to-r color-gradient py-3`}
       >
@@ -59,16 +59,30 @@ const Displayer = ({ productId }) => {
           alt={product.title}
         />
         <article className={`${styles.displyerInformation}`}>
-          <h1
-            className={`text-3xl lg:text-5xl xl:text-4xl text-center Casablanca tracking-widest`}
-          >
-            {product.title}
-          </h1>
-          <h3
-            className={`text-md lg:text-lg xl:text-2xl mt-4 Casablanca text-blue-400 text-center`}
-          >
-            {productPrice()} تومان
-          </h3>
+          <header>
+            <h1
+              className={`text-3xl lg:text-5xl xl:text-4xl text-center Casablanca tracking-widest`}
+            >
+              {product.title}
+            </h1>
+            <h3
+              className={`text-md lg:text-lg xl:text-2xl mt-4 Casablanca text-blue-400 text-center`}
+            >
+              <span className={`relative`}>
+                {product.off && (
+                  <span
+                    className={`text-red-600 line-through absolute -right-3 text-xs -top-4 transform rotate-12`}
+                  >
+                    {numberWithCommas(product.price)}
+                  </span>
+                )}
+                {numberWithCommas(
+                  product.price - (product.off * product.price) / 100
+                )}{" "}
+                تومان
+              </span>
+            </h3>
+          </header>
           <h3
             className={`text-md lg:text-lg xl:text-2xl mt-10 mb-2 Casablanca text-blue-400 tracking-widest`}
           >

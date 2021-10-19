@@ -20,7 +20,7 @@
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "سالاد",
       "pin": false,
-      "off": ""
+      "off": "5"
     },
     {
       "id": 4,
@@ -53,7 +53,7 @@
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "سرد",
       "pin": false,
-      "off": ""
+      "off": "24"
     },
     {
       "id": 7,
@@ -119,7 +119,7 @@
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "پلو",
       "pin": false,
-      "off": ""
+      "off": "50"
     },
     {
       "id": 15,
@@ -152,10 +152,12 @@
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "پلو",
       "pin": false,
-      "off": ""
+      "off": "30"
     }
   ],
-  "cart": [],
+  "cart": [
+    
+  ],
   "tables": [
     {
       "id": 1,

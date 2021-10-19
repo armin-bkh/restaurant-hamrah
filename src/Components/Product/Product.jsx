@@ -7,7 +7,6 @@ const Product = ({ inf, onPin }) => {
 
   const clickHandler = () => {
     toShowHandler(inf.id);
-    console.log(inf.off);
   };
 
   const likeHandler = () => {
@@ -22,9 +21,9 @@ const Product = ({ inf, onPin }) => {
         <span
           className={`text-xs md:text-sm absolute -top-2 -left-3 font-bold transform -rotate-45
            text-red-600 border border-red-600 rounded-full flex items-center
-            justify-center w-6 h-6  md:w-8 md:h-8`}
+            justify-center w-7 h-7 md:w-9 md:h-9 Casablanca`}
         >
-          {inf.off}
+          % {inf.off}
         </span>
       )}
       <img
