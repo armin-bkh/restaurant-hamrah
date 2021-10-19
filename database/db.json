@@ -42,7 +42,7 @@
       "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
       "filter": "پیتزا",
       "pin": false,
-      "off": ""
+      "off": "12"
     },
     {
       "id": 6,
@@ -155,9 +155,7 @@
       "off": "30"
     }
   ],
-  "cart": [
-    
-  ],
+  "cart": [],
   "tables": [
     {
       "id": 1,

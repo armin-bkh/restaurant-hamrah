@@ -71,7 +71,7 @@ const Displayer = ({ productId }) => {
               <span className={`relative`}>
                 {product.off && (
                   <span
-                    className={`text-red-600 line-through absolute -right-3 text-xs -top-4 transform rotate-12`}
+                    className={`text-red-600 line-through absolute -right-3 md:-right-10 text-xs md:text-lg 2xl:text-xl -top-4 md:-top-5 transform rotate-12`}
                   >
                     {numberWithCommas(product.price)}
                   </span>

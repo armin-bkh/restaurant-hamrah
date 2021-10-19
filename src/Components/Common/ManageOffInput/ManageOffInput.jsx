@@ -10,7 +10,7 @@ const ManageOffInput = ({ name, lbl, formik, values, ...rest }) => {
   return (
     <fieldset className={`mb-5 w-full flex-col justify-center items-start`}>
       <label className={`ml-3 text-sm md:text-lg`}>{lbl}: </label>
-      <div className={`flex justify-start items-center mt-3`}>
+      <div dir="ltr" className={`flex justify-start items-center mt-3`}>
         <span>{formik.values.price ? formik.values.price : 0} - </span>
         <input
           name={name}

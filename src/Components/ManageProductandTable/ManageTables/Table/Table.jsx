@@ -14,9 +14,9 @@ const Table = ({ resForm, setTables }) => {
       await deleteTable(resForm.id);
       const { data } = await getAllTable();
       setTables(data);
-      addToast('میز خالی شد', {appearance: 'success'})
+      addToast("میز خالی شد", { appearance: "success" });
     } catch (err) {
-      addToast('مجددا تلاش کنید', {appearance: 'error'})
+      addToast("مجددا تلاش کنید", { appearance: "error" });
     }
   };
 
@@ -40,7 +40,9 @@ const Table = ({ resForm, setTables }) => {
             </span>
           ))}
         </h1>
-        <h1 className={` text-sm Dirooz`}>مبلغ نهایی: <span className={`Casablanca`}>{totalPrice()}</span> تومان</h1>
+        <h1 className={` text-sm Dirooz`}>
+          مبلغ نهایی: <span className={`Casablanca`}>{totalPrice}</span> تومان
+        </h1>
         <button
           className={`rounded-md cursor-pointer 
              gradient py-2 block w-full text-white
