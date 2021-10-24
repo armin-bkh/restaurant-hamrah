@@ -15,7 +15,6 @@ import ManageProductItem from "../ManageProductItem/ManageProductItem";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import ManageOffInput from "../../Common/ManageOffInput/ManageOffInput";
-import { scryRenderedDOMComponentsWithClass } from "react-dom/cjs/react-dom-test-utils.production.min";
 
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
