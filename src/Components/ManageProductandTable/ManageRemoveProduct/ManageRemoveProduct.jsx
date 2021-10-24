@@ -13,7 +13,7 @@ const ManageRemoveProduct = () => {
   const [products, setProducts] = useState(null);
   const [productList, setProductList] = useState(null);
   const [error, setError] = useState(false);
-  const [filter, setFilter] = useState({ label: "همه", value: "همه" });
+  const [filter, setFilter] = useState("همه");
   const [filters, setFilters] = useState(null);
   const [search, setSearch] = useState("");
   const { addToast } = useToasts();
@@ -41,11 +41,12 @@ const ManageRemoveProduct = () => {
 
   const filterProductsHandler = (selectedOption) => {
     setSearch("");
-    setFilter(selectedOption);
+    const selectedOptionValue = selectedOption?.value || selectedOption;
+    setFilter(selectedOptionValue);
     const filteredProducts = products.filter(
-      (pr) => pr.filter === selectedOption.value
+      (pr) => pr.filter === selectedOptionValue
     );
-    if (selectedOption.value === "همه") {
+    if (selectedOptionValue === "همه") {
       setProductList(products);
       if (!products.length) setError(true);
       else setError(false);
@@ -57,15 +58,14 @@ const ManageRemoveProduct = () => {
   };
 
   const searchProductsHandler = (value) => {
-    const filteredProducts = products.filter(
-      (pr) => pr.filter === filter.value
-    );
+    setSearch(value);
+    const filteredProducts = products.filter((pr) => pr.filter === filter);
     const searchedProducts = filteredProducts.filter((pr) =>
       pr.title.toLowerCase().includes(value.toLowerCase())
     );
-    setSearch(value);
+    console.log(searchedProducts);
     if (value.length > 0) {
-      if (filter.value === "همه") {
+      if (filter === "همه") {
         const searchedProductsInAll = products.filter((pr) =>
           pr.title.toLowerCase().includes(value.toLowerCase())
         );
@@ -78,7 +78,7 @@ const ManageRemoveProduct = () => {
       if (!searchedProducts.length) setError(true);
       else setError(false);
     } else {
-      if (filter.value === "همه") {
+      if (filter === "همه") {
         setProductList(products);
         if (!products.length) setError(true);
         else setError(false);

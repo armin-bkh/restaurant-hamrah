@@ -15,13 +15,14 @@ import ManageProductItem from "../ManageProductItem/ManageProductItem";
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import ManageOffInput from "../../Common/ManageOffInput/ManageOffInput";
+import { scryRenderedDOMComponentsWithClass } from "react-dom/cjs/react-dom-test-utils.production.min";
 
 const ManageEditProduct = () => {
   const [productId, setProductId] = useState(null);
   const [products, setProducts] = useState(null);
   const [productList, setProductList] = useState(null);
   const [error, setError] = useState(false);
-  const [filter, setFilter] = useState({ label: "همه", value: "همه" });
+  const [filter, setFilter] = useState("همه");
   const [filters, setFilters] = useState(null);
   const [search, setSearch] = useState("");
   const { addToast } = useToasts();
@@ -54,11 +55,12 @@ const ManageEditProduct = () => {
   const filterProductsHandler = (selectedOption) => {
     setSearch("");
     setProductId("");
-    setFilter(selectedOption);
+    const selectedOptionValue = selectedOption?.value || selectedOption;
+    setFilter(selectedOptionValue);
     const filteredProducts = products.filter(
-      (pr) => pr.filter === selectedOption.value
+      (pr) => pr.filter === selectedOptionValue
     );
-    if (selectedOption.value === "همه") {
+    if (selectedOptionValue === "همه") {
       setProductList(products);
       if (!products.length) setError(true);
       else setError(false);
@@ -72,14 +74,12 @@ const ManageEditProduct = () => {
   const searchProductsHandler = (value) => {
     setSearch(value);
     setProductId("");
-    const filteredProducts = products.filter(
-      (pr) => pr.filter === filter.value
-    );
+    const filteredProducts = products.filter((pr) => pr.filter === filter);
     const searchedProducts = filteredProducts.filter((pr) =>
       pr.title.toLowerCase().includes(value.toLowerCase())
     );
     if (value.length > 0) {
-      if (filter.value === "همه") {
+      if (filter === "همه") {
         const searchedProductsInAll = products.filter((pr) =>
           pr.title.toLowerCase().includes(value.toLowerCase())
         );
@@ -92,7 +92,7 @@ const ManageEditProduct = () => {
       if (!searchedProducts.length) setError(true);
       else setError(false);
     } else {
-      if (filter.value === "همه") {
+      if (filter === "همه") {
         setProductList(products);
         if (!products.length) setError(true);
         else setError(false);
