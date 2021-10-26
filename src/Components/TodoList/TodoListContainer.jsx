@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { BiPlus } from "react-icons/bi";
 import { IoMdClose } from "react-icons/io";
 import TodoForm from "./TodoForm/TodoForm";
@@ -8,6 +8,13 @@ const TodoListContainer = () => {
   const [todos, setTodos] = useState([]);
   const [isShow, setIsShow] = useState(false);
 
+  useEffect(() => {
+    const savedTodos = JSON.parse(localStorage.getItem("restoyar-todos"));
+    setTodos(savedTodos ? savedTodos : []);
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("restoyar-todos", JSON.stringify(todos));
+  }, [todos]);
   const addTodoHandler = (value) => {
     setTodos((prevTodos) => [
       ...prevTodos,
