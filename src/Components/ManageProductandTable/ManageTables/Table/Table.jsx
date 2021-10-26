@@ -22,7 +22,7 @@ const Table = ({ resForm, setTables }) => {
 
   return (
     <article
-      className={`text-black flex flex-col justify-center bgLight boxShadow p-5 h-96 rounded-md`}
+      className={`text-black flex flex-col justify-center bgLight boxShadow  p-5 rounded-md`}
     >
       <form className={`flex flex-col`} onSubmit={submitHandler}>
         <h1
@@ -32,14 +32,14 @@ const Table = ({ resForm, setTables }) => {
           {resForm.id}
         </h1>
         <h1 className={`mb-4 text-sm Dirooz`}>اقا/خانوم: {resForm.userName}</h1>
-        <h1 className={`mb-4 text-sm Dirooz`}>
-          سفارشات:{" "}
+        <h1 className={`mb-1 text-sm Dirooz`}>سفارشات:</h1>
+        <div
+          className={`mb-4 flex w-full flex-wrap justify-between text-sm Dirooz`}
+        >
           {resForm.foods.map((fd) => (
-            <span key={fd} className={`mx-2`}>
-              {fd}
-            </span>
+            <span className={`mx-2 py-2`}>{fd}</span>
           ))}
-        </h1>
+        </div>
         <h1 className={` text-sm Dirooz`}>
           مبلغ نهایی: <span className={`Casablanca`}>{totalPrice}</span> تومان
         </h1>

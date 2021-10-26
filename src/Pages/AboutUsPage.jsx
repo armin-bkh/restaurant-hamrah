@@ -3,10 +3,9 @@ import Company from "../Assets/SVG/company-animate.svg";
 import { useEffect } from "react";
 
 const AboutUsPage = () => {
-
-  useEffect(()=>{
-    document.title = "درباره ما"  
-  }, [])
+  useEffect(() => {
+    document.title = "درباره ما";
+  }, []);
 
   return (
     <MainLayout>
@@ -15,11 +14,15 @@ const AboutUsPage = () => {
           className={`grid grid-cols-1 md:grid-cols-2 md:grid-rows-4 py-4 min-h-screen p-5`}
         >
           <article>
-            <h1 className={`color-gradient lg:text-8xl text-3xl md:text-5xl py-3 text-center Casablanca`}>
-              آرتا ارتباط اطلس
+            <h1
+              className={`color-gradient lg:text-8xl text-3xl md:text-5xl py-3 text-center Casablanca`}
+            >
+              آرمین بخشی
             </h1>
           </article>
-          <article className={`row-span-3 md:row-span-full md:col-start-2 md:col-end-3 flex justify-center items-center`}>
+          <article
+            className={`row-span-3 md:row-span-full md:col-start-2 md:col-end-3 flex justify-center items-center`}
+          >
             <img
               style={{ zIndex: `-1` }}
               className={`max-w-xs sm:max-w-sm lg:max-w-lg xl:max-w-xl 2xl:w-full imgShadow relative`}
@@ -29,7 +32,9 @@ const AboutUsPage = () => {
             />
           </article>
           <article className={`mb-7`}>
-            <p className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify`}>
+            <p
+              className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify`}
+            >
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -37,7 +42,9 @@ const AboutUsPage = () => {
             </p>
           </article>
           <article className={`mb-3`}>
-            <p className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify`}>
+            <p
+              className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify`}
+            >
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -50,7 +57,9 @@ const AboutUsPage = () => {
             </p>
           </article>
           <article>
-            <p className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify`}>
+            <p
+              className={`text-blue-400 Dirooz text-xs sm:text-sm lg:text-lg text-justify`}
+            >
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
