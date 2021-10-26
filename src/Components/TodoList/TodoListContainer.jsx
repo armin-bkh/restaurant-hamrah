@@ -35,7 +35,7 @@ const TodoListContainer = () => {
     <section
       className={`fixed z-40 -left-4 pl-3 overflow-y-auto top-0 h-full right-0 bg-gray-600 bg-opacity-40 flex justify-end`}
     >
-      <div className={`w-full md:w-96 p-5`}>
+      <div className={`w-full mt-10 md:mt-0 md:w-96 p-5`}>
         {isShow && <TodoForm onAdd={addTodoHandler} />}
         <TodoList
           todos={todos}
