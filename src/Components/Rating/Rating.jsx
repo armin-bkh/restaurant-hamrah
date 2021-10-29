@@ -32,13 +32,13 @@ const Rate = () => {
         <button
           onClick={remainReservation}
           type="button"
-          className={`py-2 Casablanca mt-3 gradient flex-1 text-white rounded-md`}
+          className={`py-2 text-sm Casablanca mt-3 gradient flex-1 text-white rounded-md`}
         >
           ادامه سفارش
         </button>
         <button
           type="submit"
-          className={`py-2 Casablanca mt-3 border border-red-600 flex-1 mr-3 text-red-600 rounded-md`}
+          className={`py-2 text-sm Casablanca mt-3 border border-red-600 flex-1 mr-3 text-red-600 rounded-md transition hover:bg-red-600 hover:text-white`}
         >
           ثبت و خروج
         </button>
