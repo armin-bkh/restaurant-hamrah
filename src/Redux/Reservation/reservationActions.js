@@ -1,9 +1,11 @@
 import { getOneProduct } from "../../Services/getOneProduct";
 import {
   CALC_TOTALPRICE,
+  DECREMENT_CART_ITEM,
   FETCH_PRODUCT_ITEM_FAILURE,
   FETCH_PRODUCT_ITEM_REQUEST,
   FETCH_PRODUCT_ITEM_SUCCESS,
+  INCREMENT_CART_ITEM,
   POST_CART_FAILURE,
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
@@ -40,6 +42,14 @@ export const postCartFailure = () => {
 
 export const postCartSuccess = () => {
   return { type: POST_CART_SUCCESS };
+};
+
+export const incrementCartItem = (payload) => {
+  return { type: INCREMENT_CART_ITEM, payload };
+};
+
+export const decrementCartItem = (payload) => {
+  return { type: DECREMENT_CART_ITEM, payload };
 };
 
 export const fetchCartItem = (item) => {

@@ -1,8 +1,10 @@
 import {
   CALC_TOTALPRICE,
+  DECREMENT_CART_ITEM,
   FETCH_PRODUCT_ITEM_FAILURE,
   FETCH_PRODUCT_ITEM_REQUEST,
   FETCH_PRODUCT_ITEM_SUCCESS,
+  INCREMENT_CART_ITEM,
   POST_CART_FAILURE,
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
@@ -37,6 +39,38 @@ const reservationReducer = (state = initialState, action) => {
         cart: [...state.cart, action.payload],
         error: "",
       };
+    }
+    case INCREMENT_CART_ITEM: {
+      const cloneCart = [...state.cart];
+      const index = cloneCart.findIndex((item) => item.id === action.payload);
+      const selectedCartItem = { ...cloneCart[index] };
+      selectedCartItem.quantity++;
+      selectedCartItem.finalPrice = selectedCartItem.off
+        ? (selectedCartItem.price -
+            (selectedCartItem.off * selectedCartItem.price) / 100) *
+          selectedCartItem.quantity
+        : selectedCartItem.price * selectedCartItem.quantity;
+      cloneCart[index] = selectedCartItem;
+      return { ...state, cart: cloneCart };
+    }
+    case DECREMENT_CART_ITEM: {
+      const cloneCart = [...state.cart];
+      const index = cloneCart.findIndex((item) => item.id === action.payload);
+      const selectedCartItem = { ...cloneCart[index] };
+      if (selectedCartItem.quantity === 1) {
+        return {
+          ...state,
+          cart: cloneCart.filter((item) => item.id !== action.payload),
+        };
+      }
+      selectedCartItem.quantity--;
+      selectedCartItem.finalPrice = selectedCartItem.off
+        ? (selectedCartItem.price -
+            (selectedCartItem.off * selectedCartItem.price) / 100) *
+          selectedCartItem.quantity
+        : selectedCartItem.price * selectedCartItem.quantity;
+      cloneCart[index] = selectedCartItem;
+      return { ...state, cart: cloneCart };
     }
     case CALC_TOTALPRICE: {
       const cartItemsPrice = state.cart.map((item) => item.finalPrice);
