@@ -12,10 +12,10 @@ import {
 import Rate from "../../Rating/Rating";
 
 const CartList = () => {
-  const paid = usePaid();
-  const cart = useCart();
-  const { submitCartHandler, buyCartHandler } = useReservatioActions();
-  const totalPrice = useTotalPrice();
+  // const paid = usePaid();
+  // const cart = useCart();
+  // const { submitCartHandler, buyCartHandler } = useReservatioActions();
+  // const totalPrice = useTotalPrice();
 
   const submitHandler = (e) => {
     e.preventDefault();

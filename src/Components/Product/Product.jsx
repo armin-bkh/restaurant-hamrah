@@ -1,12 +1,16 @@
 import { useReservatioActions } from "../../Container/ReservationProvider";
 import { BiPin } from "react-icons/bi";
 import styles from "./Products.module.scss";
+import { useDispatch } from "react-redux";
+import { setProductId } from "../../Redux/Reservation/reservationActions";
 
 const Product = ({ inf, onPin }) => {
-  const { toShowHandler } = useReservatioActions();
+  // const { toShowHandler } = useReservatioActions();
+  const dispatch = useDispatch();
 
   const clickHandler = () => {
-    toShowHandler(inf.id);
+    // toShowHandler(inf.id);
+    dispatch(setProductId(inf.id));
   };
 
   const likeHandler = () => {

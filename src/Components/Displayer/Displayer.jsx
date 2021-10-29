@@ -5,15 +5,20 @@ import { useEffect, useState } from "react";
 import { getOneProduct } from "../../Services/getOneProduct";
 import DisplayerLoadingSkeleton from "../LoadingSkeleton/DisplayerLoadingSkeleton/DisplayerLoadingSkeleton";
 import { useReservatioActions } from "../../Container/ReservationProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCartItem } from "../../Redux/Reservation/reservationActions";
 
-const Displayer = ({ productId }) => {
-  const { addToCartHandler } = useReservatioActions();
+const Displayer = () => {
+  // const { addToCartHandler } = useReservatioActions();
+  const dispatch = useDispatch();
+  const productId = useSelector((state) => state.productId);
   const [product, setProduct] = useState("");
   const [count, setCount] = useState(1);
   const [error, setError] = useState(false);
 
   const clickHandler = () => {
-    addToCartHandler({ id: product.id, quantity: count });
+    // addToCartHandler({ id: product.id, quantity: count });
+    dispatch(fetchCartItem({ id: productId, quantity: count }));
     setCount(1);
   };
 

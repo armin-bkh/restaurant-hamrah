@@ -1,20 +1,33 @@
+import { getOneProduct } from "../../Services/getOneProduct";
 import {
-  FETCH_RESERVATION_FAILURE,
-  FETCH_RESERVATION_REQUEST,
-  FETCH_RESERVATION_SUCCESS,
+  CALC_TOTALPRICE,
+  FETCH_PRODUCT_ITEM_FAILURE,
+  FETCH_PRODUCT_ITEM_REQUEST,
+  FETCH_PRODUCT_ITEM_SUCCESS,
   POST_CART_FAILURE,
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
+  SET_PRODUCT_ID,
 } from "./reservationTypes";
 
-export const fetchReservationRequest = () => {
-  return { type: FETCH_RESERVATION_REQUEST };
+export const setProductId = (payload) => {
+  return { type: SET_PRODUCT_ID, payload };
 };
-export const fetchReservationFailure = (error) => {
-  return { type: FETCH_RESERVATION_FAILURE, payload: error };
+
+export const fetchProductItemRequset = () => {
+  return { type: FETCH_PRODUCT_ITEM_REQUEST };
 };
-export const fetchReservationSuccess = (products) => {
-  return { type: FETCH_RESERVATION_SUCCESS, payload: products };
+
+export const fetchProductItemFailure = (payload) => {
+  return { type: FETCH_PRODUCT_ITEM_FAILURE, payload };
+};
+
+export const fetchProductItemSuccess = (payload) => {
+  return { type: FETCH_PRODUCT_ITEM_SUCCESS, payload };
+};
+
+export const caclTotalPrice = () => {
+  return { type: CALC_TOTALPRICE };
 };
 
 export const postCartRequest = () => {
@@ -27,4 +40,16 @@ export const postCartFailure = () => {
 
 export const postCartSuccess = () => {
   return { type: POST_CART_SUCCESS };
+};
+
+export const fetchCartItem = (item) => {
+  return async (dispatch) => {
+    dispatch(fetchProductItemRequset());
+    try {
+      const { data } = await getOneProduct(item.id);
+      dispatch(fetchProductItemSuccess({ ...data, quantity: item.count }));
+    } catch (error) {
+      dispatch(fetchProductItemFailure(error.message));
+    }
+  };
 };
