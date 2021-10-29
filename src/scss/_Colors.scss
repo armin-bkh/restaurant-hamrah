@@ -1,7 +1,7 @@
-$bgLight: #dbdbdb;
+$bgLight: #ebebeb;
 $bgLightTop: #eeeeee;
 $bgLightGradint: linear-gradient(to bottom, rgba($bgLightTop, 1), rgba($bgLight, 1) 40%, transparent);
-$shadows: #bdbdbd;
+$shadows: #cecece;
 $skeletonLight: #7c7b7b;
 
 .bgLight {
@@ -22,7 +22,7 @@ $skeletonLight: #7c7b7b;
 
 .boxShadow {
     box-shadow: 5px 5px 10px $shadows,
-                -5px -5px 15px #eeeeee;
+                -5px -5px 15px #ffffff;
 }
 
 .textShadow{
@@ -37,7 +37,7 @@ $skeletonLight: #7c7b7b;
 
 .boxShadowInner {
     box-shadow: inset 5px 5px 5px $shadows,
-        inset -5px -5px 5px #eeeeee;
+        inset -5px -5px 5px #ffffff;
 }
 
 .imgShadow{

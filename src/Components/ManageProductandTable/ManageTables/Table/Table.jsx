@@ -22,12 +22,12 @@ const Table = ({ resForm, setTables }) => {
 
   return (
     <article
-      className={`text-black flex flex-col justify-center bgLight boxShadow  p-5 rounded-md`}
+      className={`text-black flex flex-col justify-center bgLight boxShadow p-5 rounded-md`}
     >
       <form className={`flex flex-col`} onSubmit={submitHandler}>
         <h1
           className={`mb-9 self-center w-24 h-24 flex justify-center items-center text-3xl
-       gradient rounded-full Casablanca text-white boxShadow`}
+        rounded-full Casablanca text-blue-400 border border-blue-400 boxShadowInner`}
         >
           {resForm.id}
         </h1>
@@ -37,15 +37,19 @@ const Table = ({ resForm, setTables }) => {
           className={`mb-4 flex w-full flex-wrap justify-between text-sm Dirooz`}
         >
           {resForm.foods.map((fd) => (
-            <span className={`mx-2 py-2`}>{fd}</span>
+            <span key={fd.id} className={`mx-2 py-2`}>
+              {fd.name}
+            </span>
           ))}
         </div>
-        <h1 className={` text-sm Dirooz`}>
-          مبلغ نهایی: <span className={`Casablanca`}>{totalPrice}</span> تومان
+        <h1 className={`text-sm Dirooz`}>
+          مبلغ نهایی:{" "}
+          <span className={`Casablanca text-sm md:text-2xl`}>{totalPrice}</span>{" "}
+          تومان
         </h1>
         <button
-          className={`rounded-md cursor-pointer 
-             gradient py-2 block w-full text-white
+          className={`rounded-md cursor-pointer transition
+             border border-blue-400 text-blue-400 py-2 block w-full hover:bg-blue-400 hover:text-white
               mx-auto mt-14 font-bold Casablanca`}
           type="submit"
         >

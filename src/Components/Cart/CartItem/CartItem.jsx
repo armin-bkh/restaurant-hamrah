@@ -42,7 +42,7 @@ const CartItem = ({ food }) => {
         </span>
         <button
           type="button"
-          className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full transition hover:bg-blue-400 hover:text-white border cursor-pointer border-blue-400 text-blue-400`}
+          className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full transition hover:bg-blue-400 hover:text-white border cursor-pointer border-blue-400 text-blue-400`}
           onClick={() => incrementItemCartHandler(food.id)}
         >
           <BiPlus />
@@ -54,7 +54,7 @@ const CartItem = ({ food }) => {
         </span>
         <button
           type="button"
-          className={`text-xs cursor-pointer border transition sm:text-sm md:text-base p-1 mx-2 rounded-full
+          className={`text-xs cursor-pointer border transition sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full
           ${
             food.quantity > 1
               ? "border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
@@ -74,7 +74,8 @@ const CartItem = ({ food }) => {
       <div className={`flex items-center justify-between`}>
         <button
           type="button"
-          className={`text-blue-400 text-xs sm:text-sm lg:text-lg xl:text-xl Dirooz border border-blue-400 hover:text-white hover:bg-blue-400 transition rounded-md py-1 px-2 md:px-5 ml-1 md:ml-5`}
+          className={`text-blue-400 text-xs sm:text-sm lg:text-lg xl:text-xl Dirooz border border-blue-400 
+          hover:text-white hover:bg-blue-400 transition rounded-md py-1 px-1 sm:px-2 md:px-5 ml-1 md:ml-5`}
           onClick={() =>
             buyOneItemCartHandler({
               name: food.title,
@@ -86,7 +87,7 @@ const CartItem = ({ food }) => {
           پرداخت
         </button>
         <button
-          className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
+          className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full
         border border-red-600 text-red-600 hover:bg-red-600 transition hover:text-white`}
           type="button"
           onClick={() => deleteItemCartHandler(food.id)}
