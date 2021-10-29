@@ -47,9 +47,18 @@ export const fetchCartItem = (item) => {
     dispatch(fetchProductItemRequset());
     try {
       const { data } = await getOneProduct(item.id);
-      dispatch(fetchProductItemSuccess({ ...data, quantity: item.count }));
+      dispatch(
+        fetchProductItemSuccess({
+          ...data,
+          quantity: item.quantity,
+          finalPrice: data.off
+            ? (data.price - (data.off * data.price) / 100) * item.quantity
+            : data.price * item.quantity,
+        })
+      );
     } catch (error) {
       dispatch(fetchProductItemFailure(error.message));
     }
+    dispatch(caclTotalPrice());
   };
 };

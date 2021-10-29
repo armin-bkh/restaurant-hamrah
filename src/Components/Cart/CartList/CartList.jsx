@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import CartItem from "../CartItem/CartItem";
 import { BiCartAlt } from "react-icons/bi";
 import { numberWithCommas } from "../../utils/CommaNumber";
@@ -10,16 +10,24 @@ import {
   useTotalPrice,
 } from "../../../Container/ReservationProvider";
 import Rate from "../../Rating/Rating";
+import { useSelector } from "react-redux";
 
 const CartList = () => {
   // const paid = usePaid();
   // const cart = useCart();
   // const { submitCartHandler, buyCartHandler } = useReservatioActions();
   // const totalPrice = useTotalPrice();
+  const cart = useSelector((state) => state.cart);
+  const paid = useSelector((state) => state.paid);
+  const totalPrice = useSelector((state) => state.totalPrice);
 
+  useEffect(() => {
+    console.log(cart);
+    console.log(totalPrice);
+  }, [cart]);
   const submitHandler = (e) => {
     e.preventDefault();
-    submitCartHandler(cart);
+    // submitCartHandler(cart);
   };
 
   return !paid ? (
@@ -60,7 +68,7 @@ const CartList = () => {
             <button
               type="button"
               className={`px-5 py-2 Dirooz text-sm text-blue-400 border border-blue-400 hover:text-white hover:bg-blue-400 transition rounded-md md:text-md lg:text-lg xl:text-xl`}
-              onClick={() => buyCartHandler(cart)}
+              // onClick={() => buyCartHandler(cart)}
             >
               پرداخت
             </button>
