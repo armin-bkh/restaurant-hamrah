@@ -42,8 +42,7 @@ const CartItem = ({ food }) => {
         </span>
         <button
           type="button"
-          className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
-          gradient-bottom cursor-pointer text-white`}
+          className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full transition hover:bg-blue-400 hover:text-white border cursor-pointer border-blue-400 text-blue-400`}
           onClick={() => incrementItemCartHandler(food.id)}
         >
           <BiPlus />
@@ -55,8 +54,12 @@ const CartItem = ({ food }) => {
         </span>
         <button
           type="button"
-          className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
-          gradient-bottom cursor-pointer text-white`}
+          className={`text-xs cursor-pointer border transition sm:text-sm md:text-base p-1 mx-2 rounded-full
+          ${
+            food.quantity > 1
+              ? "border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
+              : "border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
+          }`}
           onClick={() => decrementItemCartHandler(food.id)}
         >
           {food.quantity > 1 ? <BiMinus /> : <BiTrash />}
@@ -84,7 +87,7 @@ const CartItem = ({ food }) => {
         </button>
         <button
           className={`text-xs sm:text-sm md:text-base p-1 mx-2 rounded-full
-        gradient-bottom text-white`}
+        border border-red-600 text-red-600 hover:bg-red-600 transition hover:text-white`}
           type="button"
           onClick={() => deleteItemCartHandler(food.id)}
         >
