@@ -5,11 +5,14 @@ import { numberWithCommas } from "../../utils/CommaNumber";
 import "../../../scss/main.scss";
 import {
   useCart,
+  usePaid,
   useReservatioActions,
   useTotalPrice,
 } from "../../../Container/ReservationProvider";
+import Rate from "../../Rating/Rating";
 
 const CartList = () => {
+  const paid = usePaid();
   const cart = useCart();
   const { submitCartHandler, buyCartHandler } = useReservatioActions();
   const totalPrice = useTotalPrice();
@@ -19,7 +22,7 @@ const CartList = () => {
     submitCartHandler(cart);
   };
 
-  return (
+  return !paid ? (
     <section className={`mx-6 p-6 bgLight rounded-md`}>
       {!cart.length ? (
         <header
@@ -65,6 +68,8 @@ const CartList = () => {
         </form>
       )}
     </section>
+  ) : (
+    <Rate />
   );
 };
 

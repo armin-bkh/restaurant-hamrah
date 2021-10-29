@@ -89,7 +89,53 @@
       "off": "30"
     }
   ],
-  "cart": [],
+  "cart": [
+    [
+      {
+        "id": 4,
+        "title": "سالاد",
+        "price": "22000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
+        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
+        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
+        "filter": "سالاد",
+        "pin": false,
+        "off": "40",
+        "quantity": 2,
+        "finalPrice": 26400
+      }
+    ],
+    [
+      {
+        "id": 3,
+        "title": "سالاد گوجه خیار",
+        "price": "12000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
+        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
+        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
+        "filter": "سالاد",
+        "pin": false,
+        "off": "5",
+        "quantity": 1,
+        "finalPrice": 11400
+      }
+    ],
+    [
+      {
+        "id": 3,
+        "title": "سالاد گوجه خیار",
+        "price": "12000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
+        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
+        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
+        "filter": "سالاد",
+        "pin": false,
+        "off": "5",
+        "quantity": 2,
+        "finalPrice": 22800
+      }
+    ]
+  ],
   "tables": [
     {
       "id": 1,

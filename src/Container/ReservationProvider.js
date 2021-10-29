@@ -11,6 +11,7 @@ import { useToasts } from "react-toast-notifications";
 let initialState = {
   cart: [],
   totalPrice: 0,
+  paid: false,
   notification: "",
   productId: "",
 };
@@ -89,7 +90,7 @@ const reducer = (state, action) => {
     }
     case "submitCart": {
       console.log(state.cart, state.totalPrice);
-      return { ...state, cart: [], totalPrice: 0 };
+      return { ...state, cart: [], totalPrice: 0, paid: true };
     }
     case "calcTotalPrice": {
       const cartItemsPrice = state.cart.map((item) => item.finalPrice);
@@ -111,7 +112,10 @@ const reducer = (state, action) => {
     }
     case "buyCart": {
       console.log(action.value, state.totalPrice);
-      return { ...state, cart: [], totalPrice: 0 };
+      return { ...state, cart: [], totalPrice: 0, paid: true };
+    }
+    case "remainReservation": {
+      return { ...state, paid: false };
     }
     default:
       return state;
@@ -153,7 +157,7 @@ export const useCart = () => {
 };
 export const useProductId = () => {
   const { productId } = useContext(ReservationContext);
-  return { productId };
+  return productId;
 };
 export const useReservatioActions = () => {
   const dispatch = useContext(ReservationDispatcherContext);
@@ -243,6 +247,10 @@ export const useReservatioActions = () => {
     });
   };
 
+  const remainReservation = () => {
+    dispatch({ type: "remainReservation" });
+  };
+
   return {
     addToCartHandler,
     deleteItemCartHandler,
@@ -252,9 +260,14 @@ export const useReservatioActions = () => {
     toShowHandler,
     buyOneItemCartHandler,
     buyCartHandler,
+    remainReservation,
   };
 };
 export const useTotalPrice = () => {
   const { totalPrice } = useContext(ReservationContext);
   return totalPrice;
+};
+export const usePaid = () => {
+  const { paid } = useContext(ReservationContext);
+  return paid;
 };
