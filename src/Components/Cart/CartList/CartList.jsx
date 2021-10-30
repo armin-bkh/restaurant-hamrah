@@ -14,13 +14,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { caclTotalPrice } from "../../../Redux/Reservation/reservationActions";
 
 const CartList = () => {
-  // const paid = usePaid();
-  // const cart = useCart();
-  // const { submitCartHandler, buyCartHandler } = useReservatioActions();
-  // const totalPrice = useTotalPrice();
-  const cart = useSelector((state) => state.cart);
-  const paid = useSelector((state) => state.paid);
-  const totalPrice = useSelector((state) => state.totalPrice);
+  const { cart, paid, totalPrice } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   useEffect(() => {

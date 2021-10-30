@@ -140,12 +140,12 @@ const ReservationProvider = ({ children }) => {
   }, [reservationData.notification]);
 
   return (
-    // <ReservationContext.Provider value={reservationData}>
-    //   <ReservationDispatcherContext.Provider value={dispatch}>
-    //     {children}
-    //   </ReservationDispatcherContext.Provider>
-    // </ReservationContext.Provider>
-    <Provider store={store}>{children}</Provider>
+    <ReservationContext.Provider value={reservationData}>
+      <ReservationDispatcherContext.Provider value={dispatch}>
+        {children}
+      </ReservationDispatcherContext.Provider>
+    </ReservationContext.Provider>
+    // <Provider store={store}>{children}</Provider>
   );
 };
 

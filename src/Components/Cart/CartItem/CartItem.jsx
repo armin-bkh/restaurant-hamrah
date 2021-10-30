@@ -1,8 +1,7 @@
 import { useEffect } from "react";
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useToasts } from "react-toast-notifications";
-import { useReservatioActions } from "../../../Container/ReservationProvider";
 import {
   decrementCartItem,
   deleteCartItem,
@@ -11,7 +10,6 @@ import {
 import { numberWithCommas } from "../../utils/CommaNumber";
 
 const CartItem = ({ food }) => {
-  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const { addToast } = useToasts();
 

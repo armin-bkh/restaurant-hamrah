@@ -5,11 +5,9 @@ import { useDispatch } from "react-redux";
 import { setProductId } from "../../Redux/Reservation/reservationActions";
 
 const Product = ({ inf, onPin }) => {
-  // const { toShowHandler } = useReservatioActions();
   const dispatch = useDispatch();
 
   const clickHandler = () => {
-    // toShowHandler(inf.id);
     dispatch(setProductId(inf.id));
   };
 
