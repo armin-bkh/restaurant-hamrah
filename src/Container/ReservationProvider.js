@@ -8,6 +8,8 @@ import { postCart } from "../Services/postCart";
 import { getOneProduct } from "../Services/getOneProduct";
 import { useToasts } from "react-toast-notifications";
 
+// its useContext and useRedercer branch
+
 let initialState = {
   cart: [],
   totalPrice: 0,
