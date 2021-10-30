@@ -1,16 +1,23 @@
 import { getOneProduct } from "../../Services/getOneProduct";
+import { postCart } from "../../Services/postCart";
 import {
+  ACCEPT_PAID,
   CALC_TOTALPRICE,
+  CHECK_IS_PAID,
   DECREMENT_CART_ITEM,
   DELETE_CART_ITEM,
   FETCH_PRODUCT_ITEM_FAILURE,
   FETCH_PRODUCT_ITEM_REQUEST,
   FETCH_PRODUCT_ITEM_SUCCESS,
   INCREMENT_CART_ITEM,
+  PAY_CART_FAILURE,
+  PAY_CART_REQUEST,
+  PAY_CART_SUCCESS,
   POST_CART_FAILURE,
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
   POST_ITEM_CART,
+  REMAIN_RESERV,
   SET_PRODUCT_ID,
 } from "./reservationTypes";
 
@@ -46,6 +53,18 @@ export const postCartSuccess = () => {
   return { type: POST_CART_SUCCESS };
 };
 
+export const payCartRequest = () => {
+  return { type: PAY_CART_REQUEST };
+};
+
+export const payCartFailure = (payload) => {
+  return { type: PAY_CART_FAILURE, payload };
+};
+
+export const payCartSuccess = () => {
+  return { type: PAY_CART_SUCCESS };
+};
+
 export const incrementCartItem = (payload) => {
   return { type: INCREMENT_CART_ITEM, payload };
 };
@@ -58,8 +77,16 @@ export const deleteCartItem = (payload) => {
   return { type: DELETE_CART_ITEM, payload };
 };
 
+export const remainReserv = () => {
+  return { type: REMAIN_RESERV };
+};
+
 export const postItemCart = (payload) => {
   return { type: POST_ITEM_CART, payload };
+};
+
+export const acceptPaid = () => {
+  return { type: ACCEPT_PAID };
 };
 
 export const fetchCartItem = (item) => {
@@ -78,6 +105,30 @@ export const fetchCartItem = (item) => {
       );
     } catch (error) {
       dispatch(fetchProductItemFailure(error.message));
+    }
+  };
+};
+
+export const payCart = (cart) => {
+  return async (dispatch) => {
+    dispatch(payCartRequest());
+    try {
+      await postCart(cart);
+      dispatch(payCartSuccess());
+    } catch (error) {
+      dispatch(payCartFailure(error.message));
+    }
+  };
+};
+
+export const submitCart = (cart) => {
+  return async (dispatch) => {
+    dispatch(postCartRequest());
+    try {
+      await postCart(cart);
+      dispatch(postCartSuccess());
+    } catch (error) {
+      dispatch(postCartFailure(error.message));
     }
   };
 };

@@ -3,15 +3,13 @@ import CartItem from "../CartItem/CartItem";
 import { BiCartAlt } from "react-icons/bi";
 import { numberWithCommas } from "../../utils/CommaNumber";
 import "../../../scss/main.scss";
-import {
-  useCart,
-  usePaid,
-  useReservatioActions,
-  useTotalPrice,
-} from "../../../Container/ReservationProvider";
 import Rate from "../../Rating/Rating";
 import { useDispatch, useSelector } from "react-redux";
-import { caclTotalPrice } from "../../../Redux/Reservation/reservationActions";
+import {
+  caclTotalPrice,
+  payCart,
+  submitCart,
+} from "../../../Redux/Reservation/reservationActions";
 
 const CartList = () => {
   const { cart, paid, totalPrice } = useSelector((state) => state);
@@ -23,7 +21,7 @@ const CartList = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    // submitCartHandler(cart);
+    dispatch(submitCart(cart));
   };
 
   return !paid ? (
@@ -64,7 +62,7 @@ const CartList = () => {
             <button
               type="button"
               className={`px-5 py-2 Dirooz text-sm text-blue-400 border border-blue-400 hover:text-white hover:bg-blue-400 transition rounded-md md:text-md lg:text-lg xl:text-xl`}
-              // onClick={() => buyCartHandler(cart)}
+              onClick={() => dispatch(payCart(cart))}
             >
               پرداخت
             </button>

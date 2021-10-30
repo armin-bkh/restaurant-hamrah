@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
 import { useDispatch } from "react-redux";
 import { useToasts } from "react-toast-notifications";
@@ -11,6 +11,7 @@ import {
 import { numberWithCommas } from "../../utils/CommaNumber";
 
 const CartItem = ({ food }) => {
+  const [isPaid, setIsPaid] = useState(false);
   const dispatch = useDispatch();
   const { addToast } = useToasts();
   const price = food.off
@@ -19,7 +20,7 @@ const CartItem = ({ food }) => {
 
   useEffect(() => {
     return () => {
-      addToast("از سبد خرید حذف شد", { appearance: "success" });
+      if (!isPaid) addToast("از سبد خرید حذف شد", { appearance: "success" });
     };
   }, []);
 
@@ -36,6 +37,7 @@ const CartItem = ({ food }) => {
   };
 
   const buyItemCartHandler = () => {
+    setIsPaid(true);
     dispatch(postItemCart(food));
   };
 

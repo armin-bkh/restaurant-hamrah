@@ -1,16 +1,22 @@
 import Swal from "sweetalert2";
 import {
+  ACCEPT_PAID,
   CALC_TOTALPRICE,
+  CHECK_IS_PAID,
   DECREMENT_CART_ITEM,
   DELETE_CART_ITEM,
   FETCH_PRODUCT_ITEM_FAILURE,
   FETCH_PRODUCT_ITEM_REQUEST,
   FETCH_PRODUCT_ITEM_SUCCESS,
   INCREMENT_CART_ITEM,
+  PAY_CART_FAILURE,
+  PAY_CART_REQUEST,
+  PAY_CART_SUCCESS,
   POST_CART_FAILURE,
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
   POST_ITEM_CART,
+  REMAIN_RESERV,
   SET_PRODUCT_ID,
 } from "./reservationTypes";
 
@@ -90,13 +96,40 @@ const reservationReducer = (state = initialState, action) => {
       return { ...state, totalPrice };
     }
     case POST_CART_REQUEST: {
-      return state;
+      return { ...state, loading: true };
     }
     case POST_CART_FAILURE: {
-      return state;
+      return { ...state, loading: false, error: action.payload };
     }
     case POST_CART_SUCCESS: {
-      return state;
+      Swal.fire({
+        title: "ثبت گردید",
+        text: "سفارش شما با موفقیت ثبت گردید",
+        icon: "success",
+        confirmButtonText: "تایید",
+        showCloseButton: true,
+        timer: 10000,
+        backdrop: true,
+      });
+      return { ...state, loading: false, cart: [], paid: true };
+    }
+    case PAY_CART_REQUEST: {
+      return { ...state, loading: true };
+    }
+    case PAY_CART_FAILURE: {
+      return { ...state, loading: false, error: action.payload };
+    }
+    case PAY_CART_SUCCESS: {
+      Swal.fire({
+        title: "پرداخت شد",
+        text: `تراکنش با موفقیت انجام شد`,
+        icon: "success",
+        confirmButtonText: "تایید",
+        showCloseButton: true,
+        timer: 10000,
+        backdrop: true,
+      });
+      return { ...state, loading: false, cart: [], paid: true };
     }
     case POST_ITEM_CART: {
       Swal.fire({
@@ -110,10 +143,17 @@ const reservationReducer = (state = initialState, action) => {
         timer: 10000,
         backdrop: true,
       });
+      const filteredCart = state.cart.filter(
+        (item) => item.id !== action.payload.id
+      );
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload.id),
+        cart: filteredCart,
+        paid: !filteredCart.length && true,
       };
+    }
+    case REMAIN_RESERV: {
+      return { ...state, paid: false };
     }
     default:
       return state;
