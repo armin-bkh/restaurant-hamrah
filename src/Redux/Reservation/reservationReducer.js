@@ -1,3 +1,4 @@
+import Swal from "sweetalert2";
 import {
   CALC_TOTALPRICE,
   DECREMENT_CART_ITEM,
@@ -9,6 +10,7 @@ import {
   POST_CART_FAILURE,
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
+  POST_ITEM_CART,
   SET_PRODUCT_ID,
 } from "./reservationTypes";
 
@@ -95,6 +97,23 @@ const reservationReducer = (state = initialState, action) => {
     }
     case POST_CART_SUCCESS: {
       return state;
+    }
+    case POST_ITEM_CART: {
+      Swal.fire({
+        title: "پرداخت شد",
+        text: `هزینه ${
+          action.payload.quantity > 1 ? `${action.payload.quantity} عدد` : ""
+        } ${action.payload.title} پرداخت شد`,
+        icon: "success",
+        confirmButtonText: "تایید",
+        showCloseButton: true,
+        timer: 10000,
+        backdrop: true,
+      });
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload.id),
+      };
     }
     default:
       return state;

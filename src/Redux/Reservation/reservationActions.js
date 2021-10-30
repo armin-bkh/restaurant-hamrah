@@ -10,6 +10,7 @@ import {
   POST_CART_FAILURE,
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
+  POST_ITEM_CART,
   SET_PRODUCT_ID,
 } from "./reservationTypes";
 
@@ -55,6 +56,10 @@ export const decrementCartItem = (payload) => {
 
 export const deleteCartItem = (payload) => {
   return { type: DELETE_CART_ITEM, payload };
+};
+
+export const postItemCart = (payload) => {
+  return { type: POST_ITEM_CART, payload };
 };
 
 export const fetchCartItem = (item) => {

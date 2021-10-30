@@ -6,21 +6,22 @@ import {
   decrementCartItem,
   deleteCartItem,
   incrementCartItem,
+  postItemCart,
 } from "../../../Redux/Reservation/reservationActions";
 import { numberWithCommas } from "../../utils/CommaNumber";
 
 const CartItem = ({ food }) => {
   const dispatch = useDispatch();
   const { addToast } = useToasts();
+  const price = food.off
+    ? food.price - (food.off * food.price) / 100
+    : food.price;
 
   useEffect(() => {
     return () => {
       addToast("از سبد خرید حذف شد", { appearance: "success" });
     };
   }, []);
-  const price = food.off
-    ? food.price - (food.off * food.price) / 100
-    : food.price;
 
   const incrementHandler = () => {
     dispatch(incrementCartItem(food.id));
@@ -32,6 +33,10 @@ const CartItem = ({ food }) => {
 
   const deleteHandler = () => {
     dispatch(deleteCartItem(food.id));
+  };
+
+  const buyItemCartHandler = () => {
+    dispatch(postItemCart(food));
   };
 
   return (
@@ -96,13 +101,7 @@ const CartItem = ({ food }) => {
           type="button"
           className={`text-blue-400 text-xs sm:text-sm lg:text-lg xl:text-xl Dirooz border border-blue-400 
           hover:text-white hover:bg-blue-400 transition rounded-md py-1 px-1 sm:px-2 md:px-5 ml-1 md:ml-5`}
-          // onClick={() =>
-          //   buyOneItemCartHandler({
-          //     name: food.title,
-          //     price: food.price * food.quantity,
-          //     qty: food.quantity,
-          //   })
-          // }
+          onClick={buyItemCartHandler}
         >
           پرداخت
         </button>
