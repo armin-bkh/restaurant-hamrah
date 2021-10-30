@@ -23,7 +23,7 @@ const CartList = () => {
   };
 
   return !paid ? (
-    <section className={`mx-6 p-6 bgLight rounded-md`}>
+    <section className={`mx-0 md:mx-6 p-3 md:p-6 bgLight rounded-md`}>
       {!cart.length ? (
         <header
           className={`flex items-center justify-center bg-clip-text
