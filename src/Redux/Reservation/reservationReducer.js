@@ -1,8 +1,6 @@
 import Swal from "sweetalert2";
 import {
-  ACCEPT_PAID,
   CALC_TOTALPRICE,
-  CHECK_IS_PAID,
   DECREMENT_CART_ITEM,
   DELETE_CART_ITEM,
   FETCH_PRODUCT_ITEM_FAILURE,
@@ -15,7 +13,6 @@ import {
   POST_CART_FAILURE,
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
-  POST_ITEM_CART,
   POST_ITEM_CART_FAILURE,
   POST_ITEM_CART_REQUEST,
   POST_ITEM_CART_SUCCESS,
@@ -27,10 +24,9 @@ const initialState = {
   cart: [],
   totalPrice: 0,
   paid: false,
-  notification: "",
   productId: "",
   loading: false,
-  error: false,
+  error: "",
 };
 
 const reservationReducer = (state = initialState, action) => {

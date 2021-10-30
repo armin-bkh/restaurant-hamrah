@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import {
   decrementCartItem,

@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { Provider } from "react-redux";
 import CartList from "../Components/Cart/CartList/CartList";
-import DisplyerContainer from "../Components/DisplayerContainer/DisplayerContainer";
+import Displayer from "../Components/Displayer/Displayer";
 import ProductList from "../Components/ProductList/ProductList";
-import Rate from "../Components/Rating/Rating";
 import store from "../Redux/store";
 
 const ReservationPage = () => {
@@ -14,7 +13,7 @@ const ReservationPage = () => {
   return (
     <Provider store={store}>
       <CartList />
-      <DisplyerContainer />
+      <Displayer />
       <ProductList />
     </Provider>
   );

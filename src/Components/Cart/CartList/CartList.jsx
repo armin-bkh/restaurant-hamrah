@@ -12,7 +12,9 @@ import {
 } from "../../../Redux/Reservation/reservationActions";
 
 const CartList = () => {
-  const { cart, paid, totalPrice } = useSelector((state) => state);
+  const { cart, paid, totalPrice, loading, error } = useSelector(
+    (state) => state
+  );
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -25,7 +27,7 @@ const CartList = () => {
   };
 
   return !paid ? (
-    <section className={`mx-6 p-6 bgLight rounded-md`}>
+    <section className={`mx-0 md:mx-6 p-3 md:p-6 bgLight rounded-md`}>
       {!cart.length ? (
         <header
           className={`flex items-center justify-center bg-clip-text
@@ -39,15 +41,15 @@ const CartList = () => {
       ) : (
         <form onSubmit={submitHandler}>
           <ul className={`mb-11`}>
-            {cart.map((item) => (
-              <CartItem key={item.id} food={item} />
-            ))}
+            {cart &&
+              cart.length &&
+              cart.map((item) => <CartItem key={item.id} food={item} />)}
           </ul>
           <h1
             className={`text-sm w-full md:text-md lg:text-lg xl:text-xl 
           Dirooz text-black`}
           >
-            مبلغ قابل پرداخت:{" "}
+            مبلغ قابل پرداخت:
             <span className={`Casablanca`}>{numberWithCommas(totalPrice)}</span>
             تومان
           </h1>

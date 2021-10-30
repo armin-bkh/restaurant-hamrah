@@ -142,7 +142,9 @@ const Displayer = () => {
   }
 
   return (
-    <section className={`mx-6 p-6 ${styles.displayerContainer}`}>
+    <section
+      className={`mx-0 md:mx-6 p-3 md:p-6  ${styles.displayerContainer}`}
+    >
       {returnValue}
     </section>
   );
