@@ -1,5 +1,7 @@
+import { useEffect } from "react";
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useToasts } from "react-toast-notifications";
 import { useReservatioActions } from "../../../Container/ReservationProvider";
 import {
   decrementCartItem,
@@ -9,18 +11,30 @@ import {
 import { numberWithCommas } from "../../utils/CommaNumber";
 
 const CartItem = ({ food }) => {
-  // const {
-  //   deleteItemCartHandler,
-  //   decrementItemCartHandler,
-  //   incrementItemCartHandler,
-  //   buyOneItemCartHandler,
-  // } = useReservatioActions();
-
+  const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const { addToast } = useToasts();
 
+  useEffect(() => {
+    return () => {
+      addToast("از سبد خرید حذف شد", { appearance: "success" });
+    };
+  }, []);
   const price = food.off
     ? food.price - (food.off * food.price) / 100
     : food.price;
+
+  const incrementHandler = () => {
+    dispatch(incrementCartItem(food.id));
+  };
+
+  const decrementHandler = () => {
+    dispatch(decrementCartItem(food.id));
+  };
+
+  const deleteHandler = () => {
+    dispatch(deleteCartItem(food.id));
+  };
 
   return (
     <li
@@ -51,7 +65,7 @@ const CartItem = ({ food }) => {
         <button
           type="button"
           className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full transition hover:bg-blue-400 hover:text-white border cursor-pointer border-blue-400 text-blue-400`}
-          onClick={() => dispatch(incrementCartItem(food.id))}
+          onClick={incrementHandler}
         >
           <BiPlus />
         </button>
@@ -68,7 +82,7 @@ const CartItem = ({ food }) => {
               ? "border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
               : "border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
           }`}
-          onClick={() => dispatch(decrementCartItem(food.id))}
+          onClick={decrementHandler}
         >
           {food.quantity > 1 ? <BiMinus /> : <BiTrash />}
         </button>
@@ -98,7 +112,7 @@ const CartItem = ({ food }) => {
           className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full
         border border-red-600 text-red-600 hover:bg-red-600 transition hover:text-white`}
           type="button"
-          onClick={() => dispatch(deleteCartItem(food.id))}
+          onClick={deleteHandler}
         >
           <BiTrash />
         </button>

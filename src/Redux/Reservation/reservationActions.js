@@ -74,6 +74,5 @@ export const fetchCartItem = (item) => {
     } catch (error) {
       dispatch(fetchProductItemFailure(error.message));
     }
-    dispatch(caclTotalPrice());
   };
 };

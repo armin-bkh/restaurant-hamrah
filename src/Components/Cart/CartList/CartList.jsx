@@ -10,7 +10,8 @@ import {
   useTotalPrice,
 } from "../../../Container/ReservationProvider";
 import Rate from "../../Rating/Rating";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { caclTotalPrice } from "../../../Redux/Reservation/reservationActions";
 
 const CartList = () => {
   // const paid = usePaid();
@@ -20,11 +21,12 @@ const CartList = () => {
   const cart = useSelector((state) => state.cart);
   const paid = useSelector((state) => state.paid);
   const totalPrice = useSelector((state) => state.totalPrice);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    console.log(cart);
-    console.log(totalPrice);
+    dispatch(caclTotalPrice());
   }, [cart]);
+
   const submitHandler = (e) => {
     e.preventDefault();
     // submitCartHandler(cart);

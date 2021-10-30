@@ -7,18 +7,24 @@ import DisplayerLoadingSkeleton from "../LoadingSkeleton/DisplayerLoadingSkeleto
 import { useReservatioActions } from "../../Container/ReservationProvider";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartItem } from "../../Redux/Reservation/reservationActions";
+import { useToasts } from "react-toast-notifications";
 
 const Displayer = () => {
-  // const { addToCartHandler } = useReservatioActions();
   const dispatch = useDispatch();
   const productId = useSelector((state) => state.productId);
+  const cart = useSelector((state) => state.cart);
   const [product, setProduct] = useState("");
   const [count, setCount] = useState(1);
   const [error, setError] = useState(false);
+  const { addToast } = useToasts();
 
   const clickHandler = () => {
-    // addToCartHandler({ id: product.id, quantity: count });
-    dispatch(fetchCartItem({ id: productId, quantity: count }));
+    if (!cart.some((item) => item.id === productId)) {
+      dispatch(fetchCartItem({ id: productId, quantity: count }));
+      addToast("به سبد خرید اضافه شد", { appearance: "success" });
+    } else {
+      addToast("در سبد خرید وجود دارد", { appearance: "error" });
+    }
     setCount(1);
   };
 
