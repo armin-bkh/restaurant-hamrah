@@ -1,4 +1,3 @@
-import { useReservatioActions } from "../../Container/ReservationProvider";
 import { BiPin } from "react-icons/bi";
 import styles from "./Products.module.scss";
 import { useDispatch } from "react-redux";

@@ -1,44 +1,39 @@
 import { useEffect, useState } from "react";
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useToasts } from "react-toast-notifications";
 import {
   decrementCartItem,
   deleteCartItem,
   incrementCartItem,
-  postItemCart,
+  payItemCart,
 } from "../../../Redux/Reservation/reservationActions";
 import { numberWithCommas } from "../../utils/CommaNumber";
 
 const CartItem = ({ food }) => {
-  const [isPaid, setIsPaid] = useState(false);
   const dispatch = useDispatch();
   const { addToast } = useToasts();
   const price = food.off
     ? food.price - (food.off * food.price) / 100
     : food.price;
 
-  useEffect(() => {
-    return () => {
-      if (!isPaid) addToast("از سبد خرید حذف شد", { appearance: "success" });
-    };
-  }, []);
-
   const incrementHandler = () => {
     dispatch(incrementCartItem(food.id));
   };
 
   const decrementHandler = () => {
+    if (food.quantity === 1)
+      addToast("از سبد خرید حذف شد", { appearance: "success" });
     dispatch(decrementCartItem(food.id));
   };
 
   const deleteHandler = () => {
     dispatch(deleteCartItem(food.id));
+    addToast("از سبد خرید حذف شد", { appearance: "success" });
   };
 
   const buyItemCartHandler = () => {
-    setIsPaid(true);
-    dispatch(postItemCart(food));
+    dispatch(payItemCart(food));
   };
 
   return (

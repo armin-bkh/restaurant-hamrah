@@ -16,6 +16,9 @@ import {
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
   POST_ITEM_CART,
+  POST_ITEM_CART_FAILURE,
+  POST_ITEM_CART_REQUEST,
+  POST_ITEM_CART_SUCCESS,
   REMAIN_RESERV,
   SET_PRODUCT_ID,
 } from "./reservationTypes";
@@ -131,7 +134,20 @@ const reservationReducer = (state = initialState, action) => {
       });
       return { ...state, loading: false, cart: [], paid: true };
     }
-    case POST_ITEM_CART: {
+    case POST_ITEM_CART_REQUEST: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+    case POST_ITEM_CART_FAILURE: {
+      return {
+        ...state,
+        loading: false,
+        error: action.payload,
+      };
+    }
+    case POST_ITEM_CART_SUCCESS: {
       Swal.fire({
         title: "پرداخت شد",
         text: `هزینه ${
@@ -148,6 +164,8 @@ const reservationReducer = (state = initialState, action) => {
       );
       return {
         ...state,
+        loading: false,
+        error: "",
         cart: filteredCart,
         paid: !filteredCart.length && true,
       };

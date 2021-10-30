@@ -92,6 +92,66 @@
   "cart": [
     [
       {
+        "id": 5,
+        "title": "پیتزا مخصوص",
+        "price": "50000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
+        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
+        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
+        "filter": "پیتزا",
+        "pin": false,
+        "off": "12",
+        "quantity": 3,
+        "finalPrice": 132000
+      }
+    ],
+    [
+      {
+        "id": 6,
+        "title": "پیتزا ایتالیایی",
+        "price": "74000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
+        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
+        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
+        "filter": "سرد",
+        "pin": false,
+        "off": "24",
+        "quantity": 1,
+        "finalPrice": 56240
+      }
+    ],
+    [
+      {
+        "id": 5,
+        "title": "پیتزا مخصوص",
+        "price": "50000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
+        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
+        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
+        "filter": "پیتزا",
+        "pin": false,
+        "off": "12",
+        "quantity": 3,
+        "finalPrice": 132000
+      }
+    ],
+    [
+      {
+        "id": 4,
+        "title": "سالاد",
+        "price": "22000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
+        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
+        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
+        "filter": "سالاد",
+        "pin": false,
+        "off": "40",
+        "quantity": 4,
+        "finalPrice": 52800
+      }
+    ],
+    [
+      {
         "id": 4,
         "title": "سالاد",
         "price": "22000",
@@ -103,6 +163,36 @@
         "off": "40",
         "quantity": 3,
         "finalPrice": 39600
+      }
+    ],
+    [
+      {
+        "id": 4,
+        "title": "سالاد",
+        "price": "22000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
+        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
+        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
+        "filter": "سالاد",
+        "pin": false,
+        "off": "40",
+        "quantity": 5,
+        "finalPrice": 66000
+      }
+    ],
+    [
+      {
+        "id": 4,
+        "title": "سالاد",
+        "price": "22000",
+        "information": "سالاد مرغ یک غذای بسیار سبک و مناسب برای افرادی است  که در رژیم هستند یا اهل غذا های سنگین نیستندو به سفره ی شما زینت میبخشد",
+        "materials": "سینه مرغ، هویج، سبزی تازه و آبلیمو",
+        "img": "https://freepngimg.com/thumb/burger/5-2-burger-png.png",
+        "filter": "سالاد",
+        "pin": false,
+        "off": "40",
+        "quantity": 2,
+        "finalPrice": 26400
       }
     ]
   ],

@@ -17,6 +17,9 @@ import {
   POST_CART_REQUEST,
   POST_CART_SUCCESS,
   POST_ITEM_CART,
+  POST_ITEM_CART_FAILURE,
+  POST_ITEM_CART_REQUEST,
+  POST_ITEM_CART_SUCCESS,
   REMAIN_RESERV,
   SET_PRODUCT_ID,
 } from "./reservationTypes";
@@ -81,10 +84,17 @@ export const remainReserv = () => {
   return { type: REMAIN_RESERV };
 };
 
-export const postItemCart = (payload) => {
-  return { type: POST_ITEM_CART, payload };
+export const postItemCartRequest = () => {
+  return { type: POST_ITEM_CART_REQUEST };
 };
 
+export const postItemCartFailure = (payload) => {
+  return { type: POST_ITEM_CART_FAILURE, payload };
+};
+
+export const postItemCartSuccess = (payload) => {
+  return { type: POST_ITEM_CART_SUCCESS, payload };
+};
 export const acceptPaid = () => {
   return { type: ACCEPT_PAID };
 };
@@ -117,6 +127,18 @@ export const payCart = (cart) => {
       dispatch(payCartSuccess());
     } catch (error) {
       dispatch(payCartFailure(error.message));
+    }
+  };
+};
+
+export const payItemCart = (item) => {
+  return async (dispatch) => {
+    dispatch(postItemCartRequest());
+    try {
+      await postCart([item]);
+      dispatch(postItemCartSuccess(item));
+    } catch (error) {
+      dispatch(postItemCartFailure(error.message));
     }
   };
 };
