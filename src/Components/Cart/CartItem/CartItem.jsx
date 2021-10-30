@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useReservatioActions } from "../../../Container/ReservationProvider";
 import {
   decrementCartItem,
+  deleteCartItem,
   incrementCartItem,
 } from "../../../Redux/Reservation/reservationActions";
 import { numberWithCommas } from "../../utils/CommaNumber";
@@ -97,7 +98,7 @@ const CartItem = ({ food }) => {
           className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full
         border border-red-600 text-red-600 hover:bg-red-600 transition hover:text-white`}
           type="button"
-          // onClick={() => deleteItemCartHandler(food.id)}
+          onClick={() => dispatch(deleteCartItem(food.id))}
         >
           <BiTrash />
         </button>

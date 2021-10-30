@@ -1,6 +1,7 @@
 import {
   CALC_TOTALPRICE,
   DECREMENT_CART_ITEM,
+  DELETE_CART_ITEM,
   FETCH_PRODUCT_ITEM_FAILURE,
   FETCH_PRODUCT_ITEM_REQUEST,
   FETCH_PRODUCT_ITEM_SUCCESS,
@@ -71,6 +72,12 @@ const reservationReducer = (state = initialState, action) => {
         : selectedCartItem.price * selectedCartItem.quantity;
       cloneCart[index] = selectedCartItem;
       return { ...state, cart: cloneCart };
+    }
+    case DELETE_CART_ITEM: {
+      return {
+        ...state,
+        cart: state.cart.filter((item) => item.id !== action.payload),
+      };
     }
     case CALC_TOTALPRICE: {
       const cartItemsPrice = state.cart.map((item) => item.finalPrice);

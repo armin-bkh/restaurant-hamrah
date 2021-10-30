@@ -2,6 +2,7 @@ import { getOneProduct } from "../../Services/getOneProduct";
 import {
   CALC_TOTALPRICE,
   DECREMENT_CART_ITEM,
+  DELETE_CART_ITEM,
   FETCH_PRODUCT_ITEM_FAILURE,
   FETCH_PRODUCT_ITEM_REQUEST,
   FETCH_PRODUCT_ITEM_SUCCESS,
@@ -50,6 +51,10 @@ export const incrementCartItem = (payload) => {
 
 export const decrementCartItem = (payload) => {
   return { type: DECREMENT_CART_ITEM, payload };
+};
+
+export const deleteCartItem = (payload) => {
+  return { type: DELETE_CART_ITEM, payload };
 };
 
 export const fetchCartItem = (item) => {
