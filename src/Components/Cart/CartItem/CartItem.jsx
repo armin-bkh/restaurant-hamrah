@@ -1,18 +1,39 @@
 import { BiPlus, BiMinus, BiTrash } from "react-icons/bi";
-import { useReservatioActions } from "../../../Container/ReservationProvider";
+import { useDispatch } from "react-redux";
+import { useToasts } from "react-toast-notifications";
+import {
+  decrementCartItem,
+  deleteCartItem,
+  incrementCartItem,
+  payItemCart,
+} from "../../../Redux/Reservation/reservationActions";
 import { numberWithCommas } from "../../utils/CommaNumber";
 
 const CartItem = ({ food }) => {
-  const {
-    deleteItemCartHandler,
-    decrementItemCartHandler,
-    incrementItemCartHandler,
-    buyOneItemCartHandler,
-  } = useReservatioActions();
-
+  const dispatch = useDispatch();
+  const { addToast } = useToasts();
   const price = food.off
     ? food.price - (food.off * food.price) / 100
     : food.price;
+
+  const incrementHandler = () => {
+    dispatch(incrementCartItem(food.id));
+  };
+
+  const decrementHandler = () => {
+    if (food.quantity === 1)
+      addToast("از سبد خرید حذف شد", { appearance: "success" });
+    dispatch(decrementCartItem(food.id));
+  };
+
+  const deleteHandler = () => {
+    dispatch(deleteCartItem(food.id));
+    addToast("از سبد خرید حذف شد", { appearance: "success" });
+  };
+
+  const buyItemCartHandler = () => {
+    dispatch(payItemCart(food));
+  };
 
   return (
     <li
@@ -43,7 +64,7 @@ const CartItem = ({ food }) => {
         <button
           type="button"
           className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full transition hover:bg-blue-400 hover:text-white border cursor-pointer border-blue-400 text-blue-400`}
-          onClick={() => incrementItemCartHandler(food.id)}
+          onClick={incrementHandler}
         >
           <BiPlus />
         </button>
@@ -60,7 +81,7 @@ const CartItem = ({ food }) => {
               ? "border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
               : "border-red-600 text-red-600 hover:bg-red-600 hover:text-white"
           }`}
-          onClick={() => decrementItemCartHandler(food.id)}
+          onClick={decrementHandler}
         >
           {food.quantity > 1 ? <BiMinus /> : <BiTrash />}
         </button>
@@ -76,13 +97,7 @@ const CartItem = ({ food }) => {
           type="button"
           className={`text-blue-400 text-xs sm:text-sm lg:text-lg xl:text-xl Dirooz border border-blue-400 
           hover:text-white hover:bg-blue-400 transition rounded-md py-1 px-1 sm:px-2 md:px-5 ml-1 md:ml-5`}
-          onClick={() =>
-            buyOneItemCartHandler({
-              name: food.title,
-              price: food.price * food.quantity,
-              qty: food.quantity,
-            })
-          }
+          onClick={buyItemCartHandler}
         >
           پرداخت
         </button>
@@ -90,7 +105,7 @@ const CartItem = ({ food }) => {
           className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full
         border border-red-600 text-red-600 hover:bg-red-600 transition hover:text-white`}
           type="button"
-          onClick={() => deleteItemCartHandler(food.id)}
+          onClick={deleteHandler}
         >
           <BiTrash />
         </button>

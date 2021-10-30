@@ -1,10 +1,11 @@
 import { Rating } from "@mui/material";
 import { useState } from "react";
-import { useReservatioActions } from "../../Container/ReservationProvider";
+import { useDispatch } from "react-redux";
+import { remainReserv } from "../../Redux/Reservation/reservationActions";
 
 const Rate = () => {
   const [range, setRange] = useState(0);
-  const { remainReservation } = useReservatioActions();
+  const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
     console.log(range);
@@ -30,7 +31,7 @@ const Rate = () => {
       </div>
       <div className={`flex w-full`}>
         <button
-          onClick={remainReservation}
+          onClick={() => dispatch(remainReserv())}
           type="button"
           className={`py-2 text-sm Casablanca mt-3 gradient flex-1 text-white rounded-md`}
         >

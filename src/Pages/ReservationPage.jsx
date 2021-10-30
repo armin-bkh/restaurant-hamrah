@@ -1,9 +1,9 @@
 import { useEffect } from "react";
+import { Provider } from "react-redux";
 import CartList from "../Components/Cart/CartList/CartList";
-import DisplyerContainer from "../Components/DisplayerContainer/DisplayerContainer";
+import Displayer from "../Components/Displayer/Displayer";
 import ProductList from "../Components/ProductList/ProductList";
-import Rate from "../Components/Rating/Rating";
-import ReservationProvider, { usePaid } from "../Container/ReservationProvider";
+import store from "../Redux/store";
 
 const ReservationPage = () => {
   useEffect(() => {
@@ -11,11 +11,11 @@ const ReservationPage = () => {
   }, []);
 
   return (
-    <ReservationProvider>
+    <Provider store={store}>
       <CartList />
-      <DisplyerContainer />
+      <Displayer />
       <ProductList />
-    </ReservationProvider>
+    </Provider>
   );
 };
 

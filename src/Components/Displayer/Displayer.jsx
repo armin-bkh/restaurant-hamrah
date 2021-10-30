@@ -4,16 +4,26 @@ import { numberWithCommas } from "../utils/CommaNumber";
 import { useEffect, useState } from "react";
 import { getOneProduct } from "../../Services/getOneProduct";
 import DisplayerLoadingSkeleton from "../LoadingSkeleton/DisplayerLoadingSkeleton/DisplayerLoadingSkeleton";
-import { useReservatioActions } from "../../Container/ReservationProvider";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCartItem } from "../../Redux/Reservation/reservationActions";
+import { useToasts } from "react-toast-notifications";
 
-const Displayer = ({ productId }) => {
-  const { addToCartHandler } = useReservatioActions();
+const Displayer = () => {
+  const dispatch = useDispatch();
+  const productId = useSelector((state) => state.productId);
+  const cart = useSelector((state) => state.cart);
   const [product, setProduct] = useState("");
   const [count, setCount] = useState(1);
   const [error, setError] = useState(false);
+  const { addToast } = useToasts();
 
   const clickHandler = () => {
-    addToCartHandler({ id: product.id, quantity: count });
+    if (!cart.some((item) => item.id === productId)) {
+      dispatch(fetchCartItem({ id: productId, quantity: count }));
+      addToast("به سبد خرید اضافه شد", { appearance: "success" });
+    } else {
+      addToast("در سبد خرید وجود دارد", { appearance: "error" });
+    }
     setCount(1);
   };
 
@@ -132,7 +142,9 @@ const Displayer = ({ productId }) => {
   }
 
   return (
-    <section className={`mx-0 md:mx-6 p-3 md:p-6 ${styles.displayerContainer}`}>
+    <section
+      className={`mx-0 md:mx-6 p-3 md:p-6  ${styles.displayerContainer}`}
+    >
       {returnValue}
     </section>
   );

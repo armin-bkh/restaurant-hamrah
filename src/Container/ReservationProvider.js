@@ -7,6 +7,8 @@ import {
 import { postCart } from "../Services/postCart";
 import { getOneProduct } from "../Services/getOneProduct";
 import { useToasts } from "react-toast-notifications";
+import { Provider } from "react-redux";
+import store from "../Redux/store";
 
 let initialState = {
   cart: [],
@@ -18,9 +20,6 @@ let initialState = {
 
 const reducer = (state, action) => {
   switch (action.type) {
-    case "getProductsFromDB": {
-      return { ...state, products: action.data };
-    }
     case "toShow": {
       return {
         ...state,
@@ -146,6 +145,7 @@ const ReservationProvider = ({ children }) => {
         {children}
       </ReservationDispatcherContext.Provider>
     </ReservationContext.Provider>
+    // <Provider store={store}>{children}</Provider>
   );
 };
 

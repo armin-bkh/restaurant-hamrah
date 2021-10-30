@@ -78,7 +78,7 @@ const ProductList = () => {
 
   return (
     <section
-      className={`mt-10 mx-0 md:mx-6 p-3 md:p-6 flex flex-col overflow-x-hidden bgGradient ${styles.productListContainer}`}
+      className={`mt-10 mx-0 md:mx-6 p-3 md:p-6  mb-4 flex flex-col overflow-x-hidden bgGradient ${styles.productListContainer}`}
     >
       <header className={`mb-3 px-2`}>
         <h1
