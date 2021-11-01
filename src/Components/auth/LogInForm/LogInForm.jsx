@@ -20,12 +20,11 @@ const LogInForm = ({ history }) => {
   const onSubmit = async (values) => {
     try {
       const { data } = await getAllPersonnel();
-      if (
-        data.find(
-          (em) => em.id === values.userPassword && em.name === values.userName
-        )
-      ) {
-        const { data } = await getEmployee(values.userPassword);
+      const index = data.findIndex(
+        (em) => em.id === values.userPassword && em.name === values.userName
+      );
+      if (index) {
+        const { data } = await getEmployee(index);
         localStorage.setItem("restaurantUser", JSON.stringify(data));
         history.push("/manage", { employee: data });
       } else setError("حساب کاربری مورد نظر یافت نشد");

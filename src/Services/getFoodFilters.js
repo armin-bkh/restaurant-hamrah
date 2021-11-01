@@ -1,5 +1,5 @@
-import http from './httpServices';
+import http from "./httpServices";
 
-export function getFoodFilters(){
-    return http.get("/foodFilters");
+export function getFoodFilters() {
+  return http.get("/foodFilters.json");
 }

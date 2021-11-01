@@ -64,7 +64,7 @@ const ManageAddProduct = () => {
 
   return (
     <article className={`rounded-md boxShadow`}>
-      {filters ? (
+      {filters && filters.length ? (
         <>
           <ManageAddFilter setFilters={setFilters} type="foods" />
           <form

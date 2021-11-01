@@ -1,5 +1,5 @@
-import http from './httpServices';
+import http from "./httpServices";
 
-export function deleteUserFilter(id){
-    return http.delete(`/userFilters/${id}`)
+export function deleteUserFilter(id) {
+  return http.delete(`/userFilters/${id}.json`);
 }

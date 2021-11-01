@@ -1,5 +1,5 @@
-import http from './httpServices';
+import http from "./httpServices";
 
-export function postFoodFilter(data){
-    return http.post("/foodFilters", data);
+export function postFoodFilter(data) {
+  return http.post("/foodFilters.json", data);
 }
