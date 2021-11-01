@@ -7,6 +7,7 @@ import DisplayerLoadingSkeleton from "../LoadingSkeleton/DisplayerLoadingSkeleto
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartItem } from "../../Redux/Reservation/reservationActions";
 import { useToasts } from "react-toast-notifications";
+import { getAllProducts } from "../../Services/getAllProducts";
 
 const Displayer = () => {
   const dispatch = useDispatch();
@@ -31,7 +32,11 @@ const Displayer = () => {
     if (productId) {
       const getProduct = async () => {
         try {
-          const { data } = await getOneProduct(productId);
+          const products = await getAllProducts();
+          const index = products.data.findIndex(
+            (item) => item.id === productId
+          );
+          const { data } = await getOneProduct(index);
           setProduct(data);
           setCount(1);
         } catch (err) {

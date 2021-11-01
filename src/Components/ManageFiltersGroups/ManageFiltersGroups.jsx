@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext } from "react";
 import UserJobContext from "../../Context/UserJobContext";
 import { getFoodFilters } from "../../Services/getFoodFilters";
-import { getUserFilters } from "../../Services/getUserFilters";
+import { getUserFilters } from "../../Services/getuserFilters";
 import FilterGroupLoadingSkeleton from "../LoadingSkeleton/FilterGroupLoadingSkeleton/FilterGroupLoadingSkeleton";
 import Group from "./Group/Group";
 

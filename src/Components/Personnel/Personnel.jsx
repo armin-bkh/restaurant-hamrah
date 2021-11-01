@@ -3,7 +3,7 @@ import { AiOutlineUserAdd } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { deleteEmployee } from "../../Services/deleteEmployee";
 import { getAllPersonnel } from "../../Services/getAllPersonnel";
-import { getUserFilters } from "../../Services/getUserFilters";
+import { getUserFilters } from "../../Services/getuserFilters";
 import Employee from "./Employee/Employee";
 import { useToasts } from "react-toast-notifications";
 import EmployeeLoadingSkeleton from "../LoadingSkeleton/EmployeeLoadingSkeleton/EmployeeLoadingSkeleton";
