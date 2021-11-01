@@ -1,6 +1,6 @@
 import axios from "axios";
 
-axios.defaults.baseURL = "restoyar.firebaseapp.com";
+axios.defaults.baseURL = "https://restoyar-default-rtdb.firebaseio.com/";
 
 const http = {
   get: axios.get,

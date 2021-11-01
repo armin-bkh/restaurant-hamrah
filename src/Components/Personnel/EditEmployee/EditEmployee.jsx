@@ -6,25 +6,27 @@ import { useToasts } from "react-toast-notifications";
 import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadingSkeleton/EditEmployeeLoadingSkeleton";
 import UserJobContext from "../../../Context/UserJobContext";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
-import SelectBox from '../../Common/SelectBox/SelectBox';
+import SelectBox from "../../Common/SelectBox/SelectBox";
 import { getUserFilters } from "../../../Services/getUserFilters";
 import { useFormik } from "formik";
-import * as Yup from 'yup';
+import * as Yup from "yup";
+import { getAllPersonnel } from "../../../Services/getAllPersonnel";
 
 const validationSchema = Yup.object({
-  name: Yup.string().required('نام فرد مورد نظر ضروری است'),
-  tel: Yup.string().required('شماره تماس فرد مورد نظر ضروری است').matches(/^([0-9]{11})+$/, 'شماره تماس اشتباه وارد شده است'),
-  job: Yup.string().required('شغل فرد مورد نظر ضروری است'),
-  id: Yup.string().required('کد ملی فرد مورد نظر ضروری است'),
-})
+  name: Yup.string().required("نام فرد مورد نظر ضروری است"),
+  tel: Yup.string()
+    .required("شماره تماس فرد مورد نظر ضروری است")
+    .matches(/^([0-9]{11})+$/, "شماره تماس اشتباه وارد شده است"),
+  job: Yup.string().required("شغل فرد مورد نظر ضروری است"),
+  id: Yup.string().required("کد ملی فرد مورد نظر ضروری است"),
+});
 
 const EditEmployee = ({ history, match }) => {
-
   const onSubmit = async (values) => {
     try {
-        await putEmployee(employeeID, values);
-        addToast(`تغییرات با موفقییت انجام شد`, { appearance: "success" });
-        history.push("/manage/personnel");
+      await putEmployee(employeeID, values);
+      addToast(`تغییرات با موفقییت انجام شد`, { appearance: "success" });
+      history.push("/manage/personnel");
     } catch (err) {
       setError(true);
       addToast(`مجددا تلاش کنید`, { appearance: "error" });
@@ -52,10 +54,15 @@ const EditEmployee = ({ history, match }) => {
     }
     const fetchEmployee = async () => {
       try {
-        const employee = await getEmployee(employeeID);
+        const { data } = await getAllPersonnel();
+        console.log(data);
+        const index = data.findIndex((item) => item.id === employeeID);
+        const employee = await getEmployee(index);
         setFormValue(employee.data);
+        console.log(employee);
         const filters = await getUserFilters();
         setFilters(filters.data);
+        console.log(filters);
       } catch (err) {
         setError(true);
         history.push("/manage/personnel");
@@ -63,8 +70,6 @@ const EditEmployee = ({ history, match }) => {
     };
     fetchEmployee();
   }, []);
-
-
 
   return (
     <main className={`min-h-screen flex items-center justify-center p-5`}>
@@ -84,14 +89,14 @@ const EditEmployee = ({ history, match }) => {
                 تغییر اطلاعات
               </h1>
               <ManageInputForm
-              formik={formik}
+                formik={formik}
                 type="text"
                 name="name"
                 lbl="نام"
                 {...formik.getFieldProps("name")}
               />
               <ManageInputForm
-              formik={formik}
+                formik={formik}
                 type="text"
                 name="tel"
                 lbl="شماره تماس"
@@ -100,16 +105,18 @@ const EditEmployee = ({ history, match }) => {
               <fieldset>
                 <label className={`ml-3 text-sm md:text-lg`}>وظیفه:</label>
                 <SelectBox
-                formik={formik}
+                  formik={formik}
                   value={formik.values.job}
-                  onChange={(selectedOption) => formik.setFieldValue("job", selectedOption.value)}
+                  onChange={(selectedOption) =>
+                    formik.setFieldValue("job", selectedOption.value)
+                  }
                   onBlur={() => formik.setFieldTouched("job", true)}
                   placeholder="وظیفه..."
                   options={filters.filter((op) => op.value !== "همه")}
                 />
               </fieldset>
               <ManageInputForm
-              formik={formik}
+                formik={formik}
                 type="text"
                 name="id"
                 lbl="کد ملی"

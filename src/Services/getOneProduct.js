@@ -1,5 +1,5 @@
 import http from "./httpServices";
 
-export function getOneProduct(productId){
-    return http.get(`/products/${productId}`)
+export function getOneProduct(productId) {
+  return http.get(`/products/${productId}.json`);
 }

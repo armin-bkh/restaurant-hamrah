@@ -1,5 +1,5 @@
 import http from "./httpServices";
 
-export function getAllTable(){
-    return http.get("/tables")
+export function getAllTable() {
+  return http.get("/tables.json");
 }

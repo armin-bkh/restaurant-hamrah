@@ -223,7 +223,9 @@ const EditProduct = ({ onSubmit, productId }) => {
     if (productId) {
       const getProduct = async () => {
         try {
-          const product = await getOneProduct(productId);
+          const { data } = await getAllProducts();
+          const index = data.findIndex((item) => item.id === productId);
+          const product = await getOneProduct(index);
           const filterL = await getFoodFilters();
           setFormValue(product.data);
           setFilters(filterL.data);

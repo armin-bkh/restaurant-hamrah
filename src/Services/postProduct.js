@@ -6,5 +6,5 @@ export function postProduct(data) {
       "Content-Type": "multipart/form-data",
     },
   };
-  return http.post("/products", data, header);
+  return http.post("/products.json", data, header);
 }
