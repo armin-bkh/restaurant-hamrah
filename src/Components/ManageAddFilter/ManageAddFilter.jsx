@@ -4,7 +4,7 @@ import { postFoodFilter } from "../../Services/postFoodFilter";
 import { getFoodFilters } from "../../Services/getFoodFilters";
 import { BiPlus } from "react-icons/bi";
 import { postUserFilter } from "../../Services/postUserFilter";
-import { getUserFilters } from "../../Services/getUserFilters";
+import { getUserFilters } from "../../Services/getuserFilters";
 
 const ManageAddFilter = ({ setFilters, type }) => {
   const [filter, setFilter] = useState({

@@ -7,7 +7,7 @@ import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadin
 import UserJobContext from "../../../Context/UserJobContext";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import SelectBox from "../../Common/SelectBox/SelectBox";
-import { getUserFilters } from "../../../Services/getUserFilters";
+import { getUserFilters } from "../../../Services/getuserFilters";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getAllPersonnel } from "../../../Services/getAllPersonnel";
