@@ -39,7 +39,7 @@ const CartItem = ({ food }) => {
     <li
       className={`flex justify-between items-center
        text-xs sm:text-sm md:text-md lg:text-lg
-      xl:text-xl mb-5 Dirooz boxShadow py-3 px-4 rounded-md`}
+      xl:text-xl mb-5 Dirooz boxShadow py-3 px-2 md:px-4 rounded-md`}
     >
       <span
         className={`text-xs sm:text-sm md:text-md lg:text-lg
@@ -49,10 +49,9 @@ const CartItem = ({ food }) => {
       </span>
       <span
         className={`hidden sm:block text-xs sm:text-sm md:text-md
-       lg:text-lg xl:text-xl text-black`}
+       lg:text-lg xl:text-xl text-black Casablanca`}
       >
-        قیمت واحد:{" "}
-        <span className={`Casablanca`}>{numberWithCommas(price)}</span>
+        {numberWithCommas(price)}
       </span>
       <div className={`flex justify-between items-center text-black`}>
         <span
@@ -63,7 +62,7 @@ const CartItem = ({ food }) => {
         </span>
         <button
           type="button"
-          className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full transition hover:bg-blue-400 hover:text-white border cursor-pointer border-blue-400 text-blue-400`}
+          className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-1 md:mx-2 rounded-full transition hover:bg-blue-400 hover:text-white border cursor-pointer border-blue-400 text-blue-400`}
           onClick={incrementHandler}
         >
           <BiPlus />
@@ -75,7 +74,7 @@ const CartItem = ({ food }) => {
         </span>
         <button
           type="button"
-          className={`text-xs cursor-pointer border transition sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full
+          className={`text-xs cursor-pointer border transition sm:text-sm md:text-base p-0.5 sm:p-1 mx-1 md:mx-2 rounded-full
           ${
             food.quantity > 1
               ? "border-blue-400 text-blue-400 hover:bg-blue-400 hover:text-white"
@@ -87,7 +86,7 @@ const CartItem = ({ food }) => {
         </button>
       </div>
       <span className={`text-xs sm:text-sm lg:text-lg xl:text-xl text-black`}>
-        قیمت:{" "}
+        قیمت:
         <span className={`Casablanca`}>
           {numberWithCommas(price * food.quantity)}
         </span>
@@ -102,7 +101,7 @@ const CartItem = ({ food }) => {
           پرداخت
         </button>
         <button
-          className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 mx-2 rounded-full
+          className={`text-xs sm:text-sm md:text-base p-0.5 sm:p-1 rounded-full
         border border-red-600 text-red-600 hover:bg-red-600 transition hover:text-white`}
           type="button"
           onClick={deleteHandler}

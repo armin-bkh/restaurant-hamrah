@@ -22,17 +22,17 @@ $skeletonLight: #7c7b7b;
 
 .boxShadow {
     box-shadow: 5px 5px 10px $shadows,
-                -5px -5px 15px #ffffff;
+        -5px -5px 15px #ffffff;
 }
 
-.textShadow{
+.textShadow {
     text-shadow: 5px 5px 10px $shadows,
-                -5px -5px 15px #ffffff;
+        -5px -5px 15px #ffffff;
 }
 
-.boxShadowOuter{
+.boxShadowOuter {
     box-shadow: -5px -5px 10px $shadows,
-                5px 5px 15px #eeeeee;
+        5px 5px 15px #ffffff;
 }
 
 .boxShadowInner {
@@ -40,7 +40,7 @@ $skeletonLight: #7c7b7b;
         inset -5px -5px 5px #ffffff;
 }
 
-.imgShadow{
+.imgShadow {
     filter: drop-shadow(0 0 15px #ffffff);
     z-index: -1;
     position: relative;
