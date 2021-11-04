@@ -29,7 +29,7 @@ const Displayer = () => {
   };
 
   useEffect(() => {
-    if (productId) {
+    if (productId >= 0) {
       const getProduct = async () => {
         try {
           const products = await getAllProducts();
