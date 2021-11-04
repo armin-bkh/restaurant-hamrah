@@ -8,7 +8,7 @@ const ManageOffInput = ({ name, lbl, formik, values, ...rest }) => {
     );
   }, [formik.values.off, formik.values.price]);
   return (
-    <fieldset className={`mb-5 w-full flex-col justify-center items-start`}>
+    <fieldset className={`mb-5 w-full z-10 flex-col justify-center items-start`}>
       <label className={`ml-3 text-sm md:text-lg`}>{lbl}: </label>
       <div dir="ltr" className={`flex justify-start items-center mt-3`}>
         <span>{formik.values.price ? formik.values.price : 0} - </span>
