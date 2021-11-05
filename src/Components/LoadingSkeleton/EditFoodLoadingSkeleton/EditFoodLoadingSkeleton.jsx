@@ -3,10 +3,8 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 const EditFoodLoadingSkeleton = () => {
   return (
     <SkeletonTheme color={"#a8a7a7"} highlightColor={"#dbdbdb"}>
-      <div className={`w-full flex my-3 flex-col p-4`}>
-        <div
-          className={`mb-5 boxShadow`}
-        >
+      <div className={`w-full flex my-3 flex-col boxShadow rounded-md p-4`}>
+        <div className={`mb-5 boxShadow`}>
           <Skeleton width={`100%`} height={35} />
         </div>
         <div className={`mb-5`}>

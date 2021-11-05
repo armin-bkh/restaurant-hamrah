@@ -220,7 +220,7 @@ const EditProduct = ({ onSubmit, productId }) => {
   const { addToast } = useToasts();
 
   useEffect(() => {
-    if (productId) {
+    if (productId >= 0) {
       const getProduct = async () => {
         try {
           const { data } = await getAllProducts();
@@ -240,17 +240,17 @@ const EditProduct = ({ onSubmit, productId }) => {
 
   let returnValue;
 
-  if (productId) {
+  if (productId >= 0) {
     returnValue = <EditFoodLoadingSkeleton />;
   }
 
   if (formValue && !error && filters) {
     returnValue = (
-      <li className={`boxShadow`}>
+      <li className={`boxShadow rounded-md`}>
         <ManageAddFilter setFilters={setFilters} type="foods" />
         <form
           onSubmit={formik.handleSubmit}
-          className={`flex text-black flex-col w-full my-3 items-center rounded-md px-4 py-3`}
+          className={`flex text-black flex-col w-full my-3 items-center px-4 py-3`}
         >
           <ManageInputForm
             formik={formik}
