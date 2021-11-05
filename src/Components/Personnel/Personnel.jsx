@@ -15,7 +15,7 @@ const Personnel = ({ history }) => {
   const [personnel, setPersonnel] = useState(null);
   const [allPersonnel, setAllPersonnel] = useState(null);
   const [filters, setFilters] = useState(null);
-  const [filter, setFilter] = useState({ value: "همه", label: "همه" });
+  const [filter, setFilter] = useState("همه");
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
   const userJob = useContext(UserJobContext);
@@ -59,15 +59,16 @@ const Personnel = ({ history }) => {
   };
 
   const filterPersonnelHandler = (selectedOption) => {
-    setFilter(selectedOption);
-    if (selectedOption.value === "همه") {
+    const selectedOptionValue = selectedOption?.value || selectedOption;
+    setFilter(selectedOptionValue);
+    if (selectedOptionValue === "همه") {
       setPersonnel(allPersonnel);
       if (!allPersonnel.length) setError(true);
       else setError(false);
       return;
     }
     const filteredPersonnel = allPersonnel.filter(
-      (em) => em.job === selectedOption.value
+      (em) => em.job === selectedOptionValue
     );
     setPersonnel(filteredPersonnel);
     if (!filteredPersonnel.length) setError(true);
@@ -75,7 +76,7 @@ const Personnel = ({ history }) => {
   };
 
   const returnError = () => {
-    if (filter.value !== "همه") return "این دسته بندی خالی است";
+    if (filter !== "همه") return "این دسته بندی خالی است";
     return "کادر پرسنل خالی است";
   };
 
@@ -114,19 +115,21 @@ const Personnel = ({ history }) => {
         <Link
           to="/manage/personnel/add-employee"
           className={`absolute -top-10 left-4 text-blue-400
-                 flex items-center  text-lg md:text-2xl Casablanca`}
+                 flex items-center text-lg md:text-2xl Casablanca`}
         >
           <AiOutlineUserAdd className={`ml-3`} /> افزودن به کادر رستوران
         </Link>
-        <header className={`mt-3 flex justify-end items-center`}>
+        <header className={`mt-3`}>
           {filters ? (
             <SelectBox
               options={filters}
-              value={filter.value}
+              value={filter}
               onChange={filterPersonnelHandler}
             />
           ) : (
-            <SelectBoxLoadingSkeleton />
+            <div>
+              <SelectBoxLoadingSkeleton />
+            </div>
           )}
         </header>
         {returnValue}

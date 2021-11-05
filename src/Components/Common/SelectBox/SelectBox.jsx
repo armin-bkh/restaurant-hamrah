@@ -27,12 +27,11 @@ const SelectBox = ({ options, name, formik, value, ...rest }) => {
 
   return (
     <div
-      className={`
-      z-10${
+      className={`${
         options.some((op) => op.value === "همه")
           ? "w-full md:w-32 mb-5 md:mb-0"
           : "w-full mb-5"
-      }`}
+      } mr-auto`}
     >
       <div className={`boxShadow rounded-md`}>
         <Select
