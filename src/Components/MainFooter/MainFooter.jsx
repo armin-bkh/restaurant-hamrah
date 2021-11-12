@@ -1,9 +1,4 @@
-import {
-  FaTelegram,
-  FaLinkedin,
-  FaInstagram,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaTelegram, FaLinkedin, FaInstagram, FaTwitter } from "react-icons/fa";
 
 const MainFooter = () => {
   return (
@@ -17,9 +12,10 @@ const MainFooter = () => {
             className={`w-6 h-6 lg:w-14 lg:h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}
           >
             <a
-              className={`text-blue-400 text-sm md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
+              className={`text-blue-400 text-base md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
               href="https://www.telegram.me/Ar921dvl"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FaTelegram />
             </a>
@@ -28,9 +24,10 @@ const MainFooter = () => {
             className={`w-6 h-6 lg:w-14 lg:h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}
           >
             <a
-              className={`text-blue-400 text-sm md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
+              className={`text-blue-400 text-base md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
               href="https://www.varzesh3.com"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FaTwitter />
             </a>
@@ -39,9 +36,10 @@ const MainFooter = () => {
             className={`w-6 h-6 lg:w-14 lg:h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}
           >
             <a
-              className={`text-blue-400 text-sm md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
+              className={`text-blue-400 text-base md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
               href="https://www.linkedin.com/in/armin-bakhshi-627805217"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FaLinkedin />
             </a>
@@ -50,9 +48,10 @@ const MainFooter = () => {
             className={`w-6 h-6 lg:w-14 lg:h-14 flex justify-center items-center rounded-full transition-colors duration-500 hover:bg-blue-200`}
           >
             <a
-              className={`text-blue-400 text-sm md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
+              className={`text-blue-400 text-base md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
               href="https://www.instagram.com/rminbkh"
-              target="_blank" rel="noreferrer"
+              target="_blank"
+              rel="noreferrer"
             >
               <FaInstagram />
             </a>
