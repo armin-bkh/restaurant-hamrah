@@ -10,9 +10,9 @@ const ManageProductItem = ({ inf, onSubmit, type }) => {
   };
   return (
     <li
-      className={`flex text-sm lg:text-lg 2xl:text-xl justify-between items-center my-4 px-4 py-3 rounded-md boxShadow`}
+      className={`flex text-xs lg:text-lg 2xl:text-xl justify-between items-center my-4 px-4 py-3 rounded-md boxShadow`}
     >
-      <div className={`w-20 h-20`}>
+      <div className={`w-16 h-16 md:w-20 md:h-20`}>
         <img
           className={`w-full h-full`}
           loading="lazy"
@@ -23,7 +23,7 @@ const ManageProductItem = ({ inf, onSubmit, type }) => {
       <span>{inf.title}</span>
       <span className={`Casablanca`}>{price}</span>
       <button
-        className={`bg-blue-400 px-2 py-2 text-white rounded-full`}
+        className={`bg-blue-400 p-1.5 md:p-2 text-white rounded-full`}
         onClick={submitHandler}
       >
         {type === "edit" ? <BiPencil /> : <BiTrash />}
