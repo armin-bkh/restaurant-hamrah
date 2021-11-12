@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { MdContactMail } from "react-icons/md";
 import { FaUsers } from "react-icons/fa";
@@ -9,6 +9,7 @@ const links = [
     to: "/",
     title: "خانه",
     icon: <FaHome className={`inline mg-1 lg:ml-3`} />,
+    exact: true,
   },
   {
     to: "/services",
@@ -34,7 +35,7 @@ const links = [
 
 const MainHeader = () => {
   return (
-    <header className={`py-5 px-3 bgLight boxShadow sticky top-0 z-0 w-full`}>
+    <header className={`py-7 px-3 bgLight boxShadow sticky top-0 z-0 w-full`}>
       <nav>
         <ul className={`flex items-center justify-center`}>
           {links.map((link) => (
@@ -42,15 +43,17 @@ const MainHeader = () => {
               key={link.to}
               className={`${
                 link.to === "/login" && "mr-auto"
-              } text-xs sm:text-sm lg:text-lg xl:text-xl`}
+              } text-xs sm:text-sm lg:text-lg xl:text-xl text-blue-400 hover:text-white mx-2`}
             >
-              <Link
-                className={`px-1 md:px-5 py-2 cursor-pointer text-blue-400 Casablanca hover:bg-blue-400
-                hover:text-white rounded-md`}
+              <NavLink
+                exact={link.exact}
+                className={`px-1 md:px-5 py-3 cursor-pointer Casablanca hover:bg-blue-400
+                 rounded-md`}
+                activeClassName={`text-white bg-blue-400`}
                 to={link.to}
               >
                 {link.icon} {link.title}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>

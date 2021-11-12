@@ -87,20 +87,26 @@ const ManageNavigation = () => {
   const [height, setHeight] = useState(0);
   const userJob = useContext(UserJobContext);
 
-  useEffect(()=>{
-    if(userJob === "گارسون" || userJob === "آشپز" || userJob === "سرآشپز" || userJob === "منشی") setLinks(publicLinks);
-    if(userJob === "حسابدار") setLinks(accountantsLinks);
-    if(userJob === "مدیریت")setLinks(managerLinks);
-  }, [])
+  useEffect(() => {
+    if (
+      userJob === "گارسون" ||
+      userJob === "آشپز" ||
+      userJob === "سرآشپز" ||
+      userJob === "منشی"
+    )
+      setLinks(publicLinks);
+    if (userJob === "حسابدار") setLinks(accountantsLinks);
+    if (userJob === "مدیریت") setLinks(managerLinks);
+  }, []);
 
-  useEffect(()=>{
-    if(links) {
+  useEffect(() => {
+    if (links) {
       let h = 0;
-      links.map(()=> h += 46);
+      links.map(() => (h += 46));
       setHeight(h);
     }
-    });
-        return (
+  });
+  return (
     <nav className={`mt-10 border-b-2 border-blue-400 py-2`}>
       <button
         type="button"
@@ -120,26 +126,34 @@ const ManageNavigation = () => {
         ></div>
       </button>
       <ul
-      style={{height: open && `${height}px`}}
-        className={`flex flex-col justify-center md:justify-start md:flex-row overflow-hidden transition-all duration-300 h-0 md:h-auto ${open && `boxShadowInner p-2 rounded-md`}`}
+        style={{ height: open && `${height}px` }}
+        className={`flex flex-col justify-center md:justify-start md:flex-row overflow-hidden transition-all duration-300 h-0 md:h-auto ${
+          open && `boxShadowInner p-2 rounded-md`
+        }`}
       >
-        { links && height ? links.map((link) => (
-          <li
-          key={link.to}
-          style={link.to === "/manage" && !open ? { marginRight: "auto" } : null}
-          className={`my-1 md:mb-0 text-blue-400`}
-        >
-          <NavLink
-            className={`w-full md:w-auto block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
-            activeClassName={`bg-blue-400 text-white md:border-t-4 border-blue-400`}
-            to={link.to}
-            exact={link.exact || false}
-          >
-            {link.icon}
-            {link.title}
-          </NavLink>
-        </li>
-        )) : null}
+        {links && height
+          ? links.map((link) => (
+              <li
+                key={link.to}
+                style={
+                  link.to === "/manage" && !open
+                    ? { marginRight: "auto" }
+                    : null
+                }
+                className={`my-1 md:mb-0 text-blue-400`}
+              >
+                <NavLink
+                  className={`w-full md:w-auto block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
+                  activeClassName={`bg-blue-400 text-white`}
+                  to={link.to}
+                  exact={link.exact || false}
+                >
+                  {link.icon}
+                  {link.title}
+                </NavLink>
+              </li>
+            ))
+          : null}
       </ul>
     </nav>
   );
