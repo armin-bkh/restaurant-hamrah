@@ -1,32 +1,29 @@
-import { Route, Switch } from "react-router-dom";
 import ManageLayout from "../Layouts/ManageLayout";
-import { manageRoutes } from "../Routes/Routes";
 import { useEffect, useState } from "react";
 import UserJobContext from "../Context/UserJobContext";
+import { Outlet, useLocation, useNavigate } from "react-router";
 
-const ManagePage = ({ history, location }) => {
+const ManagePage = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+  const { state } = useLocation();
+
   useEffect(() => {
     document.title = "مدیریت";
-    if (!location.state) {
-      const userData = JSON.parse(localStorage.getItem('restaurantUser'));
-      if(!userData) history.push('/login');
+    if (!state) {
+      const userData = JSON.parse(localStorage.getItem("restaurantUser"));
+      if (!userData) navigate("/login");
       setUser(userData);
+    } else {
+      setUser(state);
     }
-    else {
-      const { employee } = location.state;
-      setUser(employee);
-    }
+    navigate("manageDetail");
   }, []);
 
   return user ? (
     <UserJobContext.Provider value={user.job}>
       <ManageLayout>
-        <Switch>
-          {manageRoutes.map((route) => (
-            <Route key={route.path} {...route} />
-          ))}
-        </Switch>
+        <Outlet />
       </ManageLayout>
     </UserJobContext.Provider>
   ) : null;

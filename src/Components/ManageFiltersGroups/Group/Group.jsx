@@ -8,7 +8,7 @@ import GroupItem from "./GroupItem/GroupItem";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import { useToasts } from "react-toast-notifications";
 
-const Group = ({ title, group, setGroup }) => {
+const Group = ({ title, group }) => {
   const [filterGroup, setFilterGroup] = useState(null);
   const [error, setError] = useState(false);
   const [open, setOpen] = useState(false);

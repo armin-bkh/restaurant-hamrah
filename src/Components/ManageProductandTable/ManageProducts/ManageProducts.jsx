@@ -1,32 +1,29 @@
-import { Route, Switch } from "react-router-dom";
+import { Outlet, useNavigate } from "react-router-dom";
 import ManageProductsNavigation from "../ManageProductsNavigation/ManageProductsNaviagtion";
-import { manageProductsRoutes } from "../../../Routes/Routes";
 import setting from "../../../Assets/SVG/processing-animate.svg";
 import { useContext, useEffect } from "react";
 import UserJobContext from "../../../Context/UserJobContext";
 
-const ManageProducts = ({ history }) => {
+const ManageProducts = () => {
   const userJob = useContext(UserJobContext);
+  const navigate = useNavigate();
 
-  useEffect(()=>{
-    if(userJob === "حسابدار" || userJob === "مدیریت") {
+  useEffect(() => {
+    if (userJob === "حسابدار" || userJob === "مدیریت") {
+      navigate("detail");
       return;
-    } else { history.push('/manage') }
-  }, [])
+    } else {
+      navigate("/manage");
+    }
+  }, []);
 
   return (
     <main
       className={`grid gap-x-3 grid-col-1 min-h-screen md:grid-cols-3 lg:grid-cols-4 p-5 md:col-span-2 Dirooz lg:col-span-3`}
     >
       <ManageProductsNavigation />
-      <section
-        className={`md:col-span-2 lg:col-span-3 p-5`}
-      >
-        <Switch>
-          {manageProductsRoutes.map((route) => (
-            <Route key={route.path} {...route} />
-          ))}
-        </Switch>
+      <section className={`md:col-span-2 lg:col-span-3 p-5`}>
+        <Outlet />
       </section>
     </main>
   );

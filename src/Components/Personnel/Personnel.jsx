@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { AiOutlineUserAdd } from "react-icons/ai";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { deleteEmployee } from "../../Services/deleteEmployee";
 import { getAllPersonnel } from "../../Services/getAllPersonnel";
 import { getUserFilters } from "../../Services/getuserFilters";
@@ -11,13 +11,14 @@ import SelectBoxLoadingSkeleton from "../LoadingSkeleton/SelectBoxLoadingSkeleto
 import UserJobContext from "../../Context/UserJobContext";
 import SelectBox from "../Common/SelectBox/SelectBox";
 
-const Personnel = ({ history }) => {
+const Personnel = () => {
   const [personnel, setPersonnel] = useState(null);
   const [allPersonnel, setAllPersonnel] = useState(null);
   const [filters, setFilters] = useState(null);
   const [filter, setFilter] = useState("همه");
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
+  const navigate = useNavigate();
   const userJob = useContext(UserJobContext);
 
   useEffect(() => {
@@ -35,7 +36,7 @@ const Personnel = ({ history }) => {
       };
       fetchPersonnel();
     } else {
-      history.push("/manage");
+      navigate("/manage");
     }
   }, []);
 

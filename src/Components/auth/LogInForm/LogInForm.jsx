@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, withRouter } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import AuthInput from "../../Common/AuthInput/AuthInput";
 import { getAllPersonnel } from "../../../Services/getAllPersonnel";
 import { getEmployee } from "../../../Services/getEmployee";
@@ -16,7 +16,8 @@ const validationSchema = Yup.object({
   userPassword: Yup.string().required("رمز ورود را وارد کنید"),
 });
 
-const LogInForm = ({ history }) => {
+const LogInForm = () => {
+  const navigate = useNavigate();
   const onSubmit = async (values) => {
     try {
       const { data } = await getAllPersonnel();
@@ -26,7 +27,7 @@ const LogInForm = ({ history }) => {
       if (index) {
         const { data } = await getEmployee(index);
         localStorage.setItem("restaurantUser", JSON.stringify(data));
-        history.push("/manage", { employee: data });
+        navigate("/manage", { state: data });
       } else setError("حساب کاربری مورد نظر یافت نشد");
     } catch (err) {}
     // try{
@@ -94,4 +95,4 @@ const LogInForm = ({ history }) => {
   );
 };
 
-export default withRouter(LogInForm);
+export default LogInForm;

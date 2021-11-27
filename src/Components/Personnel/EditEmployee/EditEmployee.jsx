@@ -11,6 +11,7 @@ import { getUserFilters } from "../../../Services/getuserFilters";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getAllPersonnel } from "../../../Services/getAllPersonnel";
+import { useNavigate, useParams } from "react-router";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("نام فرد مورد نظر ضروری است"),
@@ -21,18 +22,19 @@ const validationSchema = Yup.object({
   id: Yup.string().required("کد ملی فرد مورد نظر ضروری است"),
 });
 
-const EditEmployee = ({ history, match }) => {
+const EditEmployee = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
   const onSubmit = async (values) => {
     try {
-      await putEmployee(employeeID, values);
+      await putEmployee(id, values);
       addToast(`تغییرات با موفقییت انجام شد`, { appearance: "success" });
-      history.push("/manage/personnel");
+      navigate("/manage/personnel", { replace: true });
     } catch (err) {
       setError(true);
       addToast(`مجددا تلاش کنید`, { appearance: "error" });
     }
   };
-
   const [formValue, setFormValue] = useState(null);
   const formik = useFormik({
     onSubmit,
@@ -44,19 +46,18 @@ const EditEmployee = ({ history, match }) => {
   const [error, setError] = useState(false);
   const [filters, setFilters] = useState(null);
   const { addToast } = useToasts();
-  const employeeID = match.params.id;
   const userJob = useContext(UserJobContext);
 
   useEffect(() => {
     if (userJob !== "مدیریت") {
-      history.push("/manage");
+      navigate("/manage");
       return;
     }
     const fetchEmployee = async () => {
       try {
         const { data } = await getAllPersonnel();
         console.log(data);
-        const index = data.findIndex((item) => item.id === employeeID);
+        const index = data.findIndex((item) => item.id === id);
         const employee = await getEmployee(index);
         setFormValue(employee.data);
         console.log(employee);
@@ -65,7 +66,7 @@ const EditEmployee = ({ history, match }) => {
         console.log(filters);
       } catch (err) {
         setError(true);
-        history.push("/manage/personnel");
+        navigate("/manage/personnel");
       }
     };
     fetchEmployee();
