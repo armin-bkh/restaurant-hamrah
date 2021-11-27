@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import UserJobContext from "../../Context/UserJobContext";
 import { getFoodFilters } from "../../Services/getFoodFilters";
@@ -9,10 +10,10 @@ import Group from "./Group/Group";
 const ManageFiltersGroups = () => {
   const [foodGroup, setFoodGroup] = useState(null);
   const [jobGroup, setJobGroup] = useState(null);
-  const userJob = useContext(UserJobContext);
+  const { job } = useSelector((state) => state.user);
   const navigate = useNavigate();
   useEffect(() => {
-    if (userJob === "حسابدار" || userJob === "مدیریت") {
+    if (job === "حسابدار" || job === "مدیریت") {
       const fetchFilters = async () => {
         const food = await getFoodFilters();
         const job = await getUserFilters();

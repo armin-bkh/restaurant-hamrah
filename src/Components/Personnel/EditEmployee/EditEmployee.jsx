@@ -12,6 +12,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { getAllPersonnel } from "../../../Services/getAllPersonnel";
 import { useNavigate, useParams } from "react-router";
+import { useSelector } from "react-redux";
 
 const validationSchema = Yup.object({
   name: Yup.string().required("نام فرد مورد نظر ضروری است"),
@@ -46,10 +47,10 @@ const EditEmployee = () => {
   const [error, setError] = useState(false);
   const [filters, setFilters] = useState(null);
   const { addToast } = useToasts();
-  const userJob = useContext(UserJobContext);
+  const { job } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (userJob !== "مدیریت") {
+    if (job !== "مدیریت") {
       navigate("/manage");
       return;
     }

@@ -5,6 +5,8 @@ import { getAllPersonnel } from "../../../Services/getAllPersonnel";
 import { getEmployee } from "../../../Services/getEmployee";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useDispatch } from "react-redux";
+import { setUserData } from "../../../Redux/User/userActions";
 
 const initialValues = {
   userName: "",
@@ -18,15 +20,17 @@ const validationSchema = Yup.object({
 
 const LogInForm = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+
   const onSubmit = async (values) => {
     try {
       const { data } = await getAllPersonnel();
       const index = data.findIndex(
         (em) => em.id === values.userPassword && em.name === values.userName
       );
+      dispatch(setUserData(data[index]));
       if (index) {
         const { data } = await getEmployee(index);
-        localStorage.setItem("restaurantUser", JSON.stringify(data));
         navigate("/manage", { state: data });
       } else setError("حساب کاربری مورد نظر یافت نشد");
     } catch (err) {}

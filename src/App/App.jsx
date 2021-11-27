@@ -1,5 +1,5 @@
 import "./App.scss";
-import { Routes, useRoutes } from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import { routes } from "../Routes/Routes";
 import { ToastProvider } from "react-toast-notifications";
 import ScrollIndicator from "../Components/Common/ScrollIndicator/ScrollIndicator";

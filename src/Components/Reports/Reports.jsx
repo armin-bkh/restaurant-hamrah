@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import UserJobContext from "../../Context/UserJobContext";
 
 const Reports = () => {
   const [reports, setReports] = useState(null);
   const [reportList, setReportList] = useState(null);
-  const userJob = useContext(UserJobContext);
+  const { job } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userJob === "حسابدار" || userJob === "مدیریت") {
+    if (job === "حسابدار" || job === "مدیریت") {
       return;
     } else {
       navigate("/manage");

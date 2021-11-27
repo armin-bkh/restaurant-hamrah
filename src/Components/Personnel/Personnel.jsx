@@ -10,6 +10,7 @@ import EmployeeLoadingSkeleton from "../LoadingSkeleton/EmployeeLoadingSkeleton/
 import SelectBoxLoadingSkeleton from "../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
 import UserJobContext from "../../Context/UserJobContext";
 import SelectBox from "../Common/SelectBox/SelectBox";
+import { useSelector } from "react-redux";
 
 const Personnel = () => {
   const [personnel, setPersonnel] = useState(null);
@@ -19,10 +20,10 @@ const Personnel = () => {
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
   const navigate = useNavigate();
-  const userJob = useContext(UserJobContext);
+  const { job } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (userJob === "حسابدار" || userJob === "مدیریت") {
+    if (job === "حسابدار" || job === "مدیریت") {
       const fetchPersonnel = async () => {
         try {
           const { data } = await getAllPersonnel();

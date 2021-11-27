@@ -10,6 +10,7 @@ import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadin
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const initialValues = {
   name: "",
@@ -46,10 +47,10 @@ const AddEmployee = () => {
   });
   const [filters, setFilters] = useState(null);
   const { addToast } = useToasts();
-  const userJob = useContext(UserJobContext);
+  const { job } = useSelector((state) => state.user);
 
   useEffect(() => {
-    if (userJob !== "مدیریت") {
+    if (job !== "مدیریت") {
       navigate("/manage");
       return;
     }

@@ -9,18 +9,19 @@ import { useToasts } from "react-toast-notifications";
 import styles from "./EmployeeMember.module.scss";
 import EmployeeMemberLoaidngSkeleton from "../../../LoadingSkeleton/EmployeeMemberLoadingSkeleton/EmployeeMemberLoadingSkeleton";
 import UserJobContext from "../../../../Context/UserJobContext";
+import { useSelector } from "react-redux";
 
 const EmployeeMember = () => {
   const [employee, setEmployee] = useState(null);
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
-  const userJob = useContext(UserJobContext);
+  const { job } = useSelector((state) => state.user);
   const { id } = useParams();
   const { state } = useLocation();
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userJob === "حسابدار" || userJob === "مدیریت") {
+    if (job === "حسابدار" || job === "مدیریت") {
       if (state) {
         setEmployee(state);
         return;

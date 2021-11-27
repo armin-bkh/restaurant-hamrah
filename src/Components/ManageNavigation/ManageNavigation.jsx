@@ -7,6 +7,7 @@ import { HiUserGroup } from "react-icons/hi";
 import { FaLayerGroup } from "react-icons/fa";
 import UserJobContext from "../../Context/UserJobContext";
 import { useContext, useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 
 const managerLinks = [
   {
@@ -82,18 +83,18 @@ const ManageNavigation = () => {
   const [open, setOpen] = useState(false);
   const [links, setLinks] = useState(null);
   const [height, setHeight] = useState(0);
-  const userJob = useContext(UserJobContext);
+  const { job } = useSelector((state) => state.user);
 
   useEffect(() => {
     if (
-      userJob === "گارسون" ||
-      userJob === "آشپز" ||
-      userJob === "سرآشپز" ||
-      userJob === "منشی"
+      job === "گارسون" ||
+      job === "آشپز" ||
+      job === "سرآشپز" ||
+      job === "منشی"
     )
       setLinks(publicLinks);
-    if (userJob === "حسابدار") setLinks(accountantsLinks);
-    if (userJob === "مدیریت") setLinks(managerLinks);
+    if (job === "حسابدار") setLinks(accountantsLinks);
+    if (job === "مدیریت") setLinks(managerLinks);
   }, []);
 
   useEffect(() => {

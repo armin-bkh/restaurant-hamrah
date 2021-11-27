@@ -3,13 +3,14 @@ import ManageProductsNavigation from "../ManageProductsNavigation/ManageProducts
 import setting from "../../../Assets/SVG/processing-animate.svg";
 import { useContext, useEffect } from "react";
 import UserJobContext from "../../../Context/UserJobContext";
+import { useSelector } from "react-redux";
 
 const ManageProducts = () => {
-  const userJob = useContext(UserJobContext);
+  const { job } = useSelector((state) => state.user);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (userJob === "حسابدار" || userJob === "مدیریت") {
+    if (job === "حسابدار" || job === "مدیریت") {
       return;
     } else {
       navigate("/manage");
