@@ -9,7 +9,6 @@ const links = [
     to: "/",
     title: "خانه",
     icon: <FaHome className={`inline mg-1 lg:ml-3`} />,
-    exact: true,
   },
   {
     to: "/services",
@@ -43,13 +42,14 @@ const MainHeader = () => {
               key={link.to}
               className={`${
                 link.to === "/login" && "mr-auto"
-              } text-xs sm:text-sm lg:text-lg xl:text-xl text-blue-400 hover:text-white mx-2`}
+              } text-xs sm:text-sm lg:text-lg xl:text-xl mx-2`}
             >
               <NavLink
-                exact={link.exact}
-                className={`px-1 md:px-5 py-3 cursor-pointer Casablanca hover:bg-blue-400
-                 rounded-md`}
-                activeClassName={`text-white bg-blue-400`}
+                className={({ isActive }) =>
+                  `px-1 md:px-5 py-3 cursor-pointer Casablanca hover:text-white hover:bg-blue-400
+                 rounded-md ` +
+                  (isActive ? "text-white bg-blue-400" : "text-blue-400")
+                }
                 to={link.to}
               >
                 {link.icon} {link.title}

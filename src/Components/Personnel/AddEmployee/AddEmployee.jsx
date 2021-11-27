@@ -9,6 +9,7 @@ import SelectBox from "../../Common/SelectBox/SelectBox";
 import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadingSkeleton/EditEmployeeLoadingSkeleton";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { useNavigate } from "react-router";
 
 const initialValues = {
   name: "",
@@ -26,17 +27,17 @@ const validationSchema = Yup.object({
   id: Yup.string().required("کد ملی فرد مورد نظر ضروری است"),
 });
 
-const AddEmployee = ({ history }) => {
+const AddEmployee = () => {
+  const navigate = useNavigate();
   const onSubmit = async (values) => {
     try {
       await postEmployee(values);
       addToast(`${values.name} به کادر پرسنل اضافه شد`, {
         appearance: "success",
       });
-      history.push("/manage/personnel");
+      navigate("/manage/personnel");
     } catch (err) {}
   };
-
   const formik = useFormik({
     initialValues,
     validationSchema,
@@ -49,7 +50,7 @@ const AddEmployee = ({ history }) => {
 
   useEffect(() => {
     if (userJob !== "مدیریت") {
-      history.push("/manage");
+      navigate("/manage");
       return;
     }
     const fetchUserFilters = async () => {

@@ -8,7 +8,6 @@ const Rate = () => {
   const dispatch = useDispatch();
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log(range);
   };
   return (
     <form

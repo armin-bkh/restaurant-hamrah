@@ -32,7 +32,7 @@ const inputExplain = [
   "رمز ورود رستوران",
 ];
 
-const SignUpForm = ({ history }) => {
+const SignUpForm = () => {
   const formik = useFormik({
     initialValues,
     validationSchema,

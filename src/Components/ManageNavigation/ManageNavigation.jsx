@@ -11,72 +11,69 @@ import { useContext, useState, useEffect } from "react";
 const managerLinks = [
   {
     title: "میز ها",
-    to: "/manage/tables",
+    to: "tables",
     icon: <SiAirtable className={`inline ml-2`} />,
   },
   {
     title: "غذا",
-    to: "/manage/products",
+    to: "products",
     icon: <IoFastFoodOutline className={`inline ml-2`} />,
   },
   {
     title: "دسته بندی ها",
-    to: "/manage/filter-groups",
+    to: "filter-groups",
     icon: <FaLayerGroup className={`inline ml-2`} />,
   },
   {
     title: "گزارشات",
-    to: "/manage/report",
+    to: "report",
     icon: <BsCardChecklist className={`inline ml-2`} />,
   },
   {
     title: "پرسنل",
-    to: "/manage/personnel",
+    to: "personnel",
     icon: <HiUserGroup className={`inline ml-2`} />,
   },
   {
     title: <BiMessageSquareDetail className={`inline`} />,
-    to: "/manage",
-    exact: true,
+    to: "manageDetail",
   },
 ];
 const accountantsLinks = [
   {
     title: "میز ها",
-    to: "/manage/tables",
+    to: "tables",
     icon: <SiAirtable className={`inline ml-2`} />,
   },
   {
     title: "غذا",
-    to: "/manage/products",
+    to: "products",
     icon: <IoFastFoodOutline className={`inline ml-2`} />,
   },
   {
     title: "دسته بندی ها",
-    to: "/manage/filter-groups",
+    to: "filter-groups",
     icon: <FaLayerGroup className={`inline ml-2`} />,
   },
   {
     title: "گزارشات",
-    to: "/manage/report",
+    to: "report",
     icon: <BsCardChecklist className={`inline ml-2`} />,
   },
   {
     title: <BiMessageSquareDetail className={`inline`} />,
-    to: "/manage",
-    exact: true,
+    to: "manageDetail",
   },
 ];
 const publicLinks = [
   {
     title: "میز ها",
-    to: "/manage/tables",
+    to: "tables",
     icon: <SiAirtable className={`inline ml-2`} />,
   },
   {
     title: "توضیحات",
-    to: "/manage",
-    exact: true,
+    to: "manageDetail",
     icon: <BiMessageSquareDetail className={`inline ml-2`} />,
   },
 ];
@@ -136,17 +133,18 @@ const ManageNavigation = () => {
               <li
                 key={link.to}
                 style={
-                  link.to === "/manage" && !open
+                  link.to === "manageDetail" && !open
                     ? { marginRight: "auto" }
                     : null
                 }
-                className={`my-1 md:mb-0 text-blue-400`}
+                className={`my-1 md:mb-0`}
               >
                 <NavLink
-                  className={`w-full md:w-auto block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md`}
-                  activeClassName={`bg-blue-400 text-white`}
+                  className={({ isActive }) =>
+                    `w-full md:w-auto block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md ` +
+                    (isActive ? `bg-blue-400 text-white` : "text-blue-400")
+                  }
                   to={link.to}
-                  exact={link.exact || false}
                 >
                   {link.icon}
                   {link.title}

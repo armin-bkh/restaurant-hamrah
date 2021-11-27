@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { BsBoxArrowInRight } from "react-icons/bs";
 import { AiFillEdit } from "react-icons/ai";
@@ -10,44 +10,47 @@ import styles from "./EmployeeMember.module.scss";
 import EmployeeMemberLoaidngSkeleton from "../../../LoadingSkeleton/EmployeeMemberLoadingSkeleton/EmployeeMemberLoadingSkeleton";
 import UserJobContext from "../../../../Context/UserJobContext";
 
-const EmployeeMember = ({ location, match, history }) => {
+const EmployeeMember = () => {
   const [employee, setEmployee] = useState(null);
   const [error, setError] = useState(false);
   const { addToast } = useToasts();
-  const employeeID = match.params.id;
   const userJob = useContext(UserJobContext);
+  const { id } = useParams();
+  const { state } = useLocation();
+  const navigate = useNavigate();
+
+  console.log(state);
 
   useEffect(() => {
     if (userJob === "حسابدار" || userJob === "مدیریت") {
-      if (location.state) {
-        const { employee } = location.state;
-        setEmployee(employee);
+      if (state) {
+        setEmployee(state);
         return;
       }
-      if (employeeID) {
+      if (id) {
         const fetchEmployee = async () => {
           try {
-            const { data } = await getEmployee(employeeID);
+            const { data } = await getEmployee(id);
             setEmployee(data);
           } catch (err) {
             setError(true);
-            history.push("/manage/personnel");
+            navigate("/manage/personnel");
           }
         };
         fetchEmployee();
       }
     } else {
-      history.push("/manage");
+      navigate("/manage");
     }
   }, []);
 
   const removeHandler = async () => {
     try {
-      await deleteEmployee(employeeID);
+      await deleteEmployee(id);
       addToast(`${employee.name} از کادر پرسنل حذف شد`, {
         appearance: "success",
       });
-      history.push("/manage/personnel");
+      navigate("/manage/personnel");
     } catch (error) {
       setError(true);
       addToast("مجددا تلاش کنید", { appearance: "error" });

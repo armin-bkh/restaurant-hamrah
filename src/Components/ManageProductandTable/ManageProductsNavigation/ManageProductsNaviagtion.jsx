@@ -4,10 +4,10 @@ import { FaEdit } from "react-icons/fa";
 import { HiFolderRemove } from "react-icons/hi";
 
 const links = [
-  { to: "/manage/products/add-product", title: "اضافه", icon: <BiBookAdd /> },
-  { to: "/manage/products/edit-product", title: "تغییر", icon: <FaEdit /> },
+  { to: "add-product", title: "اضافه", icon: <BiBookAdd /> },
+  { to: "edit-product", title: "تغییر", icon: <FaEdit /> },
   {
-    to: "/manage/products/remove-product",
+    to: "remove-product",
     title: "حذف",
     icon: <HiFolderRemove />,
   },
@@ -24,9 +24,11 @@ const ManageProductsNavigation = () => {
               className={`my-2 text-sm lg:text-lg w-full flex justify-between items-center`}
             >
               <NavLink
-                className={`text-blue-400 w-full flex justify-between items-center
-                 py-2 border-b border-blue-200 hover:border-blue-400`}
-                activeClassName={`border-blue-400 text-yellow-400`}
+                className={({ isActive }) =>
+                  `text-blue-400 w-full flex justify-between items-center
+                 py-2 border-b hover:border-blue-400 ` +
+                  (isActive ? "border-blue-400" : "border-blue-200")
+                }
                 to={link.to}
               >
                 {link.title}

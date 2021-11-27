@@ -1,15 +1,16 @@
 import { useEffect, useState, useContext } from "react";
+import { useNavigate } from "react-router";
 import UserJobContext from "../../Context/UserJobContext";
 import { getFoodFilters } from "../../Services/getFoodFilters";
 import { getUserFilters } from "../../Services/getuserFilters";
 import FilterGroupLoadingSkeleton from "../LoadingSkeleton/FilterGroupLoadingSkeleton/FilterGroupLoadingSkeleton";
 import Group from "./Group/Group";
 
-const ManageFiltersGroups = ({ history }) => {
+const ManageFiltersGroups = () => {
   const [foodGroup, setFoodGroup] = useState(null);
   const [jobGroup, setJobGroup] = useState(null);
   const userJob = useContext(UserJobContext);
-
+  const navigate = useNavigate();
   useEffect(() => {
     if (userJob === "حسابدار" || userJob === "مدیریت") {
       const fetchFilters = async () => {
@@ -20,7 +21,7 @@ const ManageFiltersGroups = ({ history }) => {
       };
       fetchFilters();
     } else {
-      history.push("/manage");
+      navigate("/manage");
     }
   }, []);
 
@@ -32,18 +33,8 @@ const ManageFiltersGroups = ({ history }) => {
       >
         {foodGroup && jobGroup ? (
           <>
-            <Group
-              key={foodGroup.length}
-              group={foodGroup}
-              setGroup={setFoodGroup}
-              title="محصولات"
-            />
-            <Group
-              key={jobGroup.length}
-              group={jobGroup}
-              setGroup={setJobGroup}
-              title="پرسنل"
-            />
+            <Group key={foodGroup.length} group={foodGroup} title="محصولات" />
+            <Group key={jobGroup.length} group={jobGroup} title="پرسنل" />
           </>
         ) : (
           Array(2)
