@@ -10,7 +10,6 @@ const ManageProducts = () => {
 
   useEffect(() => {
     if (userJob === "حسابدار" || userJob === "مدیریت") {
-      navigate("detail");
       return;
     } else {
       navigate("/manage");

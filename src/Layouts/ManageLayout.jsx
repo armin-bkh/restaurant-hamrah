@@ -1,8 +1,8 @@
 import { useState } from "react";
-import ManageFooter from "../Components/ManageFooter/ManageFooter";
 import ManageHeader from "../Components/ManageHeader/ManageHeader";
 import TodoListContainer from "../Components/TodoList/TodoListContainer";
 import { MdKeyboardArrowRight } from "react-icons/md";
+import MainFooter from "../Components/MainFooter/MainFooter";
 
 const ManageUserLayout = ({ children }) => {
   const [isShow, setIsShow] = useState(false);
@@ -19,7 +19,7 @@ const ManageUserLayout = ({ children }) => {
       </span>
       {isShow && <TodoListContainer />}
       {children}
-      <ManageFooter />
+      <MainFooter />
     </>
   );
 };

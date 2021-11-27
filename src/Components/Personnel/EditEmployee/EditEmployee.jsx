@@ -56,14 +56,11 @@ const EditEmployee = () => {
     const fetchEmployee = async () => {
       try {
         const { data } = await getAllPersonnel();
-        console.log(data);
         const index = data.findIndex((item) => item.id === id);
         const employee = await getEmployee(index);
         setFormValue(employee.data);
-        console.log(employee);
         const filters = await getUserFilters();
         setFilters(filters.data);
-        console.log(filters);
       } catch (err) {
         setError(true);
         navigate("/manage/personnel");

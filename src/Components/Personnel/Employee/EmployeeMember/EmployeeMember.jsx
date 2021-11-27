@@ -19,8 +19,6 @@ const EmployeeMember = () => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  console.log(state);
-
   useEffect(() => {
     if (userJob === "حسابدار" || userJob === "مدیریت") {
       if (state) {

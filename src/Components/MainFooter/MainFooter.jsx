@@ -25,7 +25,7 @@ const MainFooter = () => {
           >
             <a
               className={`text-blue-400 text-base md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
-              href="https://www.varzesh3.com"
+              href="https://twitter.com/arminbkh"
               target="_blank"
               rel="noreferrer"
             >
@@ -37,7 +37,7 @@ const MainFooter = () => {
           >
             <a
               className={`text-blue-400 text-base md:text-lg lg:text-2xl 2xl:text-3xl cursor-pointer`}
-              href="https://www.linkedin.com/in/armin-bakhshi-627805217"
+              href="https://www.linkedin.com/in/arminbkh"
               target="_blank"
               rel="noreferrer"
             >
