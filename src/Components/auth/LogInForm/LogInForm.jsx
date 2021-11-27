@@ -35,7 +35,7 @@ const LogInForm = () => {
     //   if(data.find(em => em.id === formValue.userPassword && em.name === formValue.userName)){
     //     const { data } = await getEmployee(formValue.userPassword);
     //     localStorage.setItem('restaurantUser', JSON.stringify(data));
-    //     history.push('/manage', { employee: data })
+    //     navigate('/manage', { state: data })
     //   }
     // } catch(err) {}
   };

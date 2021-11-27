@@ -17,7 +17,7 @@ const ManagePage = () => {
     } else {
       setUser(state);
     }
-    navigate("manageDetail");
+    navigate("manageDetail", { replace: true });
   }, []);
 
   return user ? (
