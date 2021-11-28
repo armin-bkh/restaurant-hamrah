@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link, useParams, useLocation, useNavigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { BsBoxArrowInRight } from "react-icons/bs";
@@ -8,7 +8,6 @@ import { getEmployee } from "../../../../Services/getEmployee";
 import { useToasts } from "react-toast-notifications";
 import styles from "./EmployeeMember.module.scss";
 import EmployeeMemberLoaidngSkeleton from "../../../LoadingSkeleton/EmployeeMemberLoadingSkeleton/EmployeeMemberLoadingSkeleton";
-import UserJobContext from "../../../../Context/UserJobContext";
 import { useSelector } from "react-redux";
 
 const EmployeeMember = () => {
