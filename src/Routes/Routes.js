@@ -50,12 +50,12 @@ export const manageRoutes = [
 
 export const routes = [
   { path: "/", element: <HomePage /> },
-  { path: "/reservation", element: <ReservationPage /> },
-  { path: "/manage/", element: <ManagePage />, children: manageRoutes },
-  { path: "/login", element: <LoginPage /> },
-  { path: "/signup", element: <SignupPage /> },
-  { path: "/about-us", element: <AboutUsPage /> },
-  { path: "/services", element: <ServicesPage /> },
-  { path: "/contact", element: <ContactPage /> },
+  { path: "reservation", element: <ReservationPage /> },
+  { path: "manage/", element: <ManagePage />, children: manageRoutes },
+  { path: "login", element: <LoginPage /> },
+  { path: "signup", element: <SignupPage /> },
+  { path: "about-us", element: <AboutUsPage /> },
+  { path: "services", element: <ServicesPage /> },
+  { path: "contact", element: <ContactPage /> },
   { path: "*", element: <NotFoundPage /> },
 ];

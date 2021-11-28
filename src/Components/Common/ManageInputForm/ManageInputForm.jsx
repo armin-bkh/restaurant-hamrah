@@ -27,7 +27,7 @@ const ManageInputForm = ({ type, lbl, value, formik, name, ...rest }) => {
 
   if (type === "file") {
     returnValue = (
-      <div className={`flex items-center`}>
+      <div className={`flex items-center`} style={{ zIndex: "-1" }}>
         <input
           className={`sr-only`}
           id={lbl}

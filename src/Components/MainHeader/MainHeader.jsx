@@ -5,7 +5,7 @@ import { FaUsers } from "react-icons/fa";
 import { IoIosJournal, IoIosFingerPrint } from "react-icons/io";
 import { IoRestaurant } from "react-icons/io5";
 import { useSelector } from "react-redux";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const links = [
   {
@@ -64,8 +64,14 @@ const logedInLinks = [
 ];
 
 const MainHeader = () => {
+  const [nav, setNav] = useState([]);
   const user = useSelector((state) => state.user);
   const [isShow, setIsShow] = useState(false);
+
+  useEffect(() => {
+    if (user) setNav(logedInLinks);
+    else setNav(links);
+  }, [user]);
 
   return (
     <header className={`py-7 px-3 bgLight boxShadow sticky top-0 z-0 w-full`}>
@@ -103,45 +109,25 @@ const MainHeader = () => {
               : "top-0 right-0 bg-opacity-80 backdrop-filter bg-white"
           }`}
         >
-          {!user
-            ? links.map((link) => (
-                <li
-                  key={link.to}
-                  className={`${
-                    !isShow && link.to === "/login" && "mr-auto"
-                  } my-3 text-xs sm:text-sm lg:text-lg xl:text-xl mx-2`}
-                >
-                  <NavLink
-                    className={({ isActive }) =>
-                      `px-10 md:px-5 py-3 cursor-pointer Casablanca hover:text-white hover:bg-blue-400
+          {nav.map((link) => (
+            <li
+              key={link.to}
+              className={`${
+                !isShow && link.to === "/contact" && "ml-auto"
+              } my-3 text-xs sm:text-sm lg:text-lg xl:text-xl mx-2`}
+            >
+              <NavLink
+                className={({ isActive }) =>
+                  `px-10 md:px-5 py-3 cursor-pointer Casablanca hover:text-white hover:bg-blue-400
                  rounded-md ` +
-                      (isActive ? "text-white bg-blue-400" : "text-blue-400")
-                    }
-                    to={link.to}
-                  >
-                    {link.icon} {link.title}
-                  </NavLink>
-                </li>
-              ))
-            : logedInLinks.map((link) => (
-                <li
-                  key={link.to}
-                  className={`${
-                    !isShow && link.to === "/manage" && "mr-auto"
-                  } my-3 lg:my-0 text-xs sm:text-sm lg:text-lg xl:text-xl mx-2`}
-                >
-                  <NavLink
-                    className={({ isActive }) =>
-                      `px-10 md:px-5 py-3 cursor-pointer Casablanca hover:text-white hover:bg-blue-400
-                 rounded-md ` +
-                      (isActive ? "text-white bg-blue-400" : "text-blue-400")
-                    }
-                    to={link.to}
-                  >
-                    {link.icon} {link.title}
-                  </NavLink>
-                </li>
-              ))}
+                  (isActive ? "text-white bg-blue-400" : "text-blue-400")
+                }
+                to={link.to}
+              >
+                {link.icon} {link.title}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </header>

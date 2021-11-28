@@ -15,7 +15,7 @@ const AuthInput = ({ type, formik, name, explain, ...rest }) => {
 
   return (
     <fieldset className={`flex flex-col mb-5`}>
-      <div className={`relative`}>
+      <div className={`relative`} style={{ zIndex: "-1" }}>
         <input
           ref={inputRef}
           name={name}
