@@ -104,6 +104,7 @@ const ManageNavigation = () => {
       setHeight(h);
     }
   });
+
   return (
     <nav className={`mt-10 border-b-2 border-blue-400 py-2`}>
       <button
