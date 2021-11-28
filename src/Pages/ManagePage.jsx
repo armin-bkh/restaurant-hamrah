@@ -6,13 +6,13 @@ import { getUserData } from "../Redux/User/userActions";
 
 const ManagePage = () => {
   const dispatch = useDispatch();
-  const state = useSelector((state) => state.user);
+  const user = useSelector((state) => state.user);
+
   useEffect(() => {
     document.title = "مدیریت";
-    dispatch(getUserData());
   }, []);
 
-  return state ? (
+  return user ? (
     <ManageLayout>
       <Outlet />
     </ManageLayout>
