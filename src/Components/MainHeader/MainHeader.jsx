@@ -97,10 +97,10 @@ const MainHeader = () => {
           ></div>
         </button>
         <ul
-          className={`flex flex-1 flex-col justify-center transition-all lg:justify-start items-center fixed lg:static lg:flex-row ${
+          className={`flex flex-1 flex-col justify-center w-full h-full lg:w-auto lg:h-auto transition-all lg:justify-start items-center fixed lg:static lg:flex-row ${
             !isShow
-              ? "-top-full w-full h-full"
-              : "top-0 h-full w-full right-0 bg-opacity-80 backdrop-filter bg-white"
+              ? "-top-full"
+              : "top-0 right-0 bg-opacity-80 backdrop-filter bg-white"
           }`}
         >
           {!user
