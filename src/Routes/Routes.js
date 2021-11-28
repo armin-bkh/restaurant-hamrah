@@ -27,7 +27,7 @@ export const manageProductsRoutes = [
   { path: "edit-product", element: <ManageEditProduct /> },
   { path: "remove-product", element: <ManageRemoveProduct /> },
   { path: "add-product", element: <ManageAddProduct /> },
-  { path: "detail", element: <ManageProductsDetail /> },
+  { path: "", element: <ManageProductsDetail /> },
   { path: "*", element: <NotFound /> },
 ];
 
@@ -39,10 +39,10 @@ export const manageRoutes = [
   { path: "personnel", element: <Personnel /> },
   { path: "report", element: <Reports /> },
   { path: "tables", element: <ManageTable /> },
-  { path: "manageDetail", element: <ManageDetail /> },
+  { path: "", element: <ManageDetail /> },
   { path: "*", element: <NotFound /> },
   {
-    path: "products/",
+    path: "products",
     element: <ManageProducts />,
     children: manageProductsRoutes,
   },
@@ -51,7 +51,7 @@ export const manageRoutes = [
 export const routes = [
   { path: "/", element: <HomePage /> },
   { path: "/reservation", element: <ReservationPage /> },
-  { path: "/manage/", element: <ManagePage />, children: manageRoutes },
+  { path: "/manage", element: <ManagePage />, children: manageRoutes },
   { path: "/login", element: <LoginPage /> },
   { path: "/signup", element: <SignupPage /> },
   { path: "/about-us", element: <AboutUsPage /> },

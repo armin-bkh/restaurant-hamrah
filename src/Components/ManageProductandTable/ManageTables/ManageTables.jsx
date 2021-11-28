@@ -8,6 +8,7 @@ const ManageTable = () => {
   const [error, setError] = useState(false);
 
   useEffect(() => {
+    document.title = "مدیریت";
     const getTables = async () => {
       try {
         const { data } = await getAllTable();
@@ -20,6 +21,7 @@ const ManageTable = () => {
 
     return () => {
       setTables(null);
+      setError(null);
     };
   }, []);
   let returnValue = Array(8)

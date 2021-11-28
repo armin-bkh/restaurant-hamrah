@@ -12,7 +12,9 @@ const ManageFiltersGroups = () => {
   const [jobGroup, setJobGroup] = useState(null);
   const { job } = useSelector((state) => state.user);
   const navigate = useNavigate();
+
   useEffect(() => {
+    document.title = "مدیریت";
     if (job === "حسابدار" || job === "مدیریت") {
       const fetchFilters = async () => {
         const food = await getFoodFilters();

@@ -37,7 +37,7 @@ const managerLinks = [
   },
   {
     title: <BiMessageSquareDetail className={`inline`} />,
-    to: "manageDetail",
+    to: "/manage",
   },
 ];
 const accountantsLinks = [
@@ -63,7 +63,7 @@ const accountantsLinks = [
   },
   {
     title: <BiMessageSquareDetail className={`inline`} />,
-    to: "manageDetail",
+    to: "/manage",
   },
 ];
 const publicLinks = [
@@ -74,7 +74,7 @@ const publicLinks = [
   },
   {
     title: "توضیحات",
-    to: "manageDetail",
+    to: "/manage",
     icon: <BiMessageSquareDetail className={`inline ml-2`} />,
   },
 ];
@@ -134,7 +134,7 @@ const ManageNavigation = () => {
               <li
                 key={link.to}
                 style={
-                  link.to === "manageDetail" && !open
+                  link.to === "/manage" && !open
                     ? { marginRight: "auto" }
                     : null
                 }

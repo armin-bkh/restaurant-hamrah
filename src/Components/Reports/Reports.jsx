@@ -10,6 +10,7 @@ const Reports = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    document.title = "مدیریت";
     if (job === "حسابدار" || job === "مدیریت") {
       return;
     } else {

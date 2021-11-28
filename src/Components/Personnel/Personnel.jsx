@@ -23,6 +23,7 @@ const Personnel = () => {
   const { job } = useSelector((state) => state.user);
 
   useEffect(() => {
+    document.title = "مدیریت";
     if (job === "حسابدار" || job === "مدیریت") {
       const fetchPersonnel = async () => {
         try {
