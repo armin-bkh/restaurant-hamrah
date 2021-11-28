@@ -8,11 +8,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCartItem } from "../../Redux/Reservation/reservationActions";
 import { useToasts } from "react-toast-notifications";
 import { getAllProducts } from "../../Services/getAllProducts";
+import checkInCart from "../utils/checkInCart";
 
 const Displayer = () => {
   const dispatch = useDispatch();
-  const productId = useSelector((state) => state.reservation.productId);
-  const cart = useSelector((state) => state.reservation.cart);
+  const { productId, cart } = useSelector((state) => state.reservation);
   const [product, setProduct] = useState("");
   const [count, setCount] = useState(1);
   const [error, setError] = useState(false);
@@ -139,7 +139,9 @@ const Displayer = () => {
             className={`text-sm md:text-md lg:text-lg xl:text-xl py-2 mt-12 rounded-md gradient
             Casablanca tracking-widest text-white`}
           >
-            افزودن به سبد خرید
+            {checkInCart(cart, productId)
+              ? "در سبد خرید موجود است"
+              : "افزودن به سبد خرید"}
           </button>
         </article>
       </>
