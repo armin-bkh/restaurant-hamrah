@@ -1,6 +1,4 @@
 import { useEffect, useState } from "react";
-// import { postProduct } from "../../../Services/postProduct";
-// import { useToasts } from "react-toast-notifications";
 import SelectBox from "../../Common/SelectBox/SelectBox";
 import ManageInputForm from "../../Common/ManageInputForm/ManageInputForm";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
