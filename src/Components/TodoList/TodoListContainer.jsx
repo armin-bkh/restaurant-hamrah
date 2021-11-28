@@ -51,11 +51,11 @@ const TodoListContainer = () => {
         />
         <button
           className={`bg-blue-400 text-white transition duration-500 rounded-full p-1 transform fixed bottom-10 right-5 ${
-            !isShow && "rotate-180"
+            isShow && "rotate-45"
           } text-4xl`}
           onClick={() => setIsShow((prevIsShow) => !prevIsShow)}
         >
-          {isShow ? <IoMdClose /> : <BiPlus />}
+          <BiPlus />
         </button>
       </div>
     </section>

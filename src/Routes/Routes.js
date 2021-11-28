@@ -42,7 +42,7 @@ export const manageRoutes = [
   { path: "", element: <ManageDetail /> },
   { path: "*", element: <NotFound /> },
   {
-    path: "products",
+    path: "products/",
     element: <ManageProducts />,
     children: manageProductsRoutes,
   },
@@ -51,7 +51,7 @@ export const manageRoutes = [
 export const routes = [
   { path: "/", element: <HomePage /> },
   { path: "/reservation", element: <ReservationPage /> },
-  { path: "/manage", element: <ManagePage />, children: manageRoutes },
+  { path: "/manage/", element: <ManagePage />, children: manageRoutes },
   { path: "/login", element: <LoginPage /> },
   { path: "/signup", element: <SignupPage /> },
   { path: "/about-us", element: <AboutUsPage /> },

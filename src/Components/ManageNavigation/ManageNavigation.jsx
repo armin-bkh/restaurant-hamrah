@@ -109,7 +109,7 @@ const ManageNavigation = () => {
       <button
         type="button"
         onClick={() => setOpen((prevState) => !prevState)}
-        className={`w-8 md:hidden block transition-all mb-1 mr-auto`}
+        className={`w-8 lg:hidden block transition-all mb-1 mr-auto`}
       >
         <div
           className={`${
@@ -125,7 +125,7 @@ const ManageNavigation = () => {
       </button>
       <ul
         style={{ height: open && `${height}px` }}
-        className={`flex flex-col justify-center md:justify-start md:flex-row overflow-hidden transition-all duration-300 h-0 md:h-auto ${
+        className={`flex flex-col justify-center lg:justify-start lg:flex-row overflow-hidden transition-all duration-300 h-0 lg:h-auto ${
           open && `boxShadowInner p-2 rounded-md`
         }`}
       >
@@ -142,7 +142,7 @@ const ManageNavigation = () => {
               >
                 <NavLink
                   className={({ isActive }) =>
-                    `w-full md:w-auto block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md ` +
+                    `w-full lg:w-auto block text-xs md:text-sm px-1 md:px-4 ANoor py-2 cursor-pointer ml-2 rounded-md ` +
                     (isActive ? `bg-blue-400 text-white` : "text-blue-400")
                   }
                   to={link.to}
