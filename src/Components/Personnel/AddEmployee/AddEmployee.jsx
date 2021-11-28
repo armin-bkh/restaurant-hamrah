@@ -59,6 +59,10 @@ const AddEmployee = () => {
       setFilters(data);
     };
     fetchUserFilters();
+
+    return () => {
+      setFilters(null);
+    };
   }, []);
 
   return (

@@ -16,7 +16,6 @@ const ProductList = () => {
     const getProducts = async () => {
       try {
         const { data } = await getAllProducts();
-        console.log(data);
         setProducts(data);
         setProductList(data);
       } catch (err) {

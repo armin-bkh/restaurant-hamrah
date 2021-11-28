@@ -24,6 +24,11 @@ const ManageFiltersGroups = () => {
     } else {
       navigate("/manage");
     }
+
+    return () => {
+      setFoodGroup(null);
+      setJobGroup(null);
+    };
   }, []);
 
   return (

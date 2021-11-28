@@ -38,6 +38,16 @@ const ManageEditProduct = () => {
       }
     };
     fetchData();
+
+    return () => {
+      setFilter(null);
+      setProducts(null);
+      setProductId(null);
+      setProductList(null);
+      setFilters(null);
+      setSearch(null);
+      setError(null);
+    };
   }, []);
 
   useEffect(() => {

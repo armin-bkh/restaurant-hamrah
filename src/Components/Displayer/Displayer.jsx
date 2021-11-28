@@ -11,8 +11,8 @@ import { getAllProducts } from "../../Services/getAllProducts";
 
 const Displayer = () => {
   const dispatch = useDispatch();
-  const productId = useSelector((state) => state.productId);
-  const cart = useSelector((state) => state.cart);
+  const productId = useSelector((state) => state.reservation.productId);
+  const cart = useSelector((state) => state.reservation.cart);
   const [product, setProduct] = useState("");
   const [count, setCount] = useState(1);
   const [error, setError] = useState(false);

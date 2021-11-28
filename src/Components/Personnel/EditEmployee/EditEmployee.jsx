@@ -68,6 +68,12 @@ const EditEmployee = () => {
       }
     };
     fetchEmployee();
+
+    return () => {
+      setError(null);
+      setFilters(null);
+      setFormValue(null);
+    };
   }, []);
 
   return (

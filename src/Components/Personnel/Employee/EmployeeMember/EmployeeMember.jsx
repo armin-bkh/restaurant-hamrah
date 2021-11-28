@@ -41,6 +41,11 @@ const EmployeeMember = () => {
     } else {
       navigate("/manage");
     }
+
+    return () => {
+      setEmployee(null);
+      setError(null);
+    };
   }, []);
 
   const removeHandler = async () => {

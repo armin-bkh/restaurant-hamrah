@@ -60,6 +60,11 @@ const ManageAddProduct = () => {
       }
     };
     getFilters();
+
+    return () => {
+      setFilters(null);
+      setError(null);
+    };
   }, []);
 
   return (

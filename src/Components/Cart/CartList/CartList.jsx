@@ -13,7 +13,7 @@ import {
 
 const CartList = () => {
   const { cart, paid, totalPrice, loading, error } = useSelector(
-    (state) => state
+    (state) => state.reservation
   );
   const dispatch = useDispatch();
 

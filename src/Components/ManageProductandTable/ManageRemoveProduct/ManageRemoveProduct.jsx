@@ -30,6 +30,15 @@ const ManageRemoveProduct = () => {
       }
     };
     fetchData();
+
+    return () => {
+      setProducts(null);
+      setProductList(null);
+      setError(null);
+      setSearch(null);
+      setFilter(null);
+      setFilters(null);
+    };
   }, []);
 
   useEffect(() => {

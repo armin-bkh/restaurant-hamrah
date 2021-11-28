@@ -39,6 +39,14 @@ const Personnel = () => {
     } else {
       navigate("/manage");
     }
+
+    return () => {
+      setAllPersonnel(null);
+      setPersonnel(null);
+      setError(null);
+      setFilter("همه");
+      setFilters(null);
+    };
   }, []);
 
   useEffect(() => {
