@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { AiOutlineUserAdd } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
 import { deleteEmployee } from "../../Services/deleteEmployee";
@@ -8,7 +8,6 @@ import Employee from "./Employee/Employee";
 import { useToasts } from "react-toast-notifications";
 import EmployeeLoadingSkeleton from "../LoadingSkeleton/EmployeeLoadingSkeleton/EmployeeLoadingSkeleton";
 import SelectBoxLoadingSkeleton from "../LoadingSkeleton/SelectBoxLoadingSkeleton/SelectBoxLoadingSkeleton";
-import UserJobContext from "../../Context/UserJobContext";
 import SelectBox from "../Common/SelectBox/SelectBox";
 import { useSelector } from "react-redux";
 

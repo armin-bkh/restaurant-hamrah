@@ -1,8 +1,7 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import ManageProductsNavigation from "../ManageProductsNavigation/ManageProductsNaviagtion";
 import setting from "../../../Assets/SVG/processing-animate.svg";
-import { useContext, useEffect } from "react";
-import UserJobContext from "../../../Context/UserJobContext";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const ManageProducts = () => {

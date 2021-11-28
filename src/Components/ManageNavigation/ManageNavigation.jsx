@@ -5,8 +5,7 @@ import { IoFastFoodOutline } from "react-icons/io5";
 import { BsCardChecklist } from "react-icons/bs";
 import { HiUserGroup } from "react-icons/hi";
 import { FaLayerGroup } from "react-icons/fa";
-import UserJobContext from "../../Context/UserJobContext";
-import { useContext, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 
 const managerLinks = [

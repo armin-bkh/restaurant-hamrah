@@ -1,10 +1,9 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { getEmployee } from "../../../Services/getEmployee";
 import { putEmployee } from "../../../Services/putEmployee";
 import ManageInputForm from "../../Common/ManageInputForm/ManageInputForm";
 import { useToasts } from "react-toast-notifications";
 import EditEmployeeLoadingSkelton from "../../LoadingSkeleton/EditEmployeeLoadingSkeleton/EditEmployeeLoadingSkeleton";
-import UserJobContext from "../../../Context/UserJobContext";
 import ManageAddFilter from "../../ManageAddFilter/ManageAddFilter";
 import SelectBox from "../../Common/SelectBox/SelectBox";
 import { getUserFilters } from "../../../Services/getuserFilters";

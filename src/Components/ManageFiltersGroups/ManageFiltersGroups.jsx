@@ -1,7 +1,6 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
-import UserJobContext from "../../Context/UserJobContext";
 import { getFoodFilters } from "../../Services/getFoodFilters";
 import { getUserFilters } from "../../Services/getuserFilters";
 import FilterGroupLoadingSkeleton from "../LoadingSkeleton/FilterGroupLoadingSkeleton/FilterGroupLoadingSkeleton";
