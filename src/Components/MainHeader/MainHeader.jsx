@@ -74,7 +74,7 @@ const MainHeader = () => {
   }, [user]);
 
   return (
-    <header className={`py-7 px-3 bgLight boxShadow sticky top-0 z-0 w-full`}>
+    <header className={`py-5 px-3 bgLight boxShadow sticky top-0 z-0 w-full`}>
       <nav className={`flex items-center`}>
         <h1
           className={`Casablanca color-gradient text-xl md:text-2xl lg:text-4xl z-50 ml-10`}
@@ -103,17 +103,18 @@ const MainHeader = () => {
           ></div>
         </button>
         <ul
-          className={`flex flex-1 flex-col justify-center w-full h-full lg:w-auto lg:h-auto transition-all lg:justify-start items-center fixed lg:static lg:flex-row ${
-            !isShow
-              ? "-top-full"
-              : "top-0 right-0 bg-opacity-80 backdrop-filter bg-white"
-          }`}
+          className={`flex flex-1 flex-col justify-center w-full h-full lg:w-auto lg:h-auto transition-all
+           lg:justify-start items-center fixed lg:static lg:flex-row ${
+             !isShow
+               ? "-top-full"
+               : "top-0 right-0 bg-opacity-80 backdrop-filter bg-white"
+           }`}
         >
           {nav.map((link) => (
             <li
               key={link.to}
               className={`${
-                !isShow && link.to === "/contact" && "ml-auto"
+                !isShow && link.to === "/contact" && "lg:ml-auto"
               } my-3 text-xs sm:text-sm lg:text-lg xl:text-xl mx-2`}
             >
               <NavLink
