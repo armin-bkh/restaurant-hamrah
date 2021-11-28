@@ -14,7 +14,7 @@ const AuthInput = ({ type, formik, name, explain, ...rest }) => {
   };
 
   return (
-    <fieldset className={`flex flex-col mb-5 z-10`}>
+    <fieldset className={`flex flex-col mb-5`}>
       <div className={`relative`}>
         <input
           ref={inputRef}
@@ -34,16 +34,14 @@ const AuthInput = ({ type, formik, name, explain, ...rest }) => {
         )}
       </div>
       {explain || formik.errors[name] ? (
-        <div className={`text-xs md:text-sm flex items-center justify-between mt-1`}>
-          <span className={`text-gray-400 Dirooz  mr-3`}>
-            {explain}
-          </span>
+        <div
+          className={`text-xs md:text-sm flex items-center justify-between mt-1`}
+        >
+          <span className={`text-gray-400 Dirooz  mr-3`}>{explain}</span>
           {formik.errors[name] && formik.touched[name] && (
-            <span className={`text-red-700 Dirooz`}>
-              {formik.errors[name]}
-            </span>
+            <span className={`text-red-700 Dirooz`}>{formik.errors[name]}</span>
           )}
-        </div> 
+        </div>
       ) : null}
     </fieldset>
   );

@@ -47,7 +47,7 @@ const ManageInputForm = ({ type, lbl, value, formik, name, ...rest }) => {
 
   return (
     <fieldset
-      className={`mb-5 w-full z-10 ${
+      className={`mb-5 w-full ${
         type === "file"
           ? "flex items-center"
           : "flex-col justify-center items-start"

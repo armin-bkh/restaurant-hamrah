@@ -20,10 +20,10 @@ const ManageProducts = () => {
 
   return (
     <main
-      className={`grid gap-x-3 grid-col-1 min-h-screen md:grid-cols-3 lg:grid-cols-4 p-5 md:col-span-2 Dirooz lg:col-span-3`}
+      className={`grid gap-x-3 grid-col-1 min-h-screen lg:grid-cols-3 xl:grid-cols-4 p-5 Dirooz`}
     >
       <ManageProductsNavigation />
-      <section className={`md:col-span-2 lg:col-span-3 p-5`}>
+      <section className={`lg:col-span-2 xl:col-span-3 p-5`}>
         <Outlet />
       </section>
     </main>
