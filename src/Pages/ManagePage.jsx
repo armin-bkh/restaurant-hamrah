@@ -8,6 +8,10 @@ const ManagePage = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     document.title = "مدیریت";
     if (user === null) navigate("/");
   }, [user]);

@@ -4,6 +4,10 @@ import MainLayout from "../Layouts/MainLayout";
 
 const HomePage = () => {
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     document.title = "خانه";
   }, []);
 

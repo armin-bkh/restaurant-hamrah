@@ -5,8 +5,11 @@ import Manage from "../Assets/SVG/at-work-animate.svg";
 import Food from "../Assets/SVG/pizza-sharing-animate.svg";
 
 const ServicesPage = () => {
-  
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     document.title = "خدمات";
   }, []);
 
@@ -26,7 +29,9 @@ const ServicesPage = () => {
             >
               کد QR
             </h1>
-            <p className={`text-justify mb-5 text-blue-400 Dirooz text-xs sm:text-sm`}>
+            <p
+              className={`text-justify mb-5 text-blue-400 Dirooz text-xs sm:text-sm`}
+            >
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -34,14 +39,18 @@ const ServicesPage = () => {
               کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
               جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری
             </p>
-            <p className={`text-justify mb-3 text-blue-400 Dirooz text-xs sm:text-sm`}>
+            <p
+              className={`text-justify mb-3 text-blue-400 Dirooz text-xs sm:text-sm`}
+            >
               را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در
               زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
               دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
               زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
               پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
             </p>
-            <p className={`text-justify text-blue-400 Dirooz text-xs sm:text-sm`}>
+            <p
+              className={`text-justify text-blue-400 Dirooz text-xs sm:text-sm`}
+            >
               را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در
               زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
               دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به
@@ -59,7 +68,9 @@ const ServicesPage = () => {
             >
               محصول
             </h1>
-            <p className={`text-justify mb-5 text-blue-400 Dirooz text-xs sm:text-sm`}>
+            <p
+              className={`text-justify mb-5 text-blue-400 Dirooz text-xs sm:text-sm`}
+            >
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -67,14 +78,18 @@ const ServicesPage = () => {
               کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
               جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری
             </p>
-            <p className={`text-justify mb-3 text-blue-400 Dirooz text-xs sm:text-sm`}>
+            <p
+              className={`text-justify mb-3 text-blue-400 Dirooz text-xs sm:text-sm`}
+            >
               را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در
               زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
               دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
               زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
               پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
             </p>
-            <p className={`text-justify text-blue-400 Dirooz text-xs sm:text-sm`}>
+            <p
+              className={`text-justify text-blue-400 Dirooz text-xs sm:text-sm`}
+            >
               را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در
               زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
               دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به
@@ -92,7 +107,9 @@ const ServicesPage = () => {
             >
               میز
             </h1>
-            <p className={`text-justify mb-5 text-blue-400 Dirooz text-xs sm:text-sm`}>
+            <p
+              className={`text-justify mb-5 text-blue-400 Dirooz text-xs sm:text-sm`}
+            >
               لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
               استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله
               در ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد
@@ -100,14 +117,18 @@ const ServicesPage = () => {
               کتابهای زیادی در شصت و سه درصد گذشته حال و آینده، شناخت فراوان
               جامعه و متخصصان را می طلبد، تا با نرم افزارها شناخت بیشتری
             </p>
-            <p className={`text-justify mb-3 text-blue-400 Dirooz text-xs sm:text-sm`}>
+            <p
+              className={`text-justify mb-3 text-blue-400 Dirooz text-xs sm:text-sm`}
+            >
               را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در
               زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
               دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به پایان رسد و
               زمان مورد نیاز شامل حروفچینی دستاوردهای اصلی، و جوابگوی سوالات
               پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده قرار گیرد.
             </p>
-            <p className={`text-justify text-blue-400 Dirooz text-xs sm:text-sm`}>
+            <p
+              className={`text-justify text-blue-400 Dirooz text-xs sm:text-sm`}
+            >
               را برای طراحان رایانه ای علی الخصوص طراحان خلاقی، و فرهنگ پیشرو در
               زبان فارسی ایجاد کرد، در این صورت می توان امید داشت که تمام و
               دشواری موجود در ارائه راهکارها، و شرایط سخت تایپ به

@@ -3,8 +3,11 @@ import LogInForm from "../Components/auth/LogInForm/LogInForm";
 import MainLayout from "../Layouts/MainLayout";
 
 const LoginPage = () => {
-
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     document.title = "ورود";
   }, []);
 

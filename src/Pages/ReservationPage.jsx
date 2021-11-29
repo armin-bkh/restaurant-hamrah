@@ -5,6 +5,10 @@ import ProductList from "../Components/ProductList/ProductList";
 
 const ReservationPage = () => {
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     document.title = "سفارش غذا";
   }, []);
 

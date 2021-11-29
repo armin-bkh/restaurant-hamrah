@@ -3,8 +3,11 @@ import SignUpForm from "../Components/auth/SignUpForm/SignUpForm";
 import MainLayout from "../Layouts/MainLayout";
 
 const SignupPage = ({ history }) => {
-
   useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
     document.title = "ثبت نام";
   }, []);
 

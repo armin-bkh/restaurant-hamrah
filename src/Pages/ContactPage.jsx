@@ -3,15 +3,20 @@ import Contact from "../Assets/SVG/emails-animate.svg";
 import { useEffect } from "react";
 
 const ContactPage = () => {
-
-  useEffect(()=>{
-    document.title = "تماس با ما"
-  }, [])
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+    document.title = "تماس با ما";
+  }, []);
 
   return (
     <MainLayout>
       <main className={`min-h-screen`}>
-        <section className={`grid grid-cols-1 md:grid-cols-2 md:grid-rows-1 p-5`}>
+        <section
+          className={`grid grid-cols-1 md:grid-cols-2 md:grid-rows-1 p-5`}
+        >
           <article
             className={`flex flex-col justify-evenly items-start Dirooz`}
           >
@@ -20,15 +25,23 @@ const ContactPage = () => {
             >
               تماس با ما
             </h1>
-            <h1 className={`text-blue-400 text-base md:text-xl lg:text-2xl mb-2`}>
+            <h1
+              className={`text-blue-400 text-base md:text-xl lg:text-2xl mb-2`}
+            >
               آدرس الکترونیکی: arminbkh0921@yahoo.com
             </h1>
             <h1 className={`text-blue-400 text-base md:text-xl lg:text-2xl`}>
               واتس اپ: 09213506150
             </h1>
           </article>
-          <article className={`row-start-1 md:row-span-2 flex justify-center items-center`}>
-            <img className={`max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl imgShadow`} src={Contact} alt="تماس با ما" />
+          <article
+            className={`row-start-1 md:row-span-2 flex justify-center items-center`}
+          >
+            <img
+              className={`max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg xl:max-w-2xl imgShadow`}
+              src={Contact}
+              alt="تماس با ما"
+            />
           </article>
           <article
             className={`Dirooz text-blue-400 text-sm md:text-base xl:text-lg md:col-span-2 mt-10 md:mt-0`}

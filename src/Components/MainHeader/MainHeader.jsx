@@ -103,11 +103,9 @@ const MainHeader = () => {
           ></div>
         </button>
         <ul
-          className={`flex flex-1 flex-col justify-center w-full h-full lg:w-auto lg:h-auto transition-all
+          className={`flex duration-700 flex-1 top-0 right-0 flex-col justify-center w-full h-full lg:w-auto lg:h-auto transition-all
            lg:justify-start items-center fixed lg:static lg:flex-row ${
-             !isShow
-               ? "-top-full"
-               : "top-0 right-0 bg-opacity-80 backdrop-filter bg-white"
+             !isShow ? "-top-full" : " bg-opacity-90 backdrop-filter bg-white"
            }`}
         >
           {nav.map((link) => (
@@ -115,7 +113,7 @@ const MainHeader = () => {
               key={link.to}
               className={`${
                 !isShow && link.to === "/contact" && "lg:ml-auto"
-              } my-3 text-xs sm:text-sm lg:text-lg xl:text-xl mx-2`}
+              } my-3 text-lg xl:text-xl mx-2`}
             >
               <NavLink
                 className={({ isActive }) =>
