@@ -74,7 +74,7 @@ const MainHeader = () => {
   }, [user]);
 
   return (
-    <header className={`py-5 px-3 bgLight boxShadow sticky top-0 z-0 w-full`}>
+    <header className={`py-2 px-3 bgLight boxShadow sticky top-0 z-0 w-full`}>
       <nav className={`flex items-center`}>
         <h1
           className={`Casablanca color-gradient text-xl md:text-2xl lg:text-4xl z-50 ml-10`}
